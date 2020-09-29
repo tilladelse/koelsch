@@ -64,6 +64,8 @@ wp-content/plugins/*
 /wp-admin
 /wp-includes
 /wp-content/index.php
+
+/wp-content/themes/genesis
 /wp-content/themes/twentyten
 /wp-content/themes/twentyeleven
 /wp-content/themes/twentytwelve
