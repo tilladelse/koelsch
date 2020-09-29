@@ -11,6 +11,8 @@
 $koelsch_default_colors = [
 	'link'   => '#0073e5',
 	'accent' => '#0073e5',
+	'button' => '#000',
+	'button-outline-hover' => '#000'
 ];
 
 $koelsch_link_color = get_theme_mod(
@@ -23,15 +25,13 @@ $koelsch_accent_color = get_theme_mod(
 	$koelsch_default_colors['accent']
 );
 
-$koelsch_link_color_contrast   = genesis_sample_color_contrast( $koelsch_link_color );
-$koelsch_link_color_brightness = genesis_sample_color_brightness( $koelsch_link_color, 35 );
 
 return [
 	'fonts-url'            => 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,700&display=swap',
 	'content-width'        => 1062,
 	'button-bg'            => $koelsch_link_color,
-	'button-color'         => $koelsch_link_color_contrast,
-	'button-outline-hover' => $koelsch_link_color_brightness,
+	'button-color'         => $koelsch_default_colors['button'],
+	'button-outline-hover' => $koelsch_default_colors['button-outline-hover'],
 	'link-color'           => $koelsch_link_color,
 	'default-colors'       => $koelsch_default_colors,
 	'editor-color-palette' => [
