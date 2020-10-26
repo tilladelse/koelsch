@@ -30,7 +30,11 @@
     "lint:js": "eslint .",
     "fix:js": "eslint . --fix",
     "zip": "node .scripts/makezip.js",
-    "prep:piservice": "node .scripts/makePIServiceData.js"
+    "prep:piservice": "node .scripts/makePIServiceData.js",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.4"
   },
   "browserslist": [
     "> 1%",

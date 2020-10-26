@@ -8,33 +8,33 @@ require('gulp-stats')(gulp);
 toolkit.extendConfig({
     theme: {
         name: "Koelsch",
-        homepage: "https://tilladelse.com",
-        description: "Koelsch child theme created for the Genesis Framework.",
-        author: "Tilladelse",
-        authoruri: "https://tilladelse.com/",
-        version: "1.0.0",
-        tags: "one-column, two-columns, left-sidebar, right-sidebar, accessibility-ready, custom-background, custom-colors, custom-header, custom-menu, featured-images, footer-widgets, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready",
+        homepage: pkg.homepage,
+        description: pkg.description,
+        author: pkg.author,
+        authoruri: pkg.authoruri,
+        version: pkg.version,
         template: "genesis",
-        license: "GPL-2.0+",
-        licenceuri: "http://www.gnu.org/licenses/gpl-2.0.html",
-        textdomain: "koelsch"
+        license: pkg.license,
+        licenceuri: pkg.licenseuri,
+        textdomain: pkg.textdomain
     },
     css: {
         scss: {
-            'style-front': {
-                src: 'src/scss/frontend.scss',
+            'frontend': {
+                src: 'develop/scss/frontend-bundle.scss',
                 dest: 'css/'
-            }
+            },
+            'frontend': {
+                src: 'develop/scss/admin.scss',
+                dest: 'css/'
+            },
         }
     },
     js: {
-        'infinity-pro': [
+        'theme': [
             'develop/js/responsive-menus.js',
             'develop/js/match-height.js',
             'develop/js/global.js'
-        ],
-        'front-page': [
-            'develop/js/front-page.js'
         ]
     },
     server: {
