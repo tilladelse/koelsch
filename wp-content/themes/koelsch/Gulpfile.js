@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp'),
+    pkg = require('./package.json'),
     toolkit = require('gulp-wp-toolkit');
 
 require('gulp-stats')(gulp);
@@ -21,20 +22,18 @@ toolkit.extendConfig({
     css: {
         scss: {
             'frontend': {
-                src: 'develop/scss/frontend-bundle.scss',
+                src: 'develop/scss/style.scss',
                 dest: 'css/'
             },
-            'frontend': {
-                src: 'develop/scss/admin.scss',
-                dest: 'css/'
-            },
+            // 'admin': {
+            //     src: 'develop/scss/admin.scss',
+            //     dest: 'css/'
+            // },
         }
     },
     js: {
         'theme': [
-            'develop/js/responsive-menus.js',
-            'develop/js/match-height.js',
-            'develop/js/global.js'
+            'develop/js/jquery.main.js',
         ]
     },
     server: {
