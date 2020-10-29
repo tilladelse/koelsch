@@ -5,7 +5,6 @@ var gulp = require('gulp'),
     toolkit = require('gulp-wp-toolkit');
 
 require('gulp-stats')(gulp);
-
 toolkit.extendConfig({
     theme: {
         name: "Koelsch",
@@ -38,6 +37,12 @@ toolkit.extendConfig({
     },
     server: {
         url: 'http://localhost:8888/koelsch/'
+    },
+    dest:{
+      i18nmo: 'assets/languages/',
+      images: 'assets/images/',
+      css: 'assets/',
+      js: 'assets/js/',
     }
 });
 
