@@ -85,8 +85,8 @@ wp-content/plugins/*
 wp-content/themes/koelsch/node_modules
 
 #dev files
-wp-content/themes/koelsch/src
-wp-content/themes/koelsch/develop
+#wp-content/themes/koelsch/src
+#wp-content/themes/koelsch/develop
 
 # large/disallowed file types
 # a CDN should be used for these
