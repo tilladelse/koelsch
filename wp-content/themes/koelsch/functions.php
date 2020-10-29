@@ -10,6 +10,8 @@
  * @link    https://www.tilladelse.com/
  */
 
+ //include vendor files
+ require('vendor/autoload.php');
  // Init Genesis Core
  require_once get_template_directory() . '/lib/init.php';
 
