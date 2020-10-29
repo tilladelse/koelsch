@@ -77,6 +77,7 @@ wp-content/plugins/*
 /wp-content/themes/twentynineteen
 /wp-content/themes/twentytwenty
 /wp-content/themes/twentytwentyone
+/wp-content/themes/genesis-sample-develop
 /wp-content/themes/index.php
 /wp-content/plugins/index.php
 /wp-content/plugins/akismet*
