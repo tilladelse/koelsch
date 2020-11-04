@@ -11,7 +11,8 @@
  */
 
  //include vendor files
- require('vendor/autoload.php');
+ require_once __DIR__ . '/vendor/autoload.php';
+
  // Init Genesis Core
  require_once get_template_directory() . '/lib/init.php';
 
@@ -36,6 +37,13 @@
  function genesis_child_gutenberg_support() { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- using same in all child themes to allow action to be unhooked.
  	require_once get_stylesheet_directory() . '/lib/gutenberg/init.php';
  }
+
+ //include custom metaboxes
+ require_once __DIR__ . '/lib/metaboxes.php';
+
+ //custom post types
+ require_once __DIR__ . '/lib/post-types.php';
+
 
  add_action( 'wp_enqueue_scripts', 'koelsch_enqueue_scripts_styles' );
  /**

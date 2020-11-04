@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d23eccced4abd108e140e87d01912ec6",
+    "content-hash": "a40f7cad6f197f8d707683b49e56006a",
     "packages": [
         {
             "name": "cmb2/cmb2",
@@ -62,12 +62,57 @@
                 "source": "http://wordpress.org/support/plugin/cmb2"
             },
             "time": "2020-01-21T17:49:50+00:00"
+        },
+        {
+            "name": "jjgrainger/wp-custom-post-type-class",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jjgrainger/wp-custom-post-type-class.git",
+                "reference": "f866c3a35ec8041f8ccded863d064778e2080edb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jjgrainger/wp-custom-post-type-class/zipball/f866c3a35ec8041f8ccded863d064778e2080edb",
+                "reference": "f866c3a35ec8041f8ccded863d064778e2080edb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "CPT": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joe Grainger",
+                    "email": "hello@joegrainger.co.uk",
+                    "homepage": "http://jjgrainger.co.uk"
+                }
+            ],
+            "description": "A single class to help you build more advanced custom post types quickly.",
+            "homepage": "https://github.com/jjgrainger/wp-custom-post-type-class",
+            "support": {
+                "issues": "https://github.com/jjgrainger/wp-custom-post-type-class/issues",
+                "source": "https://github.com/jjgrainger/wp-custom-post-type-class/tree/master"
+            },
+            "time": "2017-05-19T12:59:18+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "jjgrainger/wp-custom-post-type-class": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
