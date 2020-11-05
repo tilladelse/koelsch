@@ -65,7 +65,7 @@
   	) );
     $ci->add_field( array(
         'name' => 'Important',
-        'desc' => 'Take care to make sure the city and state are correct before saving. The community\'s URL structure is generated using the state, city and care type.',
+        'desc' => 'Take care to make sure the city and state are correct before saving. The community\'s URL structure is generated using the state, city and living type.',
         'type' => 'title',
         'id'   => 'address_warning'
     ) );

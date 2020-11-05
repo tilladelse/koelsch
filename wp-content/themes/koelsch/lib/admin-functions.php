@@ -87,8 +87,8 @@
          //set page template
          set_page_template($cityPageID, 'city');
          //create living type page
-         $livingTypes = LIVING_TYPES;
-         $ltName = $livingTypes[$arr['living_type']]['name'];
+         $livingTypes = get_community_living_type_options();
+         $ltName = $livingTypes[$arr['living_type']];
          $ltPageID = create_page($ltName, $cityPageID, $arr['living_type']);
          if ($ltPageID){
            //set page template
