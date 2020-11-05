@@ -15,6 +15,14 @@
 
  // Init Genesis Core
  require_once get_template_directory() . '/lib/init.php';
+ //include custom metaboxes
+ require_once __DIR__ . '/lib/admin-functions.php';
+ //consants
+ require_once __DIR__ . '/lib/constants.php';
+ //custom post types
+ require_once __DIR__ . '/lib/post-types.php';
+ //include custom metaboxes
+ require_once __DIR__ . '/lib/metaboxes.php';
 
  add_action( 'after_setup_theme', 'koelsch_localization_setup' );
  /**
@@ -37,13 +45,14 @@
  function genesis_child_gutenberg_support() { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- using same in all child themes to allow action to be unhooked.
  	require_once get_stylesheet_directory() . '/lib/gutenberg/init.php';
  }
-
- //include custom metaboxes
- require_once __DIR__ . '/lib/metaboxes.php';
-
- //custom post types
- require_once __DIR__ . '/lib/post-types.php';
-
+ add_action('admin_enqueue_scripts', 'koelsch_enqueue_admin_scripts');
+ function koelsch_enqueue_admin_scripts(){
+   wp_enqueue_script(
+     genesis_get_theme_handle() . '-admin-scripts',
+     get_stylesheet_directory_uri() . '/assets/js/admin.min.js',
+     genesis_get_theme_version()
+   );
+ }
 
  add_action( 'wp_enqueue_scripts', 'koelsch_enqueue_scripts_styles' );
  /**

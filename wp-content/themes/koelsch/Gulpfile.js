@@ -33,6 +33,9 @@ toolkit.extendConfig({
     js: {
         'theme': [
             'develop/js/jquery.main.js',
+        ],
+        'admin': [
+          'develop/js/jquery.admin.js',
         ]
     },
     server: {
