@@ -12,6 +12,7 @@
 
  //include vendor files
  require_once __DIR__ . '/vendor/autoload.php';
+ require_once __DIR__ . '/lib/CPT.php';
  // Init Genesis Core
  require_once get_template_directory() . '/lib/init.php';
  //consants

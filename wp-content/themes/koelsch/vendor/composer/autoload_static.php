@@ -10,16 +10,6 @@ class ComposerStaticInit272ef563c26834d7334397714ae075b0
         'ad901de1e5d16b81f427bfe3dc3de508' => __DIR__ . '/..' . '/cmb2/cmb2/init.php',
     );
 
-    public static $prefixesPsr0 = array (
-        'C' => 
-        array (
-            'CPT' => 
-            array (
-                0 => __DIR__ . '/..' . '/jjgrainger/wp-custom-post-type-class/src',
-            ),
-        ),
-    );
-
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
@@ -27,7 +17,6 @@ class ComposerStaticInit272ef563c26834d7334397714ae075b0
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixesPsr0 = ComposerStaticInit272ef563c26834d7334397714ae075b0::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit272ef563c26834d7334397714ae075b0::$classMap;
 
         }, null, ClassLoader::class);
