@@ -12,17 +12,17 @@
 
  //include vendor files
  require_once __DIR__ . '/vendor/autoload.php';
-
  // Init Genesis Core
  require_once get_template_directory() . '/lib/init.php';
- //include custom metaboxes
- require_once __DIR__ . '/lib/admin-functions.php';
  //consants
  require_once __DIR__ . '/lib/constants.php';
- //custom post types
- require_once __DIR__ . '/lib/post-types.php';
+ //include custom metaboxes
+ require_once __DIR__ . '/lib/admin-functions.php';
  //include custom metaboxes
  require_once __DIR__ . '/lib/metaboxes.php';
+ //custom post types
+ require_once __DIR__ . '/lib/post-types.php';
+
 
  add_action( 'after_setup_theme', 'koelsch_localization_setup' );
  /**

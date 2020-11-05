@@ -7,13 +7,7 @@
  * @license GPL-2.0-or-later
  * @link    https://www.tilladelse.com/
  */
- define('LIVING_TYPES', array(
-   'independent-living'=>'Independent Living',
-   'assisted-living'=>'Assisted Living',
-   'memory-care'=>'Memory Care',
-   'independent-assisted-living'=>'Independent & Assisted Living',
-   'assisted-living-memory-care'=>'Assisted Living & Memory Care',
- ));
+
  define('STATES_LIST', array(
    'AL' => 'Alabama',
    'AK' => 'Alaska',

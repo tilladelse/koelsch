@@ -7,9 +7,6 @@
  * @license GPL-2.0-or-later
  * @link    https://www.tilladelse.com/
  */
-
-
-
   add_action( 'cmb2_admin_init', 'koelsch_register_community_metaboxes' );
   function koelsch_register_community_metaboxes() {
 
@@ -40,10 +37,10 @@
     $cd->add_field( array(
       'name'       => __( 'Living Type', 'koelsch' ),
       // 'desc'       => __( '', 'koelsch' ),
-      'id'         => 'living-type',
+      'id'         => 'living_type',
       'type'       => 'select',
       'show_option_none' => true,
-      'options'   => LIVING_TYPES,
+      'options'   => get_community_living_type_options(),
     ) );
     $cd->add_field( array(
       'name'       => __( 'Community Logo', 'koelsch' ),
@@ -84,7 +81,7 @@
   	$ci->add_field( array(
   		'name'       => __( 'Street Address 2', 'koelsch' ),
   		// 'desc'       => __( 'Street Address', 'koelsch' ),
-  		'id'         => 'street-2',
+  		'id'         => 'street_2',
   		'type'       => 'text',
   	) );
 
@@ -129,25 +126,25 @@
     $cp->add_field( array(
   		'name'       => __( 'Full Name', 'koelsch' ),
   		// 'desc'       => __( 'Street Address', 'koelsch' ),
-  		'id'         => 'contact-name',
+  		'id'         => 'contact_name',
   		'type'       => 'text',
   	) );
     $cp->add_field( array(
   		'name'       => __( 'Title', 'koelsch' ),
   		// 'desc'       => __( 'Street Address', 'koelsch' ),
-  		'id'         => 'contact-title',
+  		'id'         => 'contact_title',
   		'type'       => 'text',
   	) );
     $cp->add_field( array(
   		'name'       => __( 'Email', 'koelsch' ),
   		// 'desc'       => __( 'Street Address', 'koelsch' ),
-  		'id'         => 'comtact-email',
+  		'id'         => 'comtact_email',
   		'type'       => 'text_email',
   	) );
     $cp->add_field( array(
       'name'       => __( 'Profile Image', 'koelsch' ),
       // 'desc'       => __( 'Street Address', 'koelsch' ),
-      'id'         => 'contact-image',
+      'id'         => 'contact_image',
       'type'       => 'file',
     ) );
 
@@ -173,7 +170,94 @@
       'options'   => menu_select_options(),
       'show_option_none' => true,
   	) );
-
-
   }
+  add_action( 'cmb2_admin_init', 'koelsch_register_theme_settings_metabox' );
+
+/**
+ * Hook in and register a metabox to handle a theme options page and adds a menu item.
+ */
+function koelsch_register_theme_settings_metabox() {
+
+	/**
+	 * Registers options page menu item and form.
+	 */
+	$k_settings = new_cmb2_box( array(
+		'id'           => 'koelsch_settings_metabox',
+		'title'        => esc_html__( 'Koelsch Settings', 'koelsch' ),
+		'object_types' => array( 'options-page' ),
+
+		/*
+		 * The following parameters are specific to the options-page box
+		 * Several of these parameters are passed along to add_menu_page()/add_submenu_page().
+		 */
+
+		'option_key'      => 'koelsch_settings', // The option key and admin menu page slug.
+		// 'icon_url'        => 'dashicons-palmtree', // Menu icon. Only applicable if 'parent_slug' is left empty.
+		// 'menu_title'      => esc_html__( 'Options', 'myprefix' ), // Falls back to 'title' (above).
+		// 'parent_slug'     => 'themes.php', // Make options page a submenu item of the themes menu.
+		// 'capability'      => 'manage_options', // Cap required to view options-page.
+		// 'position'        => 1, // Menu position. Only applicable if 'parent_slug' is left empty.
+		// 'admin_menu_hook' => 'network_admin_menu', // 'network_admin_menu' to add network-level options page.
+		// 'display_cb'      => false, // Override the options-page form output (CMB2_Hookup::options_page_output()).
+		// 'save_button'     => esc_html__( 'Save Theme Options', 'myprefix' ), // The text for the options-page save button. Defaults to 'Save'.
+	) );
+
+  /*
+  * Options fields ids only need
+  * to be unique within this box.
+  * Prefix is not needed.
+  */
+  $group_field_id = $k_settings->add_field( array(
+     'id'          => 'living_types',
+     'type'        => 'group',
+     'description' => __( 'Koelsch living types', 'koelsch' ),
+     // 'repeatable'  => false, // use false if you want non-repeatable group
+     'options'     => array(
+         'group_title'       => __( 'Living Type {#}', 'koelsch' ), // since version 1.1.4, {#} gets replaced by row number
+         'add_button'        => __( 'Add Living Type', 'koelsch' ),
+         'remove_button'     => __( 'Remove Living Type', 'koelsch' ),
+         'sortable'          => false,
+         'closed'         => true, // true to have the groups closed by default
+         // 'remove_confirm' => esc_html__( 'Are you sure you want to remove?', 'cmb2' ), // Performs confirmation before removing group.
+     ),
+  ) );
+  $k_settings->add_group_field( $group_field_id, array(
+    'name' => 'Name',
+    'id'   => 'name',
+    'type' => 'text',
+    // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+  ) );
+  $k_settings->add_group_field( $group_field_id, array(
+    'name' => 'Slug/ID',
+    'id'   => 'id',
+    'type' => 'text',
+    // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+  ) );
+  $k_settings->add_group_field( $group_field_id, array(
+    'name'    => 'Individual Living Types',
+    'desc'    => 'Check all the the living types that apply',
+    'id'      => 'living_types',
+    'type'    => 'multicheck',
+    'select_all_button' => false,
+    'options' => array(
+        'IL' => 'Independent Living',
+        'AL' => 'Assisted Living',
+        'MC' => 'Memory Care',
+    ),
+) );
+  $k_settings->add_group_field( $group_field_id, array(
+    'name' => 'Seal',
+    'id'   => 'seal',
+    'type' => 'file',
+    // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+  ) );
+  $k_settings->add_group_field( $group_field_id, array(
+    'name'       => 'Living Type Footer Menu',
+    // 'desc'       => __( 'Street Address', 'koelsch' ),
+    'id'         => 'menu',
+    'type'       => 'select',
+    'options'   => menu_select_options(),
+    'show_option_none' => true,
+  ) );
+}
   ?>

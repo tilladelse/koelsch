@@ -7,6 +7,7 @@
  * @license GPL-2.0-or-later
  * @link    https://www.tilladelse.com/
  */
+
  add_action( 'add_meta_boxes', 'add_community_info_mb' );
   function add_community_info_mb() {
   	add_meta_box(
@@ -44,7 +45,7 @@
 
     $state = isset($_POST['state']) ? $_POST['state'] : '';
     $city = isset($_POST['city']) ? $_POST['city'] : '';
-    $livingType = isset($_POST['living-type']) ? $_POST['living-type'] : '';
+    $livingType = isset($_POST['living_type']) ? $_POST['living_type'] : '';
     $communityName = isset($_POST['post_title']) ? $_POST['post_title'] : '';
 
    	if ( isset( $_POST['community_home_page_id'] ) ){
@@ -87,7 +88,8 @@
          set_page_template($cityPageID, 'city');
          //create living type page
          $livingTypes = LIVING_TYPES;
-         $ltPageID = create_page($livingTypes[$arr['living_type']], $cityPageID, $arr['living_type']);
+         $ltName = $livingTypes[$arr['living_type']]['name'];
+         $ltPageID = create_page($ltName, $cityPageID, $arr['living_type']);
          if ($ltPageID){
            //set page template
            set_page_template($ltPageID, 'living-type');
@@ -137,4 +139,41 @@
     }
     return $options;
   }
+  /**
+   * Wrapper function around cmb2_get_option
+   * @since  0.1.0
+   * @param  string $key     Options array key
+   * @param  mixed  $default Optional default value
+   * @return mixed           Option value
+   */
+  function get_koelsch_setting( $key = '', $default = false ) {
+  	if ( function_exists( 'cmb2_get_option' ) ) {
+  		// Use cmb2_get_option as it passes through some key filters.
+  		return cmb2_get_option( 'koelsch_settings', $key, $default );
+  	}
+
+  	// Fallback to get_option if CMB2 is not loaded yet.
+  	$opts = get_option( 'koelsch_settings', $default );
+
+  	$val = $default;
+
+  	if ( 'all' == $key ) {
+  		$val = $opts;
+  	} elseif ( is_array( $opts ) && array_key_exists( $key, $opts ) && false !== $opts[ $key ] ) {
+  		$val = $opts[ $key ];
+  	}
+  	return $val;
+  }
+
+  function get_community_living_type_options(){
+    $livingTypes = get_koelsch_setting('living_types');
+    $ltOpts = array();
+    if ($livingTypes){
+      foreach($livingTypes as $lt){
+        $ltOpts[$lt['id']] = $lt['name'];
+      }
+    }
+    return $ltOpts;
+  }
+
 ?>
