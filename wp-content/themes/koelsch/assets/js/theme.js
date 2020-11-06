@@ -168,7 +168,7 @@ function initMobileNav() {
 		menuActiveClass: 'nav-active',
 		menuOpener: '.nav-opener',
 		hideOnClickOutside: true,
-		menuDrop: '.menu-wrapp'
+		menuDrop: '.menu-wrap'
 	});
 
 	ResponsiveHelper.addRange({
