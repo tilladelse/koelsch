@@ -2354,6 +2354,22 @@ label {
       top: 2px;
       font-size: 20px;
       font-size: 1.25rem; }
+  .breadcrumbs > span, .breadcrumbs > span > span {
+    padding: 0 !important; }
+  .breadcrumbs span {
+    padding-right: 15px;
+    padding-left: 24px;
+    font-weight: 400;
+    position: relative;
+    display: inline-block; }
+    .breadcrumbs span ion-icon {
+      transition: color 0.3s ease-in-out;
+      color: #c69230;
+      position: absolute;
+      left: auto;
+      top: 2px;
+      font-size: 20px;
+      font-size: 1.25rem; }
   .breadcrumbs a {
     text-decoration: none;
     font-weight: 600; }

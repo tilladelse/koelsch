@@ -66,6 +66,7 @@ wp-content/plugins/*
 /wp-content/index.php
 
 /wp-content/themes/genesis
+#/wp-content/themes/koelsch-genesis
 /wp-content/themes/twentyten
 /wp-content/themes/twentyeleven
 /wp-content/themes/twentytwelve
