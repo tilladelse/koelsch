@@ -1,10 +1,10 @@
 @charset "UTF-8";
 /*
 Theme Name: Koelsch
-Author: Anonymous
+Author: Tilladelse
 Author URI:
 Version: 1
-Description: Base theme for Wordpress
+Description: Custom Wordpress theme for Koelsch Communities
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: base
@@ -1149,6 +1149,59 @@ a {
         color: #c69230; }
   .card-horizontal p {
     margin: 0 0 3px; }
+
+.card-community {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.2; }
+  .card-community.horizontal {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px; }
+    .card-community.horizontal .card-img {
+      position: relative;
+      margin-bottom: 20px;
+      width: 33.5%;
+      margin: 0;
+      margin-right: 25px; }
+    .card-community.horizontal .card-body {
+      width: calc(66.5% - 25px);
+      padding-bottom: 20px; }
+  .card-community .card-img {
+    position: relative;
+    margin-bottom: 20px; }
+    .card-community .card-img::before {
+      content: '';
+      display: block;
+      width: 0;
+      padding-bottom: 60.6%; }
+    .card-community .card-img img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover; }
+  .card-community .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px; }
+  .card-community h4 {
+    line-height: 1.2;
+    margin: 0; }
+  .card-community p {
+    margin: 0 0 7px; }
+  .card-community .distance {
+    display: inline-block;
+    font-size: 20px;
+    font-size: 1.25rem;
+    line-height: 1;
+    font-weight: 700;
+    padding-top: 6px;
+    padding-left: 10px; }
+  .card-community .card-category {
+    display: block; }
 
 .mapboxgl-popup-content {
   font-size: 13px;
@@ -2680,7 +2733,7 @@ label {
     left: 0;
     width: 729px;
     height: 455px;
-    background-image: url("images/bg-main-find.png");
+    background-image: url("assets/images/bg-main-find.png");
     background-size: 729px 455px;
     pointer-events: none;
     z-index: 0; }
@@ -3115,6 +3168,8 @@ input.form-control {
       padding: 0 0 0 2em; }
     .card-horizontal {
       flex-direction: row; }
+      .card-community.horizontal {
+        margin-bottom: 40px; }
     .mapboxgl-popup-content {
       font-size: 15px;
       font-size: 0.9375rem;
@@ -3783,6 +3838,17 @@ input.form-control {
   @media (max-width: 63.9375rem) {
   iframe {
     width: 100%; }
+        .card-community.horizontal .card-img {
+          display: none; }
+        .card-community.horizontal .card-body {
+          width: 100%;
+          padding-bottom: 0; }
+      .card-community h4 {
+        font-size: 20px;
+        font-size: 1.25rem; }
+      .card-community .distance {
+        font-size: 14px;
+        font-size: 0.875rem; }
       #header.community .menu-wrap {
         max-height: calc(100vh - 54px); }
       .nav-active #header.community .menu-wrap {
@@ -3915,4 +3981,4 @@ input.form-control {
       .main-holder::before {
         background-image: url("assets/images/bg-main@2x.png"); }
       .community-section::before {
-        background-image: url("images/bg-main-find@2x.png"); } }
+        background-image: url("assets/images/bg-main-find@2x.png"); } }
