@@ -8,6 +8,7 @@
  * @link    https://www.tilladelse.com/
  */
 remove_action('koelsch_get_template_part', 'koelsch_get_template_part');
+remove_action('koelsch_before_content', 'koelsch_before_content');
 add_filter('koelsch_main_wrapper_class', function($attr){return 'main-content';});
 add_action('koelsch_before_loop', 'koelsch_find_community_content');
 function koelsch_find_community_content(){
@@ -366,14 +367,16 @@ function koelsch_find_community_content(){
                     </a>
                   </div>
                   <div class="card-body">
-                    <div class="card-head">
-                      <h4><%=community%></h4>
-                      <strong class="distance"><%=distance%>mi</strong>
-                    </div>
-                    <p><%=address%></p>
-                    <% if (description !== '') { %>
-                      <em class="card-category"><%=description%></em>
-                    <% } %>
+                    <a href="<%=url%>">
+                      <div class="card-head">
+                        <h4><%=community%></h4>
+                        <strong class="distance"><%=distance%>mi</strong>
+                      </div>
+                      <p><%=address%></p>
+                      <% if (description !== '') { %>
+                        <em class="card-category"><%=description%></em>
+                      <% } %>
+                    </a>
                   </div>
                 </div>
               </script>
