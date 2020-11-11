@@ -9,4 +9,4 @@
   ?>
   <body <?php body_class(); ?>>
     <div id="wrapper">
-    <?php do_action('do_koelsch_header');
+    <?php do_action('koelsch_header');

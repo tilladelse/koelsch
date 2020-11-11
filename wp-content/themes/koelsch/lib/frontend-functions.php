@@ -44,6 +44,25 @@ function koelsch_breadcrumb(){
   </ol><?php
 
 }
+
+function display_resource_author(){
+    $author = get_post_meta(get_the_id(), 'author_name', true);
+    $authorTitle = get_post_meta(get_the_id(), 'author_title', true);
+    $imgID = get_post_meta(get_the_id(), 'author_image_id', true);
+    $imgArr = $imgID ? wp_get_attachment_image_src($imgID, 'author-2x') : false;
+    $imgSrc = $imgArr ? $imgArr[0] : false;
+  ?>
+  <div class="author-box">
+    <?php echo $imgSrc ? '<img class="author-img" src="'.$imgSrc.'" alt="'.$author.' image">' : '';?>
+    <div class="holder">
+      <?php
+        echo $author ? '<strong class="name">'.$author.'</strong>' : '';
+        echo $authorTitle ? '<em class="position">'.$authorTitle.'</em>' : '';
+      ?>
+    </div>
+  </div>
+  <?php
+}
  function koelsch_page_intro(){
    ob_start();?>
      <div class="visual-section bg-video-holder community" style="background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/images/video-placeholder.jpg);">

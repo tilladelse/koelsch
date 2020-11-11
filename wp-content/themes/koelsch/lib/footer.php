@@ -1,5 +1,5 @@
 <?php
-add_action('do_koelsch_footer', 'koelsch_footer');
+add_action('koelsch_footer', 'koelsch_footer');
 function koelsch_footer(){
   ob_start();?>
   <footer id="footer">

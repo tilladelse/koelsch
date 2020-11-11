@@ -1,5 +1,5 @@
 <?php
-add_action('do_koelsch_header', 'koelsch_header');
+add_action('koelsch_header', 'koelsch_header');
 function koelsch_header(){
   ob_start(); ?>
   <header id="header">

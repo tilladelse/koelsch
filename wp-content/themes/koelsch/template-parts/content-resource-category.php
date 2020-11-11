@@ -50,22 +50,7 @@ global $wp_query;
         <h4><a href="<?php echo get_the_permalink();?>"><?php the_title();?></a></h4>
         <?php $excerpt = has_excerpt() ? get_the_excerpt() : wp_trim_words(get_the_content(), '50');?>
         <p><?php echo $excerpt;?> <a class="btn-more" href="<?php echo get_the_permalink();?>">Read</a></p>
-        <?php
-          $author = get_post_meta(get_the_id(), 'author_name', true);
-          $authorTitle = get_post_meta(get_the_id(), 'author_title', true);
-          $imgID = get_post_meta(get_the_id(), 'author_image_id', true);
-          $imgArr = $imgID ? wp_get_attachment_image_src($imgID, 'author-2x') : false;
-          $imgSrc = $imgArr ? $imgArr[0] : false;
-        ?>
-        <div class="author-box">
-          <?php echo $imgSrc ? '<img class="author-img" src="'.$imgSrc.'" alt="'.$author.' image">' : '';?>
-          <div class="holder">
-            <?php
-              echo $author ? '<strong class="name">'.$author.'</strong>' : '';
-              echo $authorTitle ? '<em class="position">'.$authorTitle.'</em>' : '';
-            ?>
-          </div>
-        </div>
+        <?php display_resource_author();?>
       </article>
     </div>
   <?php endwhile;?>
