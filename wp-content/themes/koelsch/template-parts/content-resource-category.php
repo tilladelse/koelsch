@@ -11,6 +11,7 @@
 
 $archive_title    = get_the_archive_title();
 $archive_subtitle = get_the_archive_description();
+global $wp_query;
 ?>
 <div id="content">
   <div class="content-topbar">
@@ -32,120 +33,43 @@ $archive_subtitle = get_the_archive_description();
       </form>
     </div>
   </div>
+  <?php if (have_posts()):?>
   <div class="row category-row">
+    <?php while (have_posts()): the_post();?>
     <div class="col">
       <article class="card">
-        <div class="card-img">
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/img-02.jpg" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/img-02@2x.jpg 2x" alt="image description">
-        </div>
-        <h4><a href="#">Can I afford Senior Housing?</a></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. <a class="btn-more" href="#">Read</a></p>
+        <?php $featImgID = get_post_thumbnail_id();
+        $featImgSrc = $featImgID ? get_the_post_thumbnail_url(get_the_id(), 'resource-listing') : false;
+        $featImgSrc2X = $featImgID ? get_the_post_thumbnail_url(get_the_id(), 'resource-listing-2x') : false;
+        $featImgSrcset = $featImgSrc ? $featImgSrc.', '.$featImgSrc2X.' 2x' : '';?>
+        <a href="<?php echo get_the_permalink();?>" class="card-img">
+          <?php if ($featImgID):?>
+            <img src="<?php echo $featImgSrc;?>" srcset="<?php echo $featImgSrcset; ?>" alt="<?php the_title();?> listing image">
+          <?php endif;?>
+        </a>
+        <h4><a href="<?php echo get_the_permalink();?>"><?php the_title();?></a></h4>
+        <?php $excerpt = has_excerpt() ? get_the_excerpt() : wp_trim_words(get_the_content(), '50');?>
+        <p><?php echo $excerpt;?> <a class="btn-more" href="<?php echo get_the_permalink();?>">Read</a></p>
+        <?php
+          $author = get_post_meta(get_the_id(), 'author_name', true);
+          $authorTitle = get_post_meta(get_the_id(), 'author_title', true);
+          $imgID = get_post_meta(get_the_id(), 'author_image_id', true);
+          $imgArr = $imgID ? wp_get_attachment_image_src($imgID, 'author-2x') : false;
+          $imgSrc = $imgArr ? $imgArr[0] : false;
+        ?>
         <div class="author-box">
-          <img class="author-img" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/author-img.jpg" alt="image description">
+          <?php echo $imgSrc ? '<img class="author-img" src="'.$imgSrc.'" alt="'.$author.' image">' : '';?>
           <div class="holder">
-            <strong class="name">Jim Standusky</strong>
-            <em class="position">VP Investing, Forbes</em>
+            <?php
+              echo $author ? '<strong class="name">'.$author.'</strong>' : '';
+              echo $authorTitle ? '<em class="position">'.$authorTitle.'</em>' : '';
+            ?>
           </div>
         </div>
       </article>
     </div>
-    <div class="col">
-      <article class="card">
-        <div class="card-img">
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/img-02.jpg" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/img-02@2x.jpg 2x" alt="image description">
-        </div>
-        <h4><a href="#">This Is The Title</a></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. <a class="btn-more" href="#">Read</a></p>
-        <div class="author-box">
-          <img class="author-img" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/author-img.jpg" alt="image description">
-          <div class="holder">
-            <strong class="name">Jim Standusky</strong>
-            <em class="position">VP Investing, Forbes</em>
-          </div>
-        </div>
-      </article>
-    </div>
-    <div class="col">
-      <article class="card">
-        <div class="card-img">
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/img-02.jpg" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/img-02@2x.jpg 2x" alt="image description">
-        </div>
-        <h4><a href="#">Article Title</a></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra... <a class="btn-more" href="#">Read</a></p>
-        <div class="author-box">
-          <img class="author-img" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/author-img.jpg" alt="image description">
-          <div class="holder">
-            <strong class="name">Jim Standusky</strong>
-            <em class="position">VP Investing, Forbes</em>
-          </div>
-        </div>
-      </article>
-    </div>
-    <div class="col">
-      <article class="card">
-        <div class="card-img">
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/img-02.jpg" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/img-02@2x.jpg 2x" alt="image description">
-        </div>
-        <h4><a href="#">Article Title</a></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra... <a class="btn-more" href="#">Read</a></p>
-        <div class="author-box">
-          <img class="author-img" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/author-img.jpg" alt="image description">
-          <div class="holder">
-            <strong class="name">Jim Standusky</strong>
-            <em class="position">VP Investing, Forbes</em>
-          </div>
-        </div>
-      </article>
-    </div>
-    <div class="col">
-      <article class="card">
-        <div class="card-img">
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/img-02.jpg" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/img-02@2x.jpg 2x" alt="image description">
-        </div>
-        <h4><a href="#">Article Title</a></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra... <a class="btn-more" href="#">Read</a></p>
-        <div class="author-box">
-          <img class="author-img" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/author-img.jpg" alt="image description">
-          <div class="holder">
-            <strong class="name">Jim Standusky</strong>
-            <em class="position">VP Investing, Forbes</em>
-          </div>
-        </div>
-      </article>
-    </div>
+  <?php endwhile;?>
   </div>
+<?php endif;?>
 </div>
-<aside id="sidebar">
-  <div class="aside-topbar">
-    <div id="search-container">
-      <!-- Clone search block -->
-    </div>
-    <h3>Resources</h3>
-    <a class="btn-back" href="#">
-      <ion-icon name="arrow-back-sharp"></ion-icon>
-      All Resources
-    </a>
-    <div id="breadcrumbs-container">
-      <!-- Clone breadcrumbs -->
-    </div>
-  </div>
-  <div class="aside-holder">
-    <a class="aside-opener" href="#">Browse Resource Topics<ion-icon name="chevron-down"></ion-icon></a>
-    <div class="aside-slide">
-      <ul class="aside-menu">
-        <li class="active">
-          <span class="abbr">il</span>
-          <a class="menu-opener" href="#">Financial
-          <ion-icon name="chevron-down"></ion-icon></a>
-          <div class="menu-slide">
-            <ul>
-              <li><a href="#">Calculators</a></li>
-              <li><a href="#">Tips & Advice</a></li>
-              <li><a href="#">Financial Health</a></li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</aside>
+<?php get_template_part( 'template-parts/sidebar', 'resources' );?>

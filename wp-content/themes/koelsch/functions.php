@@ -71,8 +71,12 @@ define('THEME_VERSION', '1.0.0');
  	wp_enqueue_style( 'dashicons' );
  }
 
+ add_theme_support( 'post-thumbnails' );
  // Add image sizes.
- add_image_size( 'koelsch-singular-images', 702, 526, true );
+ add_image_size( 'author-2x', 90, 90, true );
+ add_image_size( 'author', 45, 45, true );
+ add_image_size( 'resource-listing', 605, 400, true );
+ add_image_size( 'resource-listing-2x', 1210, 800, true );
 
 
 ?>

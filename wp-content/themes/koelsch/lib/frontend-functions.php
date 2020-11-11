@@ -11,7 +11,39 @@
  function filter_wpseo_breadcrumb_separator($sep) {
    return '<ion-icon name="chevron-forward-sharp"></ion-icon>';
  };
+ add_filter('wpseo_breadcrumb_links', 'wpseo_remove_home_breadcrumb');
+ function wpseo_remove_home_breadcrumb($links){
+	 if (trailingslashit($links[0]['url']) == trailingslashit(get_home_url())) { array_shift($links); }
+	 return $links;
+ }
+ add_filter( 'get_the_archive_title', function ( $title ){
+    if( is_tax() ) {
+        $title = single_cat_title( '', false );
+    }
+    return $title;
+});
+function koelsch_breadcrumb(){
+  global $post;
+  ?><ol class="breadcrumbs"><?php
+  if (is_single()){
+    $terms = wp_get_post_terms($post->ID, 'resource-category');
+    var_dump($terms);?>
+      <li>
+        <a href="#">Independent Living</a>
+        <ion-icon name="chevron-forward-sharp"></ion-icon>
+      </li>
+      <li>
+        <a href="#">Financial</a>
+        <ion-icon name="chevron-forward-sharp"></ion-icon>
+      </li>
+      <li>Can I Afford Senior Housing?
+        <ion-icon name="chevron-forward-sharp"></ion-icon>
+      </li>
 
+  <?php }?>
+  </ol><?php
+
+}
  function koelsch_page_intro(){
    ob_start();?>
      <div class="visual-section bg-video-holder community" style="background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/images/video-placeholder.jpg);">

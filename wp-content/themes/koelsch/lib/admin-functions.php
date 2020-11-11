@@ -176,4 +176,15 @@
     return $ltOpts;
   }
 
+  function koelsch_pages_list(){
+    $return = array();
+    $pages = get_pages();
+    if ($pages){
+      foreach($pages as $page){
+        $return[$page->ID] = $page->post_title;
+      }
+    }
+    return $return;
+  }
+
 ?>

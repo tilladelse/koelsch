@@ -79,7 +79,7 @@
     'taxonomy_name' => 'resource-category',
     'singular' => 'Resource Category',
     'plural' => 'Resource Categories',
-    'slug' => 'resource-content',
+    'slug' => 'resource-topics',
   ),
   array(
     'show_in_rest'=>true,

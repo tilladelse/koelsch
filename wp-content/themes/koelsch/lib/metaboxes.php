@@ -291,5 +291,13 @@ function koelsch_register_theme_settings_metabox() {
     'options'   => menu_select_options(),
     'show_option_none' => true,
   ) );
+  $k_settings->add_field(array(
+    'name'       => 'Resources Page',
+    // 'desc'       => __( 'Street Address', 'koelsch' ),
+    'id'         => 'resources_page',
+    'type'       => 'select',
+    'options'   => koelsch_pages_list(),
+    'show_option_none' => true,
+  ));
 }
   ?>

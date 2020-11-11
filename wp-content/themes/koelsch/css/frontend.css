@@ -1728,6 +1728,7 @@ address {
     .search-form input[type="text"]:hover, .search-form input[type="text"]:focus,
     .search-form input[type="search"]:hover,
     .search-form input[type="search"]:focus {
+      outline-color: #c69230;
       border-color: #c69230;
       box-shadow: none; }
   .search-form button[type="submit"] {
@@ -1745,6 +1746,9 @@ address {
     font-size: 1.5rem; }
     .search-form button[type="submit"]:hover {
       color: #c69230; }
+    .search-form button[type="submit"]:focus {
+      outline: none;
+      background-color: #e8e9e9; }
     .search-form button[type="submit"] ion-icon {
       position: absolute;
       top: 50%;
@@ -2055,6 +2059,8 @@ label {
   font-size: 2.1875rem;
   line-height: 1.2;
   margin: 0 0 10px; }
+  .aside-topbar h3 a {
+    text-decoration: none; }
 
 .aside-topbar .btn-back {
   margin-left: 5px;
@@ -2132,7 +2138,7 @@ label {
   padding-top: 27px; }
   .aside-menu > li {
     position: relative;
-    padding-left: 57px;
+    padding-left: 50px;
     margin-bottom: 34px; }
     .aside-menu > li:only-child .menu-opener {
       padding-right: 0;
