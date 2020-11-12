@@ -29,12 +29,15 @@ function koelsch(){
   </main>
   <?php get_footer();
 }
+
 add_action('koelsch_get_template_part', 'koelsch_get_template_part');
 function koelsch_get_template_part(){
   get_template_part( 'template-parts/content', get_post_type() );
 }
+
 add_action('koelsch_before_content', 'koelsch_before_content');
 function koelsch_before_content(){
+  if (is_page()){
   ?>
   <div class="visual-section bg-video-holder community" style="background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/images/video-placeholder.jpg);">
     <video class="bg-video" width="640" height="360" loop autoplay muted playsinline>
@@ -76,5 +79,6 @@ function koelsch_before_content(){
     </div>
   </div>
   <?php
+  }
 }
 ?>
