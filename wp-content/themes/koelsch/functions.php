@@ -31,6 +31,8 @@ define('THEME_VERSION', '1.0.0');
  require_once __DIR__ . '/lib/footer.php';
  //content core functionality
  require_once __DIR__ . '/lib/content.php';
+ 
+ require_once __DIR__ . '/blocks/init.php';
 
  add_action( 'after_setup_theme', 'koelsch_localization_setup' );
  /**
