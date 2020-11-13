@@ -4,7 +4,8 @@ function koelsch(){
   //filter main element
   $mainID = apply_filters('koelsch_main_element_id','main');
   $mainClass = apply_filters('koelsch_main_element_class','');
-  $wrapperClass = apply_filters('koelsch_main_wrapper_class', 'main-holder');
+  $wc = (is_page() && !is_page_template()) ? 'page-holder' : 'main-holder';
+  $wrapperClass = apply_filters('koelsch_main_wrapper_class', $wc);
   ?>
   <main<?php echo $mainID ? ' id="'.$mainID.'"': '';?><?php echo $mainClass ? ' class="'.$mainClass.'"': '';?>>
     <div<?php echo $wrapperClass ? ' class="'.$wrapperClass.'"': '';?>>

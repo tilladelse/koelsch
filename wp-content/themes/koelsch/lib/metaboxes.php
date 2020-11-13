@@ -299,5 +299,13 @@ function koelsch_register_theme_settings_metabox() {
     'options'   => koelsch_pages_list(),
     'show_option_none' => true,
   ));
+  $k_settings->add_field(array(
+    'name'       => 'Find A Community Page',
+    // 'desc'       => __( 'Street Address', 'koelsch' ),
+    'id'         => 'find_community_page',
+    'type'       => 'select',
+    'options'   => koelsch_pages_list(),
+    'show_option_none' => true,
+  ));
 }
   ?>

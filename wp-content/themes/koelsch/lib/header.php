@@ -6,33 +6,19 @@ function koelsch_header(){
     <div class="container">
       <div class="holder">
          <strong class="logo">
-           <a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.png" alt="Koelsch"></a>
+           <a href="<?php echo site_url();?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.png" alt="Koelsch"></a>
          </strong>
          <nav class="menu-wrap">
            <div class="menu-holder">
-             <a class="community-link main-item" href="#">Find a Community <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/map.png" alt="image description"></a>
-             <ul id="nav">
-               <li>
-                 <a href="#">Living At Koelsch<ion-icon name="chevron-down-sharp"></ion-icon></a>
-                 <ul class="drop">
-                   <li class="active"><a href="#">Independent Living</a></li>
-                   <li><a href="#">Assisted Living</a></li>
-                   <li><a href="#">Memory Care</a></li>
-                 </ul>
-               </li>
-               <li><a href="#">Resources<ion-icon name="chevron-down-sharp"></ion-icon></a></li>
-               <li>
-                 <a href="#">About<ion-icon name="chevron-down-sharp"></ion-icon></a>
-                 <ul class="drop">
-                   <li><a href="#">About Koelsch</a></li>
-                   <li><a href="#">History</a></li>
-                   <li><a href="#">Family Values</a></li>
-                   <li><a href="#">Community Involvement</a></li>
-                   <li><a href="#">Awards</a></li>
-                 </ul>
-               </li>
-               <li><a href="#">Communities<ion-icon name="chevron-down-sharp"></ion-icon></a></li>
-             </ul>
+             <?php $communityPageID = get_koelsch_setting('find_community_page');?>
+             <a class="community-link main-item" href="<?php echo $communityPageID ? get_the_permalink($communityPageID) : '#';?>">Find a Community <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/map.png" alt="image description"></a>
+             <?php wp_nav_menu(array(
+               'theme_location'=>'main-nav',
+               'menu_id'=>'nav',
+               'container'=>false,
+               'depth'=>2,
+               'walker'=> new Koelsch_Walker_Nav_Menu,
+             ));?>
              <span class="decor-logo">
                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo-menu.png" alt="K 1958">
              </span>
