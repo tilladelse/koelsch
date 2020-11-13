@@ -25,26 +25,36 @@
 function koelsch_breadcrumb(){
   global $post;
   ?><ol class="breadcrumbs"><?php
-  if (is_single()){
-    $terms = wp_get_post_terms($post->ID, 'resource-category');
-    var_dump($terms);?>
-      <li>
-        <a href="#">Independent Living</a>
-        <ion-icon name="chevron-forward-sharp"></ion-icon>
-      </li>
-      <li>
-        <a href="#">Financial</a>
-        <ion-icon name="chevron-forward-sharp"></ion-icon>
-      </li>
-      <li>Can I Afford Senior Housing?
-        <ion-icon name="chevron-forward-sharp"></ion-icon>
-      </li>
-
-  <?php }?>
-  </ol><?php
-
+  // $resID = get_koelsch_setting('resources_page');
+  // display_breadcrumb_link('Resources', get_the_permalink($resID));
+  if (is_singular('resources')){
+    $taxonomy = 'resource-category';
+    $t = wp_get_post_terms($post->ID, $taxonomy);
+    if ($t){
+      $term = $t[0];
+      $parents = get_ancestors($term->term_id, $taxonomy, 'taxonomy');
+      if ($parents){
+        array_reverse($parents);
+        foreach($parents as $parent){
+          $parentTerm = get_term($parent, $taxonomy);
+          display_breadcrumb_link($parentTerm->name, get_term_link($parent));
+        }
+      }
+      display_breadcrumb_link($term->name, get_term_link($term->term_id));
+    }
+    display_breadcrumb_link(get_the_title());
+  }
+  ?></ol><?php
 }
-
+function display_breadcrumb_link($name, $link = ''){
+  $ret = '<li>';
+  $ret .= $link ? '<a href="'.$link.'">' : '';
+  $ret .= $name;
+  $ret .= $link ? '</a>' : '';
+  $ret .= '<ion-icon name="chevron-forward-sharp"></ion-icon>';
+  $ret .= '</li>';
+  echo $ret;
+}
 function display_resource_author(){
     $author = get_post_meta(get_the_id(), 'author_name', true);
     $authorTitle = get_post_meta(get_the_id(), 'author_title', true);
@@ -63,49 +73,62 @@ function display_resource_author(){
   </div>
   <?php
 }
- function koelsch_page_intro(){
-   ob_start();?>
-     <div class="visual-section bg-video-holder community" style="background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/images/video-placeholder.jpg);">
-       <video class="bg-video" width="640" height="360" loop autoplay muted playsinline>
-         <source type="video/mp4" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/media/Park-Snippet.mp4" />
-       </video>
-       <div class="holder">
-         <div class="community-block community-item">
-           <div class="container">
-             <div class="community-holder">
-               <div class="logo-holder">
-                 <img class="community-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/the-park.png" alt="image description">
-               </div>
-               <nav class="community-nav">
-                 <ul>
-                   <li><a href="#">Independent Living</a></li>
-                   <li><a href="#">Explore</a></li>
-                   <li><a href="#">Activities & Adventures</a></li>
-                   <li><a href="#">Resources</a></li>
-                 </ul>
-               </nav>
-             </div>
-           </div>
-         </div>
-         <!-- <div class="text-block align-center">
-           <h1><?php echo get_the_title();?></h1>
-         </div> -->
-       </div>
-       <a href="#" class="btn-circle anchor-link">
-         <ion-icon name="arrow-down"></ion-icon>
-         <svg class="top">
-           <circle class="circle-top" cx="33" cy="33" r="31" stroke-width="1" fill-opacity="0">
-         </svg>
-         <svg>
-           <circle class="circle-bottom" cx="33" cy="33" r="31" stroke-width="1" fill-opacity="0">
-         </svg>
-       </a>
-       <div class="logo-box">
-         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/independent-logo.png" alt="image description">
-       </div>
-     </div>
-   <?php echo ob_get_clean();
- }
+
+/**
+ * Recursively get taxonomy and its children
+ *
+ * @param string $taxonomy
+ * @param int $parent - parent term id
+ * @return array
+ */
+function get_taxonomy_hierarchy( $taxonomy, $parent = 0) {
+
+	// get all direct decendants of the $parent
+	$terms = get_taxonomy_terms($taxonomy, $parent);
+
+	// prepare a new array.  these are the children of $parent
+	// we'll ultimately copy all the $terms into this new array, but only after they
+	// find their own children
+	$children = array();
+
+	// go through all the direct decendants of $parent, and gather their children
+	foreach ( $terms as $term ){
+		// recurse to get the direct decendants of "this" term
+		$term->children = get_taxonomy_hierarchy( $taxonomy, $term->term_id );
+
+		// add the term to our new array
+		$children[ $term->term_id ] = $term;
+	}
+
+	// send the results back to the caller
+	return $children;
+}
+
+function get_taxonomy_terms($taxonomy, $parent, $xtra_args = array()){
+
+  $args = array(
+    'order_by'=>'name',
+    'order'=>'ASC',
+    'hide_empty'=>false,
+  );
+  if ($parent !== false){
+    $args['parent'] = $parent;
+  }
+  if($args){
+    $args = array_merge($args, $xtra_args);
+  }
+  $terms = get_terms($taxonomy,$args);
+  return $terms;
+}
+
+function get_taxonomy_reverse_hierarchy($taxonomy, $term){
+  $args = array(
+
+  );
+  $terms = get_taxonomy_terms($taxonomy, false, $args);
+  if ($terms)
+  var_dump($terms);
+}
 
 
 ?>

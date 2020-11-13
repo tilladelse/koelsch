@@ -90,6 +90,9 @@ define('THEME_VERSION', '1.0.0');
  add_image_size( 'author', 45, 45, true );
  add_image_size( 'resource-listing', 605, 400, true );
  add_image_size( 'resource-listing-2x', 1210, 800, true );
+ add_image_size( 'resource-single', 1124, 600, false );
+ add_image_size( 'resource-single-sm', 562, 300, false );
+ add_image_size( 'resource-single-2x', 2248, 1200, false );
 
 
 ?>
