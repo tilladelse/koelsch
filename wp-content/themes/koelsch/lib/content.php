@@ -8,31 +8,41 @@ function koelsch(){
   ?>
   <main<?php echo $mainID ? ' id="'.$mainID.'"': '';?><?php echo $mainClass ? ' class="'.$mainClass.'"': '';?>>
     <div<?php echo $wrapperClass ? ' class="'.$wrapperClass.'"': '';?>>
-      <?php if (is_search()){
-
-      }else if (is_archive()){
+      <?php
+      if (is_archive()){
         $taxonomy = get_query_var('taxonomy');
         get_template_part( 'template-parts/content', $taxonomy );
       }else{
         do_action('koelsch_before_content');
-        if ( have_posts() ) {
-          do_action('koelsch_before_loop');
-          while ( have_posts() ) {
-            the_post();
-            do_action('koelsch_get_template_part');
-          }
-          do_action('koelsch_after_loop');
-         }
-         do_action('koelsch_after_content');
+        do_action('koelsch_loop');
+        do_action('koelsch_after_content');
        }?>
     </div>
   </main>
   <?php get_footer();
 }
 
+add_action('koelsch_loop', 'koelsch_loop');
+function koelsch_loop(){
+  if ( have_posts() ) {
+    do_action('koelsch_before_loop');
+    while ( have_posts() ) {
+      the_post();
+      do_action('koelsch_get_template_part');
+    }
+    do_action('koelsch_after_loop');
+  }else{
+    do_action('koelsch_no_posts');
+  }
+}
+
 add_action('koelsch_get_template_part', 'koelsch_get_template_part');
 function koelsch_get_template_part(){
-  get_template_part( 'template-parts/content', get_post_type() );
+  if (is_search()){
+    get_template_part( 'template-parts/listing', 'search' );
+  }else{
+    get_template_part( 'template-parts/content', get_post_type() );
+  }
 }
 
 add_action('koelsch_before_content', 'koelsch_before_content');

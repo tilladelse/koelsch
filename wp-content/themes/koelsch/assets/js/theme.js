@@ -445,6 +445,22 @@ function parseHash(str) {
 
 // mapbox init
 function initMapbox() {
+	var page = jQuery('html, body');
+	var isMobile = false;
+
+	ResponsiveHelper.addRange({
+		'..767': {
+			on: function() {
+				isMobile = true;
+			}
+		},
+		'768..': {
+			on: function() {
+				isMobile = false;
+			}
+		}
+	});
+
 	jQuery('.community-section').mapbox({
 		mapHolder: '.map-container',
 		onInit: function(self) {
@@ -495,6 +511,7 @@ function initMapbox() {
 	function filterLocations(self) {
 		var activeItems = [];
 		var activeFilters = [];
+		var popup = self.holder.find('.community-popup');
 		var filtersHolder = self.holder.find('.community-popup .heading-block');
 		var controlsBox = self.holder.find('.controls');
 		var stateBox = controlsBox.find('.state-box');
@@ -555,6 +572,7 @@ function initMapbox() {
 
 					self.prepareMarkers(nearestLocations);
 					updateSelectedFilters(null, zipCodeField.val());
+					zipCodeField.val('');
 					showPopup();
 				}
 			});
@@ -618,6 +636,7 @@ function initMapbox() {
 			});
 
 			updateMap();
+			resetFields();
 		}
 
 		function updateSelectedFilters(key, value) {
@@ -637,7 +656,6 @@ function initMapbox() {
 				self.removeMarkers();
 
 				if (!filtersHolder.find('.item').length) {
-					resetFields();
 					hidePopup();
 				} else {
 					filterItems();
@@ -662,6 +680,12 @@ function initMapbox() {
 
 		function showPopup() {
 			self.holder.addClass(popupActiveClass);
+
+			if (isMobile) {
+				page.animate({
+					scrollTop: popup.offset().top
+				}, 500);
+			}
 		}
 
 		function hidePopup() {
@@ -742,6 +766,9 @@ function removeDuplicates(originalArray, prop) {
 		},
 		prepareMarkers: function(markers) {
 			var self = this;
+
+			this.removeMarkers();
+
 			var bounds = new mapboxgl.LngLatBounds();
 
 			markers.forEach(function(item) {
@@ -910,10 +937,16 @@ function removeDuplicates(originalArray, prop) {
 				callback: function(data, pagination) {
 					var currPage = pagination.pageNumber - 1;
 
-					self.loadBoxes(self.itemsHolders.eq(currPage), true);
+					self.loadBoxes(self.itemsHolders.eq(currPage));
 
 					if (pagination.totalNumber === 1) {
 						self.holder.find('.J-paginationjs-page').hide();
+					}
+
+					if (pagination.direction !== 0) {
+						self.page.animate({
+							scrollTop: self.holder.offset().top - 10
+						}, 500);
 					}
 				}
 			});
@@ -921,7 +954,7 @@ function removeDuplicates(originalArray, prop) {
 			this.itemsHolders = this.holder.find('.items-holder').addClass(self.options.hiddenClass);
 			this.loadBoxes(this.itemsHolders.eq(0));
 		},
-		loadBoxes: function(nextItems, state) {
+		loadBoxes: function(nextItems) {
 			var self = this;
 
 			this.ajaxBusy = true;
@@ -935,25 +968,11 @@ function removeDuplicates(originalArray, prop) {
 			}
 
 			this.itemsHolders.addClass(this.options.hiddenClass);
-
-			nextItems.find(this.options.items).each(function() {
-				var item = jQuery(this);
-
-				setTimeout(function() {
-					self.holder.removeClass(self.options.loadingClass);
-					nextItems.removeClass(self.options.hiddenClass);
-					self.ajaxBusy = false;
-					self.tmpHeight = self.itemsHolders.outerHeight();
-
-					self.itemsHolder.removeAttr('style');
-
-					if (state) {
-						self.page.animate({
-							scrollTop: self.holder.offset().top
-						}, 500);
-					}
-				}, self.options.delay);
-			});
+			this.holder.removeClass(this.options.loadingClass);
+			nextItems.removeClass(this.options.hiddenClass);
+			this.ajaxBusy = false;
+			this.tmpHeight = this.itemsHolders.outerHeight();
+			this.itemsHolder.removeAttr('style');
 		},
 		destroy: function() {
 			this.paging.pagination('destroy');

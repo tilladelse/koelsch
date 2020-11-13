@@ -55,6 +55,12 @@ function display_breadcrumb_link($name, $link = ''){
   $ret .= '</li>';
   echo $ret;
 }
+
+function get_resource_excerpt($length = '50'){
+  $excerpt = has_excerpt() ? get_the_excerpt() : wp_trim_words(get_the_content(), $length);
+  return $excerpt;
+}
+
 function display_resource_author(){
     $author = get_post_meta(get_the_id(), 'author_name', true);
     $authorTitle = get_post_meta(get_the_id(), 'author_title', true);
@@ -71,6 +77,28 @@ function display_resource_author(){
       ?>
     </div>
   </div>
+  <?php
+}
+
+function display_resource_search_form(){
+  ?>
+  <div class="search-form-block">
+    <a class="search-opener" href="#">
+      <ion-icon name="search"></ion-icon>
+    </a>
+    <?php display_koelsch_search_form();?>
+  </div>
+  <?php
+}
+
+function display_koelsch_search_form(){
+  ?>
+  <form action="<?php echo site_url();?>" class="search-form" method="get">
+    <fieldset>
+      <input type="search" name="s" id="s">
+      <button type="submit" value="Search"><ion-icon name="search"></ion-icon></button>
+    </fieldset>
+  </form>
   <?php
 }
 
@@ -129,6 +157,7 @@ function get_taxonomy_reverse_hierarchy($taxonomy, $term){
   if ($terms)
   var_dump($terms);
 }
+
 
 
 ?>

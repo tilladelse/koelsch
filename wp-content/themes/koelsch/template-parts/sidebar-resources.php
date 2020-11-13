@@ -57,7 +57,7 @@
     <div class="aside-slide">
       <ul class="aside-menu">
         <?php $i = 0; foreach($groups as $list)://echo '<pre>';var_dump($list);echo '</pre>';?>
-        <li class="active">
+        <li<?php echo $i == 0 ? ' class="active"' : '';?>>
           <a class="menu-opener" href="#"><?php echo $list->name;?>
           <ion-icon name="chevron-down"></ion-icon></a>
           <div class="menu-slide">
@@ -71,7 +71,7 @@
             </ul>
           </div>
         </li>
-      <?php endforeach;?>
+      <?php $i++; endforeach;?>
       </ul>
     </div>
   </div>

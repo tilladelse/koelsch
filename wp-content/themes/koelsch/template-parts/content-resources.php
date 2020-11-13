@@ -9,23 +9,15 @@
  * @link    https://www.tilladelse.com/
  */
 $taxonomy = 'resource-category';
+$t = wp_get_post_terms($post->ID, $taxonomy);
+$term = $t ? $t[0] : false;
 ?>
 <div id="content">
   <div class="content-topbar single-bar">
     <div class="text-holder">
       <?php koelsch_breadcrumb();?>
     </div>
-    <div class="search-form-block">
-      <a class="search-opener" href="#">
-        <ion-icon name="search"></ion-icon>
-      </a>
-      <form action="#" class="search-form" method="get">
-        <fieldset>
-          <input type="search">
-          <button type="submit" value="Search"><ion-icon name="search"></ion-icon></button>
-        </fieldset>
-      </form>
-    </div>
+    <?php display_resource_search_form();?>
   </div>
   <article class="article">
     <header class="heading">
@@ -37,14 +29,7 @@ $taxonomy = 'resource-category';
         display_resource_author();
       ?>
       <div class="category-info">
-        <?php
-        $t = wp_get_post_terms($post->ID, $taxonomy);
-        if ($t){
-          foreach ($t as $term){
-            echo '<span class="text">'.$term->name.'</span>';
-          }
-        }
-        ?>
+        <?php echo $term ? '<span class="text">'.$term->name.'</span>' : '';?>
         <img class="icon-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo-dark-sm.png" alt="Koelsch Since 1958">
       </div>
     </header>
@@ -68,61 +53,37 @@ $taxonomy = 'resource-category';
   ?>
   </article>
   <?php
-    //get other articles 
+  //get other articles
+  if ($term){
+    $related = get_posts(array(
+      'post_type'=>'resources',
+      'post__not_in'=>array(get_the_id()),
+      'posts_per_page'=> 4,
+      'tax_query'=>array(
+        array(
+          'taxonomy'=>$taxonomy,
+          'field'=>'term_id',
+          'terms'=>array($term->term_id),
+        )
+      )
+    ));
+    if ($related){
+      ?>
+      <img class="divider center" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/divider.jpg" alt="divider">
+      <section class="articles-wrapp">
+        <h3 class="title">Related Articles</h3>
+        <div class="row row-sm">
+          <?php
+            foreach($related as $post){
+              setup_postdata($post);
+              get_template_part('template-parts/listing', 'resource-small');
+            }
+          ?>
+        </div>
+      </section>
+    <?php
+    }
+  }
   ?>
-  <img class="divider center" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/divider.jpg" alt="divider">
-  <section class="articles-wrapp">
-    <h3 class="title">Related Articles</h3>
-    <div class="row row-sm">
-      <div class="col">
-        <article class="card-horizontal">
-          <div class="img-box">
-            <img src="images/img-08.jpg" srcset="images/img-08@2x.jpg 2x" alt="image description">
-          </div>
-          <div class="text-block">
-            <h4><a href="#">Article Title</a></h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <a class="btn-more" href="#">Read</a>
-          </div>
-        </article>
-      </div>
-      <div class="col">
-        <article class="card-horizontal">
-          <div class="img-box">
-            <img src="images/img-08.jpg" srcset="images/img-08@2x.jpg 2x" alt="image description">
-          </div>
-          <div class="text-block">
-            <h4><a href="#">Article Title</a></h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <a class="btn-more" href="#">Read</a>
-          </div>
-        </article>
-      </div>
-      <div class="col">
-        <article class="card-horizontal">
-          <div class="img-box">
-            <img src="images/img-08.jpg" srcset="images/img-08@2x.jpg 2x" alt="image description">
-          </div>
-          <div class="text-block">
-            <h4><a href="#">Article Title</a></h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <a class="btn-more" href="#">Read</a>
-          </div>
-        </article>
-      </div>
-      <div class="col">
-        <article class="card-horizontal">
-          <div class="img-box">
-            <img src="images/img-08.jpg" srcset="images/img-08@2x.jpg 2x" alt="image description">
-          </div>
-          <div class="text-block">
-            <h4><a href="#">Article Title</a></h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <a class="btn-more" href="#">Read</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
 </div>
 <?php get_template_part('template-parts/sidebar', 'resources');

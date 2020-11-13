@@ -13,6 +13,8 @@ define('THEME_VERSION', '1.0.0');
 
  //include vendor files
  require_once __DIR__ . '/vendor/autoload.php';
+ //include class files
+ require_once __DIR__ . '/lib/classes/autoload.php';
  //Custom post type creation class
  require_once __DIR__ . '/lib/CPT.php';
  //consants
@@ -86,11 +88,20 @@ define('THEME_VERSION', '1.0.0');
  // Add image sizes.
  add_image_size( 'author-2x', 90, 90, true );
  add_image_size( 'author', 45, 45, true );
+ add_image_size( 'resource-listing-sm', 130, 130, true );
+ add_image_size( 'resource-listing-sm-2x', 260, 260, true );
  add_image_size( 'resource-listing', 605, 400, true );
  add_image_size( 'resource-listing-2x', 1210, 800, true );
- add_image_size( 'resource-single', 1124, 600, false );
- add_image_size( 'resource-single-sm', 562, 300, false );
- add_image_size( 'resource-single-2x', 2248, 1200, false );
+ add_image_size( 'resource-single', 1124, 600, true );
+ add_image_size( 'resource-single-sm', 562, 300, true );
+ add_image_size( 'resource-single-2x', 2248, 1200, true );
+
+ add_action('init', 'register_koelsch_menus');
+ function register_koelsch_menus(){
+   register_nav_menus(array(
+     'main-nav'=> __('Main Navigation', 'koelsch'),
+   ));
+ }
 
 
 ?>
