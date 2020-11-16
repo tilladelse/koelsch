@@ -34,10 +34,11 @@ function koelsch_find_community_content(){
               </select>
             </div>
             <img class="divider-vertical" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/divider-vertical.jpg" alt="divider">
-            <div class="form-group">
+            <form action="#" class="form-group">
               <input class="form-control zipcode-fields" type="text" placeholder="By Zipcode">
+              <span class="error-message">Enter valid zip</span>
               <a class="btn-outline sm btn-search" href="#">GO</a>
-            </div>
+            </form>
           </div>
           <span class="or">Or</span>
           <p>Click on a state to view communities located there.</p>
