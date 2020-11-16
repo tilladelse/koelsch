@@ -330,6 +330,7 @@ function initSearchPanel() {
 		var cityBox = holder.find('.city-box');
 		var searchField = holder.find('.zipcode-fields');
 		var btnSearch = holder.find('.btn-search');
+		var forms = holder.find('form');
 		var states = [];
 		var cities = [];
 		var loadData = null;
@@ -378,9 +379,8 @@ function initSearchPanel() {
 			});
 		});
 
-		holder.on('submit', function(e) {
+		forms.on('submit', function(e) {
 			e.preventDefault();
-			submitForm();
 		});
 
 		btnSearch.on('click', function(e) {
@@ -405,7 +405,7 @@ function initSearchPanel() {
 				index++;
 			});
 
-			window.location.href = holder.attr('action') + str;
+			window.location.href = holder.data('action') + str;
 		}
 
 		function refreshCitySelect() {
@@ -507,6 +507,7 @@ function initMapbox() {
 
 	var hiddenClass = 'hidden';
 	var popupActiveClass = 'active-popup';
+	var errorClass = 'error';
 
 	function filterLocations(self) {
 		var activeItems = [];
@@ -521,9 +522,18 @@ function initMapbox() {
 		var zipCodeField = self.holder.find('.zipcode-fields');
 		var btnSearch = self.holder.find('.btn-search');
 		var stateItems = self.svgMap.find('.st0');
+		var forms = controlsBox.find('form');
 		var timer = null;
 
 		self.holder.on('loadData', checkHash);
+
+		forms.on('submit', function(e) {
+			e.preventDefault();
+		});
+
+		zipCodeField.on('focus', function() {
+			zipCodeField.closest('.form-group').removeClass(errorClass);
+		});
 
 		function checkHash() {
 			var hash = Hash.get();
@@ -556,24 +566,28 @@ function initMapbox() {
 				type: 'GET',
 				dataType: 'json',
 				success: function(data) {
-					self.sortByNearestLocation(self.allMarkersData, data.features[0].center);
+					if (data.features.length) {
+						self.sortByNearestLocation(self.allMarkersData, data.features[0].center);
 
-					var nearestLocations = [];
+						var nearestLocations = [];
 
-					for (var i = 0; i < self.allMarkersData.length; i++) {
-						if (self.allMarkersData[i].distance <= 100) {
-							nearestLocations.push(self.allMarkersData[i]);
+						for (var i = 0; i < self.allMarkersData.length; i++) {
+							if (self.allMarkersData[i].distance <= 100) {
+								nearestLocations.push(self.allMarkersData[i]);
+							}
 						}
-					}
 
-					if (!nearestLocations.length) {
-						nearestLocations = self.allMarkersData.slice(0, 5);
-					}
+						if (!nearestLocations.length) {
+							nearestLocations = self.allMarkersData.slice(0, 5);
+						}
 
-					self.prepareMarkers(nearestLocations);
-					updateSelectedFilters(null, zipCodeField.val());
-					zipCodeField.val('');
-					showPopup();
+						self.prepareMarkers(nearestLocations);
+						updateSelectedFilters(null, zipCodeField.val());
+						zipCodeField.val('');
+						showPopup();
+					} else {
+						zipCodeField.closest('.form-group').addClass(errorClass);
+					}
 				}
 			});
 		});
@@ -749,7 +763,8 @@ function removeDuplicates(originalArray, prop) {
 			self.map = new mapboxgl.Map({
 				container: self.mapHolder[0],
 				style: self.holder.data('styles'),
-				zoom: self.options.startZoom
+				zoom: self.options.startZoom,
+				center: [-122.212814, 46.955601],
 			});
 
 			if (this.markersData) {
