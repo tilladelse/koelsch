@@ -9,7 +9,7 @@ function wp_acf_init_block_types() {
         acf_register_block_type(array(
             'name'              => 'toolbar',
             'title'             => __('Toolbar'),
-            'render_template'   => 'blocks/toolbar/toolbar.php',
+            'render_template'   => 'lib/blocks/toolbar/toolbar.php',
             'category'          => 'formatting',
             'icon'              => 'admin-comments',
             'keywords'          => array( 'toolbar', 'find' ),
@@ -19,7 +19,7 @@ function wp_acf_init_block_types() {
         acf_register_block_type(array(
             'name'              => 'communities-list',
             'title'             => __('Communities by state list'),
-            'render_template'   => 'blocks/communities-list/communities-list.php',
+            'render_template'   => 'lib/blocks/communities-list/communities-list.php',
             'category'          => 'formatting',
             'icon'              => 'admin-comments',
             'keywords'          => array( 'communities', 'state' , 'list' ),
@@ -29,11 +29,19 @@ function wp_acf_init_block_types() {
         acf_register_block_type(array(
             'name'              => 'communities',
             'title'             => __('Communities near me'),
-            'render_template'   => 'blocks/communities/communities.php',
+            'render_template'   => 'lib/blocks/communities/communities.php',
             'category'          => 'formatting',
             'icon'              => 'admin-comments',
             'keywords'          => array( 'communities' ),
         ));
-        
+
     }
+}
+add_filter('acf/settings/save_json', 'koelsch_acf_json_save_point');
+
+function koelsch_acf_json_save_point( $path ) {
+    // update path
+    $path = get_stylesheet_directory() . '/lib/blocks';
+    // return
+    return $path;
 }

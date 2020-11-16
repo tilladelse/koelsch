@@ -1,4 +1,4 @@
-<div class="community-section" data-markers="<?php echo get_template_directory_uri(); ?>/assets/inc/map-data.json" data-template="popup_tmpl">
+<div class="community-section" data-markers="<?php echo get_template_directory_uri(); ?>/assets/data/map-data.json" data-template="popup_tmpl">
 	<div class="section-wrapp">
 		<div class="community-popup">
 			<div class="map-container">
@@ -10,7 +10,7 @@
 			<?php if ( $title = get_field( 'title' ) ): ?>
 				<h3><?php echo $title; ?></h3>
 			<?php endif; ?>
-			<div class="row row-sm communities-section" data-json="<?php echo get_template_directory_uri(); ?>/assets/inc/map-data.json" data-template="item_tmpl">
+			<div class="row row-sm communities-section" data-json="<?php echo get_template_directory_uri(); ?>/assets/data/map-data.json" data-template="item_tmpl">
 				<script type="text/html" id="item_tmpl">
 					<div class="col">
 						<div class="card-community">

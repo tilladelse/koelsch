@@ -7,7 +7,7 @@
  * @license GPL-2.0-or-later
  * @link    https://www.tilladelse.com/
  */
-remove_action('koelsch_get_template_part', 'koelsch_get_template_part');
+// remove_action('koelsch_get_template_part', 'koelsch_get_template_part');
 remove_action('koelsch_before_content', 'koelsch_before_content');
 add_filter('koelsch_main_wrapper_class', function($attr){return 'main-content';});
 add_action('koelsch_before_loop', 'koelsch_find_community_content');

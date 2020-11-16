@@ -9,7 +9,7 @@
  */
  define('MAPBOX_TOKEN', 'pk.eyJ1Ijoia29lbHNjaCIsImEiOiJja2djcjVidWwwOGdoMnJyemQzeWM4cmo4In0.GZL8lmUjf986HS5SBycu5g');
  define('MAPBOX_STYLE', 'mapbox://styles/koelsch/ckgcr9exr0zh919qj7xpe8k32');
- define('COMMUNITY_JSON_FILE', get_stylesheet_directory_uri() . '/data/map-data.json');
+ define('COMMUNITY_JSON_FILE', get_stylesheet_directory_uri() . '/assets/data/map-data.json');
  define('STATES_LIST', array(
    'AL' => 'Alabama',
    'AK' => 'Alaska',
