@@ -2785,8 +2785,7 @@ label {
 .community-section {
   background-color: #f5eee2;
   position: relative;
-  color: #1d242e;
-  padding-bottom: 80px; }
+  color: #1d242e; }
   .community-section::before {
     content: '';
     position: absolute;
@@ -3432,7 +3431,7 @@ input.form-control {
         position: absolute;
         left: 0;
         top: 0;
-        bottom: 30px;
+        bottom: 0;
         width: 50%;
         height: auto; }
       .community-popup .col {

@@ -1,6 +1,5 @@
 <div class="find-panel">
-	<div class="container-md">
-		<img class="img-decor" src="<?php echo get_template_directory_uri(); ?>/assets/images/map-decor.svg" alt="map">
+		<img class="img-decor" src="<?php echo get_template_directory_uri(); ?>/assets/data/map-decor.svg" alt="map">
 		<?php if ( $title = get_field( 'title' ) ): ?>
 			<h4><?php echo $title; ?></h4>
 		<?php endif; ?>
@@ -23,5 +22,4 @@
 				</div>
 			</div>
 		</form>
-	</div>
 </div>

@@ -87,6 +87,7 @@ define('THEME_VERSION', '1.0.0');
  }
 
  add_theme_support( 'post-thumbnails' );
+ add_theme_support('align-wide');
  // Add image sizes.
  add_image_size( 'author-2x', 90, 90, true );
  add_image_size( 'author', 45, 45, true );

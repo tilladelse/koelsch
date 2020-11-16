@@ -47,19 +47,7 @@
 		"description": "Assisted Living",
 		"url": "http://google.com",
 		"image": "http://localhost:8888/koelsch/wp-content/themes/koelsch/assets/images/img-placeholder.jpg"
-	}, {
-		"community": "Belle Harbour Marketing Office",
-		"coordinates": [-122.187241, 47.630652],
-		"address": "2275 116th Avenue NE, Suite 100, Bellevue, WA 98004",
-		"state": "Washington",
-		"shortStateName": "WA",
-		"city": "Bellevue",
-		"zipcode": "98004",
-		"careLevel": "",
-		"description": "",
-		"url": "http://google.com",
-		"image": "http://localhost:8888/koelsch/wp-content/themes/koelsch/assets/images/img-placeholder.jpg"
-	}, {
+	},{
 		"community": "Canterbury Gardens",
 		"coordinates": [-122.922248, 46.137683],
 		"address": "1457 3rd Ave., Longview, WA 98632",
@@ -179,19 +167,7 @@
 		"description": "Memory Care",
 		"url": "http://google.com",
 		"image": "http://localhost:8888/koelsch/wp-content/themes/koelsch/assets/images/img-placeholder.jpg"
-	}, {
-		"community": "Deer Ridge Marketing Office",
-		"coordinates": [-122.287294, 47.190862],
-		"address": "615 Pioneer Way, Suite 212, Puyallup, WA 98372",
-		"state": "Washington",
-		"shortStateName": "WA",
-		"city": "Puyallup",
-		"zipcode": "98372",
-		"careLevel": "",
-		"description": "",
-		"url": "http://google.com",
-		"image": "http://localhost:8888/koelsch/wp-content/themes/koelsch/assets/images/img-placeholder.jpg"
-	}, {
+	},{
 		"community": "Delaware Plaza",
 		"coordinates": [-122.932411, 46.130058],
 		"address": "926 Delaware St., Longview, WA 98632",
@@ -484,7 +460,7 @@
 		"state": "Illinois",
 		"shortStateName": "IL",
 		"zipcode": "60004",
-		"careLevel": "MC&Cottage",
+		"careLevel": "MC",
 		"description": "Memory Care",
 		"url": "http://google.com",
 		"image": "http://localhost:8888/koelsch/wp-content/themes/koelsch/assets/images/img-placeholder.jpg"
