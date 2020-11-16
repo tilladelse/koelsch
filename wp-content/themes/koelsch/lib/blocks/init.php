@@ -41,7 +41,7 @@ add_filter('acf/settings/save_json', 'koelsch_acf_json_save_point');
 
 function koelsch_acf_json_save_point( $path ) {
     // update path
-    $path = get_stylesheet_directory() . '/lib/blocks';
+    $path = get_stylesheet_directory() . '/lib/blocks/acf';
     // return
     return $path;
 }
