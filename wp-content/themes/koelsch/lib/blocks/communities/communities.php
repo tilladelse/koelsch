@@ -1,8 +1,10 @@
 	<?php
 	$blockClasses = 'community-list';
 	$blockClasses .= isset($block['className']) ? ' '.$block['className'] : '';
+	// var_dump($block);
+	$fullWidth = isset($block['align']) && $block['align'] == 'full' ? true : false;
+	echo $fullWidth ? '<section class="section alignfull '.$blockClasses.'"><div class="container-md">' : '<div class="'.$blockClasses.'">';
 	?>
-	<div class="<?php echo $blockClasses;?>">
 		<?php if ( $title = get_field( 'title' ) ):?>
 			<h3><?php echo $title; ?></h3>
 		<?php endif; ?>
@@ -27,4 +29,4 @@
 				</div>
 			</script>
 		</div>
-	</div>
+	<?php echo $fullWidth ? '</div></section>' : '</div>';?>

@@ -23,6 +23,10 @@ function wp_acf_init_block_types() {
             'category'          => 'formatting',
             'icon'              => 'admin-comments',
             'keywords'          => array( 'communities', 'state' , 'list' ),
+            'align'	          	=> 'full',
+          	'supports'	        => array(
+                  		'align'		=> array('wide', 'full'),
+                  	)
         ));
 
         // register a communities block.
@@ -33,6 +37,10 @@ function wp_acf_init_block_types() {
             'category'          => 'formatting',
             'icon'              => 'admin-comments',
             'keywords'          => array( 'communities' ),
+            'align'	          	=> 'full',
+          	'supports'	        => array(
+                  		'align'		=> array('wide','full'),
+                  	)
         ));
 
     }
