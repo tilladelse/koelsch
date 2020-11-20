@@ -12,6 +12,7 @@ $taxonomy = 'resource-category';
 $t = wp_get_post_terms($post->ID, $taxonomy);
 $term = $t ? $t[0] : false;
 ?>
+<div class="main-holder">
 <div id="content">
   <div class="content-topbar single-bar">
     <div class="text-holder">
@@ -86,4 +87,5 @@ $term = $t ? $t[0] : false;
   }
   ?>
 </div>
-<?php get_template_part('template-parts/sidebar', 'resources');
+<?php get_template_part('template-parts/sidebar', 'resources');?>
+</div>

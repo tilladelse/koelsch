@@ -306,6 +306,7 @@ function initLoadCommunities() {
 					var item = tmpl(holder.data('template'), loadData[i]);
 
 					jQuery(item).appendTo(holder);
+					holder.addClass('active');
 				}
 			}
 		}
@@ -799,6 +800,7 @@ function removeDuplicates(originalArray, prop) {
 			this.initPaging();
 		},
 		addMarker: function(item) {
+
 			var el = document.createElement('div');
 
 			el.className = 'marker';
@@ -806,7 +808,6 @@ function removeDuplicates(originalArray, prop) {
 
 			var popupHTML = tmpl(this.holder.data('template'), item);
 			var itemHTML = tmpl(this.itemsHolder.data('template'), item);
-
 			$(itemHTML).appendTo(this.itemsHolder);
 
 			var popup = new mapboxgl.Popup({

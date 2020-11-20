@@ -149,25 +149,25 @@
     /*
     Community Menu
      */
-   $cm = new_cmb2_box( array(
-  		'id'            => 'menu',
-  		'title'         => __( 'Community Menu', 'koelsch' ),
-  		'object_types'  => array( 'community', ), // Post type
-  		'context'       => 'normal',
-  		'priority'      => 'high',
-  		'show_names'    => true, // Show field names on the left
-  		// 'cmb_styles' => false, // false to disable the CMB stylesheet
-  		// 'closed'     => true, // Keep the metabox closed by default
-  	) );
+   // $cm = new_cmb2_box( array(
+  	// 	'id'            => 'community-menu',
+  	// 	'title'         => __( 'Community Menu', 'koelsch' ),
+  	// 	'object_types'  => array( 'community', ), // Post type
+  	// 	'context'       => 'normal',
+  	// 	'priority'      => 'high',
+  	// 	'show_names'    => true, // Show field names on the left
+  	// 	// 'cmb_styles' => false, // false to disable the CMB stylesheet
+  	// 	// 'closed'     => true, // Keep the metabox closed by default
+  	// ) );
 
-    $cm->add_field( array(
-  		'name'       => __( 'Choose Menu', 'koelsch' ),
-  		// 'desc'       => __( 'Street Address', 'koelsch' ),
-  		'id'         => 'menu',
-  		'type'       => 'select',
-      'options'   => menu_select_options(),
-      'show_option_none' => true,
-  	) );
+    // $cm->add_field( array(
+  	// 	'name'       => __( 'Choose Menu', 'koelsch' ),
+  	// 	// 'desc'       => __( 'Street Address', 'koelsch' ),
+  	// 	'id'         => 'menu_id',
+  	// 	'type'       => 'select',
+    //   'options'   => menu_select_options(),
+    //   'show_option_none' => true,
+  	// ) );
   }
   /*
   * Resources metabox
@@ -307,5 +307,26 @@ function koelsch_register_theme_settings_metabox() {
     'options'   => koelsch_pages_list(),
     'show_option_none' => true,
   ));
+}
+/*
+* General metaboxes
+ */
+add_action( 'cmb2_init', 'koelsch_register_general_metaboxes' );
+function koelsch_register_general_metaboxes() {
+  $featuredVid = new_cmb2_box( array(
+    'id'            => 'page_options',
+    'title'         => __( 'Page Options', 'koelsch' ),
+    'object_types'  => array( 'page' ), // Post type
+    'context'       => 'normal',
+    'priority'      => 'default',
+    'show_names'    => true, // Show field names on the left
+    // 'cmb_styles' => false, // false to disable the CMB stylesheet
+    // 'closed'     => true, // Keep the metabox closed by default
+  ) );
+  $featuredVid->add_field( array(
+    'name'       => 'Featured Video URL',
+    'id'         => 'featured_video',
+    'type' => 'file',
+  ) );
 }
   ?>

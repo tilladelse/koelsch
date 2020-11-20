@@ -18,7 +18,33 @@
   		'side',
   		'default'
   	);
+    add_meta_box(
+  		'community-menu',
+  		__( 'Community Menu', 'koelsch' ),
+  		'community_menu_mb_callback',
+  		'community',
+  		'side',
+  		'default'
+  	);
   }
+  function community_menu_mb_callback($post) {
+    	wp_nonce_field( '_community_menu', 'community_menu' );
+     $menu_id = get_post_meta($post->ID,'menu_id', true);
+     if ($menu_id):
+       $menu = wp_get_nav_menu_object($menu_id);
+     ?>
+    	<p>
+    		<p><?php _e( 'Associated community menu: <br><b>'.$menu->name.'</b>', 'koelsch' ); ?></p>
+        <a class="button-secondary" href="<?php echo admin_url().'nav-menus.php?action=edit&menu='.$menu_id;?>">Edit Menu</a>
+    		<input type="hidden" name="community_home_page_id" id="community_home_page_id" value="<?php echo $chp; ?>">
+    	</p>
+     <p><em>Menu ID: <?php echo $menu->term_id;?></em></p>
+     <?php
+     else:?>
+     <p>No menu is associated with this community.</p>
+     <?php endif;
+  }
+
  function community_info_mb_callback($post) {
    	wp_nonce_field( '_community_info', 'community_info' );
     $chp = get_post_meta($post->ID,'community_home_page_id', true);
@@ -37,7 +63,7 @@
     <?php endif;
  }
 
- add_action('save_post_community', 'community_info_mb_save');
+ add_action('save_post_community', 'community_info_mb_save', 99);
  function community_info_mb_save( $post_id ) {
    	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
    	if ( ! isset( $_POST['community_info'] ) || ! wp_verify_nonce( $_POST['community_info'], '_community_info' ) ) return;
@@ -62,7 +88,17 @@
         'living_type'=>$livingType,
       );
       create_community_home_page($arr);
+      write_community_json_file();
     }
+ }
+
+ /**
+  * Gets all communities and re-creates json file used to populate community finder and map
+  * @since 1.0.0
+  * @return null
+  */
+ function write_community_json_file(){
+   //
  }
 
  function create_community_home_page($arr){
@@ -95,6 +131,9 @@
            set_page_template($ltPageID, 'living-type');
            $homePageID = create_page($arr['community_name'], $ltPageID);
            if ($homePageID){
+             //create a menu for the community
+             create_community_menu($homePageID, $arr['community_post_id']);
+
              set_page_template($homePageID, 'community');
              update_post_meta($homePageID, 'community_post_id', $arr['community_post_id']);
              update_post_meta($arr['community_post_id'], 'community_home_page_id', $homePageID);
@@ -103,6 +142,18 @@
        }
      }
    }
+ }
+ function create_community_menu($homePageID, $post_id){
+   $page = get_page($homePageID);
+   $menuExists = wp_get_nav_menu_object($page->post_title);
+   if (!$menuExists){
+     $menu_id = wp_create_nav_menu($page->post_title);
+     update_post_meta($post_id, 'menu_id', $menu_id);
+   }else{
+     $menu_id = $menuExists->term_id;
+   }
+   $res = update_post_meta($post_id, 'menu_id', $menu_id);
+   update_post_meta($post_id, 'phone', '123456789');
  }
  function set_page_template($id, $templateType){
    update_post_meta( $id, '_wp_page_template', 'page-templates/'.$templateType.'.php' );

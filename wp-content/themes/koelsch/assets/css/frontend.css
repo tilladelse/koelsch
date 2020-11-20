@@ -1343,7 +1343,8 @@ a {
       width: 38px;
       height: 30px;
       overflow: hidden;
-      margin-top: 2px; }
+      margin-top: 2px;
+      animation: none; }
       #header.community .logo img {
         width: 160px;
         max-width: none; }
@@ -2951,6 +2952,17 @@ input.form-control {
     margin-right: 5px;
     min-height: 20px;
     vertical-align: baseline; }
+
+.communities-section {
+  background-image: url("assets/images/loader.svg");
+  height: 100px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70px; }
+
+.communities-section.active {
+  background-image: none;
+  height: auto; }
 
 .communities-list {
   padding: 2px 0 23px; }

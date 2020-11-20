@@ -1,5 +1,5 @@
 	<?php
-	$blockClasses = 'community-list';
+	$blockClasses = 'communities-near-you';
 	$blockClasses .= isset($block['className']) ? ' '.$block['className'] : '';
 	// var_dump($block);
 	$fullWidth = isset($block['align']) && $block['align'] == 'full' ? true : false;

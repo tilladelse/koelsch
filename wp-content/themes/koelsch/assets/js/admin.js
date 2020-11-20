@@ -7,7 +7,7 @@
       confirm('Are you sure?');
       var element = '<input type="hidden" name="_create_homepage" value="1">';
       $(this).append(element);
-      $('form').submit();
+      $('input[name="save"]').click();
 
       // console.log('reset homepage id');
     });

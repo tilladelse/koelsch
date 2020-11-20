@@ -1,7 +1,7 @@
 <?php
 $data = file_get_contents( get_template_directory_uri() . '/assets/data/map-data.json');
 $data = json_decode( $data );
-$blockClasses = 'community-near-you';
+$blockClasses = 'community-list';
 $blockClasses .= isset($block['className']) ? ' '.$block['className'] : '';
 ?>
 <div class="<?php echo $blockClasses;?>">

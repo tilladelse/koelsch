@@ -13,6 +13,7 @@ $archive_title    = get_the_archive_title();
 $archive_subtitle = get_the_archive_description();
 global $wp_query;
 ?>
+<div class="main-holder">
 <div id="content">
   <div class="content-topbar">
     <div class="text-holder">
@@ -35,3 +36,4 @@ global $wp_query;
 <?php endif;?>
 </div>
 <?php get_template_part( 'template-parts/sidebar', 'resources' );?>
+</div>
