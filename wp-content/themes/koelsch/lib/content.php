@@ -56,12 +56,5 @@ function koelsch_get_template_part(){
   }
 }
 
-//add_action('koelsch_before_content', 'koelsch_before_content');
-function koelsch_before_content(){
-  //maybe display page submenu - this is displayed when in community context
-
-
-}
-
 
 ?>
