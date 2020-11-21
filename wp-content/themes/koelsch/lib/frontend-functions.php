@@ -147,17 +147,7 @@ function get_taxonomy_terms($taxonomy, $parent, $xtra_args = array()){
   }
   $terms = get_terms($taxonomy,$args);
   return $terms;
+
 }
-
-function get_taxonomy_reverse_hierarchy($taxonomy, $term){
-  $args = array(
-
-  );
-  $terms = get_taxonomy_terms($taxonomy, false, $args);
-  if ($terms)
-  var_dump($terms);
-}
-
-
 
 ?>

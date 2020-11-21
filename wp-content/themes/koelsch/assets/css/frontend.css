@@ -1387,6 +1387,15 @@ a {
     border-left: 1px solid rgba(255, 255, 255, 0.21); }
     .community-block .community-holder .logo-holder {
       animation: 1s ease-out 0s 1 fadeSlideDown; }
+      .community-block .community-holder .logo-holder .community-name {
+        text-decoration: none;
+        color: #fff;
+        text-align: center;
+        font-family: "MillerBanner", "Times New Roman", "Times", "Baskerville", "Georgia", serif;
+        font-size: 42px;
+        font-size: 2.625rem;
+        line-height: 42px;
+        line-height: 2.625rem; }
     .community-block .community-holder .community-nav li {
       opacity: 0;
       animation: fade 1s forwards; }
@@ -1409,9 +1418,10 @@ a {
   .community-block .logo-holder {
     padding: 10px 20px 34px 0;
     margin: 0 0 21px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.21); }
+    border-bottom: 1px solid rgba(255, 255, 255, 0.21);
+    display: block; }
   .community-block .community-logo {
-    width: 208px;
+    height: 60px;
     margin: 0 auto;
     display: block; }
 
@@ -1453,6 +1463,9 @@ a {
     display: block;
     width: 100%;
     height: auto; }
+
+nav li.current-menu-item a {
+  font-weight: 600; }
 
 #nav {
   letter-spacing: 2.2px;

@@ -42,7 +42,7 @@
     ) );
     $cd->add_field( array(
       'name'       => __( 'Community Logo', 'koelsch' ),
-      // 'desc'       => __( 'Street Address', 'koelsch' ),
+      'desc'       => __( 'Recommended image size is 120px high', 'koelsch' ),
       'id'         => 'logo',
       'type'       => 'file',
     ) );

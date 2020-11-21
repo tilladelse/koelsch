@@ -2,10 +2,10 @@
 add_action('koelsch_header', 'koelsch_header');
 function koelsch_header(){
 
-  //get_community_context();
+  global $community_context;
 
-  ob_start();
-  $headerClass = apply_filters('koelsch_header_class','');
+  $communityClass = $community_context ? 'community': '';
+  $headerClass = apply_filters('koelsch_header_class', $communityClass );
   $hc = $headerClass ? 'class="'.$headerClass.'"' : '';
 
   $wrapperClass = apply_filters('koelsch_main_wrapper_class', 'page-holder');
@@ -13,6 +13,7 @@ function koelsch_header(){
   $mainID = apply_filters('koelsch_main_element_id','main');
   $mainClass = apply_filters('koelsch_main_element_class','');
 
+  ob_start();
   ?>
   <header id="header"<?php echo $hc;?>>
     <div class="container">
@@ -68,11 +69,14 @@ function koelsch_header(){
        </div>
    <?php echo ob_get_clean();
 }
-add_action('koelsch_before_community_menu', 'koelsch_before_community_menu');
+
+add_action('koelsch_before_community_menu', 'koelsch_before_community_menu',10);
 function koelsch_before_community_menu($imageArr){
+  global $community_context;
+  $communityClass = $community_context ? ' community': '';
   if ($imageArr['image_url'] || $imageArr['video_url']){
     ob_start();?>
-    <div class="visual-section bg-video-holder community"<?php echo $imageArr['image_url'] ? ' style="background-image: url('.$imageArr['image_url'].')"' : '';?>>
+    <div class="visual-section bg-video-holder<?php echo $communityClass;?>"<?php echo $imageArr['image_url'] ? ' style="background-image: url('.$imageArr['image_url'].')"' : '';?>>
       <?php if ($imageArr['video_url']):?>
       <video class="bg-video" width="640" height="360" loop autoplay muted playsinline>
         <source type="video/mp4" src="<?php echo $imageArr['video_url']; ?>" />
@@ -80,34 +84,56 @@ function koelsch_before_community_menu($imageArr){
     <?php endif; echo ob_get_clean();
   }
 }
+
 add_action('koelsch_community_menu', 'koelsch_community_menu');
 function koelsch_community_menu(){
+  global $community_context;
+  $community_context->getCommunityContext();
   ob_start();?>
   <div class="holder community">
+    <?php if ($community_context):
+      $communityTitle = get_the_title($community_context->communityID);
+      $communityLogo = get_post_meta($community_context->communityID, 'logo', true);
+      $chpID = get_post_meta($community_context->communityID, 'community_home_page_id', true);
+      ?>
     <div class="community-block community-item">
       <div class="container">
         <div class="community-holder">
-          <div class="logo-holder">
-            <img class="community-logo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/the-park.png" alt="image description">
-          </div>
+          <a class="logo-holder" href="<?php echo $chpID ? get_the_permalink($chpID) : '';?>">
+            <?php
+              if ($communityLogo){
+                echo '<img class="community-logo" src="'.$communityLogo.'" alt="'.$communityTitle.'">';
+              }else{
+                echo '<p class="community-name">'.$communityTitle.'</p>';
+              }
+            ?>
+          </a>
           <nav class="community-nav">
-            <ul>
-              <li><a href="#">Independent Living</a></li>
-              <li><a href="#">Explore</a></li>
-              <li><a href="#">Activities & Adventures</a></li>
-              <li><a href="#">Resources</a></li>
-            </ul>
+          <?php
+            if (wp_get_nav_menu_object($community_context->menuID)){
+              wp_nav_menu(array(
+                'menu'=> $community_context->menuID,
+                'menu_id'=>'',
+                'container'=>false,
+                'depth'=>1,
+                'walker'=> new Koelsch_Community_Walker_Nav_Menu,
+                'fallback_cb'=>'__return_false'
+              ));
+            }?>
           </nav>
         </div>
       </div>
     </div>
-    <!-- <div class="text-block align-center">
+  <?php else:?>
+    <div class="text-block align-center">
       <h1><?php echo get_the_title();?></h1>
-    </div> -->
+    </div>
+  <?php endif;?>
   </div>
   <?php echo ob_get_clean();
 }
-add_action('koelsch_after_community_menu', 'koelsch_after_community_menu');
+
+add_action('koelsch_after_community_menu', 'koelsch_after_community_menu',10);
 function koelsch_after_community_menu($imageArr){
   if ($imageArr['image_url'] || $imageArr['video_url']){
     ob_start();?>
@@ -127,6 +153,7 @@ function koelsch_after_community_menu($imageArr){
   <?php echo ob_get_clean();
   }
 }
+
 add_action('koelsch_community_phone_button', 'koelsch_community_phone_button');
 function koelsch_community_phone_button(){
   ob_start();?>
