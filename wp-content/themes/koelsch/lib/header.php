@@ -3,8 +3,9 @@ add_action('koelsch_header', 'koelsch_header');
 function koelsch_header(){
 
   global $community_context;
+  $community_context->getCommunityContext();
 
-  $communityClass = $community_context ? 'community': '';
+  $communityClass = $community_context->inCommunityContext() ? 'community': '';
   $headerClass = apply_filters('koelsch_header_class', $communityClass );
   $hc = $headerClass ? 'class="'.$headerClass.'"' : '';
 
@@ -73,7 +74,7 @@ function koelsch_header(){
 add_action('koelsch_before_community_menu', 'koelsch_before_community_menu',10);
 function koelsch_before_community_menu($imageArr){
   global $community_context;
-  $communityClass = $community_context ? ' community': '';
+  $communityClass = $community_context->inCommunityContext() ? ' community': '';
   if ($imageArr['image_url'] || $imageArr['video_url']){
     ob_start();?>
     <div class="visual-section bg-video-holder<?php echo $communityClass;?>"<?php echo $imageArr['image_url'] ? ' style="background-image: url('.$imageArr['image_url'].')"' : '';?>>
@@ -87,11 +88,13 @@ function koelsch_before_community_menu($imageArr){
 
 add_action('koelsch_community_menu', 'koelsch_community_menu');
 function koelsch_community_menu(){
+
   global $community_context;
   $community_context->getCommunityContext();
+
   ob_start();?>
   <div class="holder community">
-    <?php if ($community_context):
+    <?php if ($community_context->inCommunityContext()):
       $communityTitle = get_the_title($community_context->communityID);
       $communityLogo = get_post_meta($community_context->communityID, 'logo', true);
       $chpID = get_post_meta($community_context->communityID, 'community_home_page_id', true);
@@ -109,17 +112,14 @@ function koelsch_community_menu(){
             ?>
           </a>
           <nav class="community-nav">
-          <?php
-            if (wp_get_nav_menu_object($community_context->menuID)){
-              wp_nav_menu(array(
-                'menu'=> $community_context->menuID,
-                'menu_id'=>'',
-                'container'=>false,
-                'depth'=>1,
-                'walker'=> new Koelsch_Community_Walker_Nav_Menu,
-                'fallback_cb'=>'__return_false'
-              ));
-            }?>
+          <?php wp_nav_menu(array(
+                  'menu'=> $community_context->menuID,
+                  'menu_id'=>'',
+                  'container'=>false,
+                  'depth'=>1,
+                  'walker'=> new Koelsch_Community_Walker_Nav_Menu,
+                  'fallback_cb'=>'__return_false'
+                ));?>
           </nav>
         </div>
       </div>

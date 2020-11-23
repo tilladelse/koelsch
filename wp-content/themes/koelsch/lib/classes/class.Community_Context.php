@@ -44,6 +44,13 @@ class Community_Context{
     add_action('wp_ajax_nopriv_setup_community_context', array($this, 'setupCommunityContext'));
     add_action('wp_head', array($this, 'headScripts'));
   }
+
+  public function inCommunityContext(){
+    if ($this->menuID && $this->communityID){
+      return true;
+    } 
+    return false;
+  }
   /**
    * Sets up the menu ID and community ID. If we're on a community home page this will grab that info from the DB, if not, get it from the cookie.
    * IMPORTANT this must be called in the loop
@@ -60,7 +67,6 @@ class Community_Context{
       }
     }
     $this->getCookieValue();
-
   }
 
   public function setupCommunityContext(){
