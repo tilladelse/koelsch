@@ -291,7 +291,17 @@ function koelsch_register_theme_settings_metabox() {
     'options'   => menu_select_options(),
     'show_option_none' => true,
   ) );
-  $k_settings->add_field(array(
+  //page settings
+  $pages = $k_settings->add_field( array(
+     'id'          => 'page_settings',
+     'type'        => 'group',
+     'description' => __( 'Page settings', 'koelsch' ),
+     'repeatable'  => false, // use false if you want non-repeatable group
+     'options'     => array(
+         'closed'  => false,
+     ),
+  ) );
+  $k_settings->add_group_field($pages, array(
     'name'       => 'Resources Page',
     // 'desc'       => __( 'Street Address', 'koelsch' ),
     'id'         => 'resources_page',
@@ -299,7 +309,7 @@ function koelsch_register_theme_settings_metabox() {
     'options'   => koelsch_pages_list(),
     'show_option_none' => true,
   ));
-  $k_settings->add_field(array(
+  $k_settings->add_group_field($pages, array(
     'name'       => 'Find A Community Page',
     // 'desc'       => __( 'Street Address', 'koelsch' ),
     'id'         => 'find_community_page',
@@ -307,6 +317,64 @@ function koelsch_register_theme_settings_metabox() {
     'options'   => koelsch_pages_list(),
     'show_option_none' => true,
   ));
+
+  //Koelsch address
+  $address = $k_settings->add_field( array(
+     'id'          => 'address',
+     'type'        => 'group',
+     'description' => __( 'Koelsch home office info', 'koelsch' ),
+     'repeatable'  => false, // use false if you want non-repeatable group
+     'options'     => array(
+         'closed'  => false,
+     ),
+  ) );
+  $k_settings->add_group_field( $address, array(
+    'name'       => 'Company Name',
+    'default'       => __( 'Koelsch Communities', 'koelsch' ),
+    'id'         => 'company_name',
+    'type'       => 'text',
+  ) );
+  $k_settings->add_group_field( $address, array(
+    'name'       => 'Street Address',
+    //'desc'       => __( 'Home office Street Address', 'koelsch' ),
+    'id'         => 'street',
+    'type'       => 'text',
+  ) );
+  $k_settings->add_group_field( $address, array(
+    'name'       => 'Street Address 2',
+    //'desc'       => __( 'Home office Street Address', 'koelsch' ),
+    'id'         => 'street_2',
+    'type'       => 'text',
+  ) );
+  $k_settings->add_group_field( $address, array(
+    'name'       => __( 'City', 'koelsch' ),
+    // 'desc'       => __( 'Street Address', 'koelsch' ),
+    'id'         => 'city',
+    'type'       => 'text_medium',
+  ) );
+
+  $k_settings->add_group_field( $address, array(
+    'name'       => __( 'State', 'koelsch' ),
+    // 'desc'       => __( 'Street Address', 'koelsch' ),
+    'id'         => 'state',
+    'type'       => 'select',
+    'options'   => STATES_LIST,
+    'show_option_none' => true,
+  ) );
+
+  $k_settings->add_group_field( $address, array(
+    'name'       => __( 'Zipcode', 'koelsch' ),
+    // 'desc'       => __( 'Street Address', 'koelsch' ),
+    'id'         => 'zipcode',
+    'type'       => 'text_small',
+  ) );
+
+  $k_settings->add_group_field( $address, array(
+    'name'       => __( 'Phone', 'koelsch' ),
+    // 'desc'       => __( 'Street Address', 'koelsch' ),
+    'id'         => 'phone',
+    'type'       => 'text_medium',
+  ) );
 }
 /*
 * General metaboxes

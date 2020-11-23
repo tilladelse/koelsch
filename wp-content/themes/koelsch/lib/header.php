@@ -3,7 +3,6 @@ add_action('koelsch_header', 'koelsch_header');
 function koelsch_header(){
 
   global $community_context;
-  $community_context->getCommunityContext();
 
   $communityClass = $community_context->inCommunityContext() ? 'community': '';
   $headerClass = apply_filters('koelsch_header_class', $communityClass );
@@ -90,27 +89,14 @@ add_action('koelsch_community_menu', 'koelsch_community_menu');
 function koelsch_community_menu(){
 
   global $community_context;
-  $community_context->getCommunityContext();
 
   ob_start();?>
   <div class="holder community">
-    <?php if ($community_context->inCommunityContext()):
-      $communityTitle = get_the_title($community_context->communityID);
-      $communityLogo = get_post_meta($community_context->communityID, 'logo', true);
-      $chpID = get_post_meta($community_context->communityID, 'community_home_page_id', true);
-      ?>
+    <?php if ($community_context->inCommunityContext()):?>
     <div class="community-block community-item">
       <div class="container">
         <div class="community-holder">
-          <a class="logo-holder" href="<?php echo $chpID ? get_the_permalink($chpID) : '';?>">
-            <?php
-              if ($communityLogo){
-                echo '<img class="community-logo" src="'.$communityLogo.'" alt="'.$communityTitle.'">';
-              }else{
-                echo '<p class="community-name">'.$communityTitle.'</p>';
-              }
-            ?>
-          </a>
+          <?php echo get_community_logo($community_context->communityID);?>
           <nav class="community-nav">
           <?php wp_nav_menu(array(
                   'menu'=> $community_context->menuID,
@@ -156,11 +142,17 @@ function koelsch_after_community_menu($imageArr){
 
 add_action('koelsch_community_phone_button', 'koelsch_community_phone_button');
 function koelsch_community_phone_button(){
-  ob_start();?>
-  <a class="phone-link community-item" href="tel:9162090778">
-    <span>(916) 209-0778</span>
-    <ion-icon name="call-outline"></ion-icon>
-  </a>
-  <?php echo ob_get_clean();
+  global $community_context;
+  if ($community_context->inCommunityContext()){
+    $phone = get_post_meta($community_context->communityID, 'phone', true);
+    if ($phone){
+      ob_start();?>
+      <a class="phone-link community-item" href="tel:<?php echo sanitize_phone_number($phone);?>">
+        <span><?php echo sanitize_phone_number($phone, true);?></span>
+        <ion-icon name="call-outline"></ion-icon>
+      </a>
+      <?php echo ob_get_clean();
+    }
+  }
 }
 ?>

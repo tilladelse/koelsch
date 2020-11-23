@@ -149,5 +149,28 @@ function get_taxonomy_terms($taxonomy, $parent, $xtra_args = array()){
   return $terms;
 
 }
+function sanitize_phone_number($ph, $format = false){
+  $numbers_only = preg_replace("/[^0-9]/", "", $ph );
+  if (!$format) return $numbers_only;
+  $phone = preg_replace('~.*(\d{3})[^\d]*(\d{3})[^\d]*(\d{4}).*~',
+                '($1) $2-$3'." \n", $numbers_only);
+
+  return $phone;
+}
+function get_community_logo($communityID){
+  $communityTitle = get_the_title($communityID);
+  $communityLogo = get_post_meta($communityID, 'logo', true);
+  $chpID = get_post_meta($communityID, 'community_home_page_id', true);
+
+  $return ='<a class="logo-holder" href="';
+  $return .= $chpID ? get_the_permalink($chpID) : '';
+  $return .='">';
+
+  $return .= $communityLogo ? '<img class="community-logo" src="'.$communityLogo.'" alt="'.$communityTitle.'">' : '<p class="community-name">'.$communityTitle.'</p>';
+
+  $return .='</a>';
+
+  return $return;
+}
 
 ?>

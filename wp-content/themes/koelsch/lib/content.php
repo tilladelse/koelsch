@@ -1,5 +1,9 @@
 <?php
 function koelsch(){
+
+  global $community_context;
+  $community_context->getCommunityContext();
+
   get_header();
 
   if (is_archive()){

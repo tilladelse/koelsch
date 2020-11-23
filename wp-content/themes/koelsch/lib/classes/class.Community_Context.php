@@ -48,7 +48,7 @@ class Community_Context{
   public function inCommunityContext(){
     if ($this->menuID && $this->communityID){
       return true;
-    } 
+    }
     return false;
   }
   /**
