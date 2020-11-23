@@ -252,7 +252,7 @@ function initGetLocation() {
 
 	function onError() {
 		jQuery.ajax({
-			url: 'http://geolocation-db.com/json/',
+			url: 'https://geolocation-db.com/json/',
 			dataType: 'json',
 			success: function(position) {
 				currPosition = [position.longitude, position.latitude];
