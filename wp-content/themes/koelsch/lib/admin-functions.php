@@ -36,7 +36,6 @@
     	<p>
     		<p><?php _e( 'Associated community menu: <br><b>'.$menu->name.'</b>', 'koelsch' ); ?></p>
         <a class="button-secondary" href="<?php echo admin_url().'nav-menus.php?action=edit&menu='.$menu_id;?>">Edit Menu</a>
-    		<input type="hidden" name="community_home_page_id" id="community_home_page_id" value="<?php echo $chp; ?>">
     	</p>
      <p><em>Menu ID: <?php echo $menu->term_id;?></em></p>
      <?php
