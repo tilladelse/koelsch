@@ -1,6 +1,9 @@
 <?php
 add_action('koelsch_footer', 'koelsch_footer');
 function koelsch_footer(){
+
+  global $community_context;
+
   ob_start();?>
   <footer id="footer">
     <div class="container">
@@ -20,7 +23,8 @@ function koelsch_footer(){
             </div>
           </div>
           <div class="col col-50 col-community">
-            <a class="community-link" href="#">Find a Community <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/map.png" alt="image description"></a>
+            <?php $communityPageID = get_koelsch_setting('find_community_page');?>
+            <a class="community-link" href="<?php echo $communityPageID ? get_the_permalink($communityPageID) : '#';?>">Find a Community <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/map.png" alt="image description"></a>
           </div>
           <div class="col col-12 col-nav">
             <h4>Resources</h4>
