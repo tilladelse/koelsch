@@ -25,7 +25,7 @@ class Community_Context{
    * The id of the page that calls setup community context
    * @var string
    */
-  protected $page_id;
+  protected $pageID;
 
   /**
    * The menu ID
@@ -39,6 +39,18 @@ class Community_Context{
    */
   var $communityID;
 
+  /**
+   * The living type ID
+   * @var string
+   */
+  var $livingTypeID;
+
+  /**
+   * Whether or not we're in community context
+   * @var boolean
+   */
+  var $inCommunityContext;
+
   function __construct(){
     add_action('wp_ajax_setup_community_context', array($this, 'setupCommunityContext'));
     add_action('wp_ajax_nopriv_setup_community_context', array($this, 'setupCommunityContext'));
@@ -46,10 +58,13 @@ class Community_Context{
   }
 
   public function inCommunityContext(){
+		$this->inCommunityContext = false;
+
     if ($this->menuID && $this->communityID){
-      return true;
+			$this->inCommunityContext = true;
     }
-    return false;
+
+    return $this->inCommunityContext;
   }
   /**
    * Sets up the menu ID and community ID. If we're on a community home page this will grab that info from the DB, if not, get it from the cookie.
@@ -59,14 +74,66 @@ class Community_Context{
   public function getCommunityContext(){
     if (is_page_template('page-templates/community.php')){
       $pageID = get_the_id();
-      $this->page_id = $pageID;
+      $this->pageID = $pageID;
       $hpid = $this->getCommunityHomePageID();
       if ($hpid){
         $this->setCookieValue();
+				$this->getLivingTypeID();
         return;
       }
     }
+
     $this->getCookieValue();
+    $this->getLivingTypeID();
+  }
+
+  public function getLivingTypeID(){
+    if ($this->communityID){
+      $this->inCommunityContext = TRUE;
+      $this->livingTypeID = get_post_meta($this->communityID, 'living_type', true);
+    }else{
+      $this->inCommunityContext = FALSE;
+      //we're not in community context so set to default living type id
+      $this->livingTypeID = 'independent-assisted-living-memory-care';
+    }
+		// var_dump($this->communityID);
+  }
+
+  /**
+   * Gets the current living types for this community or if not in community context, gets all the living types
+   * @return array An array of living Types
+   *
+   * Return array structure:
+   *
+   * array(
+   *  living type id => array(
+   *    'name'=> string
+   *    'seal_url'=> string
+   *    'living_types' => array
+   *    'resources_menu_id', string/int
+   *  )
+   * )
+   *
+   */
+  public function getCurrentLivingTypes(){
+
+    $ltSettings = get_koelsch_setting('living_types');
+    $livingTypes = array();
+
+    if ($ltSettings){
+
+      foreach($ltSettings as $i=>$type){
+
+        if ($type['id'] == $this->livingTypeID){
+          return $type;
+        }
+
+      }
+
+    }
+
+    return false;
+
   }
 
   public function setupCommunityContext(){
@@ -93,7 +160,7 @@ class Community_Context{
    * @return void
    */
   public function setCookie(){
-    $this->page_id = isset($_REQUEST['page_id']) ? $_REQUEST['page_id'] : '';
+    $this->pageID = isset($_REQUEST['page_id']) ? $_REQUEST['page_id'] : '';
     //cookie expires in 30 days
     $xpires = time()+(86400 * self::EXPIRES);
     $val = $this->setCookieValue();
@@ -123,12 +190,13 @@ class Community_Context{
     $menuID = get_post_meta($communityID, 'menu_id', true);
     $this->menuID = $menuID;
     $this->communityID = $communityID;
-    return $menuID.'%'.$communityID;
+		$this->cookie = $menuID.'%'.$communityID;
+    return $this->cookie;
   }
 
   protected function getCommunityHomePageID(){
-    if ($this->page_id){
-      $ancestors = get_post_ancestors($this->page_id);
+    if ($this->pageID){
+      $ancestors = get_post_ancestors($this->pageID);
 
       /**
        * since this call is initiated by a page with the community page template,
@@ -136,7 +204,7 @@ class Community_Context{
        * this page is the community home page
        */
 
-      $hpid = $this->page_id;
+      $hpid = $this->pageID;
 
       if ($ancestors){
         $communityAncestors = array();

@@ -112,9 +112,9 @@ function koelsch_community_menu(){
       </div>
     </div>
   <?php else:?>
-    <div class="text-block align-center">
+    <!-- <div class="text-block align-center">
       <h1><?php echo get_the_title();?></h1>
-    </div>
+    </div> -->
   <?php endif;?>
   </div>
   <?php echo ob_get_clean();

@@ -234,90 +234,6 @@ function koelsch_register_theme_settings_metabox() {
 		// 'save_button'     => esc_html__( 'Save Theme Options', 'myprefix' ), // The text for the options-page save button. Defaults to 'Save'.
 	) );
 
-  /*
-  * Options fields ids only need
-  * to be unique within this box.
-  * Prefix is not needed.
-  */
-  $group_field_id = $k_settings->add_field( array(
-     'id'          => 'living_types',
-     'type'        => 'group',
-     'description' => __( 'Koelsch living types', 'koelsch' ),
-     // 'repeatable'  => false, // use false if you want non-repeatable group
-     'options'     => array(
-         'group_title'       => __( 'Living Type {#}', 'koelsch' ), // since version 1.1.4, {#} gets replaced by row number
-         'add_button'        => __( 'Add Living Type', 'koelsch' ),
-         'remove_button'     => __( 'Remove Living Type', 'koelsch' ),
-         'sortable'          => false,
-         'closed'         => true, // true to have the groups closed by default
-         // 'remove_confirm' => esc_html__( 'Are you sure you want to remove?', 'cmb2' ), // Performs confirmation before removing group.
-     ),
-  ) );
-  $k_settings->add_group_field( $group_field_id, array(
-    'name' => 'Name',
-    'id'   => 'name',
-    'type' => 'text',
-    // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
-  ) );
-  $k_settings->add_group_field( $group_field_id, array(
-    'name' => 'Slug/ID',
-    'id'   => 'id',
-    'type' => 'text',
-    // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
-  ) );
-  $k_settings->add_group_field( $group_field_id, array(
-    'name'    => 'Individual Living Types',
-    'desc'    => 'Check all the the living types that apply',
-    'id'      => 'living_types',
-    'type'    => 'multicheck',
-    'select_all_button' => false,
-    'options' => array(
-        'IL' => 'Independent Living',
-        'AL' => 'Assisted Living',
-        'MC' => 'Memory Care',
-    ),
-) );
-  $k_settings->add_group_field( $group_field_id, array(
-    'name' => 'Seal',
-    'id'   => 'seal',
-    'type' => 'file',
-    // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
-  ) );
-  $k_settings->add_group_field( $group_field_id, array(
-    'name'       => 'Living Type Footer Menu',
-    // 'desc'       => __( 'Street Address', 'koelsch' ),
-    'id'         => 'menu',
-    'type'       => 'select',
-    'options'   => menu_select_options(),
-    'show_option_none' => true,
-  ) );
-  //page settings
-  $pages = $k_settings->add_field( array(
-     'id'          => 'page_settings',
-     'type'        => 'group',
-     'description' => __( 'Page settings', 'koelsch' ),
-     'repeatable'  => false, // use false if you want non-repeatable group
-     'options'     => array(
-         'closed'  => false,
-     ),
-  ) );
-  $k_settings->add_group_field($pages, array(
-    'name'       => 'Resources Page',
-    // 'desc'       => __( 'Street Address', 'koelsch' ),
-    'id'         => 'resources_page',
-    'type'       => 'select',
-    'options'   => koelsch_pages_list(),
-    'show_option_none' => true,
-  ));
-  $k_settings->add_group_field($pages, array(
-    'name'       => 'Find A Community Page',
-    // 'desc'       => __( 'Street Address', 'koelsch' ),
-    'id'         => 'find_community_page',
-    'type'       => 'select',
-    'options'   => koelsch_pages_list(),
-    'show_option_none' => true,
-  ));
-
   //Koelsch address
   $address = $k_settings->add_field( array(
      'id'          => 'address',
@@ -375,6 +291,132 @@ function koelsch_register_theme_settings_metabox() {
     'id'         => 'phone',
     'type'       => 'text_medium',
   ) );
+
+  $k_settings->add_group_field( $address, array(
+    'name'       => __( 'Contact Email', 'koelsch' ),
+    // 'desc'       => __( 'Street Address', 'koelsch' ),
+    'id'         => 'email',
+    'type'       => 'text_email',
+  ) );
+
+  /*
+  * Options fields ids only need
+  * to be unique within this box.
+  * Prefix is not needed.
+  */
+  $living_types = $k_settings->add_field( array(
+     'id'          => 'living_types',
+     'type'        => 'group',
+     'description' => __( 'Koelsch living types', 'koelsch' ),
+     // 'repeatable'  => false, // use false if you want non-repeatable group
+     'options'     => array(
+         'group_title'       => __( 'Living Type {#}', 'koelsch' ), // since version 1.1.4, {#} gets replaced by row number
+         'add_button'        => __( 'Add Living Type', 'koelsch' ),
+         'remove_button'     => __( 'Remove Living Type', 'koelsch' ),
+         'sortable'          => false,
+         'closed'         => true, // true to have the groups closed by default
+         // 'remove_confirm' => esc_html__( 'Are you sure you want to remove?', 'cmb2' ), // Performs confirmation before removing group.
+     ),
+  ) );
+  $k_settings->add_group_field( $living_types, array(
+    'name' => 'Name',
+    'id'   => 'name',
+    'type' => 'text',
+    // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+  ) );
+  $k_settings->add_group_field( $living_types, array(
+    'name' => 'Slug/ID',
+    'id'   => 'id',
+    'type' => 'text',
+    // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+  ) );
+  $k_settings->add_group_field( $living_types, array(
+    'name'    => 'Individual Living Types',
+    'desc'    => 'Check all the the living types that apply',
+    'id'      => 'living_types',
+    'type'    => 'multicheck',
+    'select_all_button' => false,
+    'options' => array(
+        'IL' => 'Independent Living',
+        'AL' => 'Assisted Living',
+        'MC' => 'Memory Care',
+    ),
+) );
+  $k_settings->add_group_field( $living_types, array(
+    'name' => 'Seal',
+    'id'   => 'seal_url',
+    'type' => 'file',
+    // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+  ) );
+  $k_settings->add_group_field( $living_types, array(
+    'name'       => 'Resources Footer Menu',
+    // 'desc'       => __( 'Street Address', 'koelsch' ),
+    'id'         => 'resources_menu_id',
+    'type'       => 'select',
+    'options'   => menu_select_options(),
+    'show_option_none' => true,
+  ) );
+
+
+  //page settings
+  $pages = $k_settings->add_field( array(
+     'id'          => 'page_settings',
+     'type'        => 'group',
+     'description' => __( 'Page settings', 'koelsch' ),
+     'repeatable'  => false, // use false if you want non-repeatable group
+     'options'     => array(
+         'closed'  => false,
+     ),
+  ) );
+  $k_settings->add_group_field($pages, array(
+    'name'       => 'Resources Page',
+    // 'desc'       => __( 'Street Address', 'koelsch' ),
+    'id'         => 'resources_page',
+    'type'       => 'select',
+    'options'   => koelsch_pages_list(),
+    'show_option_none' => true,
+  ));
+  $k_settings->add_group_field($pages, array(
+    'name'       => 'Find A Community Page',
+    // 'desc'       => __( 'Street Address', 'koelsch' ),
+    'id'         => 'find_community_page',
+    'type'       => 'select',
+    'options'   => koelsch_pages_list(),
+    'show_option_none' => true,
+  ));
+  $k_settings->add_group_field($pages, array(
+    'name'       => 'Careers Page',
+    // 'desc'       => __( 'Street Address', 'koelsch' ),
+    'id'         => 'careers_page',
+    'type'       => 'select',
+    'options'   => koelsch_pages_list(),
+    'show_option_none' => true,
+  ));
+  $k_settings->add_group_field($pages, array(
+    'name'       => 'Independent Living Page',
+    // 'desc'       => __( 'Street Address', 'koelsch' ),
+    'id'         => 'IL_page',
+    'type'       => 'select',
+    'options'   => koelsch_pages_list(),
+    'show_option_none' => true,
+  ));
+  $k_settings->add_group_field($pages, array(
+    'name'       => 'Assisted Living Page',
+    // 'desc'       => __( 'Street Address', 'koelsch' ),
+    'id'         => 'AL_page',
+    'type'       => 'select',
+    'options'   => koelsch_pages_list(),
+    'show_option_none' => true,
+  ));
+  $k_settings->add_group_field($pages, array(
+    'name'       => 'Memory Care Page',
+    // 'desc'       => __( 'Street Address', 'koelsch' ),
+    'id'         => 'MC_page',
+    'type'       => 'select',
+    'options'   => koelsch_pages_list(),
+    'show_option_none' => true,
+  ));
+
 }
 /*
 * General metaboxes

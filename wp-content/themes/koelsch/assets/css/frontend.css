@@ -3187,6 +3187,10 @@ input.form-control {
     vertical-align: top;
     color: #566e88;
     margin-right: -5px; }
+    .footer-bottom .by a {
+      text-decoration: none; }
+    .footer-bottom .by > a > span {
+      display: none; }
     .footer-bottom .by img {
       width: 54px;
       margin-left: 4px; }
@@ -3263,6 +3267,9 @@ input.form-control {
     color: #c69230; }
   .contact-list a {
     text-decoration: none; }
+
+.add-menu li {
+  display: inline-block; }
 
 .add-menu a {
   text-decoration: underline; }

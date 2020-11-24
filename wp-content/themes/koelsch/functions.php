@@ -113,8 +113,7 @@ define('THEME_VERSION', '1.0.0');
  function register_koelsch_menus(){
    register_nav_menus(array(
      'main-nav'=> __('Main Navigation', 'koelsch'),
+     'privacy-menu'=>__('Privacy Menu', 'koelsch')
    ));
  }
-
-
 ?>

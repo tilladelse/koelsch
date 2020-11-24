@@ -3,6 +3,7 @@ add_action('koelsch_footer', 'koelsch_footer');
 function koelsch_footer(){
 
   global $community_context;
+  $pageSettings = get_koelsch_setting('page_settings');
 
   ob_start();?>
   <footer id="footer">
@@ -24,36 +25,13 @@ function koelsch_footer(){
             </div>
           </div>
           <div class="col col-50 col-community">
-            <?php
-            $pageSettings = get_koelsch_setting('page_settings');
-            $communityPageID = isset($pageSettings[0]['find_community_page']) ? $pageSettings[0]['find_community_page'] : false;?>
+            <?php $communityPageID = isset($pageSettings[0]['find_community_page']) ? $pageSettings[0]['find_community_page'] : false;?>
             <a class="community-link" href="<?php echo $communityPageID ? get_the_permalink($communityPageID) : '#';?>">Find a Community <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/map.png" alt="Find a community icon"></a>
           </div>
-          <div class="col col-12 col-nav">
-            <h4>Resources</h4>
-            <ul class="second-menu main-item">
-              <li><a href="#">All Resources</a></li>
-              <li><a href="#">Cost Comparision</a></li>
-              <li><a href="#">Dealing With Guilt</a></li>
-              <li><a href="#">Impact Of Loneliness on Health</a></li>
-            </ul>
-            <ul class="second-menu community-item">
-              <li><a href="#">IL Resources</a></li>
-              <li><a href="#">Cost Comparision</a></li>
-              <li><a href="#">IL Focused Resource Article</a></li>
-            </ul>
-          </div>
-          <div class="col col-12 col-nav">
-            <h4>Living Choices</h4>
-            <ul class="second-menu main-item">
-              <li><a href="#">Independent Living</a></li>
-              <li><a href="#">Assisted Living</a></li>
-              <li><a href="#">Memory Care</a></li>
-            </ul>
-            <ul class="second-menu community-item">
-              <li><a href="#">Independent Living</a></li>
-            </ul>
-          </div>
+          <?php
+                koelsch_resources_footer_menu();
+                koelsch_living_types_menu();
+          ?>
         </div>
       </div>
       <div class="contacts-block">
@@ -80,10 +58,17 @@ function koelsch_footer(){
           </div>
           <div class="col">
             <ul class="contact-list">
-              <li>
-                <ion-icon name="people-circle"></ion-icon>
-                <a href="#">Careers At Koelsch</a>
-              </li>
+              <?php $careersPageID = isset($pageSettings[0]['careers_page']) ? $pageSettings[0]['careers_page'] : false;
+                    if ($careersPageID){
+                      ?>
+                      <li>
+                        <ion-icon name="people-circle"></ion-icon>
+                        <a href="<?php echo get_the_permalink($careersPageID);?>">Careers At Koelsch</a>
+                      </li>
+                      <?php
+                    }
+              ?>
+              <?php #TODO: setup contact functionality. ?>
               <li>
                 <ion-icon name="chatbox-outline"></ion-icon>
                 <a href="#">Contact</a>
@@ -100,13 +85,20 @@ function koelsch_footer(){
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.png" alt="K/Koelsch Communities">
               </a>
             </strong>
-            <span class="copyright">&copy; Copyright 2021 <a href="<?php echo site_url();?>">Koelsch Communities</a>. All Rights Reserved.</span>
-            <ul class="add-menu">
-              <li><a href="#">Privacy Policy</a></li>
-            </ul>
+            <span class="copyright">&copy; Copyright <?php echo date('Y');?> <a href="<?php echo site_url();?>">Koelsch Communities</a>. All Rights Reserved.</span>
+
+              <?php wp_nav_menu(array(
+                'theme_location'=>'privacy-menu',
+                'menu_id'=>'privacy_menu',
+                'menu_class'=>'add-menu',
+                'items_wrap'=>'<ul id="%1$s" class="%2$s">%3$s</ul>',
+                'container'=>'ul',
+                'depth'=>1,
+                'fallback_cb'=>'__return_false'
+              ));?>
           </div>
           <div class="col">
-            <span class="by">Website by <a href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/tilla-delse.png" alt="Tilla delse"></a></span>
+            <?php do_action('koelsch_footer_site_attribution');?>
           </div>
         </div>
       </div>
@@ -156,5 +148,52 @@ function get_footer_phone($communityID){
     $phoneDisplay = $phVal ? sanitize_phone_number($phVal, true) : '';
   }
   return '<a href="tel:'.$phone.'">'.$phoneDisplay.'</a>';
+}
+
+add_action('koelsch_footer_site_attribution', 'koelsch_footer_site_attribution');
+function koelsch_footer_site_attribution(){
+  //TODO: only show on home page and community home pages
+  echo '<span class="by"><a href="https://tilladelsemarketingagency.com">Website by <span>Tilladelse</span><img src="'.get_stylesheet_directory_uri().'/assets/images/tilla-delse.png" alt="website created by Tilladelse"></a></span>';
+}
+
+function koelsch_living_types_menu(){
+  global $community_context;
+  $livingType = $community_context->getCurrentLivingTypes();
+  $return = '';
+  $menuItems = array();
+  if ($livingType){
+    $lts = isset($livingType['living_types']) ? $livingType['living_types'] : false;
+    if ($lts){
+      $pageSettings = get_koelsch_setting('page_settings');
+      $pages = $pageSettings ? $pageSettings[0] : array();
+      foreach ($lts as $type){
+        $pageID = isset($pages[$type.'_page']) && $pages[$type.'_page'] ? $pages[$type.'_page'] : false;
+        if ($pageID){
+          $menuItems[get_the_title($pageID)] = get_the_permalink($pageID);
+        }
+      }
+    }
+    $return = $menuItems ? '<div class="col col-12 col-nav"><h4>Living Choices</h4><ul class="second-menu">' : '';
+    foreach($menuItems as $title=>$url){
+      $return .= '<li><a href="'.$url.'">'.$title.'</a></li>';
+    }
+    $return .= $menuItems ? '</ul></div>' : '';
+  }
+  echo $return;
+}
+
+function koelsch_resources_footer_menu(){
+  //TODO: build out dynamic resources menu functionality
+  ?>
+  <div class="col col-12 col-nav">
+    <h4>Resources</h4>
+    <ul class="second-menu main-item">
+      <li><a href="#">All Resources</a></li>
+      <li><a href="#">Cost Comparision</a></li>
+      <li><a href="#">Dealing With Guilt</a></li>
+      <li><a href="#">Impact Of Loneliness on Health</a></li>
+    </ul>
+  </div>
+  <?php
 }
 ?>
