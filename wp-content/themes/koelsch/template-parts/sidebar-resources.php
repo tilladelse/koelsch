@@ -10,7 +10,8 @@
  */
 
  $backTitle = 'All Resources';
- $resID = get_koelsch_setting('resources_page');
+ $pageSettings = get_koelsch_setting('page_settings');
+ $resID = isset($pageSettings[0]['resources_page']) ? $pageSettings[0]['resources_page'] : false;
  $resLink = $backLink = get_the_permalink($resID);
  $taxonomy = 'resource-category';
 ?>

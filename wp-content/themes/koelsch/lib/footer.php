@@ -24,7 +24,9 @@ function koelsch_footer(){
             </div>
           </div>
           <div class="col col-50 col-community">
-            <?php $communityPageID = get_koelsch_setting('find_community_page');?>
+            <?php
+            $pageSettings = get_koelsch_setting('page_settings');
+            $communityPageID = isset($pageSettings[0]['find_community_page']) ? $pageSettings[0]['find_community_page'] : false;?>
             <a class="community-link" href="<?php echo $communityPageID ? get_the_permalink($communityPageID) : '#';?>">Find a Community <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/map.png" alt="Find a community icon"></a>
           </div>
           <div class="col col-12 col-nav">
