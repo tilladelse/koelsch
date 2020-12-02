@@ -147,6 +147,25 @@ function initOpenClose() {
 			}
 		}
 	});
+
+	ResponsiveHelper.addRange({
+		'1024..': {
+			on: function() {
+				jQuery('#commNav > ul > li').openClose({
+					activeClass: 'active-drop',
+					opener: '> a',
+					slider: '.drop',
+					animSpeed: 400,
+					event: 'hover',
+					effect: 'slide',
+					setCommNavHeight: true
+				});
+			},
+			off: function() {
+				jQuery('#commNav > ul > li').openClose('destroy');
+			}
+		}
+	});
 }
 
 // accordion menu init
@@ -252,7 +271,7 @@ function initGetLocation() {
 
 	function onError() {
 		jQuery.ajax({
-			url: 'https://geolocation-db.com/json/',
+			url: 'http://geolocation-db.com/json/',
 			dataType: 'json',
 			success: function(position) {
 				currPosition = [position.longitude, position.latitude];
@@ -1069,7 +1088,8 @@ function removeDuplicates(originalArray, prop) {
 			animSpeed: 400,
 			effect: 'fade',
 			event: 'click',
-			setHeaderHeight: false
+			setHeaderHeight: false,
+			setCommNavHeight: false
 		}, options);
 
 		this.init();
@@ -1088,6 +1108,7 @@ function removeDuplicates(originalArray, prop) {
 			this.opener = this.holder.find(this.options.opener);
 			this.slider = this.holder.find(this.options.slider);
 			this.header = $('#header .container');
+			this.commMenu = $('#commNav');
 			this.indent = 0;
 		},
 		attachEvents: function() {
@@ -1148,6 +1169,9 @@ function removeDuplicates(originalArray, prop) {
 			if (this.options.setHeaderHeight && this.slider.length) {
 				this.indent = parseFloat(this.slider.css('paddingTop')) + parseFloat(this.slider.css('paddingBottom'));
 			}
+			if (this.options.setCommNavHeight && this.slider.length) {
+				this.indent = parseFloat(this.slider.css('paddingTop')) + parseFloat(this.slider.css('paddingBottom'));
+			}
 		},
 		showSlide: function() {
 			var self = this;
@@ -1187,6 +1211,21 @@ function removeDuplicates(originalArray, prop) {
 					paddingBottom: totalHeight
 				}, this.options.animSpeed);
 			}
+
+			if (this.options.setCommNavHeight && this.slider.length) {
+				var items = self.slider.find('>li');
+				var totalHeight = 0;
+
+				items.each(function() {
+					totalHeight += $(this).outerHeight(true);
+				});
+
+				totalHeight += this.indent;
+
+				this.commMenu.stop().animate({
+					paddingBottom: totalHeight
+				}, this.options.animSpeed);
+			}
 		},
 		hideSlide: function() {
 			var self = this;
@@ -1214,6 +1253,12 @@ function removeDuplicates(originalArray, prop) {
 
 			if (this.options.setHeaderHeight && this.slider.length) {
 				this.header.stop().animate({
+					paddingBottom: 0
+				}, this.options.animSpeed);
+			}
+
+			if (this.options.setCommNavHeight && this.slider.length) {
+				this.commMenu.stop().animate({
 					paddingBottom: 0
 				}, this.options.animSpeed);
 			}

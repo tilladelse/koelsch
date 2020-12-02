@@ -98,13 +98,13 @@ function koelsch_community_menu(){
       <div class="container">
         <div class="community-holder">
           <?php echo get_community_logo($community_context->communityID);?>
-          <nav class="community-nav">
+          <nav id="commNav" class="community-nav">
           <?php wp_nav_menu(array(
                   'menu'=> $community_context->menuID,
                   'menu_id'=>'',
                   'container'=>false,
-                  'depth'=>1,
-                  'walker'=> new Koelsch_Community_Walker_Nav_Menu,
+                  'depth'=>2,
+                  'walker'=> new Koelsch_Walker_Nav_Menu,
                   'fallback_cb'=>'__return_false'
                 ));?>
           </nav>

@@ -149,6 +149,7 @@ function get_taxonomy_terms($taxonomy, $parent, $xtra_args = array()){
   return $terms;
 
 }
+
 function sanitize_phone_number($ph, $format = false){
   $numbers_only = preg_replace("/[^0-9]/", "", $ph );
   if (!$format) return $numbers_only;
@@ -157,6 +158,7 @@ function sanitize_phone_number($ph, $format = false){
 
   return $phone;
 }
+
 function get_community_logo($communityID){
   $communityTitle = get_the_title($communityID);
   $communityLogo = get_post_meta($communityID, 'logo', true);
@@ -173,4 +175,156 @@ function get_community_logo($communityID){
   return $return;
 }
 
+// add_filter( 'wp_nav_menu_objects', 'koelsch_sub_menu', 10, 2 );
+// // filter_hook function to react on sub_menu flag
+// function koelsch_sub_menu( $sorted_menu_items, $args ) {
+//   if ( isset( $args->sub_menu ) ) {
+//     $sorted_menu_items = get_sub_menu_items($sorted_menu_items);
+//     return $sorted_menu_items;
+//   } else {
+//     return $sorted_menu_items;
+//   }
+// }
+function koelsch_get_page_sub_menu($menuID){
+  $items = wp_get_nav_menu_items($menuID);
+  _wp_menu_item_classes_by_context( $items );
+
+  $rootID = $topParentID = $currentID = 0;
+  $title = '';
+  $currentTree = array();
+// var_dump($items);
+  $itemsArr = array();
+  if ($items){
+    foreach($items as $item){
+      $itemsArr[] = array(
+        'id'=>$item->ID,
+        'parent'=>$item->menu_item_parent,
+        'is_current'=>$item->current,
+        'is_ancestor'=>$item->current_item_ancestor,
+        'type'=>$item->type,
+        'item'=>$item
+      );
+    }
+  }
+
+  $items = array();
+
+  $h = build_menu_hierarchy($itemsArr);
+
+  if ($h){
+    foreach($h as $k=>$menuItemArr){
+      if($menuItemArr['is_ancestor']){
+        $currentTree = $menuItemArr;
+        break;
+      }
+    }
+
+
+  }
+
+  //get second level on down children
+  // echo '<pre>';var_dump($currentTree);echo '</pre>';
+  $level2 = false;
+  if (isset($currentTree['children'])){
+    foreach ($currentTree['children'] as $main){
+      // var_dump($main['is_current']);
+      if (($main['is_current'] || $main['is_ancestor'] )&& isset($currentTree['children'])){
+        $level2 = $main;
+        break;
+      }
+    }
+  }
+
+  if (!$level2){
+
+  }
+
+  $level3 = ($level2 && isset($level2['children'])) ? $level2['children'] : false;
+
+  $title = $level2 ? $level2['item']->title : '';
+  if ($level3){
+    foreach($level3 as $item){
+      $items[] = $item['item'];
+    }
+  }
+
+  display_page_sub_menu($items, $title);
+
+}
+function build_menu_hierarchy($elements, $parentID = 0){
+  $branch = array();
+  foreach ($elements as $element) {
+        if ($element['parent'] == $parentID) {
+            $children = build_menu_hierarchy($elements, $element['id']);
+            if ($children) {
+                $element['children'] = $children;
+            }
+            $branch[] = $element;
+        }
+    }
+
+  return $branch;
+}
+function display_page_sub_menu($items, $title){
+  if ($items){
+    ob_start();?>
+    <div class="sub-navigation" id="sub-nav">
+      <h2 class="sub-title"><?php echo $title;?></h2>
+      <nav class="sub-holder">
+        <div class="sub-nav">
+          <?php foreach ($items as $item){
+            $classes = implode(' ',$item->classes);
+            // var_dump($item);
+            echo '<li class="'.$classes.'"><a href="'.$item->url.'">'.$item->title.'</a></li>';
+          }?>
+        </div>
+      </nav>
+    </div>
+    <?php echo ob_get_clean();
+  }
+}
+
+// function koelsch_get_community_sub_menu($menuID){
+//   $items = wp_get_nav_menu_items($menuID);
+//   _wp_menu_item_classes_by_context( $items );
+//
+//   $root_id = 0;
+//   $title = '';
+//
+//   // find the current menu item
+//   foreach ( $items as $menu_item ) {
+//
+//     if ( $menu_item->current ) {
+//       // set the root id based on whether the current menu item has a parent or not
+//       $root_id = ( $menu_item->menu_item_parent ) ? $menu_item->menu_item_parent : $menu_item->ID;
+//       break;
+//     }
+//   }
+//
+//   foreach ($items as $menu_item ) {
+//     if($root_id == $menu_item->ID){
+//       $title = $menu_item->title;
+//       break;
+//     }
+//   }
+//
+//   $menu_item_parents = array();
+//   foreach ( $items as $key => $item ) {
+//
+//     // init menu_item_parents
+//     if ( $item->ID == $root_id ) $menu_item_parents[] = $item->ID;
+//
+//     if ( in_array( $item->menu_item_parent, $menu_item_parents ) ) {
+//       // part of sub-tree: keep!
+//       $menu_item_parents[] = $item->ID;
+//     } else if ( ! in_array( $item->ID, $menu_item_parents ) || $root_id == $item->ID) {
+//       // not part of sub-tree: away with it!
+//       unset( $items[$key] );
+//     }
+//
+//   }
+//
+//   display_page_sub_menu($items, $title);
+//
+// }
 ?>
