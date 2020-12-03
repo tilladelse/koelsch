@@ -97,7 +97,15 @@
   * @return null
   */
  function write_community_json_file(){
-   //
+
+   $fileName = 'map-data.json';
+   $fileLocation = get_stylesheet_directory_uri() . '/assets/data/';
+   $file = $fileLocation.$fileName;
+
+   $data = array();
+
+   $json = json_encode($data, JSON_PRETTY_PRINT);
+   file_put_contents($file, $json);
  }
 
  function create_community_home_page($arr){
