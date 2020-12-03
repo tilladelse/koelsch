@@ -36,6 +36,8 @@ define('THEME_VERSION', '1.0.0');
  require_once __DIR__ . '/lib/content.php';
 
  require_once __DIR__ . '/lib/blocks/init.php';
+ 
+ require_once __DIR__ . '/lib/blocks/block-fields.php';
 
  //setup community context global
  global $community_context;
