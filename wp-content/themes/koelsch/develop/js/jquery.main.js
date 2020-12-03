@@ -259,7 +259,8 @@ window.currPosition = undefined;
 // get location init
 function initGetLocation() {
 	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(onSuccess, onError);
+		navigator.geolocation.getCurrentPosition(onSuccess, onError, {timeout:4000});
+		console.log(navigator.geolocation);
 	} else {
 		onError();
 	}
@@ -267,6 +268,7 @@ function initGetLocation() {
 	function onSuccess(position) {
 		currPosition = [position.coords.longitude, position.coords.latitude];
 		jQuery(window).trigger('locationLoad');
+
 	}
 
 	function onError() {
@@ -276,6 +278,7 @@ function initGetLocation() {
 			success: function(position) {
 				currPosition = [position.longitude, position.latitude];
 				jQuery(window).trigger('locationLoad');
+
 			},
 			error: function(data) {
 				jQuery(window).trigger('locationLoad');

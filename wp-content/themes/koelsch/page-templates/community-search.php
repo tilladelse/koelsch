@@ -362,11 +362,13 @@ function koelsch_find_community_content(){
               <div class="card-container" data-template="card_item_tmpl"></div>
               <script type="text/html" id="card_item_tmpl">
                 <div class="card-community horizontal">
-                  <div class="card-img">
-                    <a href="<%=url%>">
-                      <img src="<%=image%>" alt="image description">
-                    </a>
-                  </div>
+                  <% if (image !== ''){ %>
+                    <div class="card-img">
+                      <a href="<%=url%>">
+                        <img src="<%=image%>" alt="<%=community%>">
+                      </a>
+                    </div>
+                  <%  } %>
                   <div class="card-body">
                     <a href="<%=url%>">
                       <div class="card-head">

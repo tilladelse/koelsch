@@ -1,0 +1,57 @@
+{
+    "markers": [
+        {
+            "community": "The Gardens at Laguna Springs",
+            "coordinates": "",
+            "address": "9750 Laguna Springs Dr.,Elk Grove, CA 95757",
+            "state": "California",
+            "shortStateName": "CA",
+            "zipcode": "95757",
+            "careLevel": "MC",
+            "description": "Memory Care",
+            "url": "http:\/\/localhost:8888\/koelsch\/senior-living\/ca\/elk-grove\/memory-care\/the-gardens-at-laguna-springs\/",
+            "image": ""
+        },
+        {
+            "community": "The Park At Laguna Springs",
+            "coordinates": "",
+            "address": "9670 Laguna Springs Dr.,Elk Grove, CA 95757",
+            "state": "California",
+            "shortStateName": "CA",
+            "zipcode": "95757",
+            "careLevel": "IL",
+            "description": "Independent Living",
+            "url": "http:\/\/localhost:8888\/koelsch\/senior-living\/ca\/elk-grove\/independent-living\/the-park-at-laguna-springs\/",
+            "image": ""
+        },
+        {
+            "community": "Test Community",
+            "coordinates": "",
+            "address": "123 Test st,Apt #51, Olympia, WA 98502",
+            "state": "Washington",
+            "shortStateName": "WA",
+            "zipcode": "98502",
+            "careLevel": "IL\/AL",
+            "description": "Independent & Assisted Living",
+            "url": "http:\/\/localhost:8888\/koelsch\/senior-living\/wa\/olympia\/independent-assisted-living\/test-community\/",
+            "image": ""
+        },
+        {
+            "community": "Deer Ridge Memory Care",
+            "coordinates": "",
+            "address": "2730 Bethel St NE,Olympia, WA 98506",
+            "state": "Washington",
+            "shortStateName": "WA",
+            "zipcode": "98506",
+            "careLevel": "MC",
+            "description": "Memory Care",
+            "url": "http:\/\/localhost:8888\/koelsch\/senior-living\/wa\/puyallup\/memory-care\/deer-ridge-memory-care\/",
+            "image": [
+                "http:\/\/localhost:8888\/koelsch\/wp-content\/uploads\/2020\/11\/Screen-Shot-2020-09-24-at-11.13.48-AM.png",
+                604,
+                454,
+                false
+            ]
+        }
+    ]
+}

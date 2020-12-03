@@ -62,7 +62,7 @@
     <?php endif;
  }
 
- add_action('save_post_community', 'community_info_mb_save', 99);
+ add_action('save_post_community', 'community_info_mb_save', 98);
  function community_info_mb_save( $post_id ) {
    	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
    	if ( ! isset( $_POST['community_info'] ) || ! wp_verify_nonce( $_POST['community_info'], '_community_info' ) ) return;
@@ -88,7 +88,6 @@
       );
       create_community_home_page($arr);
     }
-
     write_community_json_file();
  }
 
@@ -98,8 +97,99 @@
   * @return null
   */
  function write_community_json_file(){
+   $fileName = 'map-data.json';
+   $fileLocation = get_theme_root() . '/koelsch/assets/data';
 
-   
+   if (!file_exists($fileLocation)) {
+     mkdir($fileLocation, 0755, true);
+   }
+
+   $file = $fileLocation.'/'.$fileName;
+
+   $data = array('markers'=>array());
+
+   //get Communities
+   $communities = get_posts(array(
+     'post_type'=>'community',
+     'numberposts'=>-1,
+   ));
+
+   if ($communities){
+     foreach($communities as $c){
+
+       $street1 = get_post_meta($c->ID, 'street', true);
+       $street2 = get_post_meta($c->ID, 'street_2', true);
+       $city = get_post_meta($c->ID, 'city', true);
+       $state = get_post_meta($c->ID, 'state', true);
+       $zip = get_post_meta($c->ID, 'zipcode', true);
+       $stateName = $state && isset(STATES_LIST[$state]) ? STATES_LIST[$state] : '';
+
+       //setup address
+       $address = $street1 ? $street1.', ': '';
+       $address .= $street2 ? $street2.', ': '';
+       $address .= $city ? $city.', ':'';
+       $address .= $state.' '.$zip;
+
+       //get coordinates
+       $coords = '';
+       $result = false;
+       $coordsAddress = str_replace(',', '', $address);
+       $requestString = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'.urlencode($coordsAddress).'.json?limit=1&country=US&access_token='.MAPBOX_TOKEN;
+
+       $result = file_get_contents($requestString);
+       if ($result){
+         $result = json_decode($result, true);
+         $coords = isset($result['features'][0]['center']) ? $result['features'][0]['center'] : '';
+       }
+
+       //get living type Info
+       $ltID = get_post_meta($c->ID, 'living_type', true);
+       $lts = get_koelsch_setting('living_types');
+       $lt = false;
+       if ($lts){
+         foreach ($lts as $arr){
+           if ($ltID == $arr['id']){
+             $lt = $arr;
+             break;
+           }
+         }
+       }
+
+       $ltAbbrs = '';
+       if ($lt && is_array($lt['living_types'])){
+         $ltAbbrs = implode('/', $lt['living_types']);
+       }
+
+       $ltDesc = $lt ? $lt['name'] : '';
+
+       //get url
+       $commHomeID = get_post_meta($c->ID, 'community_home_page_id',true);
+       $url = $commHomeID ? get_permalink($commHomeID) : '';
+
+       //get listing image
+       $imgID = get_post_thumbnail_id($c->ID);
+       $image = $imgID ?  wp_get_attachment_image_src( $imgID, 'community_listing') : '';
+
+       $cdata = array(
+         'community'=>$c->post_title,
+         'coordinates'=>$coords,
+         'address'=>$address,
+         'state'=>$stateName,
+         'shortStateName'=>$state,
+         'city'=>$city,
+         'zipcode'=>$zip,
+         'careLevel'=>$ltAbbrs,
+         'description'=>$ltDesc,
+         'url'=>$url,
+         'image'=>$image ? $image[0] : '',
+       );
+       $data['markers'][] = $cdata;
+     }
+   }
+
+   $json = json_encode($data, JSON_PRETTY_PRINT);
+   file_put_contents($file, $json);
+
  }
 
  function create_community_home_page($arr){

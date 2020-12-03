@@ -1,7 +1,6 @@
 	<?php
 	$blockClasses = 'communities-near-you';
 	$blockClasses .= isset($block['className']) ? ' '.$block['className'] : '';
-	// var_dump($block);
 	$fullWidth = isset($block['align']) && $block['align'] == 'full' ? true : false;
 	echo $fullWidth ? '<section class="section alignfull '.$blockClasses.'"><div class="container-md">' : '<div class="'.$blockClasses.'">';
 	?>
@@ -12,10 +11,12 @@
 			<script type="text/html" id="item_tmpl">
 				<div class="col">
 					<div class="card-community">
-						<div class="card-img">
-							<a href="<%=url%>"><img src="<%=image%>" alt="image description"></a>
-						</div>
-						<div class="card-body">
+						<% if (image !== ''){ %>
+							<div class="card-img">
+								<a href="<%=url%>"><img src="<%=image%>" alt="<%=community%> listing image"></a>
+							</div>
+						<% } %>
+						<a href="<%=url%>" class="card-body">
 							<div class="card-head">
 								<h4><%=community%></h4>
 								<strong class="distance"><%=distance%>mi</strong>
@@ -25,7 +26,7 @@
 							<em class="card-category"><%=description%></em>
 							<% } %>
 						</div>
-					</div>
+					</a>
 				</div>
 			</script>
 		</div>
