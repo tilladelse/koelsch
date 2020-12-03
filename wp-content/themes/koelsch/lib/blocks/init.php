@@ -49,7 +49,7 @@ function wp_acf_init_block_types() {
             'title'             => __('Floor Plan'),
             'render_template'   => 'lib/blocks/communities/floorplan.php',
             'category'          => 'formatting',
-            'icon'              => 'analytics',
+            'icon'              => 'grid-view',
             'keywords'          => array( 'floorplans', 'floorplan', 'floor', 'plan' ),
             'align'	          	=> 'wide',
           	'supports'	        => array(

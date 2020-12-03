@@ -108,7 +108,7 @@
     'has_archive'=>false,
   ));
 
-  $fp->menu_icon("dashicons-analytics");
+  $fp->menu_icon("dashicons-grid-view");
 
   flush_rewrite_rules();
 

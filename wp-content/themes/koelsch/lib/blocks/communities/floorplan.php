@@ -7,6 +7,4 @@ if ($fpID){
   $baths = get_post_meta($fpID, 'bathrooms', true);
   $sf = get_post_meta($fpID, 'sf', true);
 }
-
-
 ?>

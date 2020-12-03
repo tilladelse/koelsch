@@ -146,28 +146,6 @@
       'type'       => 'file',
     ) );
 
-    /*
-    Community Menu
-     */
-   // $cm = new_cmb2_box( array(
-  	// 	'id'            => 'community-menu',
-  	// 	'title'         => __( 'Community Menu', 'koelsch' ),
-  	// 	'object_types'  => array( 'community', ), // Post type
-  	// 	'context'       => 'normal',
-  	// 	'priority'      => 'high',
-  	// 	'show_names'    => true, // Show field names on the left
-  	// 	// 'cmb_styles' => false, // false to disable the CMB stylesheet
-  	// 	// 'closed'     => true, // Keep the metabox closed by default
-  	// ) );
-
-    // $cm->add_field( array(
-  	// 	'name'       => __( 'Choose Menu', 'koelsch' ),
-  	// 	// 'desc'       => __( 'Street Address', 'koelsch' ),
-  	// 	'id'         => 'menu_id',
-  	// 	'type'       => 'select',
-    //   'options'   => menu_select_options(),
-    //   'show_option_none' => true,
-  	// ) );
   }
   /*
   * Resources metabox
