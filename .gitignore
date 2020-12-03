@@ -96,6 +96,9 @@ package.json
 composer.json
 composer.lock
 
+#data files
+/wp-content/themes/koelsch/assets/data
+
 # large/disallowed file types
 # a CDN should be used for these
 *.hqx
