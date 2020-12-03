@@ -3842,8 +3842,8 @@ input.form-control {
     margin-left: 8px; } }
   @media (min-width: 75rem) {
       #header.community #nav {
-        font-size: 15px;
-        font-size: 0.9375rem;
+        font-size: 14px;
+        font-size: 0.875rem;
         margin-right: 10px; }
       #header.community #nav .drop, #header.community #nav .sub-menu {
         font-size: 18px;

@@ -204,6 +204,52 @@
     ) );
   }
 
+  /*
+  * Floorplans Metabox
+   */
+  add_action( 'cmb2_init', 'koelsch_register_floorplans_metaboxes' );
+
+  function koelsch_register_floorplans_metaboxes() {
+    $fp = new_cmb2_box( array(
+      'id'            => 'floorplan_details',
+      'title'         => __( 'Floor Plan Details', 'koelsch' ),
+      'object_types'  => array( 'floorplans'), // Post type
+      'context'       => 'normal',
+      'priority'      => 'high',
+      'show_names'    => true, // Show field names on the left
+      // 'cmb_styles' => false, // false to disable the CMB stylesheet
+      // 'closed'     => true, // Keep the metabox closed by default
+    ) );
+    $fp->add_field( array(
+      'name'       => __( 'Floor Plan Display Name', 'koelsch' ),
+      'desc'       => __( 'This is the name that will display on the front end of the website', 'koelsch' ),
+      'id'         => 'display_name',
+      'type'       => 'text',
+    ) );
+    $fp->add_field( array(
+      'name'       => __( 'Number Of Bedrooms', 'koelsch' ),
+      // 'desc'       => __( 'Community main contact number', 'koelsch' ),
+      'id'         => 'bedrooms',
+      'type'       => 'select',
+      'options'   => array('Studio','1','2','3','4'),
+      'show_option_none' => true,
+    ) );
+    $fp->add_field( array(
+      'name'       => __( 'Number Of Bathrooms', 'koelsch' ),
+      // 'desc'       => __( 'Community main contact number', 'koelsch' ),
+      'id'         => 'bathrooms',
+      'type'       => 'select',
+      'options'   => array('1','1.5','2','2.5'),
+      'show_option_none' => true,
+    ) );
+    $fp->add_field( array(
+      'name'       => __( 'Square Feet', 'koelsch' ),
+      // 'desc'       => __( 'Street Address', 'koelsch' ),
+      'id'         => 'sf',
+      'type'       => 'text_small',
+    ) );
+  }
+
 add_action( 'cmb2_admin_init', 'koelsch_register_theme_settings_metabox' );
 /**
  * Hook in and register a metabox to handle a theme options page and adds a menu item.

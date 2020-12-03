@@ -88,6 +88,28 @@
     'hierarchical'=>true,
     // 'show_in_nav_menus'=>false,
   ));
+
+  //Floor plans CPT
+  $fp = new CPT(array(
+    'post_type_name' => 'floorplans',
+    'singular' => 'Floor Plan',
+    'plural' => 'Floor Plans',
+    'slug' => 'floorplan'
+  ),
+  array(
+    'supports'=>array(
+      'title','thumbnail'
+    ),
+    'public'=>false,
+    'show_ui'=>true,
+    // 'exclude_from_search'=>true,
+    // 'publicly_queryable'=>false,
+    'show_in_rest'=>true,
+    'has_archive'=>false,
+  ));
+
+  $fp->menu_icon("dashicons-analytics");
+
   flush_rewrite_rules();
 
   add_action('init', 'koelsch_add_excerpt');

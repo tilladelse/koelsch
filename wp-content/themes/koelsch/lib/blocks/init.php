@@ -19,9 +19,9 @@ function wp_acf_init_block_types() {
         acf_register_block_type(array(
             'name'              => 'communities-list',
             'title'             => __('Communities by state list'),
-            'render_template'   => 'lib/blocks/communities-list/communities-list.php',
+            'render_template'   => 'lib/blocks/communities/communities-list.php',
             'category'          => 'formatting',
-            'icon'              => 'admin-comments',
+            'icon'              => 'location',
             'keywords'          => array( 'communities', 'state' , 'list' ),
             'align'	          	=> 'full',
           	'supports'	        => array(
@@ -35,9 +35,23 @@ function wp_acf_init_block_types() {
             'title'             => __('Communities near me'),
             'render_template'   => 'lib/blocks/communities/communities.php',
             'category'          => 'formatting',
-            'icon'              => 'admin-comments',
+            'icon'              => 'location',
             'keywords'          => array( 'communities' ),
             'align'	          	=> 'full',
+          	'supports'	        => array(
+                  		'align'		=> array('wide','full'),
+                  	)
+        ));
+
+        // register a communities block.
+        acf_register_block_type(array(
+            'name'              => 'floorplan',
+            'title'             => __('Floor Plan'),
+            'render_template'   => 'lib/blocks/communities/floorplan.php',
+            'category'          => 'formatting',
+            'icon'              => 'analytics',
+            'keywords'          => array( 'floorplans', 'floorplan', 'floor', 'plan' ),
+            'align'	          	=> 'wide',
           	'supports'	        => array(
                   		'align'		=> array('wide','full'),
                   	)
