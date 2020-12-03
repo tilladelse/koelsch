@@ -87,8 +87,9 @@
         'living_type'=>$livingType,
       );
       create_community_home_page($arr);
-      write_community_json_file();
     }
+
+    write_community_json_file();
  }
 
  /**
@@ -98,14 +99,7 @@
   */
  function write_community_json_file(){
 
-   $fileName = 'map-data.json';
-   $fileLocation = get_stylesheet_directory_uri() . '/assets/data/';
-   $file = $fileLocation.$fileName;
-
-   $data = array();
-
-   $json = json_encode($data, JSON_PRETTY_PRINT);
-   file_put_contents($file, $json);
+   
  }
 
  function create_community_home_page($arr){
@@ -244,5 +238,29 @@
     }
     return $return;
   }
+
+  function acf_load_floorplan_field_choices( $field ) {
+
+      $floorplans = get_posts(array(
+        'post_type'=>'floorplans',
+        'posts_per_page'=>-1,
+      ));
+     if ($floorplans){
+       $choices[0] = 'Choose One';
+       foreach($floorplans as $floorplan){
+         $choices[$floorplan->ID] = $floorplan->post_title;
+       }
+     }else{
+       $choices = array('No Floor Plans Available');
+     }
+
+     $field['choices'] = $choices;
+
+      // return the field
+      return $field;
+
+  }
+
+  add_filter('acf/load_field/name=floorplan_id', 'acf_load_floorplan_field_choices');
 
 ?>
