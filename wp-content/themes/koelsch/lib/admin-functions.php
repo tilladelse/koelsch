@@ -62,7 +62,7 @@
     <?php endif;
  }
 
- add_action('save_post_community', 'community_info_mb_save', 98);
+ add_action('save_post_community', 'community_info_mb_save', 99);
  function community_info_mb_save( $post_id ) {
    	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
    	if ( ! isset( $_POST['community_info'] ) || ! wp_verify_nonce( $_POST['community_info'], '_community_info' ) ) return;
@@ -88,8 +88,13 @@
       );
       create_community_home_page($arr);
     }
-    write_community_json_file();
+    
+    //set wp cron to update json file after meta data has been saved
+    wp_schedule_single_event( time() + 30, 'write_community_json' );
+
  }
+
+ add_action('write_community_json', 'write_community_json_file');
 
  /**
   * Gets all communities and re-creates json file used to populate community finder and map
@@ -97,6 +102,7 @@
   * @return null
   */
  function write_community_json_file(){
+
    $fileName = 'map-data.json';
    $fileLocation = get_theme_root() . '/koelsch/assets/data';
 

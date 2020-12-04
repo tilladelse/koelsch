@@ -42,10 +42,11 @@ $blockClasses .= isset($block['className']) ? ' '.$block['className'] : '';
 									foreach( $data->markers as $marker ):
 										if( $marker->state == $state && !empty($marker->community) ):
 											?>
-											<li><?php echo $marker->community; ?> <?php _e('Inn','genesis'); ?>
-											<span class="abbr abbr-outline"><?php echo $marker->careLevel; ?></span>
-										</li>
-										<?php
+											<li>
+												<?php echo $marker->community; ?>
+												<span class="abbr abbr-outline"><?php echo $marker->careLevel; ?></span>
+											</li>
+											<?php
 									endif;
 								endforeach;
 								?>

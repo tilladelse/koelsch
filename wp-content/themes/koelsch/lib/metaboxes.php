@@ -122,9 +122,15 @@
   	) );
 
     $cp->add_field( array(
-  		'name'       => __( 'Full Name', 'koelsch' ),
+  		'name'       => __( 'First Name', 'koelsch' ),
   		// 'desc'       => __( 'Street Address', 'koelsch' ),
-  		'id'         => 'contact_name',
+  		'id'         => 'contact_first_name',
+  		'type'       => 'text',
+  	) );
+    $cp->add_field( array(
+  		'name'       => __( 'Last Name', 'koelsch' ),
+  		// 'desc'       => __( 'Street Address', 'koelsch' ),
+  		'id'         => 'contact_last_name',
   		'type'       => 'text',
   	) );
     $cp->add_field( array(
@@ -447,7 +453,7 @@ function koelsch_register_theme_settings_metabox() {
  */
 add_action( 'cmb2_init', 'koelsch_register_general_metaboxes' );
 function koelsch_register_general_metaboxes() {
-  $featuredVid = new_cmb2_box( array(
+  $opts = new_cmb2_box( array(
     'id'            => 'page_options',
     'title'         => __( 'Page Options', 'koelsch' ),
     'object_types'  => array( 'page' ), // Post type
@@ -457,10 +463,47 @@ function koelsch_register_general_metaboxes() {
     // 'cmb_styles' => false, // false to disable the CMB stylesheet
     // 'closed'     => true, // Keep the metabox closed by default
   ) );
-  $featuredVid->add_field( array(
+
+  $opts->add_field( array(
     'name'       => 'Featured Video URL',
     'id'         => 'featured_video',
     'type' => 'file',
+  ) );
+  $bg = $opts->add_field( array(
+     'id'          => 'background_image',
+     'type'        => 'group',
+     'description' => __( 'Page Background Settings', 'koelsch' ),
+     'repeatable'  => false, // use false if you want non-repeatable group
+     'options'     => array(
+         'closed'  => false,
+     ),
+  ) );
+  $opts->add_group_field( $bg, array(
+    'name'       => 'Page Background Image',
+    'id'         => 'image',
+    'type' => 'file',
+  ) );
+  $opts->add_group_field( $bg, array(
+    'name'       => __( 'Image Horizontal Alignment', 'koelsch' ),
+    'id'         => 'horiz_align',
+    'type' => 'radio',
+    'default'=>'left',
+    'options'=>array(
+      'left'=>'Left',
+      'right'=>'Right',
+      'center'=>'Center'
+    )
+  ) );
+  $opts->add_group_field( $bg, array(
+    'name'       => __( 'Image Vertical Alignment', 'koelsch' ),
+    'id'         => 'vert_align',
+    'type' => 'radio',
+    'default'=>'top',
+    'options'=>array(
+      'top'=>'Top',
+      'bottom'=>'Bottom',
+      'center'=>'Center'
+    )
   ) );
 }
   ?>
