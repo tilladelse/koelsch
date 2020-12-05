@@ -13,6 +13,22 @@ jQuery(function() {
 	initCloneBlocks();
 	initFocusClass();
 });
+(function( $ ) {
+	$(window).on('load', function(){
+
+		$('.contact-opener').on('click', function(){
+			console.log('hey');
+			$('.contact-prompt').css({'right':'0'});
+		});
+
+		$('.contact-prompt .closer').on('click', function(){
+			$('.contact-prompt').css({'right':'-100%'});
+			$('.contact-opener').show();
+		});
+
+	});
+})( jQuery );
+
 
 // background video init
 function initBackgroundVideo() {

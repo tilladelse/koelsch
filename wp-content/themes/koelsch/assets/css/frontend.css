@@ -1303,16 +1303,17 @@ a {
   box-shadow: 10px 30px 100px #333;
   width: 280px;
   position: fixed;
-  top: calc(30%);
-  right: 0;
+  top: 30%;
+  right: -100%;
   z-index: 9999;
-  padding: 20px 20px 30px; }
+  padding: 20px 20px 30px;
+  transition: right 1s ease-in-out; }
   .contact-prompt .prompt-wrapper::before {
     opacity: .10;
     display: block;
     content: '';
     position: absolute;
-    top: 0;
+    top: 60px;
     right: 0;
     left: 0;
     bottom: 0;
@@ -1358,22 +1359,41 @@ a {
       content: '';
       display: block;
       clear: both; }
-  .contact-prompt .open-closer-holder {
-    display: block;
+  .contact-prompt .closer-wrap {
+    text-align: right; }
+  .contact-prompt .closer {
     font-size: 24px;
     font-size: 1.5rem;
-    text-align: right;
-    line-height: 12px;
-    line-height: 0.75rem; }
-    .contact-prompt .open-closer-holder ion-icon {
+    cursor: pointer; }
+    .contact-prompt .closer ion-icon {
       border-right: 2px solid #252d3b; }
 
 .contact-opener {
+  display: none;
   background-color: #c69230;
   position: fixed;
-  top: calc(30%);
+  top: 30%;
   right: 0;
-  z-index: 9998; }
+  z-index: 9998;
+  color: #fff;
+  line-height: 12px;
+  line-height: 0.75rem;
+  font-size: 24px;
+  font-size: 1.5rem;
+  padding: 15px;
+  border-radius: 10px 0 0 10px;
+  height: 141px;
+  cursor: pointer; }
+  .contact-opener > span {
+    display: block;
+    transform: rotate(-90deg);
+    height: 30px;
+    width: 10px;
+    position: absolute;
+    top: 101px;
+    right: 12px;
+    font-size: 20px;
+    font-size: 1.25rem; }
 
 @keyframes fadeSlideDown {
   0% {
@@ -4225,6 +4245,17 @@ input.form-control {
     .flex-row .col.col-nav {
       padding-left: 5px;
       padding-right: 5px; } }
+  @media (max-width: 30rem) {
+    .contact-prompt {
+      width: 85%;
+      top: 8%;
+      transition: right .6s ease-in-out; }
+      .contact-prompt .prompt-wrapper::before {
+        background-position: 175% 60%; }
+        .contact-prompt .prompt-wrapper .contact-card .image {
+          left: 10px; }
+        .contact-prompt .prompt-wrapper .contact-card .name {
+          padding-left: 180px; } }
   @media (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 63.9375rem), (min-resolution: 144dpi) and (max-width: 63.9375rem) {
   .menu-wrap::before {
     background-image: url("assets/images/mobile-menu-decor@2x.png"); } }

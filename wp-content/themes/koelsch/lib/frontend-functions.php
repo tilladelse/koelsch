@@ -9,9 +9,20 @@
  */
 add_action('koelsch_after_content', 'add_contact_prompt');
 function add_contact_prompt(){
+
+ /**
+  * Logic
+  * Show if community type is IL or AL (not MC)
+  * If contact person info exists show direct contact info, if not, button will link to contact form.
+  *
+  * Contact opener button is hidden until contact panel is first displayed. Once contact prompt is dismissed, contact opener should be shown.
+  * On click of opener button will show contact prompt if contact info for community is present. If not, it will link to the contact form.
+  *
+  */
+
   ob_start();?>
   <div class="contact-prompt">
-    <a href="#" class="open-closer-holder"><ion-icon name="arrow-forward-outline"></ion-icon></a>
+    <div class="closer-wrap"><a href="#" class="closer"><ion-icon name="arrow-forward-outline"></ion-icon></a></div>
     <div class="prompt-wrapper">
       <div class="contact-card">
         <div class="image">
@@ -31,6 +42,7 @@ function add_contact_prompt(){
   </div>
   <div class="contact-opener">
     <ion-icon name="chatbox-outline"></ion-icon>
+    <span>Contact</span>
   </div>
   <?php echo ob_get_clean();
 }

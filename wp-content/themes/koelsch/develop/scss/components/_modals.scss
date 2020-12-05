@@ -4,10 +4,19 @@
   box-shadow:(10px 30px 100px $black);
   width:280px;
   position:fixed;
-  top:calc(30%);
-  right:0;
+  top:30%;
+  // right: 0;
+  right: -100%;
   z-index:9999;
   padding:20px 20px 30px;
+
+  @include animate(right, '1s');
+
+  @include media ('<=phone') {
+		width:85%;
+    top:8%;
+    @include animate(right, '.6s');
+	}
 
   .prompt-wrapper{
     &::before{
@@ -15,11 +24,16 @@
       display:block;
       content:'';
       position:absolute;
-      top:0;
+      top:60px;
       right:0;
       left:0;
       bottom:0;
+      //TODO: change this to correct src
       background:url(http://localhost:8888/koelsch/wp-content/themes/koelsch/assets/images/btn-blue-decor.png) no-repeat 250% 60%/250px 250px;
+
+      @include media ('<=phone') {
+        background-position: 175% 60%;
+      }
     }
 
     .contact-card{
@@ -31,6 +45,10 @@
         top:-20px;
         left:-75px;
 
+        @include media ('<=phone') {
+      		left:10px;
+      	}
+
         >img{
           border-radius:50%;
         }
@@ -40,6 +58,10 @@
         font-family:$base-font-serif;
         font-size:16px;
         line-height:16px;
+
+        @include media ('<=phone') {
+      		padding-left:180px;
+      	}
 
         >span{
           display:block;
@@ -73,21 +95,43 @@
       }
     }
   }
-  .open-closer-holder{
-    display:block;
-    font-size:24px;
+  .closer-wrap{
     text-align:right;
-    line-height:12px;
-
+  }
+  .closer{
+    font-size:24px;
+    // line-height:12px;
+    cursor:pointer;
     ion-icon{
       border-right:2px solid #252d3b;
     }
   }
 }
 .contact-opener{
-  background-color:#c69230;
-  position:fixed;
-  top:calc(30%);
-  right:0;
-  z-index:9998;
+    display:none;
+    background-color: #c69230;
+    position: fixed;
+    top: 30%;
+    right:0;
+    z-index: 9998;
+    color: #fff;
+    line-height: 12px;
+    font-size: 24px;
+    padding: 15px;
+    border-radius: 10px 0 0 10px;
+    height: 141px;
+    cursor: pointer;
+
+    >span{
+      display: block;
+      transform: rotate(-90deg);
+      height: 30px;
+      width: 10px;
+      position: absolute;
+      top: 101px;
+      right: 12px;
+      font-size: 20px;
+      // text-transform:uppercase;
+      // font-family:$base-font-sans-serif;
+    }
 }
