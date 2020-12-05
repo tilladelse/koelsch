@@ -423,6 +423,14 @@ function koelsch_register_theme_settings_metabox() {
     'show_option_none' => true,
   ));
   $k_settings->add_group_field($pages, array(
+    'name'       => 'Contact Page',
+    // 'desc'       => __( 'Street Address', 'koelsch' ),
+    'id'         => 'contact_page',
+    'type'       => 'select',
+    'options'   => koelsch_pages_list(),
+    'show_option_none' => true,
+  ));
+  $k_settings->add_group_field($pages, array(
     'name'       => 'Independent Living Page',
     // 'desc'       => __( 'Street Address', 'koelsch' ),
     'id'         => 'IL_page',
