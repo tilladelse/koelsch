@@ -1,0 +1,93 @@
+.contact-prompt{
+
+  background-color:$light-orange;
+  box-shadow:(10px 30px 100px $black);
+  width:280px;
+  position:fixed;
+  top:calc(30%);
+  right:0;
+  z-index:9999;
+  padding:20px 20px 30px;
+
+  .prompt-wrapper{
+    &::before{
+      opacity:.10;
+      display:block;
+      content:'';
+      position:absolute;
+      top:0;
+      right:0;
+      left:0;
+      bottom:0;
+      background:url(http://localhost:8888/koelsch/wp-content/themes/koelsch/assets/images/btn-blue-decor.png) no-repeat 250% 60%/250px 250px;
+    }
+
+    .contact-card{
+      position:relative;
+
+      .image{
+        width:150px;
+        position:absolute;
+        top:-20px;
+        left:-75px;
+
+        >img{
+          border-radius:50%;
+        }
+      }
+      .name{
+        padding:40px 0 0 90px;
+        font-family:$base-font-serif;
+        font-size:16px;
+        line-height:16px;
+
+        >span{
+          display:block;
+          font-size:12px;
+          font-family:'proxima-nova';
+        }
+      }
+    }
+    .contact-message{
+      margin-top:80px;
+      text-align:center;
+      font-family:$base-font-serif;
+      font-size:22px;
+    }
+    .contact-actions{
+      margin-top:30px;
+      font-size:24px;
+
+      ion-icon{
+        padding:10px 15px 0 0;
+        display:block;
+        float:left;
+      }
+      a{
+        float:left;
+      }
+      &::after{
+        content:'';
+        display:block;
+        clear:both;
+      }
+    }
+  }
+  .open-closer-holder{
+    display:block;
+    font-size:24px;
+    text-align:right;
+    line-height:12px;
+
+    ion-icon{
+      border-right:2px solid #252d3b;
+    }
+  }
+}
+.contact-opener{
+  background-color:#c69230;
+  position:fixed;
+  top:calc(30%);
+  right:0;
+  z-index:9998;
+}

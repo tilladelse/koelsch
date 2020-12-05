@@ -1298,6 +1298,83 @@ a {
       top: 50%;
       transform: translate(-50%, -50%); }
 
+.contact-prompt {
+  background-color: #f5eee2;
+  box-shadow: 10px 30px 100px #333;
+  width: 280px;
+  position: fixed;
+  top: calc(30%);
+  right: 0;
+  z-index: 9999;
+  padding: 20px 20px 30px; }
+  .contact-prompt .prompt-wrapper::before {
+    opacity: .10;
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: url(http://localhost:8888/koelsch/wp-content/themes/koelsch/assets/images/btn-blue-decor.png) no-repeat 250% 60%/250px 250px; }
+  .contact-prompt .prompt-wrapper .contact-card {
+    position: relative; }
+    .contact-prompt .prompt-wrapper .contact-card .image {
+      width: 150px;
+      position: absolute;
+      top: -20px;
+      left: -75px; }
+      .contact-prompt .prompt-wrapper .contact-card .image > img {
+        border-radius: 50%; }
+    .contact-prompt .prompt-wrapper .contact-card .name {
+      padding: 40px 0 0 90px;
+      font-family: "MillerBanner", "Times New Roman", "Times", "Baskerville", "Georgia", serif;
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 16px;
+      line-height: 1rem; }
+      .contact-prompt .prompt-wrapper .contact-card .name > span {
+        display: block;
+        font-size: 12px;
+        font-size: 0.75rem;
+        font-family: 'proxima-nova'; }
+  .contact-prompt .prompt-wrapper .contact-message {
+    margin-top: 80px;
+    text-align: center;
+    font-family: "MillerBanner", "Times New Roman", "Times", "Baskerville", "Georgia", serif;
+    font-size: 22px;
+    font-size: 1.375rem; }
+  .contact-prompt .prompt-wrapper .contact-actions {
+    margin-top: 30px;
+    font-size: 24px;
+    font-size: 1.5rem; }
+    .contact-prompt .prompt-wrapper .contact-actions ion-icon {
+      padding: 10px 15px 0 0;
+      display: block;
+      float: left; }
+    .contact-prompt .prompt-wrapper .contact-actions a {
+      float: left; }
+    .contact-prompt .prompt-wrapper .contact-actions::after {
+      content: '';
+      display: block;
+      clear: both; }
+  .contact-prompt .open-closer-holder {
+    display: block;
+    font-size: 24px;
+    font-size: 1.5rem;
+    text-align: right;
+    line-height: 12px;
+    line-height: 0.75rem; }
+    .contact-prompt .open-closer-holder ion-icon {
+      border-right: 2px solid #252d3b; }
+
+.contact-opener {
+  background-color: #c69230;
+  position: fixed;
+  top: calc(30%);
+  right: 0;
+  z-index: 9998; }
+
 @keyframes fadeSlideDown {
   0% {
     transform: translateY(-100%);
