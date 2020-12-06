@@ -3,6 +3,7 @@ add_action('koelsch_header', 'koelsch_header');
 function koelsch_header(){
 
   global $community_context;
+  global $page_settings;
 
   $communityClass = $community_context->inCommunityContext() ? 'community': '';
   $headerClass = apply_filters('koelsch_header_class', $communityClass );
@@ -23,8 +24,8 @@ function koelsch_header(){
          </strong>
          <nav class="menu-wrap">
            <div class="menu-holder">
-             <?php $pageSettings = get_koelsch_setting('page_settings');
-             $communityPageID = isset($pageSettings[0]['find_community_page']) ? $pageSettings[0]['find_community_page'] : false;?>
+             <?php
+             $communityPageID = isset($page_settings[0]['find_community_page']) ? $page_settings[0]['find_community_page'] : false;?>
              <a class="community-link main-item" href="<?php echo $communityPageID ? get_the_permalink($communityPageID) : '#';?>">Find a Community <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/map.png" alt="image description"></a>
              <?php wp_nav_menu(array(
                'theme_location'=>'main-nav',

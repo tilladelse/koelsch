@@ -751,6 +751,26 @@ input[type='submit'] {
   -webkit-border-radius: 0;
   cursor: pointer; }
 
+.gform_wrapper .field_sublabel_below .ginput_complex.ginput_container label,
+.gform_wrapper .field_sublabel_below div[class*=gfield_time_].ginput_container label {
+  margin: 5px 0 9px 1px !important;
+  text-transform: capitalize; }
+
+.gform_wrapper li.gfield.gfield_error,
+.gform_wrapper li.gfield.gfield_error.gfield_contains_required.gfield_creditcard_warning,
+.gform_wrapper div.validation_error {
+  border: none !important;
+  background-color: #fff !important;
+  color: #ff2626 !important; }
+
+.gform_wrapper .gfield_error .gfield_label {
+  color: #1c222d !important;
+  border-left: 2px #ff2626 solid !important;
+  padding-left: 10px; }
+
+.gform_wrapper .validation_message {
+  color: #ff2626 !important; }
+
 .widget {
   margin-bottom: 1.76471em; }
   .widget ul {
@@ -1813,7 +1833,8 @@ a {
   min-width: 220px;
   text-align: center;
   overflow: hidden;
-  text-decoration: none; }
+  text-decoration: none;
+  border: none; }
   .btn:hover::after {
     width: calc(100% - 76px); }
   .btn:hover::before {
@@ -2132,16 +2153,18 @@ input[type='url'],
 input[type='date'],
 textarea {
   transition: box-shadow 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
   display: block;
   width: 100%;
   color: #1d242e;
-  border: none;
-  box-shadow: 0 -3px 0 #918b81 inset;
-  padding: 0 0 17px;
+  border: 1px #ece6dc solid;
+  border-bottom: none;
+  box-shadow: 0 -2px 0 #918b81 inset;
+  padding: 13px !important;
   letter-spacing: 2px;
   letter-spacing: 0.125rem;
-  font-size: 18px;
-  font-size: 1.125rem;
+  font-size: 18px !important;
+  font-size: 1.125rem !important;
   line-height: 1.2;
   background-color: transparent; }
   input[type='text']::-webkit-input-placeholder,
@@ -2205,7 +2228,9 @@ textarea {
   input[type='date']:focus,
   textarea:hover,
   textarea:focus {
-    box-shadow: 0 -2px #c69230 inset; }
+    box-shadow: 0 -2px #c69230 inset;
+    outline: none;
+    border-color: #c69230; }
 
 textarea {
   height: 128px;
@@ -2214,12 +2239,12 @@ textarea {
 label {
   color: #1d242e;
   text-transform: uppercase;
-  font-size: 13px;
-  font-size: 0.8125rem;
+  font-size: 13px !important;
+  font-size: 0.8125rem !important;
   line-height: 1;
   letter-spacing: 1px;
   letter-spacing: 0.0625rem;
-  font-weight: 400;
+  font-weight: 400 !important;
   display: block;
   margin-bottom: 12px; }
 

@@ -28,6 +28,8 @@ define('THEME_VERSION', '1.0.0');
  require_once __DIR__ . '/lib/post-types.php';
  //include custom metaboxes
  require_once __DIR__ . '/lib/frontend-functions.php';
+ //contact core functionality
+ require_once __DIR__ . '/lib/contact.php';
  //header hooks
  require_once __DIR__ . '/lib/header.php';
  //footer hooks
@@ -41,7 +43,8 @@ define('THEME_VERSION', '1.0.0');
 
  //setup community context global
  global $community_context;
- $community_context = new Community_Context;
+ $community_context = new Community_Context; 
+ $community_context->getCommunityContext();
 
  add_action( 'after_setup_theme', 'koelsch_localization_setup' );
  /**

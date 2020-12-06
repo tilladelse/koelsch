@@ -13,6 +13,7 @@ jQuery(function() {
 	initCloneBlocks();
 	initFocusClass();
 });
+
 (function( $ ) {
 	$(window).on('load', function(){
 

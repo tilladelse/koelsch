@@ -51,6 +51,12 @@ class Community_Context{
    */
   var $inCommunityContext;
 
+	/**
+   * Community home page ID
+   * @var boolean
+   */
+  var $communityHomepageID;
+
   function __construct(){
     add_action('wp_ajax_setup_community_context', array($this, 'setupCommunityContext'));
     add_action('wp_ajax_nopriv_setup_community_context', array($this, 'setupCommunityContext'));
@@ -199,8 +205,8 @@ class Community_Context{
       $ancestors = get_post_ancestors($this->pageID);
 
       /**
-       * since this call is initiated by a page with the community page template,
-       * its safe to assume that if there's no ancestors with the community template
+       * This call is initiated by a page with the community page template,
+       * so its safe to assume that if there's no ancestors with the community template
        * this page is the community home page
        */
 
@@ -219,7 +225,9 @@ class Community_Context{
           $hpid = end($communityAncestors);
         }
       }
-      return $hpid;
+
+			$this->communityHomePageID = $hpid;
+      return $this->communityHomePageID;
     }
   }
 

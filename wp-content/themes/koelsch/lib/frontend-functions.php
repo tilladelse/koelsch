@@ -7,45 +7,7 @@
  * @license GPL-2.0-or-later
  * @link    https://www.tilladelse.com/
  */
-add_action('koelsch_after_content', 'add_contact_prompt');
-function add_contact_prompt(){
 
- /**
-  * Logic
-  * Show if community type is IL or AL (not MC)
-  * If contact person info exists show direct contact info, if not, button will link to contact form.
-  *
-  * Contact opener button is hidden until contact panel is first displayed. Once contact prompt is dismissed, contact opener should be shown.
-  * On click of opener button will show contact prompt if contact info for community is present. If not, it will link to the contact form.
-  *
-  */
-
-  ob_start();?>
-  <div class="contact-prompt">
-    <div class="closer-wrap"><a href="#" class="closer"><ion-icon name="arrow-forward-outline"></ion-icon></a></div>
-    <div class="prompt-wrapper">
-      <div class="contact-card">
-        <div class="image">
-          <img src="http://localhost:8888/koelsch/wp-content/uploads/2020/11/jim-gaffigan.jpg">
-        </div>
-        <div class="name">
-          Edith Gratner <span>Executive Director</span>
-        </div>
-      </div>
-      <div class="contact-message">
-        Hi I'm Edith, I'd love to talk with you about living at Park At Modesto!
-      </div>
-      <div class="contact-actions">
-        <ion-icon name="mail-outline"></ion-icon><a class="btn-outline" href="#">Message Edith</a>
-      </div>
-    </div>
-  </div>
-  <div class="contact-opener">
-    <ion-icon name="chatbox-outline"></ion-icon>
-    <span>Contact</span>
-  </div>
-  <?php echo ob_get_clean();
-}
  add_filter('wpseo_breadcrumb_separator', 'filter_wpseo_breadcrumb_separator', 10, 1);
  function filter_wpseo_breadcrumb_separator($sep) {
    return '<ion-icon name="chevron-forward-sharp"></ion-icon>';

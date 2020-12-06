@@ -3,7 +3,7 @@ add_action('koelsch_footer', 'koelsch_footer');
 function koelsch_footer(){
 
   global $community_context;
-  $pageSettings = get_koelsch_setting('page_settings');
+  global $page_settings;
 
   ob_start();?>
   <footer id="footer">
@@ -25,7 +25,7 @@ function koelsch_footer(){
             </div>
           </div>
           <div class="col col-50 col-community">
-            <?php $communityPageID = isset($pageSettings[0]['find_community_page']) ? $pageSettings[0]['find_community_page'] : false;?>
+            <?php $communityPageID = isset($page_settings[0]['find_community_page']) ? $page_settings[0]['find_community_page'] : false;?>
             <a class="community-link" href="<?php echo $communityPageID ? get_the_permalink($communityPageID) : '#';?>">Find a Community <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/map.png" alt="Find a community icon"></a>
           </div>
           <?php
@@ -58,7 +58,7 @@ function koelsch_footer(){
           </div>
           <div class="col">
             <ul class="contact-list">
-              <?php $careersPageID = isset($pageSettings[0]['careers_page']) ? $pageSettings[0]['careers_page'] : false;
+              <?php $careersPageID = isset($page_settings[0]['careers_page']) ? $page_settings[0]['careers_page'] : false;
                     if ($careersPageID){
                       ?>
                       <li>
@@ -68,11 +68,7 @@ function koelsch_footer(){
                       <?php
                     }
               ?>
-              <?php #TODO: setup contact functionality. ?>
-              <li>
-                <ion-icon name="chatbox-outline"></ion-icon>
-                <a href="#">Contact</a>
-              </li>
+              <?php do_action('koelsch_contact_footer_link');?>
             </ul>
           </div>
         </div>
@@ -158,14 +154,14 @@ function koelsch_footer_site_attribution(){
 
 function koelsch_living_types_menu(){
   global $community_context;
+  global $page_settings;
   $livingType = $community_context->getCurrentLivingTypes();
   $return = '';
   $menuItems = array();
   if ($livingType){
     $lts = isset($livingType['living_types']) ? $livingType['living_types'] : false;
     if ($lts){
-      $pageSettings = get_koelsch_setting('page_settings');
-      $pages = $pageSettings ? $pageSettings[0] : array();
+      $pages = $page_settings ? $page_settings[0] : array();
       foreach ($lts as $type){
         $pageID = isset($pages[$type.'_page']) && $pages[$type.'_page'] ? $pages[$type.'_page'] : false;
         if ($pageID){

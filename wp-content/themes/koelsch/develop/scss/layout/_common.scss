@@ -172,6 +172,7 @@ a {
 	text-align: center;
 	overflow: hidden;
 	text-decoration: none;
+	border:none;
 
 	&:hover {
 		&::after {
@@ -712,6 +713,7 @@ input[type='url'],
 input[type='date'],
 textarea {
 	@include animate(box-shadow);
+	@include animate(border-color);
 	@include placeholder {
 		color: rgba($form-elem-color, .6);
 	}
@@ -719,17 +721,20 @@ textarea {
 	display: block;
 	width: 100%;
 	color: $form-elem-color;
-	border: none;
-	box-shadow: 0 -3px 0 #918b81 inset;
-	padding: 0 0 17px;
+	border: 1px $gray-50 solid;
+	border-bottom:none;
+	box-shadow: 0 -2px 0 $gray-300 inset;
+	padding: 13px!important;
 	letter-spacing: 2px;
-	font-size: 18px;
+	font-size: 18px!important;
 	line-height: 1.2;
 	background-color: transparent;
 
 	&:hover,
 	&:focus {
 		box-shadow: 0 -2px $gold inset;
+		outline:none;
+		border-color:$gold;
 	}
 }
 
@@ -741,10 +746,10 @@ textarea {
 label {
 	color: $form-elem-color;
 	text-transform: uppercase;
-	font-size: 13px;
+	font-size: 13px!important;
 	line-height: 1;
 	letter-spacing: 1px;
-	font-weight: 400;
+	font-weight: 400!important;
 	display: block;
 	margin-bottom: 12px;
 }
@@ -753,7 +758,7 @@ label {
 	@include animate(border-color);
 
 	border: solid;
-	border-color: #c0b8ac #c0b8ac #918b81;
+	border-color: #c0b8ac #c0b8ac $gray-300;
 	border-width: 1px 1px 3px;
 	background-color: transparent;
 	font-size: 18px;

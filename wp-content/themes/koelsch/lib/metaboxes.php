@@ -142,7 +142,7 @@
     $cp->add_field( array(
   		'name'       => __( 'Email', 'koelsch' ),
   		// 'desc'       => __( 'Street Address', 'koelsch' ),
-  		'id'         => 'comtact_email',
+  		'id'         => 'contact_email',
   		'type'       => 'text_email',
   	) );
     $cp->add_field( array(
