@@ -27,6 +27,11 @@ jQuery(function() {
 			$('.contact-opener').show();
 		});
 
+		$('a.no-click, .no-click a').on('click', function(e){
+			e.preventDefault();
+			return false;
+		});
+
 	});
 })( jQuery );
 
