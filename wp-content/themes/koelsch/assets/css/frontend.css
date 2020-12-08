@@ -1770,6 +1770,9 @@ a {
 .community .main-item {
   display: none !important; }
 
+.community .hide-on-community {
+  display: none; }
+
 .community-item {
   display: none !important; }
 
