@@ -36,16 +36,13 @@ function second_level_page_menu(){
   if ($community_context->inCommunityContext){
 
     $menuID = $community_context->menuID;
-    // koelsch_get_community_sub_menu($menuID);
 
   }else{
 
-    $theme_locations = get_nav_menu_locations();
-    $menu_obj = get_term( $theme_locations['main-nav'], 'nav_menu' );
-    $menuID = $menu_obj->term_id;
-    // koelsch_get_page_sub_menu($menuID);
+    $menuID = get_main_nav_id();
 
   }
+
   koelsch_get_page_sub_menu($menuID);
   //if in community context, get submenu for the community. Else, get submenu items of the main page
   //koelsch_get_page_sub_menu($menuID, $context);

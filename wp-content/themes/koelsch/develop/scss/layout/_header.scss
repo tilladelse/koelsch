@@ -120,11 +120,16 @@
 						order: -1;
 					}
 				}
+				>a{
+					@include media ('>=desktop') {
+						font-weight: 300;
+					}
+				}
 			}
+
 
 			a {
 				@include media ('>=desktop') {
-					font-weight: 300;
 					padding: 18px 10px 16px;
 				}
 
@@ -147,7 +152,7 @@
 				a {
 					@include media ('>=desktop') {
 						padding: 0 0 0 36px;
-						font-weight: 400;
+						// font-weight: 400;
 					}
 				}
 			}
@@ -583,7 +588,7 @@
 		}
 	}
 }
-nav{
+nav, #nav{
 
 	li.current-menu-item{
 

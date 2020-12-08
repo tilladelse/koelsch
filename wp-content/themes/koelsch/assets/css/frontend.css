@@ -1605,7 +1605,7 @@ a {
     width: 100%;
     height: auto; }
 
-nav li.current-menu-item a {
+nav li.current-menu-item a, #nav li.current-menu-item a {
   font-weight: 600; }
 
 #nav {
@@ -3755,14 +3755,14 @@ input.form-control {
       #header.community #nav > li {
         margin-right: 20px;
         margin-left: 0; }
+      #header.community #nav > li > a {
+        font-weight: 300; }
       #header.community #nav a {
-        font-weight: 300;
         padding: 18px 10px 16px; }
       #header.community #nav a:not(:only-child) {
         padding-right: 10px; }
       #header.community #nav .drop a, #header.community #nav .sub-menu a {
-        padding: 0 0 0 36px;
-        font-weight: 400; }
+        padding: 0 0 0 36px; }
       #header .holder {
         border-bottom: 1px solid rgba(255, 255, 255, 0.21); }
       #header .logo {

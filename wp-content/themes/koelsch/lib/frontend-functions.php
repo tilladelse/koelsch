@@ -187,13 +187,15 @@ function get_community_logo($communityID){
 //   }
 // }
 function koelsch_get_page_sub_menu($menuID){
+  // var_dump($menuID);
   $items = wp_get_nav_menu_items($menuID);
+  // var_dump($items);
   _wp_menu_item_classes_by_context( $items );
 
   $rootID = $topParentID = $currentID = 0;
   $title = '';
+  $curr = false;
   $currentTree = array();
-// var_dump($items);
   $itemsArr = array();
   if ($items){
     foreach($items as $item){
@@ -205,6 +207,9 @@ function koelsch_get_page_sub_menu($menuID){
         'type'=>$item->type,
         'item'=>$item
       );
+      if ($item->current == true){
+        $curr = true;
+      }
     }
   }
 
@@ -224,29 +229,35 @@ function koelsch_get_page_sub_menu($menuID){
   }
 
   //get second level on down children
-  // echo '<pre>';var_dump($currentTree);echo '</pre>';
-  $level2 = false;
-  if (isset($currentTree['children'])){
-    foreach ($currentTree['children'] as $main){
-      // var_dump($main['is_current']);
-      if (($main['is_current'] || $main['is_ancestor'] )&& isset($currentTree['children'])){
-        $level2 = $main;
-        break;
+  // echo '<pre>';var_dump($h);echo '</pre>';
+
+  if ($curr){
+    $level2 = false;
+    if (isset($currentTree['children'])){
+      foreach ($currentTree['children'] as $main){
+        // var_dump($main['is_current']);
+        if (($main['is_current'] || $main['is_ancestor'] )&& isset($currentTree['children'])){
+          $level2 = $main;
+          break;
+        }
       }
     }
-  }
 
-  if (!$level2){
+    $level3 = ($level2 && isset($level2['children'])) ? $level2['children'] : false;
 
-  }
-
-  $level3 = ($level2 && isset($level2['children'])) ? $level2['children'] : false;
-
-  $title = $level2 ? $level2['item']->title : '';
-  if ($level3){
-    foreach($level3 as $item){
-      $items[] = $item['item'];
+    $title = $level2 ? $level2['item']->title : '';
+    if ($level3){
+      foreach($level3 as $item){
+        $items[] = $item['item'];
+      }
     }
+  }else{
+    // if page is outside the community menu structure get the main menu and try again
+    //current page is not in the menu
+    $menuID = get_main_nav_id();
+    // var_dump($menuID);
+    koelsch_get_page_sub_menu($menuID);
+    return;
   }
 
   display_page_sub_menu($items, $title);
@@ -283,6 +294,12 @@ function display_page_sub_menu($items, $title){
     </div>
     <?php echo ob_get_clean();
   }
+}
+function get_main_nav_id(){
+  $theme_locations = get_nav_menu_locations();
+  $menu_obj = get_term( $theme_locations['main-nav'], 'nav_menu' );
+  $menuID = $menu_obj->term_id;
+  return $menuID;
 }
 
 // function koelsch_get_community_sub_menu($menuID){
