@@ -53,6 +53,7 @@
  function add_contact_prompt(){
 
   /**
+   * TODO:
    * Logic
    * Show if community type is IL or AL (not MC)
    * If contact person info exists show direct contact info, if not, button will link to contact form.

@@ -1,5 +1,7 @@
 <?php
 function koelsch(){
+  global $community_context;
+  $community_context->getCommunityContext();
 
   global $page_settings;
   $page_settings = get_koelsch_setting('page_settings');

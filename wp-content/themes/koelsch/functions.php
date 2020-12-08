@@ -43,8 +43,7 @@ define('THEME_VERSION', '1.0.0');
 
  //setup community context global
  global $community_context;
- $community_context = new Community_Context; 
- $community_context->getCommunityContext();
+ $community_context = new Community_Context;  
 
  add_action( 'after_setup_theme', 'koelsch_localization_setup' );
  /**
