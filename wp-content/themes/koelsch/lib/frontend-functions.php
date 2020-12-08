@@ -224,8 +224,6 @@ function koelsch_get_page_sub_menu($menuID){
         break;
       }
     }
-
-
   }
 
   //get second level on down children
@@ -251,18 +249,56 @@ function koelsch_get_page_sub_menu($menuID){
         $items[] = $item['item'];
       }
     }
+    
   }else{
-    // if page is outside the community menu structure get the main menu and try again
-    //current page is not in the menu
+
     $menuID = get_main_nav_id();
-    // var_dump($menuID);
-    koelsch_get_page_sub_menu($menuID);
-    return;
+    if (is_in_menu($menuID, get_the_id())){
+      //if page is outside the community menu structure yet in the main menu, get the main menu and try again
+      //current page is not in the menu
+      $menuID = get_main_nav_id();
+      // var_dump($menuID);
+      koelsch_get_page_sub_menu($menuID);
+    }else{
+      //if page is not in the community or the main menu just stop already
+      return;
+    }
+
   }
 
   display_page_sub_menu($items, $title);
 
 }
+/**
+ * Check if post is in a menu
+ *
+ * @param $menu menu name, id, or slug
+ * @param $object_id int post object id of page
+ * @return bool true if object is in menu
+ */
+function is_in_menu( $menu = null, $object_id = null ) {
+
+    // get menu object
+    $menu_object = wp_get_nav_menu_items( esc_attr( $menu ) );
+
+    // stop if there isn't a menu
+    if( ! $menu_object )
+        return false;
+
+    // get the object_id field out of the menu object
+    $menu_items = wp_list_pluck( $menu_object, 'object_id' );
+
+    // use the current post if object_id is not specified
+    if( !$object_id ) {
+        global $post;
+        $object_id = get_queried_object_id();
+    }
+
+    // test if the specified page is in the menu or not. return true or false.
+    return in_array( (int) $object_id, $menu_items );
+
+}
+
 function build_menu_hierarchy($elements, $parentID = 0){
   $branch = array();
   foreach ($elements as $element) {
