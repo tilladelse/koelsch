@@ -1,7 +1,6 @@
 <?php
 /**
  * Koelsch.
- *
  * This file adds functions to the Koelsch Theme.
  *
  * @package Koelsch
