@@ -1616,7 +1616,7 @@ a {
     width: 100%;
     height: auto; }
 
-nav li.current-menu-item a, #nav li.current-menu-item a {
+nav li.current-menu-item > a, #nav li.current-menu-item > a {
   font-weight: 600; }
 
 #nav {

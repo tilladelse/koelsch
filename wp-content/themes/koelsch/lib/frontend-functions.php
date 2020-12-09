@@ -219,7 +219,7 @@ function koelsch_get_page_sub_menu($menuID){
 
   if ($h){
     foreach($h as $k=>$menuItemArr){
-      if($menuItemArr['is_ancestor']){
+      if($menuItemArr['is_ancestor'] || $menuItemArr['is_current']){
         $currentTree = $menuItemArr;
         break;
       }
@@ -232,6 +232,7 @@ function koelsch_get_page_sub_menu($menuID){
   if ($curr){
     $level2 = false;
     $depth = get_menu_depth($h);
+    // var_dump($depth);
 
     if (isset($currentTree['children'])){
 
