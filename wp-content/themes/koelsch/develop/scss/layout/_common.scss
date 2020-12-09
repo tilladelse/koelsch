@@ -2337,6 +2337,12 @@ input {
 	}
 	li {
 		margin-bottom: 11px;
+		a{
+			text-decoration:none;
+			&:hover{
+				text-decoration:underline;
+			}
+		}
 	}
 	.abbr {
 		margin-left: 5px;

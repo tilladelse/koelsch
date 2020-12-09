@@ -3151,6 +3151,10 @@ input.form-control {
   padding: 2px 0 23px; }
   .communities-list li {
     margin-bottom: 11px; }
+    .communities-list li a {
+      text-decoration: none; }
+      .communities-list li a:hover {
+        text-decoration: underline; }
   .communities-list .abbr {
     margin-left: 5px;
     margin-top: -4px;

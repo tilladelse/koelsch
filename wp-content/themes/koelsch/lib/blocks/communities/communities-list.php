@@ -43,7 +43,7 @@ $blockClasses .= isset($block['className']) ? ' '.$block['className'] : '';
 										if( $marker->state == $state && !empty($marker->community) ):
 											?>
 											<li>
-												<?php echo $marker->community; ?>
+												<a href="<?php echo $marker->url; ?>"><?php echo $marker->community; ?></a>
 												<span class="abbr abbr-outline"><?php echo $marker->careLevel; ?></span>
 											</li>
 											<?php

@@ -227,29 +227,40 @@ function koelsch_get_page_sub_menu($menuID){
   }
 
   //get second level on down children
-  // echo '<pre>';var_dump($h);echo '</pre>';
+  // echo '<pre>';var_dump($currentTree);echo '</pre>';
 
   if ($curr){
     $level2 = false;
+    $depth = get_menu_depth($h);
+
     if (isset($currentTree['children'])){
-      foreach ($currentTree['children'] as $main){
-        // var_dump($main['is_current']);
-        if (($main['is_current'] || $main['is_ancestor'] )&& isset($currentTree['children'])){
-          $level2 = $main;
-          break;
+
+      if ($depth == 3){
+        foreach ($currentTree['children'] as $main){
+          // var_dump($main['is_current']);
+          if (($main['is_current'] || $main['is_ancestor'] )&& isset($currentTree['children'])){
+            $level2 = $main;
+            break;
+          }
+        }
+        $level3 = ($level2 && isset($level2['children'])) ? $level2['children'] : false;
+
+        $title = $level2 ? $level2['item']->title : '';
+
+        foreach($level3 as $item){
+          $items[] = $item['item'];
+        }
+
+      }
+
+      if ($depth == 2){
+        $title = $currentTree['item']->title;
+        foreach($currentTree['children'] as $item){
+          $items[] = $item['item'];
         }
       }
     }
 
-    $level3 = ($level2 && isset($level2['children'])) ? $level2['children'] : false;
-
-    $title = $level2 ? $level2['item']->title : '';
-    if ($level3){
-      foreach($level3 as $item){
-        $items[] = $item['item'];
-      }
-    }
-    
   }else{
 
     $menuID = get_main_nav_id();
@@ -268,6 +279,19 @@ function koelsch_get_page_sub_menu($menuID){
 
   display_page_sub_menu($items, $title);
 
+}
+function get_menu_depth($menuArray){
+  $max_depth = 1;
+  foreach ($menuArray as $item) {
+      if (isset($item['children'])) {
+          $depth = get_menu_depth($item['children']) + 1;
+
+          if ($depth > $max_depth) {
+              $max_depth = $depth;
+          }
+      }
+  }
+  return $max_depth;
 }
 /**
  * Check if post is in a menu
