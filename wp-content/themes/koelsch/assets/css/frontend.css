@@ -1328,6 +1328,8 @@ a {
   z-index: 9999;
   padding: 20px 20px 30px;
   transition: right 1s ease-in-out; }
+  .contact-prompt.visible {
+    right: 0; }
   .contact-prompt .prompt-wrapper::before {
     opacity: .10;
     display: block;
@@ -1338,6 +1340,23 @@ a {
     left: 0;
     bottom: 0;
     background: url(http://localhost:8888/koelsch/wp-content/themes/koelsch/assets/images/btn-blue-decor.png) no-repeat 250% 60%/250px 250px; }
+  .contact-prompt .prompt-wrapper .name {
+    padding: 40px 0 0 90px;
+    font-family: "MillerBanner", "Times New Roman", "Times", "Baskerville", "Georgia", serif;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 16px;
+    line-height: 1rem; }
+    .contact-prompt .prompt-wrapper .name > span {
+      display: block;
+      font-size: 12px;
+      font-size: 0.75rem;
+      font-family: 'proxima-nova'; }
+  .contact-prompt .prompt-wrapper.no-image .contact-message {
+    margin-top: 0; }
+  .contact-prompt .prompt-wrapper.no-image .name {
+    padding: 20px 0 0 0;
+    text-align: center; }
   .contact-prompt .prompt-wrapper .contact-card {
     position: relative; }
     .contact-prompt .prompt-wrapper .contact-card .image {
@@ -1347,18 +1366,6 @@ a {
       left: -75px; }
       .contact-prompt .prompt-wrapper .contact-card .image > img {
         border-radius: 50%; }
-    .contact-prompt .prompt-wrapper .contact-card .name {
-      padding: 40px 0 0 90px;
-      font-family: "MillerBanner", "Times New Roman", "Times", "Baskerville", "Georgia", serif;
-      font-size: 16px;
-      font-size: 1rem;
-      line-height: 16px;
-      line-height: 1rem; }
-      .contact-prompt .prompt-wrapper .contact-card .name > span {
-        display: block;
-        font-size: 12px;
-        font-size: 0.75rem;
-        font-family: 'proxima-nova'; }
   .contact-prompt .prompt-wrapper .contact-message {
     margin-top: 80px;
     text-align: center;
@@ -1389,11 +1396,10 @@ a {
       border-right: 2px solid #252d3b; }
 
 .contact-opener {
-  display: none;
   background-color: #c69230;
   position: fixed;
   top: 30%;
-  right: 0;
+  right: -100%;
   z-index: 9998;
   color: #fff;
   line-height: 12px;
@@ -1403,8 +1409,9 @@ a {
   padding: 15px;
   border-radius: 10px 0 0 10px;
   height: 141px;
-  cursor: pointer; }
-  .contact-opener > span {
+  cursor: pointer;
+  transition: right 1s ease-in-out; }
+  .contact-opener > span, .contact-opener > a {
     display: block;
     transform: rotate(-90deg);
     height: 30px;
@@ -1413,7 +1420,11 @@ a {
     top: 101px;
     right: 12px;
     font-size: 20px;
-    font-size: 1.25rem; }
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: #fff; }
+  .contact-opener.visible {
+    right: 0; }
 
 @keyframes fadeSlideDown {
   0% {
@@ -2870,9 +2881,17 @@ label {
       margin-left: 3px;
       margin-top: 25px; }
 
+.admin-bar .sub-navigation.sticky {
+  top: 32px; }
+
 .sub-navigation {
   padding: 20px 36px;
   background-color: #fff; }
+  .sub-navigation.sticky {
+    position: fixed !important;
+    z-index: 99999 !important;
+    width: 100vw !important;
+    top: 0; }
   .sub-navigation .sub-title {
     font: 24px/1.2 "MillerBanner", "Times New Roman", "Times", "Baskerville", "Georgia", serif;
     font: 1.5rem/1.2 "MillerBanner", "Times New Roman", "Times", "Baskerville", "Georgia", serif;
@@ -4280,10 +4299,16 @@ input.form-control {
       transition: right .6s ease-in-out; }
       .contact-prompt .prompt-wrapper::before {
         background-position: 175% 60%; }
+      .contact-prompt .prompt-wrapper .name {
+        padding-left: 180px; }
+    .contact-prompt .prompt-wrapper.no-image {
+      padding-left: 0; }
         .contact-prompt .prompt-wrapper .contact-card .image {
           left: 10px; }
-        .contact-prompt .prompt-wrapper .contact-card .name {
-          padding-left: 180px; } }
+    .contact-opener {
+      width: 85%;
+      top: 8%;
+      transition: right .6s ease-in-out; } }
   @media (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 63.9375rem), (min-resolution: 144dpi) and (max-width: 63.9375rem) {
   .menu-wrap::before {
     background-image: url("assets/images/mobile-menu-decor@2x.png"); } }

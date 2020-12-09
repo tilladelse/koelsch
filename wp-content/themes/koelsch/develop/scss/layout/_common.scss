@@ -1899,6 +1899,13 @@ label {
 		}
 	}
 }
+.admin-bar{
+	.sub-navigation{
+		&.sticky{
+			top:32px;
+		}
+	}
+}
 
 .sub-navigation {
 	padding: 20px 36px;
@@ -1910,6 +1917,13 @@ label {
 		justify-content: space-between;
 		align-items: center;
 		flex-wrap: nowrap;
+	}
+
+	&.sticky{
+			position:fixed!important;
+			z-index:99999!important;
+			width:100vw!important;
+			top:0;
 	}
 
 	.sub-title {

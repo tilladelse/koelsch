@@ -17,9 +17,13 @@ jQuery(function() {
 (function( $ ) {
 	$(window).on('load', function(){
 
-		$('.contact-opener').on('click', function(){
+		$('.open-contact').on('click', function(e){
 			console.log('hey');
-			$('.contact-prompt').css({'right':'0'});
+			var ctx = $(this).data('context');
+			if (ctx == 'prompt'){
+				e.preventDefault();
+				$('.contact-prompt').css({'right':'0'});
+			}
 		});
 
 		$('.contact-prompt .closer').on('click', function(){
@@ -31,6 +35,64 @@ jQuery(function() {
 			e.preventDefault();
 			return false;
 		});
+
+
+		var subMenuEle = $('.sub-navigation');
+		subMenuEle.after('<div style="height:'+subMenuEle.outerHeight()+'px;display:none;" class="submenu-placeholder"></div>');
+		var subMenuHldr = $('.submenu-placeholder');
+
+
+		var subMenuTop = subMenuEle.length !== 0 ? subMenuEle.offset().top : 0;
+
+		$(window).bind('scroll', function () {
+			var contentTop = $('#page_content').offset().top,
+			coEle = $('.contact-opener');
+
+			if ($(window).scrollTop() > (contentTop)){
+				coEle.css({'right':'0'});
+			}
+
+			//contain contact opener to content section
+			var footerTop = $('footer').offset().top,
+			openerTop = coEle.offset().top,
+			openerHt = coEle.outerHeight(),
+			windowHt = $(window).height(),
+			eleFixedTop = 30; //percent %
+
+			if($(window).scrollTop() + (windowHt * (eleFixedTop / 100)) + openerHt + 30 >= footerTop ){
+				coEle.css({
+					'position':'absolute',
+					'top': footerTop - openerHt - 60,
+				});
+			}else if($(window).scrollTop() + (windowHt * (eleFixedTop / 100)) - 20 < contentTop){
+				coEle.css({
+					'position':'absolute',
+					'top': contentTop,
+				});
+			}else{
+				coEle.css({
+					'position':'fixed',
+					'top': eleFixedTop +'%'
+				});
+			}
+
+			console.log(subMenuTop);
+			//set fixed sub menu
+			if ($(window).scrollTop() >= subMenuTop){
+				subMenuEle.addClass('sticky');
+				subMenuHldr.show();
+			}else{
+				subMenuEle.removeClass('sticky');
+				subMenuHldr.hide();
+			}
+
+			// console.log($(window).scrollTop());
+    // if ($(window).scrollTop() > 50) {
+    //     $('.menu').addClass('fixed');
+    // } else {
+    //     $('.menu').removeClass('fixed');
+    // }
+});
 
 	});
 })( jQuery );
