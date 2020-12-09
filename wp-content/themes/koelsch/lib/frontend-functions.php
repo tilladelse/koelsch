@@ -247,8 +247,10 @@ function koelsch_get_page_sub_menu($menuID){
 
         $title = $level2 ? $level2['item']->title : '';
 
-        foreach($level3 as $item){
-          $items[] = $item['item'];
+        if ($level3){
+          foreach($level3 as $item){
+            $items[] = $item['item'];
+          }
         }
 
       }
