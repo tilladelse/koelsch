@@ -1901,8 +1901,10 @@ label {
 }
 .admin-bar{
 	.sub-navigation{
-		&.sticky{
-			top:32px;
+		@include media ('>=tablet') {
+			&.sticky{
+				top:32px;
+			}
 		}
 	}
 }

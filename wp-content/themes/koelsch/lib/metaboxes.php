@@ -206,7 +206,7 @@
     ) );
     $fp->add_field( array(
       'name'       => __( 'Floor Plan Display Name', 'koelsch' ),
-      'desc'       => __( 'This is the name that will display on the front end of the website', 'koelsch' ),
+      'desc'       => __( 'This is the name that will display on the front end of the website.', 'koelsch' ),
       'id'         => 'display_name',
       'type'       => 'text',
     ) );
@@ -511,6 +511,15 @@ function koelsch_register_general_metaboxes() {
       'top'=>'Top',
       'bottom'=>'Bottom',
       'center'=>'Center'
+    )
+  ) );
+  $opts->add_group_field( $bg, array(
+    'name'       => 'Page Background Color',
+    'id'         => 'color',
+    'type' => 'select',
+    'options'=>array(
+      'white-background'=>'White',
+      'tan-background'=>'Warm Snickerdoodle'
     )
   ) );
 }

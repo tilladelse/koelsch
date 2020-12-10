@@ -1325,7 +1325,7 @@ a {
   position: fixed;
   top: 30%;
   right: -100%;
-  z-index: 9999;
+  z-index: 49;
   padding: 20px 20px 30px;
   transition: right 1s ease-in-out; }
   .contact-prompt.visible {
@@ -1400,7 +1400,7 @@ a {
   position: fixed;
   top: 30%;
   right: -100%;
-  z-index: 9998;
+  z-index: 48;
   color: #fff;
   line-height: 12px;
   line-height: 0.75rem;
@@ -2881,9 +2881,6 @@ label {
       margin-left: 3px;
       margin-top: 25px; }
 
-.admin-bar .sub-navigation.sticky {
-  top: 32px; }
-
 .sub-navigation {
   padding: 20px 36px;
   background-color: #fff; }
@@ -3600,6 +3597,8 @@ input.form-control {
           padding-left: 10px; }
         .article .category-info .icon-logo {
           width: 45px; }
+  .admin-bar .sub-navigation.sticky {
+    top: 32px; }
         .sub-navigation .sub-nav .slick-track .slick-slide {
           padding: 0 40px 0 10px; }
     .section-wrapp {
@@ -4310,7 +4309,6 @@ input.form-control {
         .contact-prompt .prompt-wrapper .contact-card .image {
           left: 10px; }
     .contact-opener {
-      width: 85%;
       top: 8%;
       transition: right .6s ease-in-out; } }
   @media (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 63.9375rem), (min-resolution: 144dpi) and (max-width: 63.9375rem) {

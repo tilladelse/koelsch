@@ -44,9 +44,6 @@ function second_level_page_menu(){
   }
 
   koelsch_get_page_sub_menu($menuID);
-  //if in community context, get submenu for the community. Else, get submenu items of the main page
-  //koelsch_get_page_sub_menu($menuID, $context);
-
 
 }
 
