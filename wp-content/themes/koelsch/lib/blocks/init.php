@@ -8,10 +8,10 @@ function wp_acf_init_block_types() {
         // register a toolbar block.
         acf_register_block_type(array(
             'name'              => 'toolbar',
-            'title'             => __('Toolbar'),
+            'title'             => __('Community Search Toolbar'),
             'render_template'   => 'lib/blocks/toolbar/toolbar.php',
-            'category'          => 'formatting',
-            'icon'              => 'admin-comments',
+            'category'          => 'koelsch',
+            'icon'              => 'search',
             'keywords'          => array( 'toolbar', 'find' ),
         ));
 
@@ -20,7 +20,7 @@ function wp_acf_init_block_types() {
             'name'              => 'communities-list',
             'title'             => __('Communities by state list'),
             'render_template'   => 'lib/blocks/communities/communities-list.php',
-            'category'          => 'formatting',
+            'category'          => 'koelsch',
             'icon'              => 'location',
             'keywords'          => array( 'communities', 'state' , 'list' ),
             'align'	          	=> 'full',
@@ -34,7 +34,7 @@ function wp_acf_init_block_types() {
             'name'              => 'communities',
             'title'             => __('Communities near me'),
             'render_template'   => 'lib/blocks/communities/communities.php',
-            'category'          => 'formatting',
+            'category'          => 'koelsch',
             'icon'              => 'location',
             'keywords'          => array( 'communities' ),
             'align'	          	=> 'full',
@@ -48,7 +48,7 @@ function wp_acf_init_block_types() {
             'name'              => 'floorplan',
             'title'             => __('Floor Plan'),
             'render_template'   => 'lib/blocks/communities/floorplan.php',
-            'category'          => 'formatting',
+            'category'          => 'koelsch',
             'icon'              => 'grid-view',
             'keywords'          => array( 'floorplans', 'floorplan', 'floor', 'plan' ),
             'align'	          	=> 'wide',

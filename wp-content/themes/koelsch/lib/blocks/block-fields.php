@@ -7,7 +7,7 @@
 
  acf_add_local_field_group(array(
  	'key' => 'group_5fa928df03a5c',
- 	'title' => 'Communities',
+ 	'title' => 'Communities Nearby',
  	'fields' => array(
  		array(
  			'key' => 'field_5fa9290b74f04',

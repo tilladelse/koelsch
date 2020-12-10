@@ -123,4 +123,25 @@ define('THEME_VERSION', '1.0.0');
      'privacy-menu'=>__('Privacy Menu', 'koelsch')
    ));
  }
+
+add_action( 'after_setup_theme', 'add_editor_css' );
+function add_editor_css(){
+
+	add_theme_support( 'editor-styles' ); // if you don't add this line, your stylesheet won't be added
+	add_editor_style( '/assets/css/editor.css' ); // tries to include style-editor.css directly from your theme folder
+
+}
+
+add_filter( 'block_categories', 'koelsch_block_category', 10, 2);
+function koelsch_block_category( $categories, $post ) {
+  $new = array(
+    array(
+      'slug' => 'koelsch',
+      'title' => __( 'Koelsch Blocks', 'koelsch' ),
+      'icon'=>''
+    ),
+  );
+	$categories = array_merge($new, $categories);
+  return $categories;
+}
 ?>
