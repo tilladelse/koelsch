@@ -13,3 +13,23 @@
         left: calc(-50vw + 50%);
     }
 }
+.koelsch-icon{
+  .svg-wrap{
+    display:inline-block;
+  }
+  >img{
+    width:100%;
+  }
+  &.white{
+    fill:$white;
+  }
+  &.blue{
+    fill:$darker-blue;
+  }
+  &.gold{
+    fill:$gold;
+  }
+  &.purple{
+    fill:$dark-purple;
+  }
+}

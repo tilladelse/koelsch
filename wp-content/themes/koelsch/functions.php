@@ -111,9 +111,9 @@ define('THEME_VERSION', '1.0.0');
  add_image_size( 'resource-single-sm', 562, 300, true );
  add_image_size( 'resource-single-2x', 2248, 1200, true );
  add_image_size( 'page-header', 1200, 650, true );
- add_image_size( 'community_listing', 750, 454, true );
- add_image_size( 'contact_image', 150, 150, true );
- add_image_size( 'contact_image-2x', 300, 300, true );
+ add_image_size( 'community-listing', 750, 454, true );
+ add_image_size( 'contact-image', 150, 150, true );
+ add_image_size( 'contact-image-2x', 300, 300, true );
  // add_image_size( 'page-header-2x', 2000, 1200, true );
 
  add_action('init', 'register_koelsch_menus');

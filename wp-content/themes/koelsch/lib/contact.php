@@ -77,8 +77,8 @@
        $title = get_post_meta($community_context->communityID, 'contact_title', true);
        $email = get_post_meta($community_context->communityID, 'contact_email', true);
        $imageID = get_post_meta($community_context->communityID, 'contact_image_id', true);
-       $src1x = $imageID ? wp_get_attachment_image_url($imageID, 'contact_image') : '';
-       $src2x = $imageID ? wp_get_attachment_image_url($imageID, 'contact_image-2x') : '';
+       $src1x = $imageID ? wp_get_attachment_image_url($imageID, 'contact-image') : '';
+       $src2x = $imageID ? wp_get_attachment_image_url($imageID, 'contact-image-2x') : '';
        $imgSrc = $imageID ? '<div class="image"><img src="'.$src1x.'" srcset="'.$src1x.' 1x, '.$src2x.' 2x"></div>' : '';
 
        if ($fn && $ln && $email){

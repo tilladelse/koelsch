@@ -57,17 +57,26 @@ function display_breadcrumb_link($name, $link = ''){
   echo $ret;
 }
 
-function get_resource_excerpt($length = '50'){
-  $excerpt = has_excerpt() ? get_the_excerpt() : wp_trim_words(get_the_content(), $length);
+function get_resource_excerpt($length = '50', $id = null){
+  global $post;
+  $id = $id == null ? $post->ID : $id;
+  if (has_excerpt($id)){
+    $excerpt = get_the_excerpt($id);
+  }else{
+    $p = get_post($id);
+    $excerpt = wp_trim_words($p->post_content, $length);
+  }
   return $excerpt;
 }
 
-function display_resource_author(){
-    $author = get_post_meta(get_the_id(), 'author_name', true);
-    $authorTitle = get_post_meta(get_the_id(), 'author_title', true);
-    $imgID = get_post_meta(get_the_id(), 'author_image_id', true);
-    $imgArr = $imgID ? wp_get_attachment_image_src($imgID, 'author-2x') : false;
-    $imgSrc = $imgArr ? $imgArr[0] : false;
+function display_resource_author($id = null){
+  global $post;
+  $id = $id == null ? $post->ID : $id;
+  $author = get_post_meta($id, 'author_name', true);
+  $authorTitle = get_post_meta($id, 'author_title', true);
+  $imgID = get_post_meta($id, 'author_image_id', true);
+  $imgArr = $imgID ? wp_get_attachment_image_src($imgID, 'author-2x') : false;
+  $imgSrc = $imgArr ? $imgArr[0] : false;
   ?>
   <div class="author-box">
     <?php echo $imgSrc ? '<img class="author-img" src="'.$imgSrc.'" alt="'.$author.' image">' : '';?>

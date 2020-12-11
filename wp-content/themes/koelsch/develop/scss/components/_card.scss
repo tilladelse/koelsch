@@ -1,9 +1,13 @@
+.page-content{
+	.card, .card-horizontal{
+			margin-bottom:20px;
+	}
+}
 .card {
 	line-height: 1.4706;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-
 	.card-img {
 		height: 337px;
 		position: relative;

@@ -1055,6 +1055,9 @@ a {
   a:hover, a:focus {
     text-decoration: none; }
 
+.page-content .card, .page-content .card-horizontal {
+  margin-bottom: 20px; }
+
 .card {
   line-height: 1.4706;
   height: 100%;
@@ -1772,6 +1775,20 @@ a {
   outline: none; }
   a:hover {
     text-decoration: none; }
+
+.page-content .align-center {
+  text-align: center; }
+
+.page-content .align-left {
+  text-align: left; }
+
+.page-content .align-right {
+  text-align: right; }
+
+.round-image > img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px; }
 
 .community.community-item,
 .community .community-item {
@@ -3280,6 +3297,24 @@ input.form-control {
   position: relative;
   max-width: 100vw;
   width: 100vw; }
+
+.koelsch-icon .svg-wrap {
+  display: inline-block; }
+
+.koelsch-icon > img {
+  width: 100%; }
+
+.koelsch-icon.white {
+  fill: #fff; }
+
+.koelsch-icon.blue {
+  fill: #1c222d; }
+
+.koelsch-icon.gold {
+  fill: #c69230; }
+
+.koelsch-icon.purple {
+  fill: #1a1e2a; }
 
 #footer {
   color: #fff;

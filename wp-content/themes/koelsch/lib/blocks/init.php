@@ -43,7 +43,7 @@ function wp_acf_init_block_types() {
                   	)
         ));
 
-        // register a communities block.
+        // register a floorplan block.
         acf_register_block_type(array(
             'name'              => 'floorplan',
             'title'             => __('Floor Plan'),
@@ -55,6 +55,45 @@ function wp_acf_init_block_types() {
           	'supports'	        => array(
                   		'align'		=> array('wide','full'),
                   	)
+        ));
+
+        acf_register_block_type(array(
+            'name'              => 'round-image',
+            'title'             => __('Round Image'),
+            'render_template'   => 'lib/blocks/layout/round-image.php',
+            'category'          => 'koelsch',
+            'icon'              => 'format-image',
+            'keywords'          => array( 'image', 'images', 'circle', 'round' ),
+            'align'	          	=> 'wide',
+            'supports'	        => array(
+                      'align'		=> false,
+                    )
+        ));
+
+        acf_register_block_type(array(
+            'name'              => 'icons',
+            'title'             => __('Seals & Marks'),
+            'render_template'   => 'lib/blocks/layout/koelsch-seals.php',
+            'category'          => 'koelsch',
+            'icon'              => 'superhero',
+            'keywords'          => array( 'icon', 'badge', 'svg' ),
+            'align'	          	=> 'wide',
+            'supports'	        => array(
+                      'align'		=> false,
+                    )
+        ));
+
+        acf_register_block_type(array(
+            'name'              => 'article-listing',
+            'title'             => __('Article Listing'),
+            'render_template'   => 'lib/blocks/layout/article-listing.php',
+            'category'          => 'koelsch',
+            'icon'              => 'format-aside',
+            'keywords'          => array( 'icon', 'badge', 'svg' ),
+            'align'	          	=> 'wide',
+            'supports'	        => array(
+                      'align'		=> false,
+                    )
         ));
 
     }

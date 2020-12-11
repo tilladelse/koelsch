@@ -88,7 +88,7 @@
       );
       create_community_home_page($arr);
     }
-    
+
     //set wp cron to update json file after meta data has been saved
     wp_schedule_single_event( time() + 30, 'write_community_json' );
 
@@ -174,7 +174,7 @@
 
        //get listing image
        $imgID = get_post_thumbnail_id($c->ID);
-       $image = $imgID ?  wp_get_attachment_image_src( $imgID, 'community_listing') : '';
+       $image = $imgID ?  wp_get_attachment_image_src( $imgID, 'community-listing') : '';
 
        $cdata = array(
          'community'=>$c->post_title,
