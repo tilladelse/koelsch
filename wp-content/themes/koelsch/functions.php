@@ -73,29 +73,30 @@ define('THEME_VERSION', '1.0.0');
   * @since 1.0.0
   */
  function koelsch_enqueue_scripts_styles() {
-  wp_enqueue_script('jquery');
-	wp_enqueue_script(
+	wp_enqueue_script('jquery');
+	/*wp_enqueue_script(
 		'koelsch-theme',
 		get_stylesheet_directory_uri() . '/assets/js/theme.min.js',
 		[],
 		THEME_VERSION
-	);
-  wp_localize_script('koelsch-theme', 'koelsch', array(
-    'ajaxurl'=>admin_url('admin-ajax.php')
-  ));
+	);*/ 
+	  wp_localize_script('koelsch-theme', 'koelsch', array(
+		'ajaxurl'=>admin_url('admin-ajax.php')
+	  ));
 
-  wp_enqueue_script('turf','https://unpkg.com/@turf/turf/turf.min.js',[],THEME_VERSION);
-  wp_enqueue_script('mapbox','https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js',[],THEME_VERSION);
-  wp_enqueue_script('ion-icons','https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js',[],THEME_VERSION);
+	wp_enqueue_script('turf','https://unpkg.com/@turf/turf/turf.min.js',[],THEME_VERSION);
+	wp_enqueue_script('mapbox','https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js',[],THEME_VERSION);
+	wp_enqueue_script('ion-icons','https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js',[],THEME_VERSION);
+	wp_enqueue_script('base-jquery-main', get_stylesheet_directory_uri() .'/js/jquery.main.js',[],THEME_VERSION);
 
-  wp_register_style('mapbox-css','https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css',[],THEME_VERSION);
-  wp_enqueue_style('koelsch-css',get_stylesheet_directory_uri() .'/style.css',[],THEME_VERSION);
-  wp_enqueue_style('adobe-fonts','https://use.typekit.net/sfc3cfe.css',[],THEME_VERSION);
- 	wp_enqueue_style( 'dashicons' );
+	wp_register_style('mapbox-css','https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css',[],THEME_VERSION);
+	wp_enqueue_style('koelsch-css',get_stylesheet_directory_uri() .'/style.css',[],THEME_VERSION);
+	wp_enqueue_style('adobe-fonts','https://use.typekit.net/sfc3cfe.css',[],THEME_VERSION);
+	wp_enqueue_style( 'dashicons' );
 
-  if (is_page_template('page-templates/community-search.php')){
-    wp_enqueue_style('mapbox-css');
-  }
+	if (is_page_template('page-templates/community-search.php')){
+		wp_enqueue_style('mapbox-css');
+	}
  }
 
  add_theme_support( 'post-thumbnails' );
@@ -113,6 +114,41 @@ define('THEME_VERSION', '1.0.0');
  add_image_size( 'page-header', 1200, 650, true );
  add_image_size( 'community_listing', 750, 454, true );
  // add_image_size( 'page-header-2x', 2000, 1200, true );
+ 
+	/* Update from 05.12.2020 */
+	add_image_size( 'single_image_50', 1000, 750, true );
+	add_image_size( 'single_image_2x_50', 2000, 1500, true );
+	add_image_size( 'single_image_small_50', 500, 375, true );
+
+	add_image_size( 'single_image_33', 1383, 739, true );
+	add_image_size( 'single_image_2x_33', 2766, 1477, true );
+	add_image_size( 'single_image_small_33', 692, 370, true );
+
+	add_image_size( 'single_image_25', 1383, 739, true );
+	add_image_size( 'single_image_2x_25', 2766, 1477, true );
+	add_image_size( 'single_image_small_25', 692, 370, true );
+	
+	add_image_size( 'image_set', 1000, 1000, true );
+	add_image_size( 'image_set_2x', 2000, 2000, true );
+	add_image_size( 'image_set_small', 500, 500, true );
+	
+	add_image_size( 'sec_image_set', 788, 610, true );
+	add_image_size( 'sec_image_set_2x', 1575, 1220, true );
+	add_image_size( 'sec_image_set_small', 394, 305, true );
+
+	add_image_size( 'subsection_image', 1027, 516, true );
+	add_image_size( 'subsection_image_2x', 2053, 1024, true );
+	add_image_size( 'subsection_image_small', 516, 256, true );
+ 
+	add_image_size( 'slideshow_image', 1200, 645, true );
+	add_image_size( 'slideshow_image_2x', 2399, 1290, true );
+	add_image_size( 'slideshow_image_small', 300, 162, true );
+	add_image_size( 'slideshow_image_small_2x', 600, 323, true );	
+	
+	add_image_size( 'masonry_image', 503, 491, true );
+	/*add_image_size( 'masonry_image_2x', 2399, 1290, true );
+	add_image_size( 'masonry_image_small', 300, 162, true );
+	add_image_size( 'masonry_image_small_2x', 600, 323, true );*/
 
  add_action('init', 'register_koelsch_menus');
  function register_koelsch_menus(){
@@ -121,4 +157,7 @@ define('THEME_VERSION', '1.0.0');
      'privacy-menu'=>__('Privacy Menu', 'koelsch')
    ));
  }
+ 
+ // BaseACFLinkHelper class
+include( get_template_directory() . '/lib/BaseACFLinkHelper.php' );
 ?>
