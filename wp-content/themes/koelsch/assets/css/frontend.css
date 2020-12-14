@@ -3316,6 +3316,23 @@ input.form-control {
 .koelsch-icon.purple {
   fill: #1a1e2a; }
 
+.floorplan {
+  padding: 20px;
+  background-color: #fff;
+  color: #1c222d; }
+  .floorplan .title {
+    font-family: "MillerBanner", "Times New Roman", "Times", "Baskerville", "Georgia", serif;
+    color: #1c222d;
+    text-transform: none;
+    letter-spacing: normal; }
+  .floorplan ul {
+    margin: 0;
+    padding: 0; }
+    .floorplan ul li {
+      display: inline-block; }
+      .floorplan ul li span {
+        color: #9a9fa6; }
+
 #footer {
   color: #fff;
   background: #141e29;
