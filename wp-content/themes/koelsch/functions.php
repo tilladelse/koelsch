@@ -40,7 +40,7 @@ define('THEME_VERSION', '1.0.0');
 
  require_once __DIR__ . '/lib/blocks/block-fields.php';
 
- // include( get_template_directory() . '/lib/BaseACFLinkHelper.php' );
+ include( get_template_directory() . '/lib/classes/class.BaseACFLinkHelper.php' );
 
  //setup community context global
  global $community_context;

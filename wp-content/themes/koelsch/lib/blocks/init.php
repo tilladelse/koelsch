@@ -63,7 +63,7 @@ function wp_acf_init_block_types() {
 		acf_register_block_type( array(
 			'name'				=> 'single_image_and_content',
 			'title'				=> __('Single Image & Content'),
-			'render_template'   => 'blocks/content-blocks/single_image_and_content.php',
+			'render_template'   => 'lib/blocks/content-blocks/single_image_and_content.php',
 			'category'          => 'koelsch',
 			'mode'              => 'edit',
       'icon'              => 'media-document',
@@ -78,7 +78,7 @@ function wp_acf_init_block_types() {
 		acf_register_block_type( array(
 			'name'				=> 'content_area',
 			'title'				=> __('Content Area'),
-			'render_template'   => 'blocks/content-blocks/content_area.php',
+			'render_template'   => 'lib/blocks/content-blocks/content_area.php',
 			'category'          => 'koelsch',
 			'mode'              => 'preview',
       'icon'              => 'layout',
@@ -94,7 +94,7 @@ function wp_acf_init_block_types() {
 		acf_register_block_type( array(
 			'name'				=> 'gold_line',
 			'title'				=> __('Gold Line'),
-			'render_template'   => 'blocks/content-blocks/gold_line.php',
+			'render_template'   => 'lib/blocks/content-blocks/gold_line.php',
 			'category'          => 'koelsch',
 			'mode'              => 'edit',
       'icon'              => 'minus',
@@ -107,7 +107,7 @@ function wp_acf_init_block_types() {
 		acf_register_block_type( array(
 			'name'				=> 'goldtitle',
 			'title'				=> __('Gold Title'),
-			'render_template'   => 'blocks/content-blocks/goldtitle.php',
+			'render_template'   => 'lib/blocks/content-blocks/goldtitle.php',
 			'category'          => 'koelsch',
 			'mode'              => 'edit',
       'icon'              => 'minus',
@@ -120,7 +120,7 @@ function wp_acf_init_block_types() {
 		acf_register_block_type( array(
 			'name'				=> 'button',
 			'title'				=> __('Button'),
-			'render_template'   => 'blocks/content-blocks/button.php',
+			'render_template'   => 'lib/blocks/content-blocks/button.php',
 			'category'          => 'koelsch',
 			'mode'              => 'edit',
       'icon'              => 'button',
@@ -131,7 +131,7 @@ function wp_acf_init_block_types() {
 		acf_register_block_type( array(
 			'name'				=> 'image_with_caption',
 			'title'				=> __('Image With Caption'),
-			'render_template'   => 'blocks/content-blocks/image_with_caption.php',
+			'render_template'   => 'lib/blocks/content-blocks/image_with_caption.php',
 			'category'          => 'koelsch',
 			'mode'              => 'preview',
       'icon'              => 'cover-image',
@@ -146,7 +146,7 @@ function wp_acf_init_block_types() {
 		acf_register_block_type( array(
 			'name'				=> 'map',
 			'title'				=> __('Map'),
-			'render_template'   => 'blocks/content-blocks/map.php',
+			'render_template'   => 'lib/blocks/content-blocks/map.php',
 			'category'          => 'koelsch',
 			'mode'              => 'preview',
       'icon'              => 'admin-site-alt3',
@@ -163,7 +163,7 @@ function wp_acf_init_block_types() {
 		acf_register_block_type( array(
 			'name'				=> 'subsection',
 			'title'				=> __('Subsection'),
-			'render_template'   => 'blocks/content-blocks/subsection.php',
+			'render_template'   => 'lib/blocks/content-blocks/subsection.php',
 			'category'          => 'koelsch',
 			'mode'              => 'preview',
 			'align'	          	=> false,
@@ -178,7 +178,7 @@ function wp_acf_init_block_types() {
 		acf_register_block_type( array(
 			'name'				=> 'pv_slideshow',
 			'title'				=> __('Photo & Video Slideshow'),
-			'render_template'   => 'blocks/content-blocks/slideshow.php',
+			'render_template'   => 'lib/blocks/content-blocks/slideshow.php',
 			'category'          => 'koelsch',
 			'mode'              => 'edit',
       'icon'              => 'images-alt2',
@@ -189,7 +189,7 @@ function wp_acf_init_block_types() {
 		acf_register_block_type( array(
 			'name'				=> 'masonry_images',
 			'title'				=> __('Masonry Images'),
-			'render_template'   => 'blocks/content-blocks/masonry_images.php',
+			'render_template'   => 'lib/blocks/content-blocks/masonry_images.php',
 			'category'          => 'koelsch',
 			'mode'              => 'edit',
       'icon'              => 'instagram',
@@ -200,7 +200,7 @@ function wp_acf_init_block_types() {
 		acf_register_block_type( array(
 			'name'				=> 'image_and_content_set',
 			'title'				=> __('Image & Content Set'),
-			'render_template'   => 'blocks/content-blocks/image_and_content_set.php',
+			'render_template'   => 'lib/blocks/content-blocks/image_and_content_set.php',
 			'category'          => 'koelsch',
 			'mode'              => 'preview',
       'icon'              => 'media-document',
@@ -215,7 +215,7 @@ function wp_acf_init_block_types() {
 		acf_register_block_type( array(
 			'name'				=> 'main_image',
 			'title'				=> __('Main Image & Content'),
-			'render_template'   => 'blocks/content-blocks/main_image.php',
+			'render_template'   => 'lib/blocks/content-blocks/main_image.php',
 			'category'          => 'formatting',
 			'mode'              => 'preview',
       'icon'              => 'media-document',
@@ -230,7 +230,7 @@ function wp_acf_init_block_types() {
 		acf_register_block_type( array(
 			'name'				=> 'secondary_image',
 			'title'				=> __('Secondary Image & Content'),
-			'render_template'   => 'blocks/content-blocks/secondary_image.php',
+			'render_template'   => 'lib/blocks/content-blocks/secondary_image.php',
 			'category'          => 'formatting',
 			'mode'              => 'preview',
       'icon'              => 'media-document',
@@ -245,7 +245,7 @@ function wp_acf_init_block_types() {
 		acf_register_block_type( array(
 			'name'				=> 'container',
 			'title'				=> __('Container'),
-			'render_template'   => 'blocks/content-blocks/container.php',
+			'render_template'   => 'lib/blocks/content-blocks/container.php',
 			'category'          => 'koelsch',
 			'mode'              => 'preview',
       'icon'              => 'welcome-widgets-menus',

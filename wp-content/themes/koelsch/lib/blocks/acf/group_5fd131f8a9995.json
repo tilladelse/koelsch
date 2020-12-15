@@ -1,9 +1,9 @@
 {
-    "key": "group_5fd54d73441dc",
-    "title": "Container",
+    "key": "group_5fd131f8a9995",
+    "title": "Single Image & Content",
     "fields": [
         {
-            "key": "field_5fd54d7436066",
+            "key": "field_5fd1f9cbab015",
             "label": "General",
             "name": "",
             "type": "accordion",
@@ -20,7 +20,33 @@
             "endpoint": 0
         },
         {
-            "key": "field_5fd54d7436806",
+            "key": "field_5fd13992c3710",
+            "label": "Layout",
+            "name": "layout",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "50": "50\/50",
+                "33": "33\/66",
+                "25": "25\/75"
+            },
+            "default_value": false,
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5fd13a29c3711",
             "label": "Size",
             "name": "size",
             "type": "select",
@@ -45,7 +71,7 @@
             "placeholder": ""
         },
         {
-            "key": "field_5fd54d7436c23",
+            "key": "field_5fd4a54834eca",
             "label": "Has margins",
             "name": "has_margins",
             "type": "true_false",
@@ -64,7 +90,26 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_5fd54d74373bd",
+            "key": "field_5fd1f602bac20",
+            "label": "Text Overlapping",
+            "name": "text_overlapping",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5fd1f673bac21",
             "label": "Bg Color",
             "name": "bg_color",
             "type": "color_picker",
@@ -84,7 +129,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/conatiner"
+                "value": "acf\/single-image-and-content"
             }
         ]
     ],
@@ -96,5 +141,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1607993454
+    "modified": 1607993456
 }

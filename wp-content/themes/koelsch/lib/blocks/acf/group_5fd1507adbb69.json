@@ -1,40 +1,24 @@
 {
-    "key": "group_5fd54d73441dc",
-    "title": "Container",
+    "key": "group_5fd1507adbb69",
+    "title": "Button",
     "fields": [
         {
-            "key": "field_5fd54d7436066",
-            "label": "General",
-            "name": "",
-            "type": "accordion",
+            "key": "field_5fd15088e6d23",
+            "label": "Style",
+            "name": "style",
+            "type": "select",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "open": 0,
-            "multi_expand": 0,
-            "endpoint": 0
-        },
-        {
-            "key": "field_5fd54d7436806",
-            "label": "Size",
-            "name": "size",
-            "type": "select",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
             "choices": {
-                "fullwidth": "full width",
-                "in-container": "in-container"
+                "outline": "Default",
+                "orange": "Main Orange",
+                "blue": "Main Blue"
             },
             "default_value": false,
             "allow_null": 0,
@@ -45,38 +29,42 @@
             "placeholder": ""
         },
         {
-            "key": "field_5fd54d7436c23",
-            "label": "Has margins",
-            "name": "has_margins",
-            "type": "true_false",
+            "key": "field_5fd1515a41682",
+            "label": "Button title",
+            "name": "name",
+            "type": "text",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "message": "",
-            "default_value": 0,
-            "ui": 1,
-            "ui_on_text": "",
-            "ui_off_text": ""
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         },
         {
-            "key": "field_5fd54d74373bd",
-            "label": "Bg Color",
-            "name": "bg_color",
-            "type": "color_picker",
+            "key": "field_5fd1518041683",
+            "label": "Button link url",
+            "name": "url",
+            "type": "text",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "default_value": ""
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -84,7 +72,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/conatiner"
+                "value": "acf\/button"
             }
         ]
     ],

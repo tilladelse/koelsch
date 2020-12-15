@@ -1,12 +1,12 @@
 {
-    "key": "group_5fa928df03a5c",
-    "title": "Communities",
+    "key": "group_5fd145f90b29a",
+    "title": "Content Area",
     "fields": [
         {
-            "key": "field_5fa9290b74f04",
-            "label": "Title",
-            "name": "title",
-            "type": "text",
+            "key": "field_5fd13a92c3712",
+            "label": "Background color",
+            "name": "background_color",
+            "type": "color_picker",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -15,11 +15,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Communities Near you",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "default_value": ""
         }
     ],
     "location": [
@@ -27,7 +23,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/communities"
+                "value": "acf\/content-area"
             }
         ]
     ],
