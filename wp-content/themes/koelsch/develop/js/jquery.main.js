@@ -78,7 +78,7 @@ jQuery(function() {
 				});
 			}
 
-			console.log(subMenuTop);
+			// console.log(subMenuTop);
 			//set fixed sub menu
 			if ($(window).scrollTop() >= subMenuTop){
 				subMenuEle.addClass('sticky');
