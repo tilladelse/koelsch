@@ -75,12 +75,12 @@ define('THEME_VERSION', '1.0.0');
   */
  function koelsch_enqueue_scripts_styles() {
 	wp_enqueue_script('jquery');
-	/*wp_enqueue_script(
+	wp_enqueue_script(
 		'koelsch-theme',
 		get_stylesheet_directory_uri() . '/assets/js/theme.min.js',
 		[],
 		THEME_VERSION
-	);*/
+	);
 	  wp_localize_script('koelsch-theme', 'koelsch', array(
 		'ajaxurl'=>admin_url('admin-ajax.php')
 	  ));

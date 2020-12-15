@@ -1,8 +1,10 @@
 jQuery(function() {
+	initNavigationSelect();
 	initGetLocation();
 	initLoadCommunities();
 	initMapbox();
 	initSearchPanel();
+	initVideo();
 	initSlickCarousel();
 	initOpenClose();
 	initAccordion();
@@ -97,12 +99,28 @@ jQuery(function() {
 	});
 })( jQuery );
 
+// generate select from navigation
+function initNavigationSelect() {
+	jQuery('.filter-list').navigationSelect({
+		activeClass: 'nav-active',
+		defaultOptionAttr: 'title',
+		levelIndentHTML: ' &amp;bull; ',
+		defaultOptionText: '',
+		useDefaultOption: false,
+		selectClass: 'filter-select'
+	});
+}
 
 // background video init
 function initBackgroundVideo() {
 	jQuery('.bg-video').backgroundVideo({
 		activeClass: 'video-active'
 	});
+}
+
+// video init
+function initVideo() {
+    jQuery('[data-video]').bgVideo();
 }
 
 // slick init
@@ -170,6 +188,52 @@ function initSlickCarousel() {
 
 		resizeHandler();
 		jQuery(window).on('load resize orientationchange', resizeHandler);
+	});
+	jQuery('.media-gallery').each(function() {
+		var slider = jQuery(this);
+		var slides = slider.find('> div');
+		var timer = null;
+
+		slider.slick({
+			slidesToScroll: 1,
+			rows: 0,
+			arrows: true,
+			prevArrow: '<button class="slick-prev"><ion-icon name="chevron-back-sharp"></ion-icon></button>',
+			nextArrow: '<button class="slick-next"><ion-icon name="chevron-forward-sharp"></ion-icon></button>',
+			dots: false,
+			dotsClass: 'slick-dots',
+			// autoplay: true,
+			focusOnSelect: true,
+			responsive: [{
+				breakpoint: 768,
+				settings: {
+					arrows: false,
+					dots: true
+				}
+			}]
+		});
+
+		if (slider.slick('slickGetOption', 'autoplay')) {
+			slider.find('[data-video]').each(function() {
+				var holder = jQuery(this);
+
+				holder.on('playingVideo', function() {
+					slider.slick('slickPause');
+				}).on('pauseVideo', function() {
+					slider.slick('slickPlay');
+				}).on('endedVideo', function() {
+					slider.slick('slickPlay');
+				});
+			});
+		}
+
+		slider.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+			var currVideoBlock = slides.eq(currentSlide).find('[data-video]');
+
+			if (currVideoBlock.length && currVideoBlock.data('BgVideo').player) {
+				currVideoBlock.data('BgVideo').player.pause();
+			}
+		});
 	});
 }
 
@@ -344,7 +408,7 @@ window.currPosition = undefined;
 function initGetLocation() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(onSuccess, onError, {timeout:4000});
-		console.log(navigator.geolocation);
+		// console.log(navigator.geolocation);
 	} else {
 		onError();
 	}
@@ -554,6 +618,10 @@ function parseHash(str) {
 function initMapbox() {
 	var page = jQuery('html, body');
 	var isMobile = false;
+	var hiddenClass = 'hidden';
+	var popupActiveClass = 'active-popup';
+	var errorClass = 'error';
+	var activeClass = 'active';
 
 	ResponsiveHelper.addRange({
 		'..767': {
@@ -568,8 +636,93 @@ function initMapbox() {
 		}
 	});
 
+	jQuery('.section-search').mapbox({
+		mapHolder: '.map-container',
+		onInit: function(self) {
+			var items = self.holder.find('.services-card');
+			var filterItems = this.holder.find('.filter-list li');
+			var titleCategory = this.holder.find('.title-category');
+			var filterSelect = this.holder.find('.filter-select');
+			var options = filterSelect.find('option');
+			var filterItemsArr = [];
+			var currCategory = '';
+
+			items.each(function() {
+				var item = jQuery(this);
+				var coordinates = item.find('.coordinates').text().split(',');
+				var category = item.find('.category').text();
+				var title = item.find('h5').text();
+				var address = item.find('address').text();
+				var direction = item.find('.direction').text();
+
+				self.allMarkersData.push({
+					title: title,
+					coordinates: coordinates,
+					direction: direction,
+					address: address,
+					category: category
+				});
+			});
+
+			this.prepareMarkers(this.allMarkersData);
+
+			filterItems.each(function(i) {
+				var item = jQuery(this);
+				var link = item.find('a');
+
+				if (item.hasClass(activeClass)) {
+					filterLocations(link);
+					options.eq(i).attr('selected', true);
+					jcf.refresh(filterSelect);
+				}
+
+				link.on('click', function(e) {
+					e.preventDefault();
+					filterItems.removeClass(activeClass);
+					item.addClass(activeClass);
+					filterLocations(link);
+					options.removeAttr('selected');
+					options.eq(i).attr('selected', true);
+					jcf.refresh(filterSelect);
+				});
+			});
+
+			filterSelect.on('change', function() {
+				var value = options.eq(filterSelect.prop('selectedIndex')).text();
+
+				var link = filterItems.find('a:contains(' + value + ')');
+
+				if (link.length) {
+					link.trigger('click');
+				}
+			});
+
+			function filterLocations(link) {
+				currCategory = link.text().trim().toLowerCase();
+
+				items.addClass(hiddenClass);
+				filterItemsArr = [];
+
+				for (var i = 0; i < self.allMarkersData.length; i++) {
+					if (self.allMarkersData[i].category.toLowerCase().trim() === currCategory) {
+						filterItemsArr.push(self.allMarkersData[i]);
+					}
+				}
+
+				titleCategory.text(link.text());
+
+				items.filter(function(i, elem) {
+					return jQuery(elem).find('.category').text().trim().toLowerCase() === currCategory;
+				}).removeClass(hiddenClass);
+
+				self.prepareMarkers(filterItemsArr);
+			}
+		}
+	});
+
 	jQuery('.community-section').mapbox({
 		mapHolder: '.map-container',
+		paging: true,
 		onInit: function(self) {
 			this.loadState = false;
 			this.svgMap = this.holder.find('.svg-map');
@@ -612,9 +765,9 @@ function initMapbox() {
 		}
 	});
 
-	var hiddenClass = 'hidden';
-	var popupActiveClass = 'active-popup';
-	var errorClass = 'error';
+	// var hiddenClass = 'hidden';
+	// var popupActiveClass = 'active-popup';
+	// var errorClass = 'error';
 
 	function filterLocations(self) {
 		var activeItems = [];
@@ -839,6 +992,7 @@ function removeDuplicates(originalArray, prop) {
 		this.options = $.extend({
 			mapHolder: '.map-container',
 			itemsHolder: '.card-container',
+			paging:false,
 			startZoom: 10
 		}, options);
 
@@ -891,6 +1045,8 @@ function removeDuplicates(originalArray, prop) {
 
 			this.removeMarkers();
 
+			if (markers.length === 0) return;
+
 			var bounds = new mapboxgl.LngLatBounds();
 
 			markers.forEach(function(item) {
@@ -903,7 +1059,9 @@ function removeDuplicates(originalArray, prop) {
 				padding: 50
 			});
 
-			this.initPaging();
+			if (this.options.paging) {
+				this.initPaging();
+			}
 		},
 		addMarker: function(item) {
 
@@ -913,8 +1071,12 @@ function removeDuplicates(originalArray, prop) {
 			el.innerHTML = '<ion-icon name="location-sharp"></ion-icon>';
 
 			var popupHTML = tmpl(this.holder.data('template'), item);
-			var itemHTML = tmpl(this.itemsHolder.data('template'), item);
-			$(itemHTML).appendTo(this.itemsHolder);
+
+			if (this.holder.hasClass('community-section')) {
+				var itemHTML = tmpl(this.itemsHolder.data('template'), item);
+
+				$(itemHTML).appendTo(this.itemsHolder);
+			}
 
 			var popup = new mapboxgl.Popup({
 				offset: 20
@@ -993,6 +1155,354 @@ function removeDuplicates(originalArray, prop) {
 		});
 	};
 }(jQuery));
+
+/* video plugin */
+;(function($) {
+	'use strict';
+
+	function BgVideo(options) {
+		this.options = $.extend({
+			containerClass: 'js-video',
+			btnPlay: '.btn-play',
+			btnPause: '.btn-pause',
+			popupBtnClose: '<a href="#" class="close"></a>',
+			loadedClass: 'video-loaded',
+			playingClass: 'playing',
+			pausedClass: 'paused',
+			popupClass: 'js-video-popup',
+			activePopupClass: 'active-popup',
+			activePageClass: 'active-video-popup',
+			fluidVideoClass: 'fluid-video',
+			autoplayVideoClass: 'bg-video',
+			vimeoAPI: '//player.vimeo.com/api/player.js'
+		}, options);
+
+		this.init();
+	}
+
+	BgVideo.prototype = {
+		init: function() {
+			if (this.options.holder) {
+				this.findElements();
+				this.attachEvents();
+				this.makeCallback('onInit', this);
+			}
+		},
+		findElements: function() {
+			this.win = $(window);
+			this.page = $('body');
+			this.holder = $(this.options.holder);
+			this.videoContainer = null;
+			this.player = null;
+			this.videoData = this.holder.data('video');
+			this.btnPlay = this.holder.find(this.options.btnPlay);
+			this.btnPause = this.holder.find(this.options.btnPause);
+			this.autoplay = this.videoData.autoplay === undefined ? true : this.videoData.autoplay;
+			this.fluidWidth = this.videoData.fluidWidth === undefined ? false : this.videoData.fluidWidth;
+			this.isPopup = this.holder.is('a');
+			this.resizeTimer = null;
+
+			if (this.isPopup) {
+				this.popup = $('<div class="' + this.options.popupClass + '"/>').append($(this.options.popupBtnClose)).appendTo(this.page);
+				this.holder = this.popup;
+				this.btnOpen = $(this.options.holder);
+				this.btnClose = this.popup.find('> a');
+				this.autoplay = false;
+			} else {
+				if (this.autoplay) {
+					this.holder.addClass(this.options.autoplayVideoClass);
+				}
+
+				if (this.fluidWidth) {
+					this.holder.addClass(this.options.fluidVideoClass);
+				}
+
+				this.initPlayer();
+			}
+		},
+		initPlayer: function() {
+			switch (this.videoData.type) {
+				case 'vimeo':
+					this.initVimeo();
+					break;
+				case 'html5':
+					this.initHTML5();
+					break;
+				default:
+					return false;
+			}
+		},
+		attachEvents: function() {
+			var self = this;
+
+			this.playClickHandler = function(e) {
+				e.preventDefault();
+				self.playVideo();
+			};
+
+			this.pauseClickHandler = function(e) {
+				e.preventDefault();
+				self.pauseVideo();
+			};
+
+			this.openClickHandler = function(e) {
+				e.preventDefault();
+				self.showPopup();
+			};
+
+			this.closeClickHandler = function(e) {
+				e.preventDefault();
+				self.hidePopup();
+			};
+
+			this.resizeHandler = function() {
+				if (self.videoContainer !== null && !self.fluidWidth) {
+					clearTimeout(self.resizeTimer);
+
+					self.resizeTimer = setTimeout(function() {
+						self.resizeVideo();
+					}, 200);
+				}
+			};
+
+			this.holder.on('loaded.video', function() {
+				self.resizeHandler();
+				self.holder.addClass(self.options.loadedClass);
+			}).on('playing.video', function() {
+				self.pauseAllVideos();
+				self.holder.addClass(self.options.playingClass).removeClass(self.options.pausedClass).trigger('playingVideo');
+				self.makeCallback('playingVideo', self);
+			}).on('paused.video', function() {
+				self.holder.addClass(self.options.pausedClass).trigger('pauseVideo');
+				self.makeCallback('pauseVideo', self);
+			}).on('ended.video', function() {
+				self.holder.removeClass(self.options.playingClass + ' ' + self.options.pausedClass).trigger('endedVideo');
+				self.makeCallback('endedVideo', self);
+			});
+
+			if (this.isPopup) {
+				this.btnOpen.on('click', this.openClickHandler);
+				this.btnClose.on('click', this.closeClickHandler);
+			}
+
+			this.btnPlay.on('click', this.playClickHandler);
+			this.btnPause.on('click', this.pauseClickHandler);
+			this.resizeHandler();
+			this.win.on('load resize orientationchange', this.resizeHandler);
+		},
+		initVimeo: function() {
+			var self = this;
+			var blockId = this.getRandomId();
+
+			var opt = {
+				id: this.videoData.video,
+				autoplay: this.autoplay || this.isPopup,
+				autopause: this.autoplay ? false : true,
+				muted: this.autoplay ? true : false,
+				loop: this.autoplay ? true : false,
+				controls: this.autoplay ? false : true,
+				byline: this.autoplay ? false : true,
+				title: this.autoplay ? false : true
+			};
+
+			var loadPlayer = function() {
+				self.holder.attr('id', blockId);
+
+				var player = new Vimeo.Player(blockId, opt);
+
+				player.ready().then(function() {
+					self.videoContainer = self.holder.find('iframe').addClass(self.options.containerClass);
+
+					self.holder.trigger('loaded.video');
+
+					player.on('play', function() {
+						self.holder.trigger('playing.video');
+					});
+
+					player.on('pause', function() {
+						self.holder.trigger('paused.video');
+					});
+
+					player.on('ended', function() {
+						self.holder.trigger('ended.video');
+					});
+
+					self.player = {
+						play: function() {
+							player.play();
+						},
+						pause: function() {
+							player.pause();
+						}
+					};
+				});
+			};
+
+			if (typeof Vimeo === 'undefined' || typeof Vimeo.Player === 'undefined') {
+				$.getScript(this.options.vimeoAPI, loadPlayer);
+			} else {
+				loadPlayer();
+			}
+		},
+		initHTML5: function() {
+			var self = this;
+
+			var opt = {
+				controls: this.autoplay ? '' : 'controls',
+				autoplay: this.isPopup ? 'autoplay playsinline' : this.autoplay ? 'autoplay playsinline loop muted' : ''
+			};
+
+			this.videoContainer = $('<video ' + opt.controls + ' ' + opt.autoplay + ' />').addClass(this.options.containerClass).appendTo(this.holder);
+
+			this.videoContainer[0].addEventListener('loadeddata', function() {
+				self.holder.trigger('loaded.video');
+			}, false);
+
+			this.videoContainer[0].addEventListener('progress', function() {
+				self.holder.trigger('loaded.video');
+			}, false);
+
+			this.videoContainer.prop('src', this.videoData.video);
+
+			this.videoContainer.on('play', function() {
+				self.holder.trigger('playing.video');
+			}).on('pause', function() {
+				self.holder.trigger('paused.video');
+			}).on('ended', function() {
+				self.holder.trigger('ended.video');
+			});
+
+			self.player = {
+				play: function() {
+					self.videoContainer[0].play();
+				},
+				pause: function() {
+					self.videoContainer[0].pause();
+				}
+			};
+		},
+		pauseAllVideos: function() {
+			if (this.autoplay && this.videoData.type === 'html5') {
+				return;
+			}
+
+			$('[data-video].' + this.options.playingClass).not(this.holder).not('.' + this.options.autoplayVideoClass).each(function() {
+				var holder = $(this);
+
+				holder.data('BgVideo').player.pause();
+			});
+		},
+		getDimensions: function(data) {
+			var ratio = data.videoRatio || (data.videoWidth / data.videoHeight);
+			var slideWidth = data.maskWidth;
+			var slideHeight = slideWidth / ratio;
+
+			if (slideHeight < data.maskHeight) {
+				slideHeight = data.maskHeight;
+				slideWidth = slideHeight * ratio;
+			}
+
+			return {
+				width: slideWidth,
+				height: slideHeight,
+				top: (data.maskHeight - slideHeight) / 2,
+				left: (data.maskWidth - slideWidth) / 2
+			};
+		},
+		getRatio: function() {
+			if (this.videoContainer.attr('width') && this.videoContainer.attr('height')) {
+				return this.videoContainer.attr('width') / this.videoContainer.attr('height');
+			} else {
+				return 16 / 9;
+			}
+		},
+		resizeVideo: function() {
+			var styles = this.getDimensions({
+				videoRatio: this.getRatio(this.videoContainer),
+				maskWidth: this.holder.width(),
+				maskHeight: this.holder.height()
+			});
+
+			this.videoContainer.css({
+				width: styles.width,
+				height: styles.height,
+				marginTop: styles.top,
+				marginLeft: styles.left
+			});
+		},
+		playVideo: function() {
+			if (!this.holder.hasClass(this.options.loadedClass)) return;
+
+			if (!this.holder.hasClass(this.options.playingClass) || this.holder.hasClass(this.options.pausedClass)) {
+				this.player.play();
+				this.holder.blur();
+			} else {
+				if (!this.btnPause.length) {
+					this.player.pause();
+				}
+			}
+		},
+		pauseVideo: function() {
+			this.player.pause();
+		},
+		showPopup: function() {
+			var self = this;
+
+			if (this.holder.hasClass(this.options.loadedClass)) {
+				setTimeout(function() {
+					self.player.play();
+				}, 500);
+			} else {
+				this.initPlayer();
+			}
+
+			this.page.addClass(this.options.activePageClass);
+			this.popup.addClass(this.options.activePopupClass);
+		},
+		hidePopup: function() {
+			this.player.pause();
+			this.page.removeClass(this.options.activePageClass);
+			this.popup.removeClass(this.options.activePopupClass);
+		},
+		getRandomId: function() {
+			var s4 = function() {
+				return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+			};
+
+			return (s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4());
+		},
+		makeCallback: function(name) {
+			if (typeof this.options[name] === 'function') {
+				var args = Array.prototype.slice.call(arguments);
+
+				args.shift();
+				this.options[name].apply(this, args);
+			}
+		},
+		destroy: function() {
+			this.videoContainer.remove();
+			this.btnPlay.off('click', this.playClickHandler);
+			this.btnPause.off('click', this.pauseClickHandler);
+			this.win.off('load resize orientationchange', this.resizeHandler);
+
+			if (this.isPopup) {
+				this.popup.remove();
+				this.btnOpen.off('click', this.openClickHandler);
+				this.btnClose.off('click', this.closeClickHandler);
+			}
+
+			this.holder.removeClass(this.options.loadedClass + ' ' + this.options.playingClass).off('.video').removeData('BgVideo');
+		}
+	};
+
+	$.fn.bgVideo = function(opt) {
+		return this.each(function() {
+			$(this).data('BgVideo', new BgVideo($.extend(opt, {
+				holder: this
+			})));
+		});
+	};
+})(jQuery);
 
 /*
 * jQuery paging plugin
@@ -1636,6 +2146,92 @@ function removeDuplicates(originalArray, prop) {
 
 	return SlideAccordion;
 }));
+
+/*
+ * Convert navigation to select
+ */
+;(function($) {
+	function NavigationSelect(options) {
+		this.options = $.extend({
+			list: null,
+			levelIndentHTML: ' &bull; ',
+			defaultOptionAttr: 'title',
+			defaultOptionText: '...',
+			selectClass: 'nav-select',
+			activeClass: 'nav-active',
+			defaultOptionClass: 'opt-default',
+			hasDropClass: 'opt-sublevel',
+			levelPrefixClass: 'opt-level-',
+			useDefaultOption: true
+		}, options);
+		if(this.options.list) {
+			this.createSelect();
+			this.attachEvents();
+		}
+	}
+	NavigationSelect.prototype = {
+		createSelect: function() {
+			var self = this;
+			this.startIndex = 0;
+			this.navigation = $(this.options.list);
+			this.select = $('<select>').addClass(this.options.selectClass);
+			this.createDefaultOption();
+			this.createList(this.navigation, 0);
+			this.select.insertBefore(this.navigation);
+		},
+		createDefaultOption: function() {
+			if(this.options.useDefaultOption) {
+				var attrText = this.navigation.attr(this.options.defaultOptionAttr);
+				var defaultOption = $('<option>').addClass(this.options.defaultOptionClass).text(attrText || this.options.defaultOptionText);
+				this.navigation.removeAttr(this.options.defaultOptionAttr);
+				this.select.append(defaultOption);
+				this.startIndex = 1;
+			}
+		},
+		createList: function(list, level) {
+			var self = this;
+			list.children().each(function(index, item) {
+				var listItem = $(this),
+					listLink = listItem.find('a').eq(0),
+					listDrop = listItem.find('ul').eq(0),
+					hasDrop = listDrop.length > 0;
+
+				if(listLink.length) {
+					self.select.append(self.createOption(listLink, hasDrop, level, listLink.hasClass(self.options.activeClass)));
+				}
+				if(hasDrop) {
+					self.createList(listDrop, level + 1);
+				}
+			});
+		},
+		createOption: function(link, hasDrop, level, selected) {
+			var optionHTML = this.getLevelIndent(level) + link.html();
+			return $('<option>').html(optionHTML)
+								.addClass(this.options.levelPrefixClass + (level + 1))
+								.toggleClass(this.options.hasDropClass, hasDrop)
+								.val(link.attr('href')).attr('selected', selected ? 'selected' : false);
+		},
+		getLevelIndent: function(level) {
+			return (new Array(level + 1)).join(this.options.levelIndentHTML);
+		},
+		attachEvents: function() {
+			// redirect on select change
+			var self = this;
+			this.select.change(function() {
+				if(this.selectedIndex >= self.startIndex) {
+					location.href = this.value;
+				}
+			});
+		}
+	};
+
+	// jquery pluginm interface
+	$.fn.navigationSelect = function(opt) {
+		return this.each(function() {
+			new NavigationSelect($.extend({list: this}, opt));
+		});
+	};
+}(jQuery));
 
 /*
  * Simple Mobile Navigation
