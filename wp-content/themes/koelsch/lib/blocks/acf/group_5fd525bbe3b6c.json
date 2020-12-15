@@ -45,6 +45,10 @@
                             "max_height": "",
                             "max_size": "",
                             "mime_types": ""
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
                         },
                         {
                             "key": "field_5fd52c442b8d3",
@@ -52,7 +56,7 @@
                             "name": "image_2x",
                             "type": "image",
                             "instructions": "",
-                            "required": 1,
+                            "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "25",
@@ -76,7 +80,7 @@
                             "name": "image_small",
                             "type": "image",
                             "instructions": "",
-                            "required": 1,
+                            "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "25",
@@ -100,7 +104,7 @@
                             "name": "image_small_2x",
                             "type": "image",
                             "instructions": "",
-                            "required": 1,
+                            "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "25",
@@ -117,6 +121,8 @@
                             "max_height": "",
                             "max_size": "",
                             "mime_types": ""
+>>>>>>> bd9f79b8fbb986072b6df58f9cbdca9794b5bb4e
+>>>>>>> 4fae7d5f16cf33773725f6f60cafacadf598c6b7
                         }
                     ],
                     "min": "",
@@ -236,5 +242,13 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1607993455
+<<<<<<< HEAD
+    "modified": 1608040273
+=======
+<<<<<<< HEAD
+    "modified": 1608040323
+=======
+    "modified": 1608039270
+>>>>>>> bd9f79b8fbb986072b6df58f9cbdca9794b5bb4e
+>>>>>>> 4fae7d5f16cf33773725f6f60cafacadf598c6b7
 }

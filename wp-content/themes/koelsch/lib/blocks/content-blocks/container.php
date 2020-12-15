@@ -43,7 +43,6 @@ if( $bg_image &&  $h_position) {
 	$classes .= sprintf( ' %s', $h_position );    
 } ?>
 <section class="<?php echo esc_attr($classes); ?>" <?php echo $styles ?>>
-	<?php echo $bg_img; ?>	
 	<div class="container-md">
 		<?php echo '<InnerBlocks template="' . esc_attr( wp_json_encode( $template ) ) . '" />'; ?>		
 	</div>

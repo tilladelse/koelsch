@@ -19,16 +19,13 @@ $temp2 = array(
 	))
 ); ?>
 <div class="row bottom-row <?php echo esc_attr($classes); ?>">
-	<?php $sec_image = get_field('sec_image') ? wp_get_attachment_image_url(get_field('sec_image'), 'sec_image_set') : '';
-	$sec_image_2x = get_field('sec_image_2x') ? wp_get_attachment_image_url(get_field('sec_image_2x'), 'sec_image_set_2x') : '';
-	$sec_image_sm = get_field('sec_image_sm') ? wp_get_attachment_image_url(get_field('sec_image_sm'), 'sec_image_set_small') : ''; ?>
+	<?php 
+	$img = get_field('sec_image');
+	if($img){ ?>
 	<div class="col img-col">
-		<picture>
-			<source srcset="<?php echo $sec_image_sm; ?>, <?php echo $sec_image; ?> 2x" media="(max-width: 767px)">
-			<source srcset="<?php echo $sec_image; ?>, <?php echo $sec_image_2x; ?> 2x">
-			<img src="<?php echo $sec_image; ?>" alt="image description">
-		</picture>
+		<?php retina_image($img, 'sec_image_set', 'sec_image_set_2x', 'sec_image_set_small', 'sec_image_set'); ?>
 	</div>
+	<?php } ?>
 	<div class="col text-col">
 		<div class="text-box">
 			<?php echo '<InnerBlocks template="' . esc_attr( wp_json_encode( $temp2 ) ) . '" />'; ?>

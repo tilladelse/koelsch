@@ -42,6 +42,10 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
         },
         {
             "key": "field_5fd12e8a2e7eb",
@@ -49,7 +53,7 @@
             "name": "image_2x",
             "type": "image",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "25",
@@ -73,8 +77,15 @@
             "name": "image_small",
             "type": "image",
             "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5fd12e762e7ea",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "25",
                 "class": "",
@@ -90,6 +101,8 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
+>>>>>>> bd9f79b8fbb986072b6df58f9cbdca9794b5bb4e
+>>>>>>> 4fae7d5f16cf33773725f6f60cafacadf598c6b7
         }
     ],
     "location": [
@@ -130,5 +143,13 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1607993456
+<<<<<<< HEAD
+    "modified": 1608040238
+=======
+<<<<<<< HEAD
+    "modified": 1608040324
+=======
+    "modified": 1608039179
+>>>>>>> bd9f79b8fbb986072b6df58f9cbdca9794b5bb4e
+>>>>>>> 4fae7d5f16cf33773725f6f60cafacadf598c6b7
 }

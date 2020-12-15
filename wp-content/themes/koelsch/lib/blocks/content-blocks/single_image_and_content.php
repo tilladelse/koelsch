@@ -54,20 +54,13 @@ if( $bg_image &&  $h_position) {
 	$classes .= sprintf( ' %s', $h_position );    
 } ?>
 <section class="<?php echo esc_attr($classes); ?>" <?php echo $styles ?>>
-	<?php echo $bg_image; ?>
 	<?php echo $container_classes_before; ?>
 		<div class="row">
 			<?php
-			$image = get_field('image') ? wp_get_attachment_image_url(get_field('image'), 'single_image_'.$layout) : '';
-			$image_2x = get_field('image_2x') ? wp_get_attachment_image_url(get_field('image_2x'), 'single_image_'.$layout) : '';
-			$image_sm = get_field('image_small') ? wp_get_attachment_image_url(get_field('image_small'), 'single_image_'.$layout) : '';
-			if($image && $image_2x && $image_sm){ ?>
+			$img = get_field('image');
+			if($img){ ?>
 				<div class="col img-col">
-					<picture>
-						<source srcset="<?php echo $image_sm; ?>, <?php echo $image; ?> 2x" media="(max-width: 767px)">
-						<source srcset="<?php echo $image; ?>, <?php echo $image_2x; ?> 2x">
-						<img src="<?php echo $image; ?>" alt="image description">
-					</picture>
+					<?php retina_image($img, 'single_image_'.$layout, 'single_image_2x_'.$layout, 'single_image_small_'.$layout, 'single_image_'.$layout); ?>
 				</div>
 			<?php } ?>
 			<?php echo '<InnerBlocks template="' . esc_attr( wp_json_encode( $templ_content ) ) . '" />'; ?>

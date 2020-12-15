@@ -51,7 +51,8 @@ $media-expressions: (
 
 @import 'components/card';
 @import 'components/map-style';
-@import 'components/modals';
+@import 'components/media-gallery';
+@import 'components/content-blocks';
 
 @import 'layout/header';
 @import 'layout/common';

@@ -99,58 +99,62 @@ define('THEME_VERSION', '1.0.0');
 	}
  }
 
- add_theme_support( 'post-thumbnails' );
- add_theme_support('align-wide');
- // Add image sizes.
- add_image_size( 'author-2x', 90, 90, true );
- add_image_size( 'author', 45, 45, true );
- add_image_size( 'resource-listing-sm', 130, 130, true );
- add_image_size( 'resource-listing-sm-2x', 260, 260, true );
- add_image_size( 'resource-listing', 605, 400, true );
- add_image_size( 'resource-listing-2x', 1210, 800, true );
- add_image_size( 'resource-single', 1124, 600, true );
- add_image_size( 'resource-single-sm', 562, 300, true );
- add_image_size( 'resource-single-2x', 2248, 1200, true );
- add_image_size( 'page-header', 1200, 650, true );
- add_image_size( 'community-listing', 750, 454, true );
- add_image_size( 'contact-image', 150, 150, true );
- add_image_size( 'contact-image-2x', 300, 300, true );
- // add_image_size( 'page-header-2x', 2000, 1200, true );
+add_theme_support( 'post-thumbnails' );
+add_theme_support('align-wide');
+// Add image sizes.
+add_image_size( 'author-2x', 90, 90, true );
+add_image_size( 'author', 45, 45, true );
+add_image_size( 'resource-listing-sm', 130, 130, true );
+add_image_size( 'resource-listing-sm-2x', 260, 260, true );
+add_image_size( 'resource-listing', 605, 400, true );
+add_image_size( 'resource-listing-2x', 1210, 800, true );
+add_image_size( 'resource-single', 1124, 600, true );
+add_image_size( 'resource-single-sm', 562, 300, true );
+add_image_size( 'resource-single-2x', 2248, 1200, true );
+add_image_size( 'page-header', 1200, 650, true );
+add_image_size( 'community-listing', 750, 454, true );
+add_image_size( 'contact-image', 150, 150, true );
+add_image_size( 'contact-image-2x', 300, 300, true );
+// add_image_size( 'page-header-2x', 2000, 1200, true );
 
-	/* Update from 05.12.2020 */
-	add_image_size( 'single_image_50', 1000, 750, true );
-	add_image_size( 'single_image_2x_50', 2000, 1500, true );
-	add_image_size( 'single_image_small_50', 500, 375, true );
+/* Update from 05.12.2020 */
+add_image_size( 'single_image_50', 1000, 750, true );
+add_image_size( 'single_image_2x_50', 2000, 1500, true );
+add_image_size( 'single_image_small_50', 500, 375, true );
 
-	add_image_size( 'single_image_33', 1383, 739, true );
-	add_image_size( 'single_image_2x_33', 2766, 1477, true );
-	add_image_size( 'single_image_small_33', 692, 370, true );
+add_image_size( 'single_image_33', 1383, 739, true );
+add_image_size( 'single_image_2x_33', 2766, 1477, true );
+add_image_size( 'single_image_small_33', 692, 370, true );
 
-	add_image_size( 'single_image_25', 1383, 739, true );
-	add_image_size( 'single_image_2x_25', 2766, 1477, true );
-	add_image_size( 'single_image_small_25', 692, 370, true );
+add_image_size( 'single_image_25', 1383, 739, true );
+add_image_size( 'single_image_2x_25', 2766, 1477, true );
+add_image_size( 'single_image_small_25', 692, 370, true );
 
-	add_image_size( 'image_set', 1000, 1000, true );
-	add_image_size( 'image_set_2x', 2000, 2000, true );
-	add_image_size( 'image_set_small', 500, 500, true );
+add_image_size( 'image_set', 1000, 1000, true );
+add_image_size( 'image_set_2x', 2000, 2000, true );
+add_image_size( 'image_set_small', 500, 500, true );
 
-	add_image_size( 'sec_image_set', 788, 610, true );
-	add_image_size( 'sec_image_set_2x', 1575, 1220, true );
-	add_image_size( 'sec_image_set_small', 394, 305, true );
+add_image_size( 'image_and_caption', 1868, 888, true );
+add_image_size( 'image_and_caption_2x', 2560, 1270, true );
+add_image_size( 'image_and_caption_small', 934, 444, true );
 
-	add_image_size( 'subsection_image', 1027, 516, true );
-	add_image_size( 'subsection_image_2x', 2053, 1024, true );
-	add_image_size( 'subsection_image_small', 516, 256, true );
+add_image_size( 'sec_image_set', 788, 610, true );
+add_image_size( 'sec_image_set_2x', 1575, 1220, true );
+add_image_size( 'sec_image_set_small', 394, 305, true );
 
-	add_image_size( 'slideshow_image', 1200, 645, true );
-	add_image_size( 'slideshow_image_2x', 2399, 1290, true );
-	add_image_size( 'slideshow_image_small', 300, 162, true );
-	add_image_size( 'slideshow_image_small_2x', 600, 323, true );
+add_image_size( 'subsection_image', 1027, 516, true );
+add_image_size( 'subsection_image_2x', 2053, 1024, true );
+add_image_size( 'subsection_image_small', 516, 256, true );
 
-	add_image_size( 'masonry_image', 503, 491, true );
-	/*add_image_size( 'masonry_image_2x', 2399, 1290, true );
-	add_image_size( 'masonry_image_small', 300, 162, true );
-	add_image_size( 'masonry_image_small_2x', 600, 323, true );*/
+add_image_size( 'slideshow_image', 1200, 645, true );
+add_image_size( 'slideshow_image_2x', 2399, 1290, true );
+add_image_size( 'slideshow_image_small', 300, 162, true );
+add_image_size( 'slideshow_image_small_2x', 600, 323, true );
+
+add_image_size( 'masonry_image', 503, 491, true );
+/*add_image_size( 'masonry_image_2x', 2399, 1290, true );
+add_image_size( 'masonry_image_small', 300, 162, true );
+add_image_size( 'masonry_image_small_2x', 600, 323, true );*/
 
  add_action('init', 'register_koelsch_menus');
  function register_koelsch_menus(){
@@ -179,5 +183,19 @@ function koelsch_block_category( $categories, $post ) {
   );
 	$categories = array_merge($new, $categories);
   return $categories;
+}
+
+function retina_image($img, $img_size, $img_size_2x, $img_size_sm, $img_size_sm_2x){	
+	if($img){
+		$image = $img ? wp_get_attachment_image_url($img, $img_size) : '';
+		$image_2x = $img ? wp_get_attachment_image_url($img, $img_size_2x) : '';
+		$image_sm = $img ? wp_get_attachment_image_url($img, $img_size_sm) : '';
+		$image_sm_2x = $img ? wp_get_attachment_image_url($img, $img_size_sm_2x) : ''; ?>
+		<picture>
+			<source srcset="<?php echo $image_sm; ?>, <?php echo $image_sm_2x; ?> 2x" media="(max-width: 767px)">
+			<source srcset="<?php echo $image; ?>, <?php echo $image_2x; ?> 2x">
+			<img src="<?php echo $image; ?>" alt="image description">
+		</picture> <?php	
+	}
 }
 ?>

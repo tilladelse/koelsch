@@ -1,0 +1,158 @@
+.gallery-section {
+	margin-bottom: 25px;
+
+	@include media ('>=tablet') {
+		margin-bottom: 30px;
+	}
+
+	@include media ('>=desktop') {
+		margin-bottom: 50px;
+	}
+}
+
+.media-gallery {
+	margin: 0 -15px 0 -30px;
+
+	@include media ('>=tablet') {
+		margin: 0 50px;
+	}
+
+	@include media ('>=fullscreen') {
+		margin: 0 -22px 50px;
+	}
+
+	.slick-list {
+		overflow: visible;
+		padding-right: 45px;
+
+		@include media ('>=tablet') {
+			padding-right: 0;
+		}
+	}
+
+	.slick-slide {
+		@include animate(opacity);
+
+		padding: 0 15px;
+		opacity: .6;
+
+		@include media ('>=tablet') {
+			padding: 0 15px;
+		}
+
+		@include media ('>=widescreen') {
+			padding: 0 22px;
+		}
+
+		&.slick-active {
+			opacity: 1;
+		}
+
+		img {
+			display: block;
+			width: 100%;
+		}
+	}
+
+	.slick-arrow {
+		@include animate(color);
+		@include size(40px);
+
+		padding: 0;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 10;
+		border: none;
+		background: none;
+		font-size: 26px;
+		color: #000;
+
+		@include media ('>=widescreen') {
+			font-size: 38px;
+		}
+
+		&:hover {
+			color: $white;
+
+			&::before {
+				background-color: $gold;
+			}
+		}
+
+		&::before {
+			@include size(40px);
+			@include animate(background-color);
+
+			content: '';
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			background-color: $white;
+			transform: translate(-50%, -50%) rotate(45deg);
+
+			@include media ('>=widescreen') {
+				@include size(60px);
+			}
+		}
+
+		&.slick-prev {
+			left: -5px;
+
+			@include media ('>=widescreen') {
+				left: 1px;
+			}
+		}
+
+		&.slick-next {
+			right: -5px;
+
+			@include media ('>=widescreen') {
+				right: 1px;
+			}
+		}
+
+		ion-icon {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	.slick-dots {
+		@extend %listreset;
+
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		padding-top: 20px;
+
+		li {
+			margin: 0 6px;
+
+			&.slick-active {
+				button {
+					background-color: #2e2e2e;
+				}
+			}
+		}
+
+		button {
+			@include size(10px);
+			@include animate(background-color);
+
+			background-color: #cfc4b1;
+			border: none;
+			padding: 0;
+			font-size: 0;
+			display: block;
+			border-radius: 50%;
+
+			&:hover {
+				background-color: #2e2e2e;
+			}
+		}
+	}
+}

@@ -19,18 +19,12 @@ $temp = array(
 	))
 );
 $border_color = get_field('border_color');
-$image = get_field('image') ? wp_get_attachment_image_url(get_field('image'), 'subsection_image') : '';
-$image_2x = get_field('image_2x') ? wp_get_attachment_image_url(get_field('image_2x'), 'subsection_image_2x') : '';
-$image_sm = get_field('image_small') ? wp_get_attachment_image_url(get_field('image_small'), 'subsection_image_small') : ''; ?>
+$img = get_field('image'); ?>
 
 <section class="resource-block <?php echo esc_attr($classes); ?>">
 	<div class="img-box">
-		<?php if($image && $image_2x && $image_sm){ ?>
-			<picture>
-				<source srcset="<?php echo $image_sm; ?>, <?php echo $image; ?> 2x" media="(max-width: 767px)">
-				<source srcset="<?php echo $image; ?>, <?php echo $image_2x; ?> 2x">
-				<img src="<?php echo $image; ?>" alt="image description">
-			</picture>
+		<?php if($img){ ?>
+			<?php retina_image($img, 'subsection_image', 'subsection_image_2x', 'subsection_image_small', 'subsection_image'); ?>
 		<?php } ?>
 		<div class="category-info">
 			<?php if($block_title = get_field('block_title')){ ?><span class="text"><?php echo esc_attr($block_title) ?></span><?php } ?>
