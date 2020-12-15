@@ -40,7 +40,7 @@ define('THEME_VERSION', '1.0.0');
 
  require_once __DIR__ . '/lib/blocks/block-fields.php';
 
- include( get_template_directory() . '/lib/BaseACFLinkHelper.php' );
+ // include( get_template_directory() . '/lib/BaseACFLinkHelper.php' );
 
  //setup community context global
  global $community_context;
@@ -88,7 +88,6 @@ define('THEME_VERSION', '1.0.0');
 	wp_enqueue_script('turf','https://unpkg.com/@turf/turf/turf.min.js',[],THEME_VERSION);
 	wp_enqueue_script('mapbox','https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js',[],THEME_VERSION);
 	wp_enqueue_script('ion-icons','https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js',[],THEME_VERSION);
-	wp_enqueue_script('base-jquery-main', get_stylesheet_directory_uri() .'/js/jquery.main.js',[],THEME_VERSION);
 
 	wp_register_style('mapbox-css','https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css',[],THEME_VERSION);
 	wp_enqueue_style('koelsch-css',get_stylesheet_directory_uri() .'/style.css',[],THEME_VERSION);
