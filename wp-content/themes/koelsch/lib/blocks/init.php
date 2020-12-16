@@ -67,6 +67,7 @@ function wp_acf_init_block_types() {
     			'category'          => 'koelsch',
     			'mode'              => 'edit',
           'icon'              => 'media-document',
+          'align'             => 'left',
           'keywords'          => array( 'image', 'content' ),
     			'supports'			=> array(
     				'mode' => true,
@@ -124,7 +125,7 @@ function wp_acf_init_block_types() {
     			'category'          => 'koelsch',
     			'mode'              => 'edit',
           'icon'              => 'button',
-    			'align'	          	=> 'wide',
+    			'align'	          	=> 'left',
           'supports'			=> array(
     				'align' => array('left', 'center', 'right'),
     			),
@@ -136,8 +137,9 @@ function wp_acf_init_block_types() {
     			'title'				=> __('Image With Caption'),
     			'render_template'   => 'lib/blocks/content-blocks/image_with_caption.php',
     			'category'          => 'koelsch',
-    			'mode'              => 'preview',
+    			'mode'              => 'edit',
           'icon'              => 'cover-image',
+          'align'             => 'right',
           'keywords'          => array( 'image', 'caption' ),
     			'supports'			=> array(
     				'mode' => true,

@@ -1,6 +1,6 @@
 {
     "key": "group_5fc82cf7cc860",
-    "title": "Floor Plan Settings",
+    "title": "Floor Plan",
     "fields": [
         {
             "key": "field_5fc82d43a6b17",
@@ -17,6 +17,7 @@
             },
             "choices": {
                 "0": "Choose One",
+                "1703": "IL 2 Bed w\/ Den",
                 "1575": "Memory Care \"P\" Style 1 Bed, 1 Bath"
             },
             "default_value": false,
@@ -45,5 +46,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1606959901
+    "modified": 1608146453
 }

@@ -130,13 +130,6 @@
                 "operator": "==",
                 "value": "acf\/container"
             }
-        ],
-        [
-            {
-                "param": "block",
-                "operator": "==",
-                "value": "all"
-            }
         ]
     ],
     "menu_order": 50,
@@ -147,5 +140,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1608084500
+    "modified": 1608145908
 }
