@@ -87,13 +87,6 @@ jQuery(function() {
 				subMenuEle.removeClass('sticky');
 				subMenuHldr.hide();
 			}
-
-			// console.log($(window).scrollTop());
-    // if ($(window).scrollTop() > 50) {
-    //     $('.menu').addClass('fixed');
-    // } else {
-    //     $('.menu').removeClass('fixed');
-    // }
 });
 
 	});
@@ -296,6 +289,29 @@ function initOpenClose() {
 			}
 		}
 	});
+	/**
+    Add dropdown menu support for community menus
+		@since 12/16/20
+		@author JP Cozby
+	 **/
+	ResponsiveHelper.addRange({
+		'1024..': {
+			on: function() {
+				jQuery('#commNav > ul > li').openClose({
+					activeClass: 'active-drop',
+					opener: '> a',
+					slider: '.drop',
+					animSpeed: 400,
+					event: 'hover',
+					effect: 'slide',
+					setCommNavHeight: true
+				});
+			},
+			off: function() {
+				jQuery('#commNav > ul > li').openClose('destroy');
+			}
+		}
+	});
 }
 
 // accordion menu init
@@ -387,9 +403,17 @@ function initFocusClass() {
 window.currPosition = undefined;
 
 // get location init
+
 function initGetLocation() {
 	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(onSuccess, onError);
+		/**
+		 * Added timeout for geolocation. Default is infinity.
+		 * Adding a timeout will cause location to be fetched from
+		 * geolocation-db.com if getCurrentPosition fails.
+		 * @since 12/16/20
+		 * @author JP Cozby
+		 */
+		navigator.geolocation.getCurrentPosition(onSuccess, onError, {timeout:4000});
 	} else {
 		onError();
 	}
@@ -401,7 +425,12 @@ function initGetLocation() {
 
 	function onError() {
 		jQuery.ajax({
-			url: 'http://geolocation-db.com/json/',
+			/**
+			 * http to https
+			 * @since 12/16/20
+			 * @author JP Cozby
+			 */
+			url: 'https://geolocation-db.com/json/',
 			dataType: 'json',
 			success: function(position) {
 				currPosition = [position.longitude, position.latitude];
@@ -455,6 +484,12 @@ function initLoadCommunities() {
 					var item = tmpl(holder.data('template'), loadData[i]);
 
 					jQuery(item).appendTo(holder);
+					/**
+					 * Add active class to holder.
+					 * @since 12/16/20
+					 * @author JP Cozby
+					 */
+					holder.addClass('active');
 				}
 			}
 		}
@@ -1004,7 +1039,13 @@ function removeDuplicates(originalArray, prop) {
 			this.map = new mapboxgl.Map({
 				container: self.mapHolder[0],
 				style: self.holder.data('styles'),
-				zoom: self.options.startZoom
+				zoom: self.options.startZoom,
+				/**
+				 * Added map center on Koelsch Home Office
+				 * @since 12/16/20
+				 * @author JP Cozby
+				 */
+				center: [-122.212814, 46.955601],
 			});
 
 			if (!this.options.scrollZoom) {
@@ -1667,7 +1708,14 @@ function removeDuplicates(originalArray, prop) {
 			animSpeed: 400,
 			effect: 'fade',
 			event: 'click',
-			setHeaderHeight: false
+			setHeaderHeight: false,
+			/**
+			 * Added property for community nav height
+			 * @since 12/16/20
+			 * @author JP Cozby
+			 */
+			setCommNavHeight: false
+
 		}, options);
 
 		this.init();
@@ -1686,6 +1734,12 @@ function removeDuplicates(originalArray, prop) {
 			this.opener = this.holder.find(this.options.opener);
 			this.slider = this.holder.find(this.options.slider);
 			this.header = $('#header .container');
+			/**
+			 * Added property commMenu for community nav
+			 * @since 12/16/20
+			 * @author JP Cozby
+			 */
+			this.commMenu = $('#commNav');
 			this.indent = 0;
 		},
 		attachEvents: function() {
@@ -1746,6 +1800,14 @@ function removeDuplicates(originalArray, prop) {
 			if (this.options.setHeaderHeight && this.slider.length) {
 				this.indent = parseFloat(this.slider.css('paddingTop')) + parseFloat(this.slider.css('paddingBottom'));
 			}
+			/**
+			 * Added resize padding for community nav menu
+			 * @since 12/16/20
+			 * @author JP Cozby
+			 */
+			 if (this.options.setCommNavHeight && this.slider.length) {
+ 				this.indent = parseFloat(this.slider.css('paddingTop')) + parseFloat(this.slider.css('paddingBottom'));
+ 			}
 		},
 		showSlide: function() {
 			var self = this;
@@ -1785,6 +1847,27 @@ function removeDuplicates(originalArray, prop) {
 					paddingBottom: totalHeight
 				}, this.options.animSpeed);
 			}
+			/**
+			 * Added resize functionality for community nav menu.
+			 * TODO: This should be combigned with the previous header height logic
+			 * for code optimization
+			 * @since 12/16/20
+			 * @author JP Cozby
+			 */
+			 if (this.options.setCommNavHeight && this.slider.length) {
+	 				var items = self.slider.find('>li');
+	 				var totalHeight = 0;
+
+	 				items.each(function() {
+	 					totalHeight += $(this).outerHeight(true);
+	 				});
+
+	 				totalHeight += this.indent;
+
+	 				this.commMenu.stop().animate({
+	 					paddingBottom: totalHeight
+	 				}, this.options.animSpeed);
+	 			}
 		},
 		hideSlide: function() {
 			var self = this;
@@ -1815,6 +1898,20 @@ function removeDuplicates(originalArray, prop) {
 					paddingBottom: 0
 				}, this.options.animSpeed);
 			}
+
+			/**
+			 * Added hide slide logic for community nav menu.
+			 * TODO: This should be combigned with the previous header height logic
+			 * for code optimization
+			 * @since 12/16/20
+			 * @author JP Cozby
+			 */
+			 if (this.options.setCommNavHeight && this.slider.length) {
+ 				this.commMenu.stop().animate({
+ 					paddingBottom: 0
+ 				}, this.options.animSpeed);
+ 			}
+
 		},
 		destroy: function() {
 			this.slider.removeClass(slideHiddenClass).css({
