@@ -75,22 +75,22 @@ define('THEME_VERSION', '1.0.0');
   */
  function koelsch_enqueue_scripts_styles() {
 	wp_enqueue_script('jquery');
-	
-	wp_localize_script('koelsch-theme', 'koelsch', array(
-	'ajaxurl'=>admin_url('admin-ajax.php')
-	));
 
 	wp_enqueue_script('turf','https://unpkg.com/@turf/turf/turf.min.js',[],THEME_VERSION);
 	wp_enqueue_script('mapbox','https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js',[],THEME_VERSION);
 	wp_enqueue_script('ion-icons','https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js',[],THEME_VERSION);
-	
+
 	wp_enqueue_script(
 		'koelsch-theme',
 		get_stylesheet_directory_uri() . '/assets/js/theme.min.js',
 		[],
 		THEME_VERSION
 	);
-	
+
+  wp_localize_script('koelsch-theme', 'koelsch', array(
+	'ajaxurl'=>admin_url('admin-ajax.php')
+	));
+
 	wp_register_style('mapbox-css','https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css',[],THEME_VERSION);
 	wp_enqueue_style('koelsch-css',get_stylesheet_directory_uri() .'/style.css',[],THEME_VERSION);
 	wp_enqueue_style('adobe-fonts','https://use.typekit.net/sfc3cfe.css',[],THEME_VERSION);
@@ -144,9 +144,9 @@ add_image_size( 'sec_image_set', 788, 610, true );
 add_image_size( 'sec_image_set_2x', 1575, 1220, true );
 add_image_size( 'sec_image_set_small', 394, 305, true );
 
-add_image_size( 'subsection_image', 1027, 516, true );
-add_image_size( 'subsection_image_2x', 2053, 1024, true );
-add_image_size( 'subsection_image_small', 516, 256, true );
+add_image_size( 'subsection_image', 1000, 500, true );
+add_image_size( 'subsection_image_2x', 2000, 1000, true );
+add_image_size( 'subsection_image_small', 500, 250, true );
 
 add_image_size( 'slideshow_image', 1200, 645, true );
 add_image_size( 'slideshow_image_2x', 2399, 1290, true );
@@ -169,8 +169,8 @@ add_image_size( 'masonry_image_small_2x', 600, 323, true );*/
 add_action( 'after_setup_theme', 'add_editor_css' );
 function add_editor_css(){
 
-	add_theme_support( 'editor-styles' ); // if you don't add this line, your stylesheet won't be added
-	add_editor_style( '/assets/css/editor.css' ); // tries to include style-editor.css directly from your theme folder
+	add_theme_support( 'editor-styles' );
+	add_editor_style( '/assets/css/editor.css' );
 
 }
 

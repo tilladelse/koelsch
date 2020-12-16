@@ -154,7 +154,7 @@ class Community_Context{
       global $post;
       echo '<script type="text/javascript" id="community_context">
           jQuery(document).ready(function(){
-              // console.log("setup community context");
+              console.log("setup community context");
               jQuery.ajax({type : "post",url : koelsch.ajaxurl,data : {action: "setup_community_context", page_id:"'.$post->ID.'"}});
           });
       </script>';

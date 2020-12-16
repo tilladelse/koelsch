@@ -87,6 +87,10 @@ a {
 	text-align:right;
 }
 .community {
+
+	.hide-on-community{
+		display:none;
+	}
 	&.community-item,
 	.community-item {
 		display: block !important;

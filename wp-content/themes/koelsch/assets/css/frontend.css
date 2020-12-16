@@ -2171,6 +2171,9 @@ a {
 .align-right, .text-right {
   text-align: right; }
 
+.community .hide-on-community {
+  display: none; }
+
 .community.community-item,
 .community .community-item {
   display: block !important; }
