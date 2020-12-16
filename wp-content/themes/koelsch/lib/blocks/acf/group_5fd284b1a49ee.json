@@ -264,23 +264,8 @@
                         },
                         {
                             "key": "field_5fd286302fba0",
-                            "label": "Link",
+                            "label": "Website",
                             "name": "link",
-                            "type": "link",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "return_format": "array"
-                        },
-                        {
-                            "key": "field_5fd286552fba1",
-                            "label": "Directions link",
-                            "name": "direction",
                             "type": "url",
                             "instructions": "",
                             "required": 0,
@@ -315,5 +300,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1608065206
+    "modified": 1608081547
 }

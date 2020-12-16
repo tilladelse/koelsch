@@ -77,7 +77,15 @@ a {
 		text-decoration: none;
 	}
 }
-
+.align-center, .text-center{
+	text-align:center;
+}
+.align-left, .text-left{
+	text-align:left;
+}
+.align-right, .text-right{
+	text-align:right;
+}
 .community {
 	&.community-item,
 	.community-item {
@@ -2847,6 +2855,10 @@ input {
 	.map-container {
 		height: 500px;
 		position: relative;
+
+		&>*:focus{
+			outline:none;
+		}
 
 		.mapboxgl-canvas {
 			position: absolute;

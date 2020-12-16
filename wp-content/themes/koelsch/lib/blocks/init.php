@@ -125,6 +125,9 @@ function wp_acf_init_block_types() {
     			'mode'              => 'edit',
           'icon'              => 'button',
     			'align'	          	=> 'wide',
+          'supports'			=> array(
+    				'align' => array('left', 'center', 'right'),
+    			),
           'keywords'          => array( 'button' )
     		));
 

@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Button Block Template.
  *
@@ -15,11 +15,17 @@ if( !empty($block['className']) ) {
 if( $style = get_field('style') ) {
 	if($style != 'outline') $classes .= ' btn ';
     $classes .= sprintf( ' btn-%s', $style );
-} 
+}
 
 $name = get_field('name');
 $url = get_field('url');
 
-if($name && $url){ ?>
+if($name && $url){
+  if( !empty($block['align']) ) {
+      echo '<div class="'.sprintf( 'align-%s', $block['align'] ).'">';
+  }
+  ?>
 	<a class="<?php echo esc_attr($classes); ?>" href="<?php echo esc_url($url) ?>"><?php echo esc_attr($name) ?></a>
-<?php } ?>
+<?php
+if( !empty($block['align']) ) echo '</div>';
+} ?>

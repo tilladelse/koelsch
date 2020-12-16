@@ -2162,6 +2162,15 @@ a {
   a:hover {
     text-decoration: none; }
 
+.align-center, .text-center {
+  text-align: center; }
+
+.align-left, .text-left {
+  text-align: left; }
+
+.align-right, .text-right {
+  text-align: right; }
+
 .community.community-item,
 .community .community-item {
   display: block !important; }
@@ -3735,6 +3744,8 @@ input.form-control {
   .section-search .map-container {
     height: 500px;
     position: relative; }
+    .section-search .map-container > *:focus {
+      outline: none; }
     .section-search .map-container .mapboxgl-canvas {
       position: absolute;
       top: 0;

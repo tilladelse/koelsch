@@ -111,7 +111,7 @@
             "key": "field_5fd274bf87fc2",
             "label": "Button link url",
             "name": "url",
-            "type": "text",
+            "type": "link",
             "instructions": "",
             "required": 1,
             "conditional_logic": 0,
@@ -120,11 +120,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "return_format": "url"
         }
     ],
     "location": [
@@ -144,5 +140,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1608052895
+    "modified": 1608085009
 }

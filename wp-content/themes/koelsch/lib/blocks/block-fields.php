@@ -2,7 +2,6 @@
 /**
  * Gutenberg Block Fields
  */
-
  if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
@@ -58,7 +57,7 @@ acf_add_local_field_group(array(
 			'key' => 'field_5fd1518041683',
 			'label' => 'Button link url',
 			'name' => 'url',
-			'type' => 'text',
+			'type' => 'link',
 			'instructions' => '',
 			'required' => 1,
 			'conditional_logic' => 0,
@@ -67,11 +66,7 @@ acf_add_local_field_group(array(
 				'class' => '',
 				'id' => '',
 			),
-			'default_value' => '',
-			'placeholder' => '',
-			'prepend' => '',
-			'append' => '',
-			'maxlength' => '',
+			'return_format' => 'url',
 		),
 	),
 	'location' => array(
@@ -916,23 +911,8 @@ acf_add_local_field_group(array(
 						),
 						array(
 							'key' => 'field_5fd286302fba0',
-							'label' => 'Link',
+							'label' => 'Website',
 							'name' => 'link',
-							'type' => 'link',
-							'instructions' => '',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array(
-								'width' => '',
-								'class' => '',
-								'id' => '',
-							),
-							'return_format' => 'array',
-						),
-						array(
-							'key' => 'field_5fd286552fba1',
-							'label' => 'Directions link',
-							'name' => 'direction',
 							'type' => 'url',
 							'instructions' => '',
 							'required' => 0,
@@ -2181,7 +2161,14 @@ acf_add_local_field_group(array(
 			array(
 				'param' => 'block',
 				'operator' => '==',
-				'value' => 'acf/conatiner',
+				'value' => 'acf/container',
+			),
+		),
+		array(
+			array(
+				'param' => 'block',
+				'operator' => '==',
+				'value' => 'all',
 			),
 		),
 	),
