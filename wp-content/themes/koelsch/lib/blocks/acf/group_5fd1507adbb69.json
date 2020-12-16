@@ -16,9 +16,9 @@
                 "id": ""
             },
             "choices": {
-                "outline": "Default",
                 "orange": "Main Gold",
-                "blue": "Main Blue"
+                "blue": "Main Blue",
+                "outline": "Secondary"
             },
             "default_value": false,
             "allow_null": 0,
@@ -84,5 +84,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1608076893
+    "modified": 1608078255
 }

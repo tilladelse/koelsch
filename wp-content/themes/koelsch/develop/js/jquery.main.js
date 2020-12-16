@@ -721,6 +721,7 @@ function initMapbox() {
 	});
 
 	jQuery('.community-section').mapbox({
+		mousewheel: false,
 		mapHolder: '.map-container',
 		paging: true,
 		onInit: function(self) {

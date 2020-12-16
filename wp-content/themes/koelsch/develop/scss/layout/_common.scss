@@ -1588,9 +1588,9 @@ label {
 			margin-bottom: 75px;
 		}
 
-		@include media ('>=desktop') {
-			max-width: 80%;
-		}
+		// @include media ('>=desktop') {
+		// 	max-width: 80%;
+		// }
 
 		&:only-child {
 			margin-bottom: 30px;

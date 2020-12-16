@@ -4746,8 +4746,6 @@ input.form-control {
     .resource-block .body {
       padding: 112px 34px 55px;
       border-width: 9px; }
-    .resource-block .head {
-      max-width: 80%; }
     .article {
       padding: 14px 0 30px; }
       .article .heading {
