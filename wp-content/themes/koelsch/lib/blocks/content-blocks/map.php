@@ -37,7 +37,7 @@ if(have_rows('categories')){
 						if(have_rows('locations')){ 
 							while(have_rows('locations')){ the_row();
 								$address = get_sub_field('address') ? '<address>'.get_sub_field('address').'</address>' : '';
-								$direction = get_sub_field('direction') ? '<span class="direction hidden">'.$direction.'</span>' : '';
+								$direction = get_sub_field('direction') ? '<span class="direction hidden">'.get_sub_field('direction').'</span>' : '';
 								$coordinates = get_sub_field('coordinates') ? '<span class="coordinates hidden">'.implode(', ', get_sub_field('coordinates')).'</span>' : '';
 								$link = get_sub_field('link');
 								$link = ( BaseACFLinkHelper::isLink( $link ) ) ? BaseACFLinkHelper::getLink( $link, array( 'link' ) ) : '';
