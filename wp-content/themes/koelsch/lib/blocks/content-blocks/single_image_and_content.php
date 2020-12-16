@@ -11,7 +11,7 @@
 $templ_content = array(
     array('core/heading', array(
 		'level' => 2,
-		'content' => 'This is `Single Image & Content Block`',
+		'content' => 'Add Content Area Here',
 	))
 );
 
@@ -51,7 +51,7 @@ if( $bg_image && $v_position ) {
 }
 $h_position = get_field('h_position');
 if( $bg_image &&  $h_position) {
-	$classes .= sprintf( ' %s', $h_position );    
+	$classes .= sprintf( ' %s', $h_position );
 } ?>
 <section class="<?php echo esc_attr($classes); ?>" <?php echo $styles ?>>
 	<?php echo $container_classes_before; ?>

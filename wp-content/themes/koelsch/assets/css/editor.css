@@ -17,3 +17,18 @@
 
 .koelsch-icon .svg-wrap {
   display: inline-block; }
+
+.wp-block[data-align="left"],
+.wp-block[data-align="right"] {
+  height: 100%; }
+  .wp-block[data-align="left"] > *,
+  .wp-block[data-align="right"] > * {
+    float: none !important; }
+  .wp-block[data-align="left"]::after,
+  .wp-block[data-align="right"]::after {
+    display: block;
+    content: '';
+    clear: both; }
+
+.text-center {
+  text-align: center; }

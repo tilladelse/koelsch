@@ -17,7 +17,7 @@
             },
             "choices": {
                 "outline": "Default",
-                "orange": "Main Orange",
+                "orange": "Main Gold",
                 "blue": "Main Blue"
             },
             "default_value": false,
@@ -84,5 +84,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1608050531
+    "modified": 1608076893
 }

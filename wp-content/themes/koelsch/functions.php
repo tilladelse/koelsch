@@ -40,7 +40,7 @@ define('THEME_VERSION', '1.0.0');
 
  require_once __DIR__ . '/lib/blocks/block-fields.php';
 
- include( get_template_directory() . '/lib/classes/class.BaseACFLinkHelper.php' );
+ // include( get_template_directory() . '/lib/classes/class.BaseACFLinkHelper.php' );
 
  //setup community context global
  global $community_context;
@@ -172,20 +172,7 @@ function add_editor_css(){
 
 }
 
-add_filter( 'block_categories', 'koelsch_block_category', 10, 2);
-function koelsch_block_category( $categories, $post ) {
-  $new = array(
-    array(
-      'slug' => 'koelsch',
-      'title' => __( 'Koelsch Blocks', 'koelsch' ),
-      'icon'=>''
-    ),
-  );
-	$categories = array_merge($new, $categories);
-  return $categories;
-}
-
-function retina_image($img, $img_size, $img_size_2x, $img_size_sm, $img_size_sm_2x){	
+function retina_image($img, $img_size, $img_size_2x, $img_size_sm, $img_size_sm_2x){
 	if($img){
 		$image = $img ? wp_get_attachment_image_url($img, $img_size) : '';
 		$image_2x = $img ? wp_get_attachment_image_url($img, $img_size_2x) : '';
@@ -195,7 +182,7 @@ function retina_image($img, $img_size, $img_size_2x, $img_size_sm, $img_size_sm_
 			<source srcset="<?php echo $image_sm; ?>, <?php echo $image_sm_2x; ?> 2x" media="(max-width: 767px)">
 			<source srcset="<?php echo $image; ?>, <?php echo $image_2x; ?> 2x">
 			<img src="<?php echo $image; ?>" alt="image description">
-		</picture> <?php	
+		</picture> <?php
 	}
 }
 ?>

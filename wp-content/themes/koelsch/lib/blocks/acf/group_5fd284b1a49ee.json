@@ -32,7 +32,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
+            "default_value": "Explore",
             "placeholder": "",
             "prepend": "",
             "append": "",
@@ -51,7 +51,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
+            "default_value": "The [Community City] Area",
             "placeholder": "",
             "prepend": "",
             "append": "",
@@ -110,7 +110,7 @@
             "min": 0,
             "max": 0,
             "layout": "block",
-            "button_label": "add map category",
+            "button_label": "Add map category",
             "sub_fields": [
                 {
                     "key": "field_5fd2853e2fb98",
@@ -315,5 +315,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1608050532
+    "modified": 1608065206
 }

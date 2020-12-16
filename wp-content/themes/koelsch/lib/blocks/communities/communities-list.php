@@ -1,10 +1,11 @@
 <?php
 $data = file_get_contents( get_template_directory_uri() . '/assets/data/map-data.json');
 $data = json_decode( $data );
-$blockClasses = 'community-list';
+$blockClasses = 'community-list section';
 $blockClasses .= isset($block['className']) ? ' '.$block['className'] : '';
 ?>
-<div class="<?php echo $blockClasses;?>">
+<section class="<?php echo $blockClasses;?>">
+	<div class="container-md">
 		<?php if ( $title = get_field( 'title' ) ): ?>
 			<h3><?php echo $title; ?></h3>
 			<?php
@@ -60,3 +61,4 @@ $blockClasses .= isset($block['className']) ? ' '.$block['className'] : '';
 		</div>
 	<?php endif; ?>
 </div>
+</section>

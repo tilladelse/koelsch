@@ -1685,17 +1685,18 @@ a {
       flex-grow: 1; }
     .content-section-double .row.bottom-row .text-box {
       padding: 30px;
-      background: none; }
+      background: none;
+      align-self: flex-end; }
     .content-section-double .row.bottom-row .col.img-col {
       position: relative; }
       .content-section-double .row.bottom-row .col.img-col img {
         position: relative;
         z-index: 9; }
+    .content-section-double .row.bottom-row .col.text-col {
+      display: flex; }
   .content-section-double .col.img-col img {
     display: block;
     width: 100%; }
-  .content-section-double .title {
-    margin-bottom: 25px; }
   .content-section-double .divider {
     position: relative;
     z-index: 10;
@@ -2146,6 +2147,10 @@ h3, .h3 {
   display: block;
   letter-spacing: 2.2px;
   letter-spacing: 0.1375rem; }
+
+.hero {
+  font: 600 22px/1.16667 "MillerBanner", "Times New Roman", "Times", "Baskerville", "Georgia", serif;
+  font: 600 1.375rem/1.16667 "MillerBanner", "Times New Roman", "Times", "Baskerville", "Georgia", serif; }
 
 button {
   outline: none; }
@@ -4179,8 +4184,6 @@ input.form-control {
         flex-grow: 1;
         margin: 0;
         padding-bottom: 22px; }
-    .content-section-double {
-      margin-bottom: 60px; }
     .content-section-double.align-left .row.bottom-row {
       flex-direction: row-reverse; }
       .content-section-double.align-left .row.bottom-row .col.img-col {
@@ -4212,8 +4215,6 @@ input.form-control {
         width: 50%; }
       .content-section-double .row.bottom-row {
         align-items: stretch; }
-        .content-section-double .row.bottom-row .text-box {
-          padding-top: 150px; }
       .content-section-double .row.bottom-row .col {
         width: 50%; }
         .content-section-double .row.bottom-row .col.img-col {
@@ -4226,8 +4227,8 @@ input.form-control {
           top: 0;
           bottom: 0;
           width: 16.8%; }
-      .content-section-double .row.bottom-row .col.text-col {
-        width: 40%; }
+        .content-section-double .row.bottom-row .col.text-col {
+          width: 40%; }
       .content-section-double .divider {
         margin-bottom: -80px; }
     .community-block {
@@ -4597,8 +4598,6 @@ input.form-control {
     width: 25%; }
   .content-section-25 .col.img-col {
     width: 75%; }
-    .content-section-double {
-      margin-bottom: 150px; }
       .content-section-double.align-left .row.bottom-row .col.img-col {
         padding: 50px 0 0 50px; }
       .content-section-double.align-right .row.bottom-row .col.img-col {
@@ -4607,14 +4606,12 @@ input.form-control {
         margin-bottom: -200px; }
         .content-section-double .row.top-row .text-box {
           padding: 50px 58px 180px; }
-        .content-section-double .row.bottom-row .text-box {
-          padding-top: 250px; }
         .content-section-double .row.bottom-row .col.img-col {
           width: 68%; }
         .content-section-double .row.bottom-row .col.img-col::before {
           width: 26.5%; }
-      .content-section-double .row.bottom-row .col.text-col {
-        width: 30%; }
+        .content-section-double .row.bottom-row .col.text-col {
+          width: 30%; }
     #header {
       padding: 15px 0 19px; }
       #header.community {
@@ -4905,8 +4902,6 @@ input.form-control {
       margin-right: 66px; }
       .content-section-100 .text-box {
         padding: 55px 80px; }
-    .content-section-double {
-      margin-bottom: 250px; }
     .content-section-double.align-left .row.top-row .col.img-col {
       margin-left: calc((100vw - 1200px)/2 * -1); }
     .content-section-double.align-right .row.top-row .col.img-col {
@@ -4915,8 +4910,6 @@ input.form-control {
         margin-bottom: -300px; }
         .content-section-double .row.top-row .text-box {
           padding-bottom: 300px; }
-        .content-section-double .row.bottom-row .text-box {
-          padding-top: 350px; }
         .content-section-double .row.bottom-row .col.img-col::before {
           width: 26.6%; }
       #header.community #nav {
@@ -5064,8 +5057,6 @@ input.form-control {
         margin-bottom: -410px; }
         .content-section-double .row.top-row .text-box {
           padding-bottom: 384px; }
-        .content-section-double .row.bottom-row .text-box {
-          padding-top: 462px; }
       #header .community-link {
         padding-left: 53px; }
     #nav {

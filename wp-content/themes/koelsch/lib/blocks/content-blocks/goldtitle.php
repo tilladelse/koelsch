@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Gold Title Block Template.
  *
@@ -15,6 +15,7 @@ if( !empty($block['className']) ) {
 if( !empty($block['align']) ) {
     $classes .= sprintf( ' text-%s', $block['align'] );
 }
-if($title = get_field('title')){ ?>
-	<div class="<?php echo esc_attr($classes); ?>"><strong class="title"><?php echo esc_attr($title)?></strong></div>
+if($title = get_field('title')){
+  $type = get_field('type');?>
+	<div class="<?php echo esc_attr($classes); ?>"><strong class="<?php echo $type;?>"><?php echo esc_attr($title)?></strong></div>
 <?php } ?>

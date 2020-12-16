@@ -10,9 +10,9 @@
   $containerClass = apply_filters('koelsch_container_class', 'container-md');
 ?>
 <div class="page-content<?php echo $color;?>"<?php echo $rule;?> id="page_content">
-<section class="section">
-  <div class="<?php echo $containerClass;?>">
+<!-- <section class="section">
+  <div class="<?php echo $containerClass;?>"> -->
     <?php the_content(); ?>
-  </div>
-</section>
+  <!-- </div>
+</section> -->
 </div>

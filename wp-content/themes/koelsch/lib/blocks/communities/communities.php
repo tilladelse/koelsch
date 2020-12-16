@@ -2,11 +2,14 @@
 	$blockClasses = 'communities-near-you';
 	$blockClasses .= isset($block['className']) ? ' '.$block['className'] : '';
 	$fullWidth = isset($block['align']) && $block['align'] == 'full' ? true : false;
-	echo $fullWidth ? '<section class="section alignfull '.$blockClasses.'"><div class="container-md">' : '<div class="'.$blockClasses.'">';
+	echo $fullWidth ? ' alignfull '.$blockClasses : '';
 	?>
+	<section class="section">
+		<div class="container-md">
 		<?php if ( $title = get_field( 'title' ) ):?>
 			<h3><?php echo $title; ?></h3>
 		<?php endif; ?>
+
 		<div class="row row-sm communities-section" data-json="<?php echo get_template_directory_uri(); ?>/assets/data/map-data.json" data-template="item_tmpl">
 			<script type="text/html" id="item_tmpl">
 				<div class="col">
@@ -30,4 +33,5 @@
 				</div>
 			</script>
 		</div>
-	<?php echo $fullWidth ? '</div></section>' : '</div>';?>
+	</div>
+</section>
