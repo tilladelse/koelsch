@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Map Block Template.
  *
@@ -8,9 +8,11 @@
  * @param   (int|string) $post_id The post ID this block is saved to.
  */
 
+global $post;
 $gold_title = get_field('gold_title');
 $title = get_field('title');
 $description = get_field('description');
+
 if(have_rows('categories')){
 	if(!is_admin()){ ?>
 		<section class="section-search"
@@ -33,29 +35,46 @@ if(have_rows('categories')){
 					while(have_rows('categories')){ the_row();
 						$_name = get_sub_field('name'); ?>
 						<li <?php if($i == 0) echo 'class="active"'; ?>><a href="#"><?php echo $_name; ?></a></li>
-						<?php 
-						if(have_rows('locations')){ 
+						<?php
+						if(have_rows('locations')){
 							while(have_rows('locations')){ the_row();
-								$address = get_sub_field('address') ? '<address>'.get_sub_field('address').'</address>' : '';
-								$direction = get_sub_field('direction') ? '<span class="direction hidden">'.get_sub_field('direction').'</span>' : '';
-								$coordinates = get_sub_field('coordinates') ? '<span class="coordinates hidden">'.implode(', ', get_sub_field('coordinates')).'</span>' : '';
-								$link = get_sub_field('link');
-								$link = ( BaseACFLinkHelper::isLink( $link ) ) ? BaseACFLinkHelper::getLink( $link, array( 'link' ) ) : '';
+								$_address = get_sub_field('address');
+								$address = $_address ? '<address>'.$_address.'</address>' : '';
+								$coordinates = get_sub_field('coordinates');
+								// $coordinates = is_array($coordinates) ? '<span class="coordinates hidden">'.implode(', ',$coordinates).'</span>' : '';
+								$coordinates = $coordinates && is_array($coordinates) ? '<span class="coordinates hidden">'.implode(', ', array_reverse($coordinates)).'</span>' : '';
+								//$direction = get_sub_field('direction') ? '<span class="direction hidden">'.get_sub_field('direction').'</span>' : '';
+
+								$directions = array(
+									'url'=>'https://www.google.com/maps?daddr='.urlencode(strip_tags($_address)),
+									'title'=>'Get Directions',
+									'target'=>'_blank'
+								);
+								$directions = (BaseACFLinkHelper::isLink($directions)) ? BaseACFLinkHelper::getLink( $directions, array( 'directions' )) : '';
+
+								$name = get_sub_field('name');
+								$link = array(
+									'url'=>get_sub_field('link'),
+									'title'=>'Website',
+									'target'=>'_blank'
+								);
+								$link = (BaseACFLinkHelper::isLink($link)) ? BaseACFLinkHelper::getLink( $link, array( 'link' )) : '';
+
 								$points[] = '<div class="services-card">
-													<h5>'.get_sub_field('name').'</h5>
+													<h5>'.$name.'</h5>
 													'.get_sub_field('description').'
 													'.$address.'
 													'.$link.'
 													'.$coordinates.'
 													<span class="category hidden">'.$_name.'</span>
-													'.$direction.'
+													</ion-icon> '.$directions.'
 												</div>';
 							}
 						} ?>
-						<?php $i++; 
+						<?php $i++;
 					} ?>
 				</ul>
-			</div>		
+			</div>
 		</div>
 		<?php if(is_array($points) && !empty($points) && !is_admin()){ ?>
 		<div class="search-holder bottom-panel">
@@ -74,7 +93,7 @@ if(have_rows('categories')){
 						<script type="text/html" id="popup_tmpl">
 							<h5><%=title%></h5>
 							<address><%=address%></address>
-							<a class="btn-direction" href="<%=direction%>"><?php _e('Directions'); ?></a>
+							<a class="btn-direction" target="_blank" href="<%=directions%>"><?php _e('Directions'); ?></a>
 						</script>
 					</div>
 				</div>
@@ -89,7 +108,7 @@ if(have_rows('categories')){
 				<?php if($title) echo '<h2>'.$title.'</h2>'; ?>
 				<?php echo $description; ?>
 			</div>
-		<?php } 
-		echo '<p><em>Map and Tab Categories will be shown on fron-end.</em></p>';
+		<?php }
+		echo '<p><em>Map and Tab Categories will be shown on front end.</em></p>';
 	} ?>
 <?php } ?>

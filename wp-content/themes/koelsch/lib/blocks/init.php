@@ -57,6 +57,20 @@ function wp_acf_init_block_types() {
                   	)
         ));
 
+        // register a floorplan block.
+        acf_register_block_type(array(
+            'name'              => 'visual-link',
+            'title'             => __('Visual Link'),
+            'render_template'   => 'lib/blocks/content-blocks/visual_link.php',
+            'category'          => 'koelsch',
+            'icon'              => 'embed-photo',
+            'mode'              => 'edit',
+            'keywords'          => array( 'image', 'link', 'visual link',  ),
+          	'supports'	        => array(
+                  		'align'		=> array('left','right', 'center'),
+                  	)
+        ));
+
 
     		/* new Content Blocks */
 

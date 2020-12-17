@@ -139,3 +139,41 @@
 		}
 	}
 }
+.services-card {
+	font-size: 18px;
+	line-height: 1.6667;
+	font-weight: 300;
+	margin-bottom: 30px;
+
+	h5 {
+		font: 600 18px/1.2 $base-font-sans-serif;
+		margin-bottom: 7px;
+	}
+
+	p {
+		margin: 0 0 9px;
+	}
+
+	address {
+		font-style: italic;
+	}
+
+	a {
+
+		&::after{
+			display:inline-block;
+			content:'';
+			height:15px;
+			width:1px;
+			background-color:$gold;
+			margin:0 10px -3px;
+		}
+
+		&:last-child{
+			&::after{
+				display:none;
+			}
+		}
+		color: $gold;
+	}
+}

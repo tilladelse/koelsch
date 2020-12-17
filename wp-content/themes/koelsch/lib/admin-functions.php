@@ -139,14 +139,9 @@
        //get coordinates
        $coords = '';
        $result = false;
-       $coordsAddress = str_replace(',', '', $address);
-       $requestString = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'.urlencode($coordsAddress).'.json?limit=1&country=US&access_token='.MAPBOX_TOKEN;
 
-       $result = file_get_contents($requestString);
-       if ($result){
-         $result = json_decode($result, true);
-         $coords = isset($result['features'][0]['center']) ? $result['features'][0]['center'] : '';
-       }
+
+       $coords = get_map_coordinates($address);
 
        //get living type Info
        $ltID = get_post_meta($c->ID, 'living_type', true);
@@ -196,6 +191,20 @@
    $json = json_encode($data, JSON_PRETTY_PRINT);
    file_put_contents($file, $json);
 
+ }
+
+ function get_map_coordinates($address){
+
+   $address = str_replace(',', '', $address);
+   $requestString = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'.urlencode($address).'.json?limit=1&country=US&access_token='.MAPBOX_TOKEN;
+
+   $result = file_get_contents($requestString);
+   if ($result){
+     $result = json_decode($result, true);
+     $coords = isset($result['features'][0]['center']) ? $result['features'][0]['center'] : '';
+     return $coords;
+   }
+   return '';
  }
 
  function create_community_home_page($arr){

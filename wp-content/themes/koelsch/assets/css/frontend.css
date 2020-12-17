@@ -1321,6 +1321,32 @@ a {
       top: 50%;
       transform: translate(-50%, -50%); }
 
+.services-card {
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.6667;
+  font-weight: 300;
+  margin-bottom: 30px; }
+  .services-card h5 {
+    font: 600 18px/1.2 "proxima-nova", "Arial", "Helvetica Neue", "Helvetica", sans-serif;
+    font: 600 1.125rem/1.2 "proxima-nova", "Arial", "Helvetica Neue", "Helvetica", sans-serif;
+    margin-bottom: 7px; }
+  .services-card p {
+    margin: 0 0 9px; }
+  .services-card address {
+    font-style: italic; }
+  .services-card a {
+    color: #c69230; }
+    .services-card a::after {
+      display: inline-block;
+      content: '';
+      height: 15px;
+      width: 1px;
+      background-color: #c69230;
+      margin: 0 10px -3px; }
+    .services-card a:last-child::after {
+      display: none; }
+
 .gallery-section {
   margin-bottom: 25px; }
 
@@ -3828,23 +3854,6 @@ input.form-control {
     left: 0;
     width: 100%;
     height: 100%; }
-
-.services-card {
-  font-size: 18px;
-  font-size: 1.125rem;
-  line-height: 1.6667;
-  font-weight: 300;
-  margin-bottom: 30px; }
-  .services-card h5 {
-    font: 600 18px/1.2 "proxima-nova", "Arial", "Helvetica Neue", "Helvetica", sans-serif;
-    font: 600 1.125rem/1.2 "proxima-nova", "Arial", "Helvetica Neue", "Helvetica", sans-serif;
-    margin-bottom: 7px; }
-  .services-card p {
-    margin: 0 0 9px; }
-  .services-card address {
-    font-style: italic; }
-  .services-card a {
-    color: #c69230; }
 
 .filter-list {
   font-size: 18px;

@@ -194,7 +194,7 @@
                             "name": "address",
                             "type": "textarea",
                             "instructions": "",
-                            "required": 0,
+                            "required": 1,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
@@ -205,7 +205,7 @@
                             "placeholder": "",
                             "maxlength": "",
                             "rows": 2,
-                            "new_lines": "wpautop"
+                            "new_lines": "br"
                         },
                         {
                             "key": "field_5fd285d82fb9d",
@@ -300,5 +300,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1608081547
+    "modified": 1608167649
 }

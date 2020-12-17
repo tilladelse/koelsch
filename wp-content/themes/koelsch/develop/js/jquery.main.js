@@ -667,12 +667,18 @@ function initMapbox() {
 				var category = item.find('.category').text();
 				var title = item.find('h5').text();
 				var address = item.find('address').text();
-				var direction = item.find('.direction').text();
+
+				/**
+				 * Update directions element
+				 * @since 12/16/20
+				 * @author JP Cozby
+				 */
+				var directions = item.find('.directions').attr('href');
 
 				self.allMarkersData.push({
 					title: title,
 					coordinates: coordinates,
-					direction: direction,
+					directions: directions,
 					address: address,
 					category: category
 				});
