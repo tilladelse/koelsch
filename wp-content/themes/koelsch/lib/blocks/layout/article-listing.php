@@ -7,20 +7,15 @@
    $featImgID = get_post_thumbnail_id($article->ID);
    if ($format == 'horizontal'){
      $length = '20';
-     $featImgSrc = $featImgID ? get_the_post_thumbnail_url($article->ID, 'resource-listing') : false;
-     $featImgSrc2X = $featImgID ? get_the_post_thumbnail_url($article->ID, 'resource-listing-2x') : false;
+     $img = get_image_srcset($featImgID, 'resource-listing', 'resource-listing-2x');
    }else{
      $length = '50';
-     $featImgSrc = $featImgID ? get_the_post_thumbnail_url($article->ID, 'resource-listing-horiz') : false;
-     $featImgSrc2X = $featImgID ? get_the_post_thumbnail_url($article->ID, 'resource-listing-horiz-2x') : false;
+     $img = get_image_srcset($featImgID, 'resource_listing-horiz', 'resource-listing-horiz-2x');
    }
-   $featImgSrcset = $featImgSrc ? $featImgSrc.', '.$featImgSrc2X.' 2x' : '';
    ?>
    <article class="<?php echo $format == 'horizontal' ? 'card-horizontal': 'card';?>">
      <a href="<?php echo get_the_permalink($article->ID);?>" class="<?php echo $format == 'horizontal' ? 'img-box': 'card-img';?>">
-       <?php if ($featImgID):?>
-         <img src="<?php echo $featImgSrc;?>" srcset="<?php echo $featImgSrcset; ?>" alt="<?php echo $article->post_title;?> listing image">
-       <?php endif;?>
+       <?php echo $img;?>
      </a>
      <?php echo $format == 'horizontal' ? '<div class="text-block">' : '';?>
      <h4><a href="<?php echo get_the_permalink($article->ID);?>"><?php echo $article->post_title;?></a></h4>

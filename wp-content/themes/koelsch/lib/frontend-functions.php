@@ -374,6 +374,19 @@ function get_main_nav_id(){
   return $menuID;
 }
 
+function get_image_srcset($imageID, $imageSize, $retinaImageSize){
+
+  if ($imageID){
+    $url = wp_get_attachment_image_url($imageID, $imageSize);
+    $ret_url = wp_get_attachment_image_url($imageID, $retinaImageSize);
+    $srcSet = $url.', '.$ret_url.' 2x';
+    $image_alt = get_post_meta($imageID, '_wp_attachment_image_alt', TRUE);
+    $image = '<img src="'.$url.'" srcset="'.$srcSet.'" alt="'.$image_alt.'">';
+    return $image;
+  }
+  return false;
+}
+
 // function koelsch_get_community_sub_menu($menuID){
 //   $items = wp_get_nav_menu_items($menuID);
 //   _wp_menu_item_classes_by_context( $items );
