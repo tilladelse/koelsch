@@ -689,6 +689,18 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 	// @include media ('>=widescreen') {
 	// 	margin-bottom: 250px;
 	// }
+	.text-box{
+		.divider {
+			position: relative;
+			z-index: 10;
+			height: 120px;
+			margin-bottom: -70px;
+
+			@include media ('>=tablet') {
+				margin-bottom: -80px;
+			}
+		}
+	}
 
 	&.align-left {
 		.row {
@@ -969,14 +981,4 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 	// 	margin-bottom: 25px;
 	// }
 
-	.divider {
-		position: relative;
-		z-index: 10;
-		height: 120px;
-		margin-bottom: -70px;
-
-		@include media ('>=tablet') {
-			margin-bottom: -80px;
-		}
-	}
 }
