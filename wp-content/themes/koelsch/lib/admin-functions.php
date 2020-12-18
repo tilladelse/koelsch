@@ -368,4 +368,32 @@
 
   add_filter('acf/load_field/name=floorplan_id', 'acf_load_floorplan_field_choices');
 
+
+/**
+ * modify the Insert/edit Link screen to provide better context for
+ * like-named pages
+ * @var $results array
+ * @var $query $
+ * @link https://developer.wordpress.org/reference/classes/_wp_editors/wp_link_query/
+ */
+
+  function modify_wp_link_query($results, $query){
+    $modified = array();
+    if ($results){
+      foreach($results as $result){
+
+        $url = get_the_permalink($result['ID']);
+        // $pageTpl = get_post_meta($result['ID'], '_wp_page_template', true);
+        $perm = preg_replace ('/^(http)?s?:?\/\/[^\/]*(\/?.*)$/i', '$2', '' . $url);
+
+        $title = $result['title']. '<span style="display:block;color:#999;">'.substr($perm, 1, -1).'</span>';//.$pageTpl;
+
+        $result['title'] = $title;
+        $modified[] = $result;
+      }
+    }
+    return $modified;
+  }
+  add_filter('wp_link_query', 'modify_wp_link_query', 10, 2);
+
 ?>
