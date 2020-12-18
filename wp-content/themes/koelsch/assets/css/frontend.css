@@ -1675,7 +1675,7 @@ a {
 
 .content-section-double {
   position: relative; }
-  .content-section-double .text-box .divider {
+  .content-section-double.ic-set .text-box .divider {
     position: relative;
     z-index: 10;
     height: 120px;
@@ -4247,7 +4247,7 @@ input.form-control {
         flex-grow: 1;
         margin: 0;
         padding-bottom: 22px; }
-      .content-section-double .text-box .divider {
+      .content-section-double.ic-set .text-box .divider {
         margin-bottom: -80px; }
     .content-section-double.align-left .row.bottom-row {
       flex-direction: row-reverse; }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Image & Content Set Block Template.
  *
@@ -7,7 +7,7 @@
  * @param   bool $is_preview True during AJAX preview.
  * @param   (int|string) $post_id The post ID this block is saved to.
  */
-$classes = 'content-section-double';
+$classes = 'content-section-double ic-set';
 if( !empty($block['className']) ) {
     $classes .= sprintf( ' %s', $block['className'] );
 }
@@ -25,13 +25,13 @@ $styles = ' style="';
 if($bg_image = get_field('bgimage')) $styles .= ' background-image: url('.$bg_image.');';
 $styles .= '"';
 
-$v_position = get_field('v_position'); 
+$v_position = get_field('v_position');
 if( $bg_image && $v_position ) {
-	$classes .= sprintf( ' %s', $v_position );    
+	$classes .= sprintf( ' %s', $v_position );
 }
 $h_position = get_field('h_position');
 if( $bg_image &&  $h_position) {
-	$classes .= sprintf( ' %s', $h_position );    
+	$classes .= sprintf( ' %s', $h_position );
 } ?>
 <section class="<?php echo esc_attr($classes); ?>" <?php echo $styles ?>>
 	<div class="container-md">
