@@ -128,7 +128,7 @@ function wp_acf_init_block_types() {
           'icon'              => 'minus',
           'keywords'          => array( 'gold', 'title' ),
     			'supports'			=> array(
-    				'align' => false,
+    				'align' => array('left', 'center', 'right'),
     			)
     		));
 
