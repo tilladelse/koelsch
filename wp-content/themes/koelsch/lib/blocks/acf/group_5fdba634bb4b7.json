@@ -46,6 +46,28 @@
             "new_lines": "wpautop"
         },
         {
+            "key": "field_5fdbfa5996158",
+            "label": "Description Position",
+            "name": "description_position",
+            "type": "button_group",
+            "instructions": "Set the description position.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "default": "Default",
+                "below": "Below Image"
+            },
+            "allow_null": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value"
+        },
+        {
             "key": "field_5fdba6d213056",
             "label": "Button Title",
             "name": "button_title",
@@ -97,5 +119,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1608230797
+    "modified": 1608252221
 }

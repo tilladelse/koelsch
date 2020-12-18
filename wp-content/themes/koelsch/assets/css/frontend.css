@@ -3919,25 +3919,40 @@ input.form-control {
 .visual-link {
   margin-bottom: 2em; }
   .visual-link > a {
+    display: block;
+    position: relative;
+    text-decoration: none; }
+  .visual-link picture {
     position: relative;
     display: block;
-    text-align: center;
-    text-decoration: none; }
-    .visual-link > a::before {
+    text-align: center; }
+    .visual-link picture::before {
       content: '';
       position: absolute;
       bottom: 0;
       left: 0;
-      right: 0; }
+      right: 0;
+      height: 50%;
+      background-image: linear-gradient(to bottom, rgba(29, 36, 46, 0) 0%, #1d242e 100%); }
   .visual-link .btn-outline {
     transition: bottom 0.3s ease-in-out;
     display: block;
-    margin: 0 1em; }
+    margin: 0 1em;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: #fff;
+    border-color: #fff; }
+    .visual-link .btn-outline::after {
+      border-color: #fff; }
   .visual-link .description {
     transition: padding 0.3s ease-in-out;
     transition: right 0.3s ease-in-out;
     padding: 25px 25px 0 25px;
-    background-color: #fff; }
+    background-color: #fff;
+    position: relative; }
+  .visual-link.below .description {
+    position: relative; }
 
 #footer {
   color: #fff;
@@ -4872,20 +4887,12 @@ input.form-control {
         padding: 0 14px 10px; }
     .visual-link {
       margin-bottom: 0; }
-      .visual-link > a {
+      .visual-link picture {
         text-align: right; }
-        .visual-link > a::before {
-          height: 50%;
-          background-image: linear-gradient(to bottom, rgba(29, 36, 46, 0) 0%, #1d242e 100%); }
+        .visual-link picture::before {
+          height: 75%; }
       .visual-link .btn-outline {
-        position: absolute;
-        margin: 0;
-        bottom: 20px;
-        right: 20px;
-        color: #fff;
-        border-color: #fff; }
-        .visual-link .btn-outline::after {
-          border-color: #fff; }
+        margin: 0; }
       .visual-link .description {
         position: absolute;
         bottom: 0;

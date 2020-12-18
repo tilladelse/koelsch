@@ -2108,6 +2108,28 @@
  			),
  			'return_format' => 'url',
  		),
+ 		array(
+ 			'key' => 'field_5fdbfa5996158',
+ 			'label' => 'Description Position',
+ 			'name' => 'description_position',
+ 			'type' => 'button_group',
+ 			'instructions' => 'Set the description position',
+ 			'required' => 0,
+ 			'conditional_logic' => 0,
+ 			'wrapper' => array(
+ 				'width' => '',
+ 				'class' => '',
+ 				'id' => '',
+ 			),
+ 			'choices' => array(
+ 				'default' => 'Default',
+ 				'below' => 'Below Image',
+ 			),
+ 			'allow_null' => 0,
+ 			'default_value' => '',
+ 			'layout' => 'horizontal',
+ 			'return_format' => 'value',
+ 		),
  	),
  	'location' => array(
  		array(
