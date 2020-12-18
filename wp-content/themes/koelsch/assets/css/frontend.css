@@ -1580,8 +1580,7 @@ a {
     z-index: 2; }
   .content-section-25 .col.img-col,
   .content-section-33 .col.img-col {
-    position: relative;
-    margin-bottom: -164px; }
+    position: relative; }
     .content-section-25 .col.img-col img,
     .content-section-33 .col.img-col img {
       display: block;
@@ -2196,6 +2195,9 @@ a {
 
 .align-right, .text-right {
   text-align: right; }
+
+.show-on-mobile {
+  display: block !important; }
 
 .community .hide-on-community {
   display: none; }
@@ -5367,7 +5369,9 @@ input.form-control {
           left: 10px; }
     .contact-opener {
       top: 8%;
-      transition: right .6s ease-in-out; } }
+      transition: right .6s ease-in-out; }
+  .wp-block-space {
+    display: none; } }
   @media (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 63.9375rem), (min-resolution: 144dpi) and (max-width: 63.9375rem) {
   .menu-wrap::before {
     background-image: url("assets/images/mobile-menu-decor@2x.png"); } }

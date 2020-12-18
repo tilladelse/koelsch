@@ -389,7 +389,6 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 
 		&.img-col {
 			position: relative;
-			margin-bottom: -164px;
 
 			@include media ('>=tablet') {
 				margin-bottom: 0;

@@ -86,6 +86,14 @@ a {
 .align-right, .text-right{
 	text-align:right;
 }
+.show-on-mobile{
+	display:block!important;
+}
+.wp-block-space{
+	@include media ('<=phone') {
+		display:none;
+	}
+}
 .community {
 
 	.hide-on-community{
