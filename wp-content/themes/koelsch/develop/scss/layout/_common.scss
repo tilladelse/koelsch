@@ -93,6 +93,11 @@ a {
 	@include media ('<=phone') {
 		display:none;
 	}
+	&.show-on-mobile{
+		@include media ('<=phone') {
+			display:block;
+		}
+	}
 }
 .community {
 
