@@ -212,6 +212,7 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 .fullwidth {
 	.container-md {
 		max-width: 100%;
+		padding:0;
 	}
 
 	&:not(.overlapping) {
@@ -275,8 +276,7 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 
 .margins {
 	@include media ('>=tablet') {
-		margin-left: 30px;
-		margin-right: 30px;
+		margin:30px 30px auto 30px;
 	}
 
 	@include media ('>=widescreen') {
@@ -496,6 +496,10 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 	position: relative;
 	margin-bottom: 30px;
 
+	.container-md {
+		padding:0;
+	}
+
 	@include media ('>=tablet') {
 		margin-bottom: 60px;
 	}
@@ -701,7 +705,7 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 				}
 			}
 		}
-	}	
+	}
 
 	&.align-left {
 		.row {

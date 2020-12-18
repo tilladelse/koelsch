@@ -1542,7 +1542,8 @@ a {
   background-color: #fff; }
 
 .fullwidth .container-md {
-  max-width: 100%; }
+  max-width: 100%;
+  padding: 0; }
 
 .fullwidth:not(.overlapping) .col.img-col {
   margin-left: 0;
@@ -1607,6 +1608,8 @@ a {
   color: #fff;
   position: relative;
   margin-bottom: 30px; }
+  .content-section-100 .container-md {
+    padding: 0; }
   .content-section-100 .row {
     position: relative;
     flex-direction: column;
@@ -4201,8 +4204,7 @@ input.form-control {
   .overlapping.align-left .col.text-col {
     margin-left: -60px; }
   .margins {
-    margin-left: 30px;
-    margin-right: 30px; }
+    margin: 30px 30px auto 30px; }
   .content-section-50 .row .col {
     width: 50%; }
       .content-section-25 .col.text-col,
