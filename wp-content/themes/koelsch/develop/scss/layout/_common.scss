@@ -99,6 +99,11 @@ a {
 		}
 	}
 }
+.page-content{
+	@include media ('<=desktop') {
+		background:none!important;
+	}
+}
 .community {
 
 	.hide-on-community{

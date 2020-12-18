@@ -5377,6 +5377,9 @@ input.form-control {
   @media (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 63.9375rem), (min-resolution: 144dpi) and (max-width: 63.9375rem) {
   .menu-wrap::before {
     background-image: url("assets/images/mobile-menu-decor@2x.png"); } }
+  @media (max-width: 64rem) {
+  .page-content {
+    background: none !important; } }
   @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
       .main-holder::before {
         background-image: url("assets/images/bg-main@2x.png"); }
