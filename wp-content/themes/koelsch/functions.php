@@ -117,6 +117,8 @@ add_image_size( 'page-header', 1200, 650, true );
 add_image_size( 'community-listing', 750, 454, true );
 add_image_size( 'contact-image', 150, 150, true );
 add_image_size( 'contact-image-2x', 300, 300, true );
+add_image_size( 'floorplan', 532, 350, true );
+add_image_size( 'floorplan-2x', 1064, 700, true );
 // add_image_size( 'page-header-2x', 2000, 1200, true );
 
 /* Update from 05.12.2020 */

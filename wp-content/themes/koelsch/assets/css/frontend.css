@@ -603,8 +603,8 @@ html {
 body {
   color: #252d3b;
   background: #fff;
-  font: 17px/1.76471 "proxima-nova", "Arial", "Helvetica Neue", "Helvetica", sans-serif;
-  font: 1.0625rem/1.76471 "proxima-nova", "Arial", "Helvetica Neue", "Helvetica", sans-serif;
+  font: 18px/1.76471 "proxima-nova", "Arial", "Helvetica Neue", "Helvetica", sans-serif;
+  font: 1.125rem/1.76471 "proxima-nova", "Arial", "Helvetica Neue", "Helvetica", sans-serif;
   min-width: 320px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
@@ -3878,6 +3878,9 @@ input.form-control {
     .filter-list a:hover {
       border-color: #c69230; }
 
+.wp-block-columns {
+  padding: 0 30px; }
+
 .alignfull {
   left: calc(-1rem - 15px);
   position: relative;
@@ -3903,21 +3906,69 @@ input.form-control {
   fill: #1a1e2a; }
 
 .floorplan {
-  padding: 20px;
+  margin-bottom: 60px;
   background-color: #fff;
-  color: #1c222d; }
+  color: #1c222d;
+  position: relative; }
+  .floorplan figure {
+    transition: padding 0.3s ease-in-out;
+    margin: 0;
+    margin-left: 1px;
+    border: 1px #ece6dc solid;
+    overflow: hidden;
+    padding: 25px 25px 44px;
+    cursor: pointer; }
+    .floorplan figure:hover {
+      padding: 18px 20px 44px; }
+      .floorplan figure:hover .enlarge {
+        color: #c69230; }
+    .floorplan figure .enlarge {
+      transition: color 0.3s ease-in-out;
+      position: absolute;
+      background-color: #fff;
+      font-size: 30px;
+      font-size: 1.875rem;
+      right: 1px;
+      top: 1px;
+      padding: 30px 30px 10px 10px;
+      line-height: 20px;
+      line-height: 1.25rem; }
+  .floorplan .info-wrap {
+    background-color: #fff;
+    padding-top: 22px;
+    position: absolute;
+    bottom: -22px;
+    left: 0; }
   .floorplan .title {
     font-family: "MillerBanner", "Times New Roman", "Times", "Baskerville", "Georgia", serif;
     color: #1c222d;
     text-transform: none;
     letter-spacing: normal; }
   .floorplan ul {
-    margin: 0;
-    padding: 0; }
+    margin: 10px 0 0;
+    padding: 0;
+    display: flex; }
     .floorplan ul li {
-      display: inline-block; }
+      display: block;
+      position: relative;
+      padding-right: 10px;
+      margin-right: 10px;
+      line-height: 14px;
+      line-height: 0.875rem; }
+      .floorplan ul li::after {
+        display: block;
+        content: '';
+        position: absolute;
+        bottom: 0;
+        height: 17px;
+        width: 1px;
+        right: 0;
+        background-color: #a29d94; }
+      .floorplan ul li:last-child::after {
+        display: none; }
       .floorplan ul li span {
-        color: #9a9fa6; }
+        color: #9a9fa6;
+        font-weight: 100; }
 
 .visual-link {
   margin-bottom: 2em; }
@@ -4141,6 +4192,9 @@ input.form-control {
         height: 25vw; }
     .second-menu {
       width: auto; } }
+  @media (min-width: 37.5rem) {
+    .floorplan {
+      margin-bottom: 25px; } }
   @media (min-width: 48rem) {
     .commentlist-item .commentlist-item {
       padding: 0 0 0 2em; }
@@ -4553,6 +4607,8 @@ input.form-control {
       margin-right: 15px; }
       .filter-list a {
         padding: 0 10px 10px; }
+    .alignfull {
+      left: calc(-1.25 * (10% + 15px)); }
     #footer .container {
       padding-left: 25px;
       padding-right: 25px; }
@@ -4647,9 +4703,6 @@ input.form-control {
   @media (min-width: 48rem) and (max-width: 74.9375rem) {
   .main-holder .content-topbar h1 {
     margin: 0 0 15px; } }
-  @media only screen and (min-width: 48rem) {
-    .alignfull {
-      left: calc(-1.25 * (10% + 15px)); } }
   @media (min-width: 64rem) {
     .gallery-section {
       margin-bottom: 50px; }
@@ -5082,6 +5135,8 @@ input.form-control {
         font-size: 2.25rem; }
         .section-search .heading .divider-vertical {
           margin-right: 30px; }
+    .alignfull {
+      left: calc(-50vw + 50%); }
       .footer-top .community-link {
         margin-top: 2px; }
       .footer-bottom .flex-row .col:first-child {
@@ -5121,6 +5176,9 @@ input.form-control {
   .visual-section h1 {
     font-size: 50px;
     font-size: 3.125rem; } }
+  @media (min-width: 75.0625rem) {
+    .wp-block-columns {
+      padding: 0; } }
   @media (min-width: 82.5rem) {
   .content-section-50:not(.fullwidth).margins.align-right .col.img-col,
   .content-section-33:not(.fullwidth).margins.align-right .col.img-col,
@@ -5172,9 +5230,6 @@ input.form-control {
       flex-grow: 1; }
     .contacts-block {
       padding-bottom: 83px; } }
-  @media only screen and (min-width: 93.75rem) {
-    .alignfull {
-      left: calc(-50vw + 50%); } }
   @media (min-width: 100rem) {
       .main-holder #content {
         width: calc(100% - 600px); }

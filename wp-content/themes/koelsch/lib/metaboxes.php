@@ -232,6 +232,12 @@
       'id'         => 'sf',
       'type'       => 'text_small',
     ) );
+    $fp->add_field( array(
+      'name'       => __( 'Description', 'koelsch' ),
+      'desc'       => __( '(Optional)', 'koelsch' ),
+      'id'         => 'desc',
+      'type'       => 'textarea_small',
+    ) );
   }
 
 add_action( 'cmb2_admin_init', 'koelsch_register_theme_settings_metabox' );
