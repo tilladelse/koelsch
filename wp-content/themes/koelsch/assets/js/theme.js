@@ -87,7 +87,34 @@ jQuery(function() {
 				subMenuEle.removeClass('sticky');
 				subMenuHldr.hide();
 			}
-});
+
+		});
+
+		// modal actions
+		$('.modal .close-modal, .open-modal').on('click', function(e){
+			e.preventDefault();
+			var tar = $(this).data('target');
+			$(tar).toggleClass('active');
+		});
+
+		$('.floorplan .open-modal').on('click', function(e){
+			var tar = $(this).data('target');
+			var imgSrc = $(tar).data('image'),
+			id = $(tar).data('id');
+			var imgEle = $('#'+id+'_image');
+			setTimeout(function(){
+				imgEle.attr('src', imgSrc).addClass('active');
+			}, 800);
+
+		});
+
+		$('.floorplan-modal .close-modal').on('click', function(e){
+			var tar = $(this).data('target');
+			var imgSrc = $(tar).data('image'),
+			id = $(tar).data('id');
+			var imgEle = $('#'+id+'_image');
+			imgEle.removeClass('active');
+		});
 
 	});
 })( jQuery );

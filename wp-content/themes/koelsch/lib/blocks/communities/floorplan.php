@@ -9,11 +9,12 @@ if ($fpID){
 
   $featImgID = get_post_thumbnail_id($fpID);
   $img = get_image_srcset($featImgID, 'floorplan', 'floorplan-2x');
+  $lgImg =wp_get_attachment_image_url($featImgID, 'full');
 
   ?>
-  <div class="floorplan">
+  <div class="floorplan" id="fp_<?php echo $fpID;?>">
     <?php if ($img):?>
-    <figure>
+    <figure class="open-modal" data-target="#fp_<?php echo $fpID;?>_modal">
       <div class="enlarge"><ion-icon name="expand-outline"></ion-icon></div>
       <?php echo $img;?>
     </figure>
@@ -27,6 +28,12 @@ if ($fpID){
     </ul>
     <?php echo $desc ? '<p>'.$desc.'</p>' : '';?>
     </div>
+  </div>
+  <div class="modal floorplan-modal" id="fp_<?php echo $fpID;?>_modal" data-id="fp_<?php echo $fpID;?>" data-image="<?php echo $lgImg;?>">
+    <a href="#" class="close-modal" data-target="#fp_<?php echo $fpID;?>_modal"><span>Close</span> <ion-icon name="close-outline"></ion-icon></a>
+    <div class="title"><?php echo $title;?></div>
+    <img id="fp_<?php echo $fpID;?>_image" src="<?php echo get_stylesheet_directory_uri().'/assets/images/loader-white.svg';?>">
+    <?php //echo $img;?>
   </div>
   <?php
 }
