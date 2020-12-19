@@ -32,7 +32,7 @@ if ($fpID){
   <div class="modal floorplan-modal" id="fp_<?php echo $fpID;?>_modal" data-id="fp_<?php echo $fpID;?>" data-image="<?php echo $lgImg;?>">
     <a href="#" class="close-modal" data-target="#fp_<?php echo $fpID;?>_modal"><span>Close</span> <ion-icon name="close-outline"></ion-icon></a>
     <div class="title"><?php echo $title;?></div>
-    <img id="fp_<?php echo $fpID;?>_image" src="<?php echo get_stylesheet_directory_uri().'/assets/images/loader-white.svg';?>">
+    <img id="fp_<?php echo $fpID;?>_image" src="">
     <?php //echo $img;?>
   </div>
   <?php
