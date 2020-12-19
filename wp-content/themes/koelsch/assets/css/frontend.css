@@ -3949,7 +3949,7 @@ input.form-control {
 .wp-block-columns {
   padding: 0 30px; }
 
-.wp-block-image figure {
+.wp-block-image.figure {
   margin: 0; }
 
 .border-top {
