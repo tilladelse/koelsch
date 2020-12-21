@@ -338,10 +338,33 @@
     $pages = get_pages();
     if ($pages){
       foreach($pages as $page){
-        $return[$page->ID] = $page->post_title;
+        $return[$page->ID] = display_page_title_depth($page);
       }
     }
     return $return;
+  }
+  function display_page_title_depth($page){
+    $depth = get_page_depth($page);
+    $spacer = '';
+
+    for($i = 1; $i <= $depth; $i++){
+      $spacer .= '&nbsp;&nbsp;&nbsp;';
+    }
+
+    return $spacer.$page->post_title;
+
+  }
+  function get_page_depth($page){
+    $parent_id  = $page->post_parent;
+    $depth = 0;
+
+    while($parent_id > 0){
+        $page = get_page($parent_id);
+        $parent_id = $page->post_parent;
+        $depth++;
+    }
+
+    return $depth;
   }
 
   function acf_load_floorplan_field_choices( $field ) {
