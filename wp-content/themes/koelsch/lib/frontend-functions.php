@@ -386,6 +386,13 @@ function get_image_srcset($imageID, $imageSize, $retinaImageSize){
   }
   return false;
 }
+function is_community_home_page(){
+  global $post;
+  if (get_post_meta($post->ID, 'community_post_id', true)){
+    return true;
+  }
+  return false;
+}
 
 // function koelsch_get_community_sub_menu($menuID){
 //   $items = wp_get_nav_menu_items($menuID);

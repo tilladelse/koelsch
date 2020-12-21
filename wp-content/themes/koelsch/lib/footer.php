@@ -148,8 +148,10 @@ function get_footer_phone($communityID){
 
 add_action('koelsch_footer_site_attribution', 'koelsch_footer_site_attribution');
 function koelsch_footer_site_attribution(){
-  //TODO: only show on home page and community home pages
-  echo '<span class="by"><a href="https://tilladelsemarketingagency.com">Website by <span>Tilladelse</span><img src="'.get_stylesheet_directory_uri().'/assets/images/tilla-delse.png" alt="website created by Tilladelse"></a></span>';
+  if (is_front_page() || is_community_home_page()){
+    echo '<span class="by"><a href="https://tilladelsemarketingagency.com">Website by <span>Tilladelse</span><img src="'.get_stylesheet_directory_uri().'/assets/images/tilla-delse.png" alt="website created by Tilladelse"></a></span>';
+  }
+
 }
 
 function koelsch_living_types_menu(){
