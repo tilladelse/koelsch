@@ -8,7 +8,6 @@
  * @license GPL-2.0-or-later
  * @link    https://www.tilladelse.com/
  */
-
 $archive_title    = get_the_archive_title();
 $archive_subtitle = get_the_archive_description();
 global $wp_query;

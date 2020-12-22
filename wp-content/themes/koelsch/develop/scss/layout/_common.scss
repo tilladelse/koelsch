@@ -118,6 +118,34 @@ a {
 	.main-item {
 		display: none !important;
 	}
+
+	.community-menu-wrapper{
+
+		 h1{
+	 		padding: 5vh 25px 5vh 30px;
+	     background-color: $darker-blue;
+	     color: $white;
+	     text-align: center;
+	     font-size: 35px;
+	 		 margin:0;
+
+			 &.header-copy{
+ 				transform: rotate(0deg);
+ 				position:relative;
+ 				color:$gold;
+ 				bottom:auto;
+ 				left:auto;
+ 				padding:0 30px 60px 30px;
+				text-align: left;
+				font-size: 24px;
+				font-family:$base-font-sans-serif;
+				letter-spacing:2px;
+				font-weight:200;
+				text-transform: uppercase;
+				max-width:100%;
+ 			}
+	 	}
+	}
 }
 
 .community-item {
@@ -422,10 +450,28 @@ address {
 	}
 }
 
+.admin-bar{
+
+	.sticky{
+		top:32px
+	}
+
+}
+
+.sticky{
+	position:fixed;
+	top:0;
+	right:0;
+	left:0;
+	z-index:9999;
+}
+
 .visual-section {
 	overflow: hidden;
 	position: relative;
 	background-size: cover;
+	display:flex;
+	justify-content:center;
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	padding: 1px;
@@ -440,6 +486,9 @@ address {
 	}
 
 	&.community {
+
+		display:block;
+		justify-content:auto;
 		min-height: calc(100vh - 54px);
 
 		@include media ('>=desktop') {
@@ -449,6 +498,34 @@ address {
 		@include media ('>=widescreen') {
 			min-height: calc(100vh - 50px);
 		}
+
+		h1{
+			position:absolute;
+			bottom: 1vh;
+		  left: 20px;
+		  transform: rotate(-90deg);
+			transform-origin: top left;
+			z-index:2;
+			font-family: $base-font-sans-serif;
+			text-transform: uppercase;
+			font-size:16px;
+			color:$white;
+			letter-spacing:2px;
+			font-weight:200;
+			max-width:200px;
+			text-align: left;
+			background: none;
+			padding:0;
+
+			@include media ('>=tablet') {
+				font-size:18px;
+				left: 30px;
+				bottom: 4vh;
+				color:$gold;
+				max-width:60vh;
+			}
+		}
+
 
 		.text-block {
 			padding-top: 20px;
@@ -561,7 +638,7 @@ address {
 
 	.logo-box {
 		position: absolute;
-		bottom: 100px;
+		bottom: 120px;
 		right: 24px;
 		width: 155px;
 		z-index: 3;

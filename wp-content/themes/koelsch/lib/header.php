@@ -10,9 +10,9 @@ function koelsch_header(){
   $hc = $headerClass ? 'class="'.$headerClass.'"' : '';
 
   $wrapperClass = apply_filters('koelsch_main_wrapper_class', 'page-holder');
+  $mainClass = apply_filters('koelsch_main_element_class', $communityClass);
 
   $mainID = apply_filters('koelsch_main_element_id','main');
-  $mainClass = apply_filters('koelsch_main_element_class','');
 
   ob_start();
   ?>
@@ -91,32 +91,47 @@ function koelsch_community_menu(){
 
   global $community_context;
 
+  $id = get_the_id();
+  $headerCopy = get_post_meta($id, 'header_copy', true);
+  $h1 = get_post_meta($id, 'h1', true);
+  $h1 = $h1 ? $h1 : get_the_title();
+  $showH1 = apply_filters('koelsch_header_show_h1', true);
+
   ob_start();?>
-  <div class="holder community">
-    <?php if ($community_context->inCommunityContext()):?>
-    <div class="community-block community-item">
-      <div class="container">
-        <div class="community-holder">
-          <?php echo get_community_logo($community_context->communityID);?>
-          <nav id="commNav" class="community-nav">
-          <?php wp_nav_menu(array(
-                  'menu'=> $community_context->menuID,
-                  'menu_id'=>'',
-                  'container'=>false,
-                  'depth'=>2,
-                  'walker'=> new Koelsch_Walker_Nav_Menu,
-                  'fallback_cb'=>'__return_false'
-                ));?>
-          </nav>
+
+  <?php if ($community_context->inCommunityContext()):?>
+    <div class="holder community">
+      <div class="community-block community-item">
+        <div class="container">
+          <div class="community-holder">
+            <?php echo get_community_logo($community_context->communityID);?>
+            <nav id="commNav" class="community-nav">
+            <?php wp_nav_menu(array(
+                    'menu'=> $community_context->menuID,
+                    'menu_id'=>'',
+                    'container'=>false,
+                    'depth'=>2,
+                    'walker'=> new Koelsch_Walker_Nav_Menu,
+                    'fallback_cb'=>'__return_false'
+                  ));?>
+            </nav>
+          </div>
         </div>
       </div>
+      <?php echo $headerCopy ? '<div class="title-area header-copy"><p>'.$headerCopy.'</p></div>' : '';?>
     </div>
-  <?php else:?>
-    <!-- <div class="text-block align-center">
-      <h1><?php echo get_the_title();?></h1>
-    </div> -->
-  <?php endif;?>
-  </div>
+    <?php $hcClass = $headerCopy ? ' class="header-copy"' : '';
+    echo $showH1 ? '<h1'.$hcClass.'>'.$h1.'</h1>' : '';?>
+
+  <?php else:
+    if ($showH1):?>
+    <div class="title-area <?php echo $headerCopy ? 'header-copy' : 'align-center';?>">
+      <?php echo $headerCopy ? '<p>'.$headerCopy.'</p>' : '';?>
+      <h1><?php echo $h1;?></h1>
+    </div>
+    <?php endif;
+  endif;?>
+
   <?php echo ob_get_clean();
 }
 

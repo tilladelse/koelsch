@@ -479,6 +479,33 @@ function koelsch_register_general_metaboxes() {
   ) );
 
   $opts->add_field( array(
+    'name' => 'Alternate H1',
+    'id'   => 'h1',
+    'type' => 'text',
+    // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+  ) );
+
+  $opts->add_field( array(
+    'name' => 'Show H1 In Header Area',
+    'id'   => 'show_header_h1',
+    'type'    => 'radio_inline',
+    'options' => array(
+        'show' => __( 'Show', 'cmb2' ),
+        'hide'   => __( 'Hide', 'cmb2' )
+    ),
+    'default' => 'show'
+    // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+  ) );
+
+  $opts->add_field( array(
+    'name' => 'Header Copy',
+    'id'   => 'header_copy',
+    'type' => 'textarea_small',
+    'description'=>'Copy to show over the page header background image'
+    // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+  ) );
+
+  $opts->add_field( array(
     'name'       => 'Featured Video URL',
     'id'         => 'featured_video',
     'type' => 'file',

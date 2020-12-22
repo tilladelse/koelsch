@@ -242,7 +242,72 @@
 		}
 	}
 }
+.title-area{
 
+	padding:20px 25px 10px 30px;
+	background-color: $darker-blue;
+
+	h1{
+		color:$white;
+	}
+
+	&.header-copy{
+
+		h1{
+
+			font-family: $base-font-sans-serif;
+			text-transform: uppercase;
+			font-size:24px;
+			color:$gold;
+			letter-spacing:2px;
+			font-weight:200;
+			margin:20px 0;
+
+			@include media ('>=xl-phone') {
+				margin-bottom:60px;
+			}
+
+		}
+
+		p{
+
+			font-size:36px;
+			font-family: $base-font-serif;
+			color:$white;
+			max-width: 100%;
+			line-height:1.2;
+			margin:0;
+
+			@include media ('>=tablet') {
+				font-size:60px;
+				max-width: 70%;
+				margin:60px 0 0 0;
+			}
+			@include media ('>desktop') {
+				max-width:50%;
+			}
+
+			@include media ('>=widescreen') {
+				max-width:40%;
+			}
+
+		}
+	}
+}
+.bg-video-holder{
+	.title-area{
+		background:none;
+		width:100%;
+		z-index:1;
+	}
+
+	.header-copy p{
+		display:none;
+		@include media ('>=phone') {
+			display: block;
+		}
+	}
+}
 .community-block {
 	padding-top: 30px;
 	padding-bottom: 24px;

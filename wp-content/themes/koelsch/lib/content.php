@@ -29,6 +29,12 @@ function koelsch(){
 
    get_footer();
 }
+add_filter('koelsch_header_show_h1', 'koelsch_header_show_h1');
+function koelsch_header_show_h1(){
+  $showH1 = get_post_meta(get_the_id(), 'show_header_h1', true);
+  return $showH1 == 'hide' ? false : true;
+}
+
 add_action('koelsch_before_content', 'second_level_page_menu');
 function second_level_page_menu(){
   global $community_context;
