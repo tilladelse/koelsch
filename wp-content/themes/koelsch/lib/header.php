@@ -137,6 +137,7 @@ function koelsch_community_menu(){
 
 add_action('koelsch_after_community_menu', 'koelsch_after_community_menu',10);
 function koelsch_after_community_menu($imageArr){
+
   if ($imageArr['image_url'] || $imageArr['video_url']){
     ob_start();?>
     <a href="#page_content" class="btn-circle anchor-link">
@@ -149,7 +150,11 @@ function koelsch_after_community_menu($imageArr){
       </svg>
     </a>
     <div class="logo-box">
-      <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/independent-logo.png" alt="image description">
+      <?php $lts = get_living_type_seal();
+        if ($lts){
+          echo '<img src="'.get_stylesheet_directory_uri().'/assets/images/svg/'.$lts.'" alt="Koelsch senior living seal">';
+        }
+      ?>
     </div>
   </div>
   <?php echo ob_get_clean();

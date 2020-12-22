@@ -393,6 +393,14 @@ function is_community_home_page(){
   }
   return false;
 }
+function get_living_type_seal(){
+  global $community_context;
+  $community_context->getCurrentLivingTypes();
+  if ($community_context->livingType && isset($community_context->livingType['seal'])){
+    return $community_context->livingType['seal'];
+  }
+  return false;
+}
 
 // function koelsch_get_community_sub_menu($menuID){
 //   $items = wp_get_nav_menu_items($menuID);

@@ -2649,7 +2649,9 @@ address {
     z-index: 3; }
     .visual-section .logo-box img {
       display: block;
-      width: 100%; }
+      width: 100%;
+      filter: invert(1);
+      -webkit-filter: invert(1); }
   .visual-section .btn-circle {
     position: absolute;
     bottom: 26px;

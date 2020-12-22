@@ -45,6 +45,18 @@ class Community_Context{
    */
   var $livingTypeID;
 
+	/**
+   * The living type - an array of living type data
+   * @var string
+   */
+  var $livingType;
+
+	/**
+   * All living types - an array of all living type settings
+   * @var string
+   */
+  var $allLivingTypes;
+
   /**
    * Whether or not we're in community context
    * @var boolean
@@ -123,22 +135,30 @@ class Community_Context{
    */
   public function getCurrentLivingTypes(){
 
-    $ltSettings = get_koelsch_setting('living_types');
-    $livingTypes = array();
+		if (!$this->allLivingTypes){
+			$this->allLivingTypes = get_koelsch_setting('living_types');
+		}
 
-    if ($ltSettings){
+		if (!$this->livingType){
 
-      foreach($ltSettings as $i=>$type){
+	    if ($this->allLivingTypes){
 
-        if ($type['id'] == $this->livingTypeID){
-          return $type;
-        }
+	      foreach($this->allLivingTypes as $i=>$type){
 
-      }
+	        if ($type['id'] == $this->livingTypeID){
+						$this->livingType = $type;
+	          return $this->livingType;
+	        }
 
-    }
+	      }
 
-    return false;
+	    }
+
+			return false;
+
+		}else{
+			return $this->livingType;
+		}
 
   }
 

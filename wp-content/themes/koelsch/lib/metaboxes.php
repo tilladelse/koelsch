@@ -380,8 +380,15 @@ function koelsch_register_theme_settings_metabox() {
 ) );
   $k_settings->add_group_field( $living_types, array(
     'name' => 'Seal',
-    'id'   => 'seal_url',
-    'type' => 'file',
+    'id'   => 'seal',
+    'type' => 'select',
+    'show_option_none' => true,
+    'options'=>array(
+      'IL_seal.svg'=>'Signature Independent Living',
+      'AL_seal.svg'=>'Distinctive Assisted Living',
+      'MC_seal.svg'=>'Distinctive Memory Care',
+      'SL_seal.svg'=>'Signature Senior Living'
+    )
     // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
   ) );
   $k_settings->add_group_field( $living_types, array(
