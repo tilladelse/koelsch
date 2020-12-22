@@ -104,7 +104,7 @@ jQuery(function() {
 			var imgEle = $('#'+id+'_image');
 			setTimeout(function(){
 				imgEle.attr('src', imgSrc).addClass('active');
-			}, 800);
+			}, 600);
 
 		});
 
@@ -366,7 +366,7 @@ function initMobileNav() {
 		menuActiveClass: 'nav-active',
 		menuOpener: '.nav-opener',
 		hideOnClickOutside: true,
-		menuDrop: '.menu-wrapp'
+		menuDrop: '.menu-wrap'
 	});
 
 	ResponsiveHelper.addRange({

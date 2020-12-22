@@ -1,14 +1,34 @@
 body {
-&.nav-active {
-	@include media ('<desktop') {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		overflow: hidden;
+	&.nav-active {
+		@include media ('<desktop') {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+		// &.admin-bar{
+		// 	top:30px;
+		// }
+		.community{
+			.main-item{
+				display:block!important;
+			}
+		}
+
+		&.admin-bar{
+			padding-top:46px;
+			@include media ('>=wp-mobile') {
+				padding-top:30px;
+			}
+
+			.menu-wrap .decor-logo{
+				padding-bottom:65px;
+			}
+		}
 	}
-}
+
 }
 #wrapper {
 	position: relative;
@@ -109,14 +129,14 @@ a {
 	.hide-on-community{
 		display:none;
 	}
-	&.community-item,
+
 	.community-item {
 		display: block !important;
 	}
 
 	&.main-item,
 	.main-item {
-		display: none !important;
+		display: none!important;
 	}
 
 	.community-menu-wrapper{

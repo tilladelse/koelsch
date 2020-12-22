@@ -2129,7 +2129,7 @@ a {
     width: 100%;
     height: auto; }
 
-nav li.current-menu-item > a, #nav li.current-menu-item > a {
+nav li.current-menu-item a, #nav li.current-menu-item a {
   font-weight: 600; }
 
 #nav {
@@ -2242,6 +2242,14 @@ nav li.current-menu-item > a, #nav li.current-menu-item > a {
   .nav-opener:after {
     top: 66%; }
 
+body.nav-active .community .main-item {
+  display: block !important; }
+
+body.nav-active.admin-bar {
+  padding-top: 46px; }
+  body.nav-active.admin-bar .menu-wrap .decor-logo {
+    padding-bottom: 65px; }
+
 #wrapper {
   position: relative;
   overflow: hidden; }
@@ -2305,7 +2313,6 @@ a {
 .community .hide-on-community {
   display: none; }
 
-.community.community-item,
 .community .community-item {
   display: block !important; }
 
@@ -4889,6 +4896,9 @@ figure.wp-block-image {
   @media (min-width: 48rem) and (max-width: 74.9375rem) {
   .main-holder .content-topbar h1 {
     margin: 0 0 15px; } }
+  @media (min-width: 48.875rem) {
+    body.nav-active.admin-bar {
+      padding-top: 30px; } }
   @media (min-width: 64rem) {
     .gallery-section {
       margin-bottom: 50px; }
@@ -5456,8 +5466,8 @@ figure.wp-block-image {
       .nav-active #header.community .menu-wrap {
         height: calc(100vh - 54px); }
       #header.community #nav {
-        padding-top: 8px;
-        margin-top: 58px; }
+        padding: 40px 0 15px;
+        margin-top: 0; }
       #header.community #nav > li:nth-last-child(2) {
         margin-bottom: 0; }
         #header.community #nav > li:last-child {

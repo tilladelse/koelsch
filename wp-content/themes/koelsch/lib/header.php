@@ -39,6 +39,7 @@ function koelsch_header(){
              </span>
            </div>
          </nav>
+         <a class="nav-opener" href="#"><span></span></a>
          <?php do_action('koelsch_community_phone_button');?>
        </div>
      </div>
