@@ -141,6 +141,24 @@ a {
 
 	.community-menu-wrapper{
 
+		position:relative;
+
+		&::after{
+			display: block;
+			content: '';
+			background-color: #1c232d;
+			top: 0;
+			right: 0;
+			left: 0;
+			bottom: 0;
+			position: absolute;
+			opacity: .5;
+
+			@include media('>=desktop'){
+				display:none;
+			}
+		}
+
 		 h1{
 	 		padding: 5vh 25px 5vh 30px;
 	     background-color: $darker-blue;
@@ -150,19 +168,26 @@ a {
 	 		 margin:0;
 
 			 &.header-copy{
- 				transform: rotate(0deg);
- 				position:relative;
+
  				color:$gold;
- 				bottom:auto;
- 				left:auto;
- 				padding:0 30px 60px 30px;
-				text-align: left;
-				font-size: 24px;
 				font-family:$base-font-sans-serif;
 				letter-spacing:2px;
 				font-weight:200;
 				text-transform: uppercase;
-				max-width:100%;
+				max-width:60vh;
+
+				@include media('>=phone'){
+
+					transform: rotate(0deg);
+	 				position:relative;
+					bottom:auto;
+	 				left:auto;
+	 				padding:0 30px 60px 30px;
+					text-align: left;
+					font-size: 24px;
+					max-width:100%;
+
+				}
  			}
 	 	}
 	}
@@ -473,7 +498,11 @@ address {
 .admin-bar{
 
 	.sticky{
-		top:32px
+
+		@include media('>=phone'){
+			top:32px;
+		}
+
 	}
 
 }
@@ -521,7 +550,7 @@ address {
 
 		h1{
 			position:absolute;
-			bottom: 1vh;
+			bottom: 1.5vh;
 		  left: 20px;
 		  transform: rotate(-90deg);
 			transform-origin: top left;
@@ -542,6 +571,10 @@ address {
 				left: 30px;
 				bottom: 4vh;
 				color:$gold;
+				max-width:250px;
+			}
+
+			@include media('>=desktop'){
 				max-width:60vh;
 			}
 		}
@@ -2101,8 +2134,9 @@ label {
 		text-decoration: none;
 		word-spacing: nowrap;
 		position: relative;
-		padding: 0 10px 0 30px;
-		margin-left: -40px;
+		// padding: 0 10px 0 30px;
+		// margin-left: -40px;
+		margin-left: -12px;
 
 		@include media ('>=desktop') {
 			margin-left: 0;
