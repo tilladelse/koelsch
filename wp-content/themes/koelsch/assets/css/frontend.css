@@ -3548,7 +3548,8 @@ label {
     text-decoration: none;
     word-spacing: nowrap;
     position: relative;
-    margin-left: -12px; }
+    padding: 0 10px 0 30px;
+    margin-left: -40px; }
     .sub-navigation .sub-nav.without-scroll::before, .sub-navigation .sub-nav.without-scroll::after {
       display: none; }
     .sub-navigation .sub-nav::before, .sub-navigation .sub-nav::after {

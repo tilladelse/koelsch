@@ -2134,9 +2134,9 @@ label {
 		text-decoration: none;
 		word-spacing: nowrap;
 		position: relative;
-		// padding: 0 10px 0 30px;
-		// margin-left: -40px;
-		margin-left: -12px;
+		padding: 0 10px 0 30px;
+		margin-left: -40px;
+		// margin-left: -12px;
 
 		@include media ('>=desktop') {
 			margin-left: 0;
