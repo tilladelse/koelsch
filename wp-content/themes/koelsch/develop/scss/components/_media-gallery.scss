@@ -127,10 +127,10 @@
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
-		padding-top: 20px;
+		padding: 20px;
 
 		li {
-			margin: 0 6px;
+			margin: 0 6px 10px;
 
 			&.slick-active {
 				button {

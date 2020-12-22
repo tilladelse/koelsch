@@ -2786,7 +2786,11 @@ input {
 	color: $form-elem-color;
 
 	.top-panel {
-		padding-top: 58px;
+
+		@include media('>phone'){
+			padding-top: 58px;
+		}
+
 
 		.col-sm {
 			padding-bottom: 11px;

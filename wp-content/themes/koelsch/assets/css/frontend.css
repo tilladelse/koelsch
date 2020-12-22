@@ -1406,9 +1406,9 @@ a {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    padding-top: 20px; }
+    padding: 20px; }
     .media-gallery .slick-dots li {
-      margin: 0 6px; }
+      margin: 0 6px 10px; }
       .media-gallery .slick-dots li.slick-active button {
         background-color: #2e2e2e; }
     .media-gallery .slick-dots button {
@@ -3917,20 +3917,18 @@ input.form-control {
 
 .section-search {
   color: #1d242e; }
-  .section-search .top-panel {
-    padding-top: 58px; }
-    .section-search .top-panel .col-sm {
-      padding-bottom: 11px; }
-    .section-search .top-panel .col-md {
-      padding-bottom: 27px;
-      padding-right: 32px;
-      padding-left: 32px;
-      position: relative;
-      z-index: 100; }
-      .section-search .top-panel .col-md .divider-vertical {
-        position: absolute;
-        left: 0;
-        top: 0; }
+  .section-search .top-panel .col-sm {
+    padding-bottom: 11px; }
+  .section-search .top-panel .col-md {
+    padding-bottom: 27px;
+    padding-right: 32px;
+    padding-left: 32px;
+    position: relative;
+    z-index: 100; }
+    .section-search .top-panel .col-md .divider-vertical {
+      position: absolute;
+      left: 0;
+      top: 0; }
   .section-search .search-holder {
     background-color: #f5eee2; }
     .section-search .search-holder .search-container {
@@ -4413,6 +4411,9 @@ figure.wp-block-image {
     top: 32px; }
     .second-menu {
       width: auto; } }
+  @media (min-width: 30.0625rem) {
+    .section-search .top-panel {
+      padding-top: 58px; } }
   @media (min-width: 37.5rem) {
       .title-area.header-copy h1 {
         margin-bottom: 60px; }
@@ -4767,16 +4768,16 @@ figure.wp-block-image {
           width: 100%; }
         .find-panel .controls .form-group .btn-outline {
           right: 0; }
-        .section-search .top-panel .col-sm {
-          padding-bottom: 20px;
-          width: auto; }
-        .section-search .top-panel .col-md {
-          padding-right: 20px;
-          padding-left: 25px;
-          padding-bottom: 0;
-          width: auto; }
-          .section-search .top-panel .col-md .divider-vertical {
-            display: none; }
+      .section-search .top-panel .col-sm {
+        padding-bottom: 20px;
+        width: auto; }
+      .section-search .top-panel .col-md {
+        padding-right: 20px;
+        padding-left: 25px;
+        padding-bottom: 0;
+        width: auto; }
+        .section-search .top-panel .col-md .divider-vertical {
+          display: none; }
       .section-search .search-holder {
         height: 700px; }
         .section-search .search-holder .search-container {
@@ -5156,8 +5157,8 @@ figure.wp-block-image {
         width: calc(50% - 50px); }
       .find-panel .controls .form-group {
         width: calc(50% - 50px); }
-        .section-search .top-panel .col-md {
-          padding-right: 50px; }
+      .section-search .top-panel .col-md {
+        padding-right: 50px; }
       .section-search .search-holder {
         height: 1000px; }
         .section-search .search-holder .search-container {
@@ -5369,12 +5370,12 @@ figure.wp-block-image {
         .community-popup .col h1 {
           font-size: 60px;
           font-size: 3.75rem; }
-        .section-search .top-panel .col-sm {
-          padding-bottom: 48px;
-          width: 30%; }
-        .section-search .top-panel .col-md {
-          padding-left: 0;
-          width: 70%; }
+      .section-search .top-panel .col-sm {
+        padding-bottom: 48px;
+        width: 30%; }
+      .section-search .top-panel .col-md {
+        padding-left: 0;
+        width: 70%; }
       .section-search .title-category {
         font-size: 36px;
         font-size: 2.25rem; }
