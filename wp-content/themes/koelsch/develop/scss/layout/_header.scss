@@ -404,39 +404,39 @@
 
 .community-nav {
 
-	&>ul{
-
-		&>li{
-
-			&.menu-item-has-children{
-
-				&>a{
-
-					@include media ('<desktop') {
-						display: none;
-					}
-
-				}
-
-				ul.drop{
-
-					@include media ('<desktop') {
-						padding:0!important;
-					}
-
-					a{
-						@include media ('<desktop') {
-							text-transform:uppercase;
-						}
-					}
-
-				}
-
-			}
-
-		}
-
-	}
+	// &>ul{
+	//
+	// 	&>li{
+	//
+	// 		&.menu-item-has-children{
+	//
+	// 			&>a{
+	//
+	// 				@include media ('<desktop') {
+	// 					display: none;
+	// 				}
+	//
+	// 			}
+	//
+	// 			ul.drop{
+	//
+	// 				@include media ('<desktop') {
+	// 					padding:0!important;
+	// 				}
+	//
+	// 				a{
+	// 					@include media ('<desktop') {
+	// 						text-transform:uppercase;
+	// 					}
+	// 				}
+	//
+	// 			}
+	//
+	// 		}
+	//
+	// 	}
+	//
+	// }
 
 	ul {
 		@extend %listreset;
@@ -463,6 +463,43 @@
 		}
 
 		li {
+
+			&.menu-item-object-custom{
+
+				&>a{
+					@include media('<desktop'){
+						display:none;
+					}
+				}
+
+				.drop{
+
+					display:block;
+					@include media('<desktop'){
+						padding:0!important;
+					}
+
+					@include media('>=desktop'){
+						display:none;
+					}
+
+
+
+					&>li{
+
+						&>a{
+							padding-left:20px;
+							@include media('<desktop'){
+								text-transform:uppercase;
+							}
+						}
+
+					}
+
+				}
+
+			}
+
 			position:relative;
 
 			@include media ('>=desktop') {
@@ -495,16 +532,21 @@
 
 			position:relative;
 			text-transform:none;
-
-			@include media('>=desktop'){
-				display:none;
-			}
+			display:none;
 
 			li{
+
 				display: block;
 				margin:0;
 
+				&.current_page_ancestor{
+					a{
+						font-weight:600;
+					}
+				}
+
 				a{
+
 					&::before {
 						@include animate(opacity);
 
@@ -522,7 +564,7 @@
 						// }
 					}
 
-					// padding-left:40px;
+					padding-left:40px;
 
 					@include media ('>=desktop') {
 						padding: 10px 0 10px 20px;
@@ -694,7 +736,7 @@ nav, #nav{
 
 	li.current-menu-item{
 
-		a{
+		&>a{
 			font-weight:600;
 		}
 
