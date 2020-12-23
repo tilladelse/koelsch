@@ -315,3 +315,71 @@ $animation-speed: .3s !default;
 		font-style: $style;
 	}
 }
+
+@mixin outline-button{
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 16px;
+	font-weight: 400;
+	text-align: center;
+	text-transform: uppercase;
+	color: $dark-blue;
+	padding: 6px 18px 4px;
+	border: solid $dark-blue;
+	border-width: 1px 1px 0;
+	position: relative;
+	overflow: hidden;
+	letter-spacing: 2px;
+	text-decoration: none;
+
+	&.sm {
+		&:hover {
+			&::after {
+				width: calc(100% - 10px);
+			}
+			&::before {
+				width: calc(100% - 20px);
+			}
+		}
+	}
+
+	&:hover {
+		&::after {
+			width: calc(100% - 20px);
+		}
+
+		&::before {
+			width: calc(100% - 40px);
+		}
+	}
+
+	&::before,
+	&::after {
+		@include animate(width);
+
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	&::after {
+		height: 1px;
+		width: 40px;
+		border: solid $dark-blue;
+		border-width: 0 1000px;
+		box-sizing: content-box!important;
+	}
+
+	&::before {
+		bottom: 0;
+		height: 2px;
+		width: 26px;
+		background-color: $gold;
+	}
+
+	&:focus{
+		outline: none;
+	}
+}
