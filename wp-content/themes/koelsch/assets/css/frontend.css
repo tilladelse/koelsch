@@ -2281,13 +2281,12 @@ body.nav-active.admin-bar {
 
 body.memory-care {
   color: #1d1a2a; }
-  body.memory-care .page-content,
-  body.memory-care .community-section h1,
-  body.memory-care .community-section h2,
-  body.memory-care .community-section h3,
-  body.memory-care .community-section h4,
-  body.memory-care .community-section h5,
-  body.memory-care .h, body.memory-care .h1, body.memory-care .h2, body.memory-care .h3, body.memory-care .h4, body.memory-care .h5, body.memory-care .h6, body.memory-care h1, body.memory-care h2, body.memory-care h3, body.memory-care h4, body.memory-care h5, body.memory-care h6 {
+  body.memory-care .page-content .community-section h1,
+  body.memory-care .page-content .community-section h2,
+  body.memory-care .page-content .community-section h3,
+  body.memory-care .page-content .community-section h4,
+  body.memory-care .page-content .community-section h5,
+  body.memory-care .page-content .h, body.memory-care .page-content .h1, body.memory-care .page-content .h2, body.memory-care .page-content .h3, body.memory-care .page-content .h4, body.memory-care .page-content .h5, body.memory-care .page-content .h6, body.memory-care .page-content h1, body.memory-care .page-content h2, body.memory-care .page-content h3, body.memory-care .page-content h4, body.memory-care .page-content h5, body.memory-care .page-content h6 {
     color: #1d1a2a; }
   body.memory-care .svg-map .selected {
     fill: #1d1a2a; }

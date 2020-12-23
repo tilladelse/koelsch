@@ -32,15 +32,18 @@ body {
 	&.memory-care{
 		color:$dark-purple;
 
-		.page-content,
-		.community-section h1,
-		.community-section h2,
-		.community-section h3,
-		.community-section h4,
-		.community-section h5,
-		.h, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+		.page-content{
 
-			color:$dark-purple;
+			.community-section h1,
+			.community-section h2,
+			.community-section h3,
+			.community-section h4,
+			.community-section h5,
+			.h, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+
+				color:$dark-purple;
+
+			}
 
 		}
 
