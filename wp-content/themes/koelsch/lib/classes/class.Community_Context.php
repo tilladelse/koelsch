@@ -39,6 +39,12 @@ class Community_Context{
    */
   var $communityID;
 
+	/**
+   * The community name
+   * @var string
+   */
+  var $communityName;
+
   /**
    * The living type ID
    * @var string
@@ -109,10 +115,12 @@ class Community_Context{
     if ($this->communityID){
       $this->inCommunityContext = TRUE;
       $this->livingTypeID = get_post_meta($this->communityID, 'living_type', true);
+			$this->communityName = get_the_title($this->communityID);
     }else{
       $this->inCommunityContext = FALSE;
       //we're not in community context so set to default living type id
       $this->livingTypeID = 'independent-assisted-living-memory-care';
+			$this->communityName = '';
     }
 		// var_dump($this->communityID);
   }
