@@ -2279,6 +2279,36 @@ body.nav-active.admin-bar {
   body.nav-active.admin-bar .menu-wrap .decor-logo {
     padding-bottom: 65px; }
 
+body.memory-care {
+  color: #1d1a2a; }
+  body.memory-care .page-content,
+  body.memory-care .community-section h1,
+  body.memory-care .community-section h2,
+  body.memory-care .community-section h3,
+  body.memory-care .community-section h4,
+  body.memory-care .community-section h5,
+  body.memory-care .h, body.memory-care .h1, body.memory-care .h2, body.memory-care .h3, body.memory-care .h4, body.memory-care .h5, body.memory-care .h6, body.memory-care h1, body.memory-care h2, body.memory-care h3, body.memory-care h4, body.memory-care h5, body.memory-care h6 {
+    color: #1d1a2a; }
+  body.memory-care .svg-map .selected {
+    fill: #1d1a2a; }
+  body.memory-care .community-block,
+  body.memory-care .community .community-menu-wrapper:after,
+  body.memory-care .community .community-menu-wrapper h1:not(.header-copy),
+  body.memory-care .menu-wrap,
+  body.memory-care #nav .drop,
+  body.memory-care #nav .sub-menu,
+  body.memory-care #header,
+  body.memory-care #footer {
+    background-color: #1d1a2a; }
+  body.memory-care .visual-section::before {
+    background-image: linear-gradient(to bottom, #1d1a2a 0%, #1d1a2a 11%, rgba(29, 26, 42, 0.87) 26%, rgba(29, 26, 42, 0.2) 66%, rgba(29, 26, 42, 0) 90%); }
+  body.memory-care .visual-section::after {
+    background-image: linear-gradient(to bottom, rgba(29, 26, 42, 0) 10%, rgba(29, 26, 42, 0.2) 34%, rgba(29, 26, 42, 0.87) 74%, #1c222d 89%, #1d1a2a 100%); }
+  body.memory-care .visual-section .community-block {
+    background-color: transparent; }
+  body.memory-care .content-section-100 .row .col.img-col:before {
+    background-image: linear-gradient(to bottom, rgba(29, 26, 42, 0) 0%, #1d1a2a 97%, #1d1a2a 100%); }
+
 #wrapper {
   position: relative;
   overflow: hidden; }
@@ -4106,7 +4136,7 @@ figure.wp-block-image {
   fill: #c69230; }
 
 .koelsch-icon.purple {
-  fill: #1a1e2a; }
+  fill: #1d1a2a; }
 
 .floorplan {
   margin-bottom: 60px;

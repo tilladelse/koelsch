@@ -29,6 +29,54 @@ body {
 		}
 	}
 
+	&.memory-care{
+		color:$dark-purple;
+
+		.page-content,
+		.community-section h1,
+		.community-section h2,
+		.community-section h3,
+		.community-section h4,
+		.community-section h5,
+		.h, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+
+			color:$dark-purple;
+
+		}
+
+		.svg-map .selected{
+			fill:$dark-purple;
+		}
+
+		.community-block,
+		.community .community-menu-wrapper:after,
+		.community .community-menu-wrapper h1:not(.header-copy),
+		.menu-wrap,
+		#nav .drop,
+		#nav .sub-menu,
+		#header,
+		#footer{
+			background-color:$dark-purple;
+		}
+
+		.visual-section {
+			&::before{
+				background-image: linear-gradient(to bottom, rgba($dark-purple,1) 0%,rgba($dark-purple,1) 11%,rgba($dark-purple,0.87) 26%,rgba($dark-purple,0.2) 66%,rgba($dark-purple,0) 90%);
+			}
+			&::after{
+				background-image: linear-gradient(to bottom, rgba($dark-purple,0) 10%,rgba($dark-purple,0.2) 34%,rgba($dark-purple,0.87) 74%,rgba($darker-blue,1) 89%,rgba($dark-purple,1) 100%);
+			}
+			.community-block{
+				background-color:transparent;
+			}
+		}
+
+		.content-section-100 .row .col.img-col:before{
+			background-image: linear-gradient(to bottom, rgba($dark-purple,0) 0%,rgba($dark-purple,1) 97%,rgba($dark-purple,1) 100%);
+		}
+
+	}
+
 }
 #wrapper {
 	position: relative;

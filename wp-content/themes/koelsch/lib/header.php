@@ -177,4 +177,10 @@ function koelsch_community_phone_button(){
     }
   }
 }
+
+add_filter( 'body_class', function( $classes ) {
+
+  global $community_context;
+    return array_merge( $classes, array( $community_context->livingTypeID ) );
+} );
 ?>
