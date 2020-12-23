@@ -2304,7 +2304,7 @@ body.memory-care {
     background-image: linear-gradient(to bottom, #1d1a2a 0%, #1d1a2a 11%, rgba(29, 26, 42, 0.87) 26%, rgba(29, 26, 42, 0.2) 66%, rgba(29, 26, 42, 0) 90%); }
   body.memory-care .visual-section::after {
     background-image: linear-gradient(to bottom, rgba(29, 26, 42, 0) 10%, rgba(29, 26, 42, 0.2) 34%, rgba(29, 26, 42, 0.87) 74%, #1c222d 89%, #1d1a2a 100%); }
-  body.memory-care .visual-section .community-block {
+  body.memory-care .visual-section .community-block, body.memory-care .visual-section h1 {
     background-color: transparent; }
   body.memory-care .content-section-100 .row .col.img-col:before {
     background-image: linear-gradient(to bottom, rgba(29, 26, 42, 0) 0%, #1d1a2a 97%, #1d1a2a 100%); }
