@@ -979,10 +979,8 @@ label {
     .jcf-select-drop .jcf-list .jcf-option.jcf-option-hideme {
       display: none; }
 
-.gform_wrapper .gform_page_fields > ul > li:not(last-child) {
-  margin-bottom: 30px;
-  border-bottom: 1px #ece6dc dashed;
-  padding-bottom: 30px; }
+.gform_wrapper .gform_page_fields > ul > li {
+  margin-bottom: 30px; }
 
 .gform_wrapper .field_sublabel_below .ginput_complex.ginput_container label,
 .gform_wrapper .field_sublabel_below div[class*=gfield_time_].ginput_container label {

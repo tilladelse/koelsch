@@ -227,10 +227,10 @@ label {
 	@include media('<=widescreen'){
 		padding:0 25px 20px 25px;
 	}
-	.gform_page_fields>ul>li:not(last-child) {
+	.gform_page_fields>ul>li {
     margin-bottom: 30px;
-    border-bottom: 1px $gray-50 dashed;
-    padding-bottom: 30px;
+    // border-bottom: 1px $gray-50 dashed;
+    // padding-bottom: 30px;
 	}
 }
 .gform_wrapper .field_sublabel_below .ginput_complex.ginput_container label,
