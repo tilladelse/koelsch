@@ -224,10 +224,10 @@ label {
 // gravity Forms
 .gform_wrapper{
 
-	@include media('<=desktop'){
+	@include media('<=widescreen'){
 		padding:0 25px 20px 25px;
 	}
-	.gform_page_fields>ul>li {
+	.gform_page_fields>ul>li:not(last-child) {
     margin-bottom: 30px;
     border-bottom: 1px $gray-50 dashed;
     padding-bottom: 30px;
