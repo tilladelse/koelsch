@@ -2300,13 +2300,13 @@ body.memory-care {
   body.memory-care #header,
   body.memory-care #footer {
     background-color: #1d1a2a; }
-  body.memory-care .community-menu-wrapper .visual-section::before {
+  body.memory-care .community .community-menu-wrapper .visual-section::before {
     background-image: linear-gradient(to bottom, #1d1a2a 0%, #1d1a2a 11%, rgba(29, 26, 42, 0.87) 26%, rgba(29, 26, 42, 0.2) 66%, rgba(29, 26, 42, 0) 90%); }
-  body.memory-care .community-menu-wrapper .visual-section::after {
+  body.memory-care .community .community-menu-wrapper .visual-section::after {
     background-image: linear-gradient(to bottom, rgba(29, 26, 42, 0) 10%, rgba(29, 26, 42, 0.2) 34%, rgba(29, 26, 42, 0.87) 74%, #1c222d 89%, #1d1a2a 100%); }
-  body.memory-care .community-menu-wrapper .visual-section .community-block, body.memory-care .community-menu-wrapper .visual-section h1 {
+  body.memory-care .community .community-menu-wrapper .visual-section .community-block, body.memory-care .community .community-menu-wrapper .visual-section h1 {
     background-color: transparent; }
-  body.memory-care .community-menu-wrapper .content-section-100 .row .col.img-col:before {
+  body.memory-care .community .community-menu-wrapper .content-section-100 .row .col.img-col:before {
     background-image: linear-gradient(to bottom, rgba(29, 26, 42, 0) 0%, #1d1a2a 97%, #1d1a2a 100%); }
 
 #wrapper {

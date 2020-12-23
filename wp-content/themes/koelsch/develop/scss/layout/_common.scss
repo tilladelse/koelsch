@@ -62,8 +62,9 @@ body {
 		#footer{
 			background-color:$dark-purple;
 		}
-		.community-menu-wrapper{
-			
+		
+		.community .community-menu-wrapper{
+
 			.visual-section {
 				&::before{
 					background-image: linear-gradient(to bottom, rgba($dark-purple,1) 0%,rgba($dark-purple,1) 11%,rgba($dark-purple,0.87) 26%,rgba($dark-purple,0.2) 66%,rgba($dark-purple,0) 90%);
