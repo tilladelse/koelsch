@@ -979,6 +979,11 @@ label {
     .jcf-select-drop .jcf-list .jcf-option.jcf-option-hideme {
       display: none; }
 
+.gform_wrapper .gform_page_fields > ul > li {
+  margin-bottom: 30px;
+  border-bottom: 1px #ece6dc dashed;
+  padding-bottom: 30px; }
+
 .gform_wrapper .field_sublabel_below .ginput_complex.ginput_container label,
 .gform_wrapper .field_sublabel_below div[class*=gfield_time_].ginput_container label {
   margin: 5px 0 9px 1px !important;
@@ -5575,6 +5580,11 @@ figure.wp-block-image {
   @media (min-width: 112.5rem) {
       .main-holder #content {
         width: calc(100% - 800px); } }
+  @media (max-width: 64rem) {
+  .gform_wrapper {
+    padding: 0 25px 20px 25px; }
+  .page-content {
+    background: none !important; } }
   @media (max-width: 63.9375rem) {
   iframe {
     width: 100%; }
@@ -5770,9 +5780,6 @@ figure.wp-block-image {
   @media (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 63.9375rem), (min-resolution: 144dpi) and (max-width: 63.9375rem) {
   .menu-wrap::before {
     background-image: url("assets/images/mobile-menu-decor@2x.png"); } }
-  @media (max-width: 64rem) {
-  .page-content {
-    background: none !important; } }
   @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
       .main-holder::before {
         background-image: url("assets/images/bg-main@2x.png"); }
