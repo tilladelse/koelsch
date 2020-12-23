@@ -766,7 +766,7 @@ textarea {
   box-shadow: 0 -1px 0 #918b81 inset;
   border: 1px #ece6dc solid;
   border-bottom: none;
-  padding: 0 10px 3px 0;
+  padding: 12px 10px;
   letter-spacing: 2px;
   letter-spacing: 0.125rem;
   font-size: 18px;
@@ -852,7 +852,7 @@ textarea {
 .gform_wrapper .ginput_complex input[type='url'],
 .gform_wrapper .ginput_complex input[type='date'],
 .gform_wrapper .ginput_complex textarea {
-  padding: 10px !important;
+  padding: 15px 10px !important;
   border: 1px #ece6dc solid;
   border-bottom: none; }
   .gform_wrapper input[type='text']:hover, .gform_wrapper input[type='text']:focus,
