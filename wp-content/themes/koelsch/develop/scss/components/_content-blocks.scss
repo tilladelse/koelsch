@@ -642,7 +642,7 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 
 	h2 {
 		font-size: 22px;
-		color: $white;
+		color: $white!important;
 		position: relative;
 		padding-bottom: 21px;
 		margin-bottom: 27px;

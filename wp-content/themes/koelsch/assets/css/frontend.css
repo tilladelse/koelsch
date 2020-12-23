@@ -1884,7 +1884,7 @@ a {
   .content-section-100 h2 {
     font-size: 22px;
     font-size: 1.375rem;
-    color: #fff;
+    color: #fff !important;
     position: relative;
     padding-bottom: 21px;
     margin-bottom: 27px; }
