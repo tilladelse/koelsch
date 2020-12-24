@@ -2935,7 +2935,8 @@ address {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 9999; }
+  z-index: 9999;
+  box-shadow: 0px 8px 20px rgba(68, 68, 68, 0.4); }
 
 .visual-section {
   overflow: hidden;
