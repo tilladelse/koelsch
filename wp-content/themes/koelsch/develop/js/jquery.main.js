@@ -18,19 +18,23 @@ jQuery(function() {
 
 (function( $ ) {
 	$(window).on('load', function(){
+		var coEle = $('.contact-opener'),
+		cpEle = $('.contact-prompt');
 
 		$('.open-contact').on('click', function(e){
-			console.log('hey');
+			console.log(getCookie('display_contact_prompt'));
 			var ctx = $(this).data('context');
 			if (ctx == 'prompt'){
 				e.preventDefault();
-				$('.contact-prompt').css({'right':'0'});
+				cpEle.css({'right':'0'});
 			}
 		});
 
-		$('.contact-prompt .closer').on('click', function(){
-			$('.contact-prompt').css({'right':'-100%'});
-			$('.contact-opener').show();
+		$('.contact-prompt .closer').on('click', function(e){
+			e.preventDefault();
+		  setCookie('display_contact_prompt','1',3);
+			cpEle.css({'right':'-100%'});
+			coEle.css({'right':'0'});
 		});
 
 		$('a.no-click, .no-click a').on('click', function(e){
@@ -42,16 +46,19 @@ jQuery(function() {
 		var subMenuEle = $('.sub-navigation');
 		subMenuEle.after('<div style="height:'+subMenuEle.outerHeight()+'px;display:none;" class="submenu-placeholder"></div>');
 		var subMenuHldr = $('.submenu-placeholder');
-
-
 		var subMenuTop = subMenuEle.length !== 0 ? subMenuEle.offset().top : 0;
 
+		var cookie = getCookie('display_contact_prompt');
+
 		$(window).bind('scroll', function () {
-			var contentTop = $('#page_content').offset().top,
-			coEle = $('.contact-opener');
+			var contentTop = $('#page_content').offset().top;
 
 			if ($(window).scrollTop() > (contentTop)){
-				coEle.css({'right':'0'});
+				if (cookie === '1'){
+					coEle.css({'right':'0'});
+				}else{
+					cpEle.css({'right':'0'});
+				}
 			}
 
 			//contain contact opener to content section
@@ -78,8 +85,10 @@ jQuery(function() {
 				});
 			}
 
-			// console.log(subMenuTop);
-			//set fixed sub menu
+
+			/**
+			 * set fixed sub menu
+			 */
 			if ($(window).scrollTop() >= subMenuTop){
 				subMenuEle.addClass('sticky');
 				subMenuHldr.show();
@@ -118,6 +127,29 @@ jQuery(function() {
 
 	});
 })( jQuery );
+
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function eraseCookie(name) {
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
 
 // generate select from navigation
 function initNavigationSelect() {
