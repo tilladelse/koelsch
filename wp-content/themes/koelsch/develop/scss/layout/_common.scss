@@ -75,6 +75,8 @@ body {
 				.community-block, h1{
 					background-color:transparent;
 				}
+
+				background-color: $dark-purple;
 			}
 
 			.content-section-100 .row .col.img-col:before{
@@ -523,6 +525,7 @@ address {
 	background-repeat: no-repeat;
 	padding: 1px;
 	min-height: calc(100vh - 90px);
+	background-color: $darker-blue;
 
 	@include media ('>=desktop') {
 		min-height: calc(100vh - 105px);
