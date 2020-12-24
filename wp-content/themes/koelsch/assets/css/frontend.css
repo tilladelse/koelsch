@@ -2098,16 +2098,14 @@ a {
 .contact-prompt {
   background-color: #f5eee2;
   box-shadow: 10px 30px 100px #333;
-  width: 280px;
+  width: 300px;
   position: fixed;
   top: 30%;
   right: -100%;
   z-index: 49;
-  padding: 20px 20px 30px;
+  padding: 20px 20px 22px;
   transition: right 1s ease-in-out; }
-  .contact-prompt.visible {
-    right: 0; }
-  .contact-prompt .prompt-wrapper::before {
+  .contact-prompt::after {
     opacity: .10;
     display: block;
     content: '';
@@ -2116,7 +2114,10 @@ a {
     right: 0;
     left: 0;
     bottom: 0;
-    background: url(http://localhost:8888/koelsch/wp-content/themes/koelsch/assets/images/btn-blue-decor.png) no-repeat 250% 60%/250px 250px; }
+    background: url("assets/images/btn-blue-decor.png") no-repeat 250% 60%/250px 250px;
+    z-index: -1; }
+  .contact-prompt.visible {
+    right: 0; }
   .contact-prompt .prompt-wrapper .name {
     padding: 40px 0 0 90px;
     font-family: "MillerBanner", "Times New Roman", "Times", "Baskerville", "Georgia", serif;
@@ -2152,7 +2153,28 @@ a {
   .contact-prompt .prompt-wrapper .contact-actions {
     margin-top: 30px;
     font-size: 24px;
-    font-size: 1.5rem; }
+    font-size: 1.5rem;
+    z-index: 1; }
+    .contact-prompt .prompt-wrapper .contact-actions .secondary-action {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      background: transparent;
+      font-size: 16px;
+      font-size: 1rem;
+      padding: 15px 0 0 0;
+      text-decoration: none; }
+      .contact-prompt .prompt-wrapper .contact-actions .secondary-action:hover ion-icon {
+        padding-right: 20px; }
+      .contact-prompt .prompt-wrapper .contact-actions .secondary-action.tour {
+        margin-top: 25px;
+        padding-top: 25px;
+        border-top: 1px #918b81 dashed; }
+      .contact-prompt .prompt-wrapper .contact-actions .secondary-action ion-icon {
+        transition: padding 0.3s ease-in-out;
+        font-size: 24px;
+        font-size: 1.5rem;
+        padding: 4px 15px 0 0; }
     .contact-prompt .prompt-wrapper .contact-actions ion-icon {
       padding: 10px 15px 0 0;
       display: block;
@@ -5823,12 +5845,12 @@ figure.wp-block-image {
       padding-left: 5px;
       padding-right: 5px; } }
   @media (max-width: 30rem) {
+      .contact-prompt::after {
+        background-position: 175% 60%; }
     .contact-prompt {
       width: 85%;
       top: 8%;
       transition: right .6s ease-in-out; }
-      .contact-prompt .prompt-wrapper::before {
-        background-position: 175% 60%; }
       .contact-prompt .prompt-wrapper .name {
         padding-left: 180px; }
     .contact-prompt .prompt-wrapper.no-image {

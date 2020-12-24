@@ -22,7 +22,6 @@ jQuery(function() {
 		cpEle = $('.contact-prompt');
 
 		$('.open-contact').on('click', function(e){
-			console.log(getCookie('display_contact_prompt'));
 			var ctx = $(this).data('context');
 			if (ctx == 'prompt'){
 				e.preventDefault();
@@ -32,8 +31,8 @@ jQuery(function() {
 
 		$('.contact-prompt .closer').on('click', function(e){
 			e.preventDefault();
-		  setCookie('display_contact_prompt','1',7);
-			cpEle.css({'right':'-100%'});
+		  setCookie('display_contact_prompt','1',3);
+			cpEle.addClass('keep-closed').css({'right':'-100%'});
 			coEle.css({'right':'0'});
 		});
 
@@ -47,14 +46,14 @@ jQuery(function() {
 		subMenuEle.after('<div style="height:'+subMenuEle.outerHeight()+'px;display:none;" class="submenu-placeholder"></div>');
 		var subMenuHldr = $('.submenu-placeholder');
 		var subMenuTop = subMenuEle.length !== 0 ? subMenuEle.offset().top : 0;
-
 		var cookie = getCookie('display_contact_prompt');
 
 		$(window).bind('scroll', function () {
 			var contentTop = $('#page_content').offset().top;
 
 			if ($(window).scrollTop() > (contentTop)){
-				if (cookie === '1'){
+
+				if (cookie === '1' || cpEle.hasClass('keep-closed')){
 					coEle.css({'right':'0'});
 				}else{
 					cpEle.css({'right':'0'});

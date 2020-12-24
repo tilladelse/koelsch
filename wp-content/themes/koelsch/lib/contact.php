@@ -137,7 +137,14 @@
                </div>
              <?php endif;?>
              <div class="contact-actions">
-               <ion-icon name="mail-outline"></ion-icon><a class="btn-outline" href="mailto:<?php echo $email;?>">Message <?php echo $fn;?></a>
+               <ion-icon name="mail-outline"></ion-icon>
+               <a class="btn-outline" href="mailto:<?php echo $email;?>">Message <?php echo $fn;?></a>
+               <a class="tour secondary-action" href="<?php echo get_the_permalink($contactPageID);?>?r=tour">
+                 <ion-icon name="walk-outline"></ion-icon> Request A Tour
+               </a>
+               <a class="brochure secondary-action" href="<?php echo get_the_permalink($contactPageID);?>?r=brochure">
+                 <ion-icon name="book-outline"></ion-icon>Request A Brochure
+               </a>
              </div>
            </div>
          </div>
