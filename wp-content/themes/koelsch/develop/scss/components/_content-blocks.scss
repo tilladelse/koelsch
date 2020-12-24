@@ -697,7 +697,8 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 			.divider {
 				position: relative;
 				z-index: 10;
-				height: 120px;
+				// height: 120px;
+				height: auto;
 				margin-bottom: -70px;
 
 				@include media ('>=tablet') {

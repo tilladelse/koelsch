@@ -1977,7 +1977,7 @@ a {
   .content-section-double.ic-set .text-box .divider {
     position: relative;
     z-index: 10;
-    height: 120px;
+    height: auto;
     margin-bottom: -70px; }
   .content-section-double.align-left .row.bottom-row .col.img-col {
     padding-left: 30px; }
