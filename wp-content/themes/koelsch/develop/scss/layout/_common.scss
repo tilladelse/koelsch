@@ -551,33 +551,39 @@ address {
 
 		h1{
 			position:absolute;
+
+			z-index:2;
+			color:$white;
+			font-weight:200;
+			background: none;
+			padding:0;
+
 			bottom: 1.5vh;
 		  left: 20px;
 		  transform: rotate(-90deg);
 			transform-origin: top left;
-			z-index:2;
 			font-family: $base-font-sans-serif;
 			text-transform: uppercase;
 			font-size:16px;
-			color:$white;
-			letter-spacing:2px;
-			font-weight:200;
 			max-width:200px;
 			text-align: left;
-			background: none;
-			padding:0;
+			letter-spacing:2px;
 
 			@include media ('>=tablet') {
-				font-size:18px;
-				left: 30px;
-				bottom: 4vh;
-				color:$gold;
-				max-width:250px;
+				font-size: 28px;
+				font-family: $base-font-serif;
+				bottom:180px;
+				max-width:30vw;
+				text-align: center;
+				left:50%;
+				transform: translate(-50%,0);
+				letter-spacing: 0px;
+				text-transform:none;
 			}
-
-			@include media('>=desktop'){
-				max-width:60vh;
-			}
+			//
+			// @include media('>=desktop'){
+			// 	max-width:60vh;
+			// }
 		}
 
 
@@ -692,7 +698,7 @@ address {
 
 	.logo-box {
 		position: absolute;
-		bottom: 120px;
+		bottom: 60px;
 		right: 24px;
 		width: 155px;
 		z-index: 3;

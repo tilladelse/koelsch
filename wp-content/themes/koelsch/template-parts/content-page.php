@@ -7,12 +7,7 @@
   $vtAlign = $bg && isset($bg['vert_align']) ? $bg['vert_align'] : '';
   $rule = $src ? ' style="background: url('.$src.') no-repeat;' : '';
   $rule .= $src ? ' background-position: '.$hzAlign.' '.$vtAlign.';"' : '';
-  $containerClass = apply_filters('koelsch_container_class', 'container-md');
 ?>
 <div class="page-content<?php echo $color;?>"<?php echo $rule;?> id="page_content">
-<!-- <section class="section">
-  <div class="<?php echo $containerClass;?>"> -->
-    <?php the_content(); ?>
-  <!-- </div>
-</section> -->
+  <?php the_content(); ?>
 </div>

@@ -2098,7 +2098,7 @@ a {
 .contact-prompt {
   background-color: #f5eee2;
   box-shadow: 10px 30px 100px #333;
-  width: 300px;
+  width: 330px;
   position: fixed;
   top: 30%;
   right: -100%;
@@ -2979,23 +2979,23 @@ address {
     min-height: calc(100vh - 54px); }
     .visual-section.community h1 {
       position: absolute;
+      z-index: 2;
+      color: #fff;
+      font-weight: 200;
+      background: none;
+      padding: 0;
       bottom: 1.5vh;
       left: 20px;
       transform: rotate(-90deg);
       transform-origin: top left;
-      z-index: 2;
       font-family: "proxima-nova", "Arial", "Helvetica Neue", "Helvetica", sans-serif;
       text-transform: uppercase;
       font-size: 16px;
       font-size: 1rem;
-      color: #fff;
-      letter-spacing: 2px;
-      letter-spacing: 0.125rem;
-      font-weight: 200;
       max-width: 200px;
       text-align: left;
-      background: none;
-      padding: 0; }
+      letter-spacing: 2px;
+      letter-spacing: 0.125rem; }
     .visual-section.community .text-block {
       padding-top: 20px; }
       .visual-section.community .text-block.align-center {
@@ -3035,7 +3035,7 @@ address {
     line-height: 1.2; }
   .visual-section .logo-box {
     position: absolute;
-    bottom: 120px;
+    bottom: 60px;
     right: 24px;
     width: 155px;
     z-index: 3; }
@@ -4763,12 +4763,17 @@ figure.wp-block-image {
     .container {
       padding: 0 20px; }
         .visual-section.community h1 {
-          font-size: 18px;
-          font-size: 1.125rem;
-          left: 30px;
-          bottom: 4vh;
-          color: #c69230;
-          max-width: 250px; }
+          font-size: 28px;
+          font-size: 1.75rem;
+          font-family: "MillerBanner", "Times New Roman", "Times", "Baskerville", "Georgia", serif;
+          bottom: 180px;
+          max-width: 30vw;
+          text-align: center;
+          left: 50%;
+          transform: translate(-50%, 0);
+          letter-spacing: 0px;
+          letter-spacing: 0;
+          text-transform: none; }
           .visual-section.community .text-block.align-center {
             padding-top: 60px; }
       .visual-section::before {
@@ -5250,8 +5255,6 @@ figure.wp-block-image {
       min-height: calc(100vh - 105px); }
       .visual-section.community {
         min-height: calc(100vh - 50px); }
-        .visual-section.community h1 {
-          max-width: 60vh; }
       .visual-section .text-block {
         max-width: 60%; }
       .visual-section .logo-box {
