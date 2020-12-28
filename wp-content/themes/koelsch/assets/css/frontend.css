@@ -1658,8 +1658,7 @@ a {
     .media-gallery .slick-slide.slick-active {
       opacity: 1; }
     .media-gallery .slick-slide img {
-      display: block;
-      width: 100%; }
+      display: block; }
   .media-gallery .slick-arrow {
     transition: color 0.3s ease-in-out;
     width: 40px;
@@ -5888,7 +5887,7 @@ figure.wp-block-image {
       top: 8%;
       transition: right .6s ease-in-out; }
   .hide-on-mobile {
-    display: block !important; }
+    display: none !important; }
   .wp-block-spacer {
     display: none; }
   .wp-block-spacer.show-on-mobile {
