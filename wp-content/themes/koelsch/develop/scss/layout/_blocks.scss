@@ -26,12 +26,25 @@
       @include media('<xl-phone'){
         margin-bottom:0;
       }
-      
+
     }
 
   }
 
 }
+
+.wp-block-spacer{
+	// @include media ('<=phone') {
+	// 	display:none;
+	// }
+	// &.show-on-mobile{
+	// 	@include media ('<=phone') {
+	// 		display:block;
+	// 	}
+	// }
+	display:none;
+}
+
 figure{
 
   &.wp-block-image{

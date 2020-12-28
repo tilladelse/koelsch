@@ -502,7 +502,7 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 	}
 
 	@include media ('>=tablet') {
-		margin: auto auto 60px;
+		margin: 30px auto 60px;
 	}
 
 	&.align-right {

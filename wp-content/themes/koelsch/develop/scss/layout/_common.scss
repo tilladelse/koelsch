@@ -167,16 +167,7 @@ a {
 .show-on-mobile{
 	display:block!important;
 }
-.wp-block-spacer{
-	@include media ('<=phone') {
-		display:none;
-	}
-	&.show-on-mobile{
-		@include media ('<=phone') {
-			display:block;
-		}
-	}
-}
+
 .page-content{
 
 	&::before{
