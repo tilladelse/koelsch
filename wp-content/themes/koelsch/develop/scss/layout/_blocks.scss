@@ -32,6 +32,18 @@
   }
 
 }
+.wp-block-cover{
+  
+  width:100%;
+
+  @include media('<phone'){
+      padding-top:30px;
+  }
+
+  .wp-block-columns{
+    padding:0;
+  }
+}
 
 .wp-block-spacer{
 	@include media ('<=phone') {

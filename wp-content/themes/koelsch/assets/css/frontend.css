@@ -4263,6 +4263,11 @@ input.form-control {
 .wp-block-columns {
   padding: 0 30px; }
 
+.wp-block-cover {
+  width: 100%; }
+  .wp-block-cover .wp-block-columns {
+    padding: 0; }
+
 figure.wp-block-image {
   margin: 0; }
 
@@ -5904,3 +5909,6 @@ figure.wp-block-image {
       margin-bottom: 40px; }
   .blocks-gallery-grid .blocks-gallery-item:last-child {
     margin-bottom: 0; } }
+  @media (max-width: 29.9375rem) {
+    .wp-block-cover {
+      padding-top: 30px; } }
