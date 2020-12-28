@@ -277,6 +277,7 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 .margins {
 	@include media ('>=tablet') {
 		margin:30px 30px auto 30px;
+		overflow:hidden;
 	}
 
 	@include media ('>=widescreen') {

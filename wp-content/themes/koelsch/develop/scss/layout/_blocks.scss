@@ -12,11 +12,24 @@ figure{
   }
 
 }
+
+//block helper classes
 .border-top{
   padding-top: 15px;
   margin-top: 15px;
   border-top: 1px #333 solid;
 }
+
+.content-area{
+
+  @include media('<=widescreen'){
+
+    margin:auto 30px;
+
+  }
+
+}
+
 
 .alignfull {
     // left: calc(-1rem - 15px);
