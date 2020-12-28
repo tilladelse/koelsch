@@ -1854,7 +1854,7 @@ a {
     object-fit: cover; }
 
 .content-section-50 .text-box {
-  padding: 50px 30px; }
+  padding: 50px 30px 30px; }
 
 .content-section-50 h2 {
   margin-bottom: 28px;
@@ -1904,6 +1904,8 @@ a {
   color: #fff;
   position: relative;
   margin: 30px auto 30px; }
+  .content-section-100.in-container {
+    margin: 30px 25px 50px; }
   .content-section-100 .container-md {
     padding: 0; }
   .content-section-100 .row {
@@ -4580,6 +4582,8 @@ figure.wp-block-image {
       .instagram-list li {
         width: 25vw;
         height: 25vw; }
+    .content-section-50 .text-box {
+      padding: 50px 30px; }
     .bg-video-holder .header-copy p {
       display: block; }
         .community .community-menu-wrapper h1.header-copy {

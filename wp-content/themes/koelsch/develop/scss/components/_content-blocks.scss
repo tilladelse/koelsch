@@ -334,7 +334,12 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 	}
 
 	.text-box {
-		padding: 50px 30px;
+
+		padding: 50px 30px 30px;
+
+		@include media ('>=phone') {
+			padding: 50px 30px;
+		}
 
 		@include media ('>=widescreen') {
 			padding: 50px 70px 108px;
@@ -496,6 +501,10 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 	color: $white;
 	position: relative;
 	margin: 30px auto 30px;
+
+	&.in-container{
+		margin:30px 25px 50px;
+	}
 
 	.container-md {
 		padding:0;
