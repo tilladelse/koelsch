@@ -5677,7 +5677,9 @@ figure.wp-block-image {
         width: calc(100% - 800px); } }
   @media (max-width: 75rem) {
   .page-content .gform_wrapper {
-    padding: 0 25px 20px 25px; } }
+    padding: 0 25px 20px 25px; }
+  .in-container {
+    margin: auto 25px; } }
   @media (max-width: 63.9375rem) {
   iframe {
     width: 100%; }
