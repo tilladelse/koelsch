@@ -4683,7 +4683,7 @@ figure.wp-block-image {
           min-height: 500px; }
       .content-section-25 .text-box,
       .content-section-33 .text-box {
-        padding: 34px 30px 20px; }
+        padding: 34px 30px; }
   .content-section-25 .col.text-col {
     width: 30%; }
   .content-section-25 .col.img-col {
@@ -5114,7 +5114,7 @@ figure.wp-block-image {
       margin: 50px 0; }
       .content-section-25 .text-box,
       .content-section-33 .text-box {
-        padding: 44px 40px 30px; }
+        padding: 44px 40px; }
   .content-section-25 .col.text-col {
     width: 25%; }
   .content-section-25 .col.img-col {
@@ -5461,7 +5461,7 @@ figure.wp-block-image {
       width: calc(34% + 60px); }
       .content-section-25 .text-box,
       .content-section-33 .text-box {
-        padding: 64px 60px 40px; }
+        padding: 60px; }
     .content-section-100.align-right .btn-outline {
       margin-left: 66px; }
     .content-section-100.align-left .btn-outline {
