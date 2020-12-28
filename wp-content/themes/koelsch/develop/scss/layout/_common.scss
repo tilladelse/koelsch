@@ -112,7 +112,7 @@ body {
 }
 .in-container{
 
-	@include media('<=widescreen'){
+	@include media('<=phone'){
 		margin:auto 25px;
 	}
 
@@ -186,6 +186,13 @@ a {
 	}
 }
 .page-content{
+
+	&::before{
+		display:block;
+		content:'';
+		height:60px;
+	}
+
 	@include media ('<=desktop') {
 		background:none!important;
 	}

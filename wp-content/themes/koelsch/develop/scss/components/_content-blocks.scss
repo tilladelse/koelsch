@@ -424,7 +424,7 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 	}
 
 	.text-box {
-		padding: 40px 30px 30px;
+		padding: 40px 30px 60px;
 
 		@include media ('>=tablet') {
 			padding: 34px 30px 20px;

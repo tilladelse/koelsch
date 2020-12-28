@@ -1886,7 +1886,7 @@ a {
       object-fit: cover; }
   .content-section-25 .text-box,
   .content-section-33 .text-box {
-    padding: 40px 30px 30px; }
+    padding: 40px 30px 60px; }
   .content-section-25 h2,
   .content-section-33 h2 {
     margin-bottom: 28px;
@@ -2688,6 +2688,11 @@ a {
 
 .show-on-mobile {
   display: block !important; }
+
+.page-content::before {
+  display: block;
+  content: '';
+  height: 60px; }
 
 .community .hide-on-community {
   display: none; }
@@ -5677,9 +5682,7 @@ figure.wp-block-image {
         width: calc(100% - 800px); } }
   @media (max-width: 75rem) {
   .page-content .gform_wrapper {
-    padding: 0 25px 20px 25px; }
-  .in-container {
-    margin: auto 25px; } }
+    padding: 0 25px 20px 25px; } }
   @media (max-width: 63.9375rem) {
   iframe {
     width: 100%; }
@@ -5868,6 +5871,8 @@ figure.wp-block-image {
     .contact-opener {
       top: 8%;
       transition: right .6s ease-in-out; }
+  .in-container {
+    margin: auto 25px; }
   .wp-block-spacer {
     display: none; }
   .wp-block-spacer.show-on-mobile {
