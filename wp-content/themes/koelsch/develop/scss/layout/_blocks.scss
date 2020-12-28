@@ -17,6 +17,21 @@
 
   }
 }
+
+.blocks-gallery-grid{
+
+  .blocks-gallery-item{
+
+    &:last-child{
+      @include media('<xl-phone'){
+        margin-bottom:0;
+      }
+      
+    }
+
+  }
+
+}
 figure{
 
   &.wp-block-image{

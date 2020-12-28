@@ -1903,7 +1903,7 @@ a {
 .content-section-100 {
   color: #fff;
   position: relative;
-  margin-bottom: 30px; }
+  margin: 30px auto 30px; }
   .content-section-100 .container-md {
     padding: 0; }
   .content-section-100 .row {
@@ -4689,7 +4689,7 @@ figure.wp-block-image {
   .content-section-25 .col.img-col {
     width: 70%; }
     .content-section-100 {
-      margin-bottom: 60px; }
+      margin: auto auto 60px; }
     .content-section-100.align-right .btn-outline {
       margin-left: 50px; }
     .content-section-100.align-left .text-box {
@@ -5897,4 +5897,6 @@ figure.wp-block-image {
         background-image: url("assets/images/bg-main-find@2x.png"); } }
   @media (max-width: 37.4375rem) {
     .wp-block-columns .wp-block-column:first-child {
-      margin-bottom: 40px; } }
+      margin-bottom: 40px; }
+  .blocks-gallery-grid .blocks-gallery-item:last-child {
+    margin-bottom: 0; } }

@@ -495,14 +495,14 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 .content-section-100 {
 	color: $white;
 	position: relative;
-	margin-bottom: 30px;
+	margin: 30px auto 30px;
 
 	.container-md {
 		padding:0;
 	}
 
 	@include media ('>=tablet') {
-		margin-bottom: 60px;
+		margin: auto auto 60px;
 	}
 
 	&.align-right {
