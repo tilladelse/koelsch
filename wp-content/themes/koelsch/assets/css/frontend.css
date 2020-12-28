@@ -1886,7 +1886,7 @@ a {
       object-fit: cover; }
   .content-section-25 .text-box,
   .content-section-33 .text-box {
-    padding: 40px 30px 60px; }
+    padding: 40px 30px; }
   .content-section-25 h2,
   .content-section-33 h2 {
     margin-bottom: 28px;
@@ -1973,8 +1973,7 @@ a {
     text-align: center; }
 
 .content-section-double {
-  position: relative;
-  background: none; }
+  position: relative; }
   .content-section-double.ic-set .text-box .divider {
     position: relative;
     z-index: 10;
@@ -4714,8 +4713,6 @@ figure.wp-block-image {
         flex-grow: 1;
         margin: 0;
         padding-bottom: 22px; }
-    .content-section-double {
-      background: auto; }
       .content-section-double.ic-set .text-box .divider {
         margin-bottom: -80px; }
     .content-section-double.align-left .row.bottom-row {
@@ -5844,6 +5841,10 @@ figure.wp-block-image {
       left: -9999px; }
     .content-section-100.align-left h2::before {
       right: -9999px; }
+    .content-section-double {
+      background-image: none !important; }
+    .content-section-double.ic-set .text-box .wp-block-spacer {
+      display: none; }
       .main-holder .content-topbar .breadcrumbs {
         display: none !important; }
         .main-holder .content-topbar .search-form-block {
@@ -5877,12 +5878,12 @@ figure.wp-block-image {
     .contact-opener {
       top: 8%;
       transition: right .6s ease-in-out; }
-  .in-container {
-    margin: auto 25px; }
   .wp-block-spacer {
     display: none; }
   .wp-block-spacer.show-on-mobile {
-    display: block; } }
+    display: block; }
+  .in-container {
+    margin: auto 25px 50px; } }
   @media (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 63.9375rem), (min-resolution: 144dpi) and (max-width: 63.9375rem) {
   .menu-wrap::before {
     background-image: url("assets/images/mobile-menu-decor@2x.png"); } }
@@ -5894,3 +5895,6 @@ figure.wp-block-image {
         background-image: url("assets/images/bg-main@2x.png"); }
       .community-section::before {
         background-image: url("assets/images/bg-main-find@2x.png"); } }
+  @media (max-width: 37.4375rem) {
+    .wp-block-columns .wp-block-column:first-child {
+      margin-bottom: 40px; } }

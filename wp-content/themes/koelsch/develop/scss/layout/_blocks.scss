@@ -4,12 +4,31 @@
   @include media ('>widescreen') {
     padding:0;
   }
+
+  .wp-block-column{
+
+    &:first-child{
+
+      @include media('<xl-phone'){
+        margin-bottom:40px;
+      }
+
+    }
+
+  }
 }
 figure{
 
   &.wp-block-image{
     margin:0;
   }
+
+}
+.in-container{
+
+	@include media('<=phone'){
+		margin:auto 25px 50px;
+	}
 
 }
 

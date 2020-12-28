@@ -425,7 +425,7 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 	}
 
 	.text-box {
-		padding: 40px 30px 60px;
+		padding: 40px 30px;
 
 		@include media ('>=tablet') {
 			padding: 34px 30px;
@@ -681,10 +681,9 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 
 .content-section-double {
 	position: relative;
-	background:none;
 
-	@include media ('>=tablet') {
-		background:auto;
+	@include media ('<tablet') {
+		background-image:none!important;
 	}
 	//
 	// @include media ('>=desktop') {
@@ -695,7 +694,9 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 	// 	margin-bottom: 250px;
 	// }
 	&.ic-set{
+
 		.text-box{
+
 			.divider {
 				position: relative;
 				z-index: 10;
@@ -706,8 +707,19 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 				@include media ('>=tablet') {
 					margin-bottom: -80px;
 				}
+
 			}
+
+			.wp-block-spacer{
+
+				@include media('<tablet'){
+					display:none;
+				}
+
+			}
+
 		}
+
 	}
 
 	&.align-left {

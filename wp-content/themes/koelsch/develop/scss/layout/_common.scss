@@ -110,14 +110,6 @@ body {
 	margin: 0 auto;
 	padding: 0 15px;
 }
-.in-container{
-
-	@include media('<=phone'){
-		margin:auto 25px;
-	}
-
-}
-
 
 .h1, .h2, .h3, .h4, .h5, .h6, .title, .subtitle {
 	display: block;
@@ -195,7 +187,7 @@ a {
 		@include media('>=tablet'){
 			height:80px;
 		}
-		
+
 	}
 
 	@include media ('<=desktop') {
