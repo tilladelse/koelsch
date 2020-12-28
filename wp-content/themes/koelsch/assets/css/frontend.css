@@ -4261,9 +4261,6 @@ input.form-control {
 .wp-block-columns {
   padding: 0 30px; }
 
-.wp-block-spacer {
-  display: none; }
-
 figure.wp-block-image {
   margin: 0; }
 
@@ -5881,6 +5878,10 @@ figure.wp-block-image {
     .contact-opener {
       top: 8%;
       transition: right .6s ease-in-out; }
+  .wp-block-spacer {
+    display: none; }
+  .wp-block-spacer.show-on-mobile {
+    display: block; }
   .in-container {
     margin: auto 25px 50px; } }
   @media (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 63.9375rem), (min-resolution: 144dpi) and (max-width: 63.9375rem) {
