@@ -167,6 +167,15 @@ a {
 .show-on-mobile{
 	display:block!important;
 }
+.hide-on-mobile{
+
+	@include media('<=phone'){
+
+		display:block!important;
+
+	}
+
+}
 
 .page-content{
 

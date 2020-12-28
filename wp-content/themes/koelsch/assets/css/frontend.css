@@ -5887,6 +5887,8 @@ figure.wp-block-image {
     .contact-opener {
       top: 8%;
       transition: right .6s ease-in-out; }
+  .hide-on-mobile {
+    display: block !important; }
   .wp-block-spacer {
     display: none; }
   .wp-block-spacer.show-on-mobile {
