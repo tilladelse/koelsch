@@ -33,7 +33,7 @@
 
 }
 .wp-block-cover{
-  
+
   width:100%;
 
   @include media('<phone'){
@@ -82,7 +82,7 @@ figure{
 
   @include media('<=widescreen'){
 
-    margin:auto 30px;
+    margin:auto 30px 30px;
 
   }
 
@@ -104,6 +104,11 @@ figure{
 	@include media ('>=widescreen') {
         left: calc(-50vw + 50%);
     }
+}
+.round-image{
+  img{
+    border-radius:50%;
+  }
 }
 .koelsch-icon{
   .svg-wrap{
