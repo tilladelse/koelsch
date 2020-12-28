@@ -1973,7 +1973,8 @@ a {
     text-align: center; }
 
 .content-section-double {
-  position: relative; }
+  position: relative;
+  background: none; }
   .content-section-double.ic-set .text-box .divider {
     position: relative;
     z-index: 10;
@@ -4713,6 +4714,8 @@ figure.wp-block-image {
         flex-grow: 1;
         margin: 0;
         padding-bottom: 22px; }
+    .content-section-double {
+      background: auto; }
       .content-section-double.ic-set .text-box .divider {
         margin-bottom: -80px; }
     .content-section-double.align-left .row.bottom-row {

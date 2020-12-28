@@ -681,10 +681,11 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 
 .content-section-double {
 	position: relative;
+	background:none;
 
-	// @include media ('>=tablet') {
-	// 	margin-bottom: 60px;
-	// }
+	@include media ('>=tablet') {
+		background:auto;
+	}
 	//
 	// @include media ('>=desktop') {
 	// 	margin-bottom: 150px;
