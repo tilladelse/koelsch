@@ -137,8 +137,8 @@ h3, .h3 {
 	color: $gold;
 	display: block;
 	letter-spacing: 2.2px;
-
-	@include media('<tablet'){
+  margin-bottom: 30px;
+	@include media('<phone'){
 		margin-bottom:30px;
 	}
 }

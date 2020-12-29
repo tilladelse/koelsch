@@ -2662,7 +2662,8 @@ h3, .h3 {
   color: #c69230;
   display: block;
   letter-spacing: 2.2px;
-  letter-spacing: 0.1375rem; }
+  letter-spacing: 0.1375rem;
+  margin-bottom: 30px; }
 
 .hero {
   font: 600 22px/1.16667 "MillerBanner", "Times New Roman", "Times", "Baskerville", "Georgia", serif;
@@ -5861,8 +5862,6 @@ figure.wp-block-image {
       background-image: none !important; }
     .content-section-double.ic-set .text-box .wp-block-spacer {
       display: none; }
-    .title {
-      margin-bottom: 30px; }
       .main-holder .content-topbar .breadcrumbs {
         display: none !important; }
         .main-holder .content-topbar .search-form-block {
@@ -5910,6 +5909,11 @@ figure.wp-block-image {
   @media (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 63.9375rem), (min-resolution: 144dpi) and (max-width: 63.9375rem) {
   .menu-wrap::before {
     background-image: url("assets/images/mobile-menu-decor@2x.png"); } }
+  @media (max-width: 29.9375rem) {
+    .title {
+      margin-bottom: 30px; }
+    .wp-block-cover {
+      padding-top: 30px; } }
   @media (max-width: 64rem) {
   .page-content {
     background: none !important; } }
@@ -5923,8 +5927,7 @@ figure.wp-block-image {
       margin-bottom: 40px; }
     .wp-block-columns .wp-block-column:last-child {
       margin-bottom: 0; }
+    .wp-block-columns .wp-block-column .text-col {
+      padding: 0 30px; }
   .blocks-gallery-grid .blocks-gallery-item:last-child {
     margin-bottom: 0; } }
-  @media (max-width: 29.9375rem) {
-    .wp-block-cover {
-      padding-top: 30px; } }

@@ -16,6 +16,11 @@
       }
 
     }
+    .text-col{
+      @include media('<xl-phone'){
+        padding:0 30px;
+      }
+    }
 
     ul{
       margin-bottom:0;
