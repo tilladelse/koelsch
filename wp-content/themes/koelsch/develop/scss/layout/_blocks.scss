@@ -90,12 +90,33 @@ figure{
   &.content-section-50,
   &.content-section-33,
   &.content-section-25 {
+
     .text-box {
+
       @include media('<=phone'){
     		padding-left:0!important;
         padding-right:0!important;
       }
+
     }
+
+  }
+  &.content-section-100{
+		margin:30px 25px 50px;
+	}
+
+  &.content-section-double{
+
+    &:not(.ic-set){
+
+      @include media('<=widescreen'){
+
+        margin: 0 30px;
+
+      }
+
+    }
+
   }
 
 }
