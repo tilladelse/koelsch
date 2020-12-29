@@ -5710,6 +5710,9 @@ figure.wp-block-image {
   @media (max-width: 75rem) {
   .page-content .gform_wrapper {
     padding: 0 25px 20px 25px; }
+      .content-section-double .col.img-col img {
+        object-fit: cover;
+        height: 60vh; }
   .in-container.content-section-double:not(.ic-set) {
     padding: 0 30px; }
   .content-area {
@@ -5890,6 +5893,9 @@ figure.wp-block-image {
     .flex-row .col.col-nav {
       padding-left: 5px;
       padding-right: 5px; } }
+  @media (max-width: 48rem) {
+      .content-section-double .col.img-col img {
+        height: auto; } }
   @media (max-width: 30rem) {
       .contact-prompt::after {
         background-position: 175% 60%; }

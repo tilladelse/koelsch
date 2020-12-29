@@ -998,6 +998,16 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 			img {
 				display: block;
 				width: 100%;
+
+				@include media('<=widescreen'){
+					object-fit:cover;
+					height:60vh;
+				}
+
+				@include media('<=tablet'){
+					height:auto;
+				}
+
 			}
 		}
 	}
