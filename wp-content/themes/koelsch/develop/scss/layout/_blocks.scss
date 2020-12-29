@@ -80,8 +80,10 @@ figure{
   }
 
   .text-box {
-		padding-left:0!important;
-    padding-right:0!important;
+    @include media('<=phone'){
+  		padding-left:0!important;
+      padding-right:0!important;
+    }
   }
 
 }
