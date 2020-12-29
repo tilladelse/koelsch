@@ -4696,7 +4696,7 @@ figure.wp-block-image {
   .overlapping.align-left .col.text-col {
     margin-left: -60px; }
   .margins {
-    margin: 30px 30px auto 30px;
+    margin: 0 30px auto 30px;
     overflow: hidden; }
   .content-section-50 .row .col {
     width: 50%; }
