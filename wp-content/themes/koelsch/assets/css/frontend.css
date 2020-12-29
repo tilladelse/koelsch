@@ -5028,8 +5028,6 @@ figure.wp-block-image {
       margin-right: 15px; }
       .filter-list a {
         padding: 0 10px 10px; }
-      .wp-block-columns .wp-block-column > .text-col {
-        padding: 0; }
     #footer .container {
       padding-left: 25px;
       padding-right: 25px; }
@@ -5591,6 +5589,8 @@ figure.wp-block-image {
         font-size: 2.25rem; }
         .section-search .heading .divider-vertical {
           margin-right: 30px; }
+      .wp-block-columns .wp-block-column > .text-col {
+        padding: 0; }
     .alignfull {
       left: calc(-50vw + 50%); }
       .footer-top .community-link {
