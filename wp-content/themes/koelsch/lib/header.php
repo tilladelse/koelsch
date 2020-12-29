@@ -77,8 +77,19 @@ function koelsch_before_community_menu($imageArr){
   global $community_context;
   $communityClass = $community_context->inCommunityContext() ? ' community': '';
   if ($imageArr['image_url'] || $imageArr['video_url']){
+
+    $style = $imageArr['image_url'] ? ' style="background-image: url('.$imageArr['image_url'].');"' : '';
+
+    $p = get_post_meta(get_the_id(), 'featured_image_position', true);
+    $pos = isset($p[0]) ? $p[0] : false;
+    $mobilePos = $pos && isset($pos['mobile']) ? $pos['mobile'] : '';
+    $tabletPos = $pos && isset($pos['tablet']) ? $pos['tablet'] : '';
+
+    $mobileStyle = $mobilePos ? ' @media (max-width:480px){.visual-section{background-position-x:'.$mobilePos.'!important;}}' : '';
+    $tabletStyle = $tabletPos ? ' @media (min-width:481px) and (max-width:768px){.visual-section{background-position-x:'.$tabletPos.'!important;}' : '';
+    echo $mobileStyle || $tabletStyle ? '<style type="text/css" scoped>'.$mobileStyle.$tabletStyle.'</style>' : '';
     ob_start();?>
-    <div class="visual-section bg-video-holder<?php echo $communityClass;?>"<?php echo $imageArr['image_url'] ? ' style="background-image: url('.$imageArr['image_url'].')"' : '';?>>
+    <div class="visual-section bg-video-holder<?php echo $communityClass;?>"<?php echo $style;?>>
       <?php if ($imageArr['video_url']):?>
       <video class="bg-video" width="640" height="360" loop autoplay muted playsinline>
         <source type="video/mp4" src="<?php echo $imageArr['video_url']; ?>" />

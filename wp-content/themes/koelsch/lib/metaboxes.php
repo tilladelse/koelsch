@@ -517,6 +517,29 @@ function koelsch_register_general_metaboxes() {
     'id'         => 'featured_video',
     'type' => 'file',
   ) );
+
+  $fip = $opts->add_field( array(
+     'id'          => 'featured_image_position',
+     'type'        => 'group',
+     'description' => __( 'Featured Image Horizontal Position', 'koelsch' ),
+     'repeatable'  => false, // use false if you want non-repeatable group
+     'options'     => array(
+         'closed'  => false,
+     ),
+  ) );
+
+  $opts->add_group_field( $fip, array(
+    'name'       => 'Tablet',
+    'id'         => 'tablet',
+    'type' => 'text_small',
+  ) );
+
+  $opts->add_group_field( $fip, array(
+    'name'       => 'Mobile',
+    'id'         => 'mobile',
+    'type' => 'text_small',
+  ) );
+
   $bg = $opts->add_field( array(
      'id'          => 'background_image',
      'type'        => 'group',
