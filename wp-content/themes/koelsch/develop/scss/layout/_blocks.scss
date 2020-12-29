@@ -84,16 +84,16 @@ figure{
   .wp-block-columns{
     padding:0;
   }
-  .content-section-50,
-  .content-section-33,
-  .content-section-25 {
+  &.content-section-50,
+  &.content-section-33,
+  &.content-section-25 {
     .text-box {
       @include media('<=phone'){
     		padding-left:0!important;
         padding-right:0!important;
       }
     }
-  }  
+  }
 
 }
 
