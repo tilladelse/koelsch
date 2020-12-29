@@ -4270,6 +4270,9 @@ input.form-control {
 figure.wp-block-image {
   margin: 0; }
 
+.in-container .wp-block-columns {
+  padding: 0; }
+
 .border-top {
   padding-top: 15px;
   margin-top: 15px;
