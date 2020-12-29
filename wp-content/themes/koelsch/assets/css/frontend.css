@@ -647,9 +647,6 @@ ol ol {
 
 ul {
   list-style-type: disc; }
-  ul li {
-    line-height: 1.3em;
-    margin-bottom: 15px; }
 
 dl dt {
   float: left;
@@ -4292,6 +4289,10 @@ figure.wp-block-image {
   padding-top: 15px;
   margin-top: 15px;
   border-top: 1px #333 solid; }
+
+.content-area li {
+  line-height: 1.3em;
+  margin-bottom: 15px; }
 
 .alignfull {
   left: auto;

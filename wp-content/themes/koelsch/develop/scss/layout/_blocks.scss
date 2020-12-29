@@ -138,7 +138,12 @@ figure{
   //   margin:0;
   //
   // }
-
+  //
+  li{
+    line-height:1.3em;
+    margin-bottom:15px;
+  }
+  
   @include media('<=widescreen'){
 
     margin:auto 30px 30px;
