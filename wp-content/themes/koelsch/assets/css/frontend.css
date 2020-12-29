@@ -4275,6 +4275,10 @@ figure.wp-block-image {
 .in-container .wp-block-columns {
   padding: 0; }
 
+.in-container .text-box {
+  padding-left: 0 !important;
+  padding-right: 0 !important; }
+
 .border-top {
   padding-top: 15px;
   margin-top: 15px;
@@ -5914,8 +5918,10 @@ figure.wp-block-image {
       .community-section::before {
         background-image: url("assets/images/bg-main-find@2x.png"); } }
   @media (max-width: 37.4375rem) {
-    .wp-block-columns .wp-block-column:first-child {
+    .wp-block-columns .wp-block-column {
       margin-bottom: 40px; }
+    .wp-block-columns .wp-block-column:last-child {
+      margin-bottom: 0; }
   .blocks-gallery-grid .blocks-gallery-item:last-child {
     margin-bottom: 0; } }
   @media (max-width: 29.9375rem) {
