@@ -5905,7 +5905,7 @@ figure.wp-block-image {
     display: none; }
   .wp-block-spacer.show-on-mobile {
     display: block; }
-  .in-container:not(.content-section-50) {
+  .in-container {
     margin: auto 25px 50px; }
   .in-container.content-section-50 .text-box, .in-container.content-section-33 .text-box, .in-container.content-section-25 .text-box {
     padding-left: 0 !important;

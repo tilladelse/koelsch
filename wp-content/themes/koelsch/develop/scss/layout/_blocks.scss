@@ -77,11 +77,11 @@ figure{
 }
 .in-container{
 
-  &:not(.content-section-50){
+  //&:not(.content-section-50){
     @include media('<=phone'){
   		margin:auto 25px 50px;
   	}
-  }
+  //}
 
 
   .wp-block-columns{
