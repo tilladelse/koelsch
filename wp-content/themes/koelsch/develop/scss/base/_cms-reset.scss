@@ -5,7 +5,7 @@ ul, ol, dl, p, h1, h2, h3, h4, h5, h6, address, form, table, blockquote, applet,
 blockquote {
   border-left: 4px solid $gray;
   padding-left: .5em;
-  margin-left: $vertical-rhythm; 
+  margin-left: $vertical-rhythm;
 }
 
 
@@ -21,12 +21,12 @@ th{
   vertical-align: middle;
 }
 
-ul, ol{ 
-  padding-left:3em; 
+ul, ol{
+  padding-left:1em; 
 }
 ul ul,
 ul ol,
-ol ul, 
+ol ul,
 ol ol {
   padding-left:3em;
   margin:0;
