@@ -5852,7 +5852,7 @@ figure.wp-block-image {
       content: '';
       display: block;
       width: 0;
-      padding-bottom: 106%; }
+      padding-bottom: 60vh; }
       .content-section-50 .col.img-col img {
         position: absolute;
         left: 0;
