@@ -15,6 +15,14 @@
         margin-bottom:0;
       }
 
+      &:nth-child(odd){
+
+        @include media('<tablet'){
+          flex-grow:1!important;
+        }
+
+      }
+
     }
     &>.text-col{
 
