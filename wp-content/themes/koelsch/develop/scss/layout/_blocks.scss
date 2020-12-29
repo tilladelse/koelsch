@@ -133,6 +133,12 @@ figure{
 
 .content-area{
 
+  &.in-container{
+
+    margin:0;
+
+  }
+
   @include media('<=widescreen'){
 
     margin:auto 30px 30px;

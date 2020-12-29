@@ -4290,6 +4290,9 @@ figure.wp-block-image {
   margin-top: 15px;
   border-top: 1px #333 solid; }
 
+.content-area.in-container {
+  margin: 0; }
+
 .alignfull {
   left: auto;
   position: relative;
