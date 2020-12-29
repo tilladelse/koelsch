@@ -114,6 +114,9 @@ figure{
         padding: 0 30px;
 
       }
+      @include media('<=phone'){
+    		padding:0;
+    	}
 
     }
 
