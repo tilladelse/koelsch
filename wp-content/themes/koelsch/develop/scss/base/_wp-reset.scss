@@ -272,13 +272,13 @@ img.aligncenter {
 }
 
 .alignleft {
-	float: left;
-	margin: 0 $vertical-rhythm 4px 0; 
+	float: none;
+	margin: 0 $vertical-rhythm 4px 0;
 }
 
 .alignright {
-	float: right;
-	margin: 0 0 4px $vertical-rhythm; 
+	float: none;
+	margin: 0 0 4px $vertical-rhythm;
 }
 
 .mejs-container {

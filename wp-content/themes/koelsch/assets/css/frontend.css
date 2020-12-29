@@ -1282,11 +1282,11 @@ img.aligncenter {
   margin: 0 auto; }
 
 .alignleft {
-  float: left;
+  float: none;
   margin: 0 1.76471em 4px 0; }
 
 .alignright {
-  float: right;
+  float: none;
   margin: 0 0 4px 1.76471em; }
 
 .mejs-container {
