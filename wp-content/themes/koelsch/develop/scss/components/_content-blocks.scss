@@ -999,12 +999,12 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 				display: block;
 				width: 100%;
 
-				@include media('<=widescreen'){
+				@include media('<widescreen'){
 					object-fit:cover;
 					height:60vh;
 				}
 
-				@include media('<=tablet'){
+				@include media('<tablet'){
 					height:auto;
 				}
 
