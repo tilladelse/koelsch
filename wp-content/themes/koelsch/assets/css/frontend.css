@@ -4290,9 +4290,6 @@ figure.wp-block-image {
   margin-top: 15px;
   border-top: 1px #333 solid; }
 
-.content-area.in-container {
-  margin: 0; }
-
 .alignfull {
   left: auto;
   position: relative;
@@ -5919,7 +5916,9 @@ figure.wp-block-image {
     margin: auto 25px 50px; }
   .in-container.content-section-50 .text-box, .in-container.content-section-33 .text-box, .in-container.content-section-25 .text-box {
     padding-left: 0 !important;
-    padding-right: 0 !important; } }
+    padding-right: 0 !important; }
+  .in-container.content-section-double:not(.ic-set) {
+    padding: 0; } }
   @media (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 63.9375rem), (min-resolution: 144dpi) and (max-width: 63.9375rem) {
   .menu-wrap::before {
     background-image: url("assets/images/mobile-menu-decor@2x.png"); } }

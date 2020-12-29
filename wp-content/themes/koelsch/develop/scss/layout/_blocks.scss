@@ -114,9 +114,9 @@ figure{
         padding: 0 30px;
 
       }
-      // @include media('<=phone'){
-    	// 	padding:0;
-    	// }
+      @include media('<=phone'){
+    		padding:0;
+    	}
 
     }
 
@@ -133,11 +133,11 @@ figure{
 
 .content-area{
 
-  &.in-container{
-
-    margin:0;
-
-  }
+  // &.in-container{
+  //
+  //   margin:0;
+  //
+  // }
 
   @include media('<=widescreen'){
 
