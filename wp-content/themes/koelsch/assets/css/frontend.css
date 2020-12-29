@@ -1281,6 +1281,12 @@ img.aligncenter {
   display: block;
   margin: 0 auto; }
 
+.wp-block-image .alignleft {
+  float: none; }
+
+.wp-block-image .alignright {
+  float: none; }
+
 .alignleft {
   float: none;
   margin: 0 1.76471em 4px 0; }

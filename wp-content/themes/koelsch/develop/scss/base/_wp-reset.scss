@@ -270,7 +270,17 @@ img.aligncenter {
 	display: block;
 	margin: 0 auto;
 }
+.wp-block-image{
 
+	.alignleft {
+		float: none;
+	}
+
+	.alignright {
+		float: none;
+	}
+
+}
 .alignleft {
 	float: none;
 	margin: 0 $vertical-rhythm 4px 0;
