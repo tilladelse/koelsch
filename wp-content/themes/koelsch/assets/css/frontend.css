@@ -5907,7 +5907,9 @@ figure.wp-block-image {
     display: block; }
   .in-container {
     margin: auto 25px 50px; }
-  .in-container .text-box {
+  .in-container .content-section-50 .text-box,
+  .in-container .content-section-33 .text-box,
+  .in-container .content-section-25 .text-box {
     padding-left: 0 !important;
     padding-right: 0 !important; } }
   @media (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 63.9375rem), (min-resolution: 144dpi) and (max-width: 63.9375rem) {
