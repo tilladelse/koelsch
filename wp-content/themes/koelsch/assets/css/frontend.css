@@ -4261,6 +4261,8 @@ input.form-control {
 
 .wp-block-columns {
   padding: 0 30px; }
+  .wp-block-columns .wp-block-column ul {
+    margin-bottom: 0; }
 
 .wp-block-cover {
   width: 100%; }
