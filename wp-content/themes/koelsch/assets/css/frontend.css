@@ -4260,6 +4260,8 @@ input.form-control {
 
 .wp-block-columns {
   padding: 0 30px; }
+  .wp-block-columns .wp-block-column > .text-col {
+    padding: 30px 0; }
   .wp-block-columns .wp-block-column ul {
     margin-bottom: 0; }
 
