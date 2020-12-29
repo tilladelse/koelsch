@@ -143,7 +143,7 @@ figure{
     line-height:1.3em;
     margin-bottom:15px;
   }
-  
+
   @include media('<=widescreen'){
 
     margin:auto 30px 30px;
@@ -295,10 +295,13 @@ figure{
   }
 }
 .visual-link{
+
   margin-bottom:2em;
+
   @include media ('>=desktop') {
     margin-bottom:0;
   }
+
   &>a{
     display:block;
     position:relative;

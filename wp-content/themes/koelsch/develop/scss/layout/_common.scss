@@ -532,16 +532,21 @@ address {
 }
 
 .visual-section {
+
 	overflow: hidden;
 	position: relative;
 	background-size: cover;
 	display:flex;
 	justify-content:center;
-	background-position: 50% 50%;
+	background-position: 50% 15vh;
 	background-repeat: no-repeat;
 	padding: 1px;
 	min-height: calc(100vh - 90px);
 	background-color: $darker-blue;
+
+	@include media ('>=tablet') {
+		background-position: 50% 7vh;
+	}
 
 	@include media ('>=desktop') {
 		min-height: calc(100vh - 105px);

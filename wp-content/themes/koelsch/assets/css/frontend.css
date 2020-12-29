@@ -2979,7 +2979,7 @@ address {
   background-size: cover;
   display: flex;
   justify-content: center;
-  background-position: 50% 50%;
+  background-position: 50% 15vh;
   background-repeat: no-repeat;
   padding: 1px;
   min-height: calc(100vh - 90px);
@@ -4800,6 +4800,8 @@ figure.wp-block-image {
       padding: 0 20px; }
     .page-content::before {
       height: 80px; }
+    .visual-section {
+      background-position: 50% 7vh; }
         .visual-section.community h1 {
           font-size: 28px;
           font-size: 1.75rem;
