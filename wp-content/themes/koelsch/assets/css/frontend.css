@@ -648,7 +648,7 @@ ol ol {
 ul {
   list-style-type: disc; }
   ul li {
-    line-height: 1.2em;
+    line-height: 1.3em;
     margin-bottom: 15px; }
 
 dl dt {
@@ -4714,7 +4714,7 @@ figure.wp-block-image {
       .content-section-33 .text-box {
         padding: 34px 30px; }
   .content-section-25 .col.text-col {
-    width: 30%; }
+    width: 40%; }
   .content-section-25 .col.img-col {
     width: 70%; }
     .content-section-100 {

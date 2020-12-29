@@ -468,7 +468,8 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 	.col {
 		&.text-col {
 			@include media ('>=tablet') {
-				width: 30%;
+				width: 40%;
+				//old width was 30%
 			}
 
 			@include media ('>=desktop') {
