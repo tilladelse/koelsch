@@ -42,6 +42,61 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
+        },
+        {
+            "key": "field_5febc72b81b2d",
+            "label": "Mobile Horizontal Image Position",
+            "name": "horizontal_image_position",
+            "type": "group",
+            "instructions": "The default image position is centered. Enter a horizontal position to adjust image display on tablets and mobile.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5febc7f781b2e",
+                    "label": "Tablet",
+                    "name": "tablet",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5febc80581b2f",
+                    "label": "Mobile",
+                    "name": "mobile",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -82,5 +137,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1608052896
+    "modified": 1609288558
 }

@@ -52,7 +52,10 @@ if( $bg_image && $v_position ) {
 $h_position = get_field('h_position');
 if( $bg_image &&  $h_position) {
 	$classes .= sprintf( ' %s', $h_position );
-} ?>
+}
+
+
+?>
 <section class="<?php echo esc_attr($classes); ?>" <?php echo $styles ?>>
 	<?php echo $container_classes_before; ?>
 		<div class="row">
@@ -60,7 +63,14 @@ if( $bg_image &&  $h_position) {
 			$img = get_field('image');
 			if($img){ ?>
 				<div class="col img-col">
-					<?php retina_image($img, 'single_image_'.$layout, 'single_image_2x_'.$layout, 'single_image_small_'.$layout, 'single_image_'.$layout); ?>
+					<?php
+            $pos = get_field('horizontal_image_position');
+            $mobileStyle = $pos && $pos['mobile'] ? ' @media (max-width:480px){img{object-position:'.$pos['mobile'].'!important;}}' : '';
+            $tabletStyle = $pos && $pos['tablet'] ? ' @media (min-width:481px) and (max-width:768px){img{object-position:'.$pos['tablet'].'!important;}' : '';
+            echo $mobileStyle || $tabletStyle ? '<style type="text/css" scoped>'.$mobileStyle.$tabletStyle.'</style>' : '';
+
+            retina_image($img, 'single_image_'.$layout, 'single_image_2x_'.$layout, 'single_image_small_'.$layout, 'single_image_'.$layout);
+          ?>
 				</div>
 			<?php } ?>
 			<?php echo '<InnerBlocks template="' . esc_attr( wp_json_encode( $templ_content ) ) . '" />'; ?>

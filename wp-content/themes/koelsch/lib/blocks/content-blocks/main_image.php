@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Image & Content Set Block Template.
  *
@@ -19,11 +19,17 @@ $temp1 = array(
 	))
 ); ?>
 <div class="row top-row <?php echo esc_attr($classes); ?>">
-	<?php 
+	<?php
 	$img = get_field('image');
 	if($img){ ?>
 	<div class="col img-col">
-		<?php retina_image($img, 'image_set', 'image_set_2x', 'image_set_small', 'image_set'); ?>
+		<?php
+      $pos = get_field('horizontal_image_position');
+      $mobileStyle = $pos && $pos['mobile'] ? ' @media (max-width:480px){img{object-position:'.$pos['mobile'].'!important;}}' : '';
+      $tabletStyle = $pos && $pos['tablet'] ? ' @media (min-width:481px) and (max-width:768px){img{object-position:'.$pos['tablet'].'!important;}' : '';
+      echo $mobileStyle || $tabletStyle ? '<style type="text/css" scoped>'.$mobileStyle.$tabletStyle.'</style>' : '';
+      
+      retina_image($img, 'image_set', 'image_set_2x', 'image_set_small', 'image_set'); ?>
 	</div>
 	<?php } ?>
 	<div class="col text-col">

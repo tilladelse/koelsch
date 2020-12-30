@@ -26,14 +26,21 @@ if($has_margins = get_field('margins')) $classes .= ' margins';
 $container_classes_before = '<div class="container-md">';
 $container_classes_after = '</div>';
 
-$img = get_field('image'); ?>
+$img = get_field('image');?>
 
 <section class="content-section-100 <?php echo esc_attr($classes); ?>">
 	<?php echo $container_classes_before; ?>
 	<div class="row">
 		<?php if($img){ ?>
 			<div class="col img-col">
-				<?php retina_image($img, 'image_and_caption', 'image_and_caption_2x', 'image_and_caption_small', 'image_and_caption'); ?>
+				<?php
+          $pos = get_field('horizontal_image_position');
+          $mobileStyle = $pos && $pos['mobile'] ? ' @media (max-width:480px){img{object-position:'.$pos['mobile'].'!important;}}' : '';
+          $tabletStyle = $pos && $pos['tablet'] ? ' @media (min-width:481px) and (max-width:768px){img{object-position:'.$pos['tablet'].'!important;}' : '';
+          echo $mobileStyle || $tabletStyle ? '<style type="text/css" scoped>'.$mobileStyle.$tabletStyle.'</style>' : '';
+
+          retina_image($img, 'image_and_caption', 'image_and_caption_2x', 'image_and_caption_small', 'image_and_caption');
+        ?>
 			</div>
 		<?php } ?>
 		<?php $btn_name = get_field('name');

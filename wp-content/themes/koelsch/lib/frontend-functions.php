@@ -402,6 +402,19 @@ function get_living_type_seal(){
   return false;
 }
 
+function retina_image($img, $img_size, $img_size_2x, $img_size_sm, $img_size_sm_2x){
+	if($img){
+		$image = $img ? wp_get_attachment_image_url($img, $img_size) : '';
+		$image_2x = $img ? wp_get_attachment_image_url($img, $img_size_2x) : '';
+		$image_sm = $img ? wp_get_attachment_image_url($img, $img_size_sm) : '';
+		$image_sm_2x = $img ? wp_get_attachment_image_url($img, $img_size_sm_2x) : ''; ?>
+		<picture>
+			<source srcset="<?php echo $image_sm; ?>, <?php echo $image_sm_2x; ?> 2x" media="(max-width: 767px)">
+			<source srcset="<?php echo $image; ?>, <?php echo $image_2x; ?> 2x">
+			<img src="<?php echo $image; ?>" alt="image">
+		</picture> <?php
+	}
+}
 
 // function koelsch_get_community_sub_menu($menuID){
 //   $items = wp_get_nav_menu_items($menuID);
