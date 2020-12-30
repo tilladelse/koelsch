@@ -2983,7 +2983,11 @@ address {
   background-repeat: no-repeat;
   padding: 1px;
   min-height: calc(100vh - 90px);
-  background-color: #1c222d; }
+  background-color: #1c222d;
+  transition: background-position 1s ease-in-out; }
+  .visual-section.loading::after {
+    height: 100%;
+    background-image: linear-gradient(to bottom, #1c222d 100%, rgba(28, 34, 45, 0.2) 34%, rgba(28, 34, 45, 0.87) 74%, #1c222d 89%, #1c222d 100%); }
   .visual-section.community {
     display: block;
     justify-content: auto;
@@ -3021,6 +3025,7 @@ address {
     height: 100%;
     background-image: linear-gradient(to bottom, #1c222d 0%, #1c222d 11%, rgba(28, 34, 45, 0.87) 26%, rgba(28, 34, 45, 0.2) 66%, rgba(28, 34, 45, 0) 90%); }
   .visual-section::after {
+    transition: background-image .6s ease-in-out, height .6s ease-in-out;
     content: '';
     position: absolute;
     left: 0;
@@ -5911,7 +5916,7 @@ figure.wp-block-image {
         background-position: 175% 60%; }
     .contact-prompt {
       width: 85%;
-      top: 8%;
+      top: 15%;
       transition: right .6s ease-in-out; }
       .contact-prompt .prompt-wrapper .name {
         padding-left: 180px; }

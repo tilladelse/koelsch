@@ -16,8 +16,42 @@ jQuery(function() {
 	initCustomForms();
 });
 
+/**
+ * Preloads the image, and invokes the callback as soon
+ * as the image is loaded.
+ */
+var preload = function(src, callback) {
+  // Create a temporary image.
+  var img = new Image();
+
+  // Invoke the callback as soon as the image is loaded
+  // Has to be set **before** the .src attribute. Otherwise
+  // `onload` could fire before the handler is set.
+  jQuery(img).load(callback);
+
+  img.src = src;
+};
+
 (function( $ ) {
 	$(window).on('load', function(){
+		var featImg = jQuery('.visual-section');
+		if (featImg.length){
+
+
+			var bg = featImg.css('background-image');
+
+			if (bg !== 'none'){
+				featImg.addClass('loading');
+				bg = bg.replace('url(','').replace(')','').replace(/\"/gi, "");
+				console.log('bg url: '+bg);
+				//preload background image
+				preload(bg, function(){
+					featImg.removeClass('loading');
+				});
+			}
+
+		}
+
 		var coEle = $('.contact-opener'),
 		cpEle = $('.contact-prompt');
 

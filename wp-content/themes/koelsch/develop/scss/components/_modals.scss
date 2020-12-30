@@ -130,7 +130,7 @@
 
   @include media ('<=phone') {
 		width:85%;
-    top:8%;
+    top:15%;
     @include animate(right, '.6s');
 	}
 
