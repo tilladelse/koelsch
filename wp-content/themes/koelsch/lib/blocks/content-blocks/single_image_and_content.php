@@ -53,8 +53,6 @@ $h_position = get_field('h_position');
 if( $bg_image &&  $h_position) {
 	$classes .= sprintf( ' %s', $h_position );
 }
-
-var_dump($block['id']);
 ?>
 <section class="<?php echo esc_attr($classes); ?>" <?php echo $styles ?>>
 	<?php echo $container_classes_before; ?>
