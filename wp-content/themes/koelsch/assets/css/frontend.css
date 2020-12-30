@@ -4091,13 +4091,16 @@ input.form-control {
     color: #c69230; }
 
 .find-panel {
-  background-color: #f5eee2;
-  padding: 32px 0; }
+  position: relative;
+  z-index: 1;
+  margin: 0; }
   .find-panel .container-md {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center; }
+    justify-content: center;
+    background-color: #f5eee2;
+    padding: 25px; }
   .find-panel .img-decor {
     width: 68px;
     height: auto;
@@ -4990,6 +4993,8 @@ figure.wp-block-image {
         font-size: 32px;
         font-size: 2rem;
         padding: 14px 12px 0 5px; }
+    .find-panel {
+      margin: -54px 0; }
       .find-panel .container-md {
         flex-wrap: nowrap;
         justify-content: space-between; }
@@ -5384,12 +5389,6 @@ figure.wp-block-image {
           margin-bottom: 25px; }
       .community-popup .heading-block {
         padding-bottom: 43px; }
-    .find-panel {
-      padding-left: 15px;
-      padding-right: 15px; }
-      .find-panel .container-md {
-        padding-left: 45px;
-        padding-right: 45px; }
       .find-panel h4 {
         padding-right: 30px; }
       .find-panel .controls .state-box,

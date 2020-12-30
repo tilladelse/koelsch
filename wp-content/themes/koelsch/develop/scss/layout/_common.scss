@@ -2582,24 +2582,34 @@ input {
 	}
 }
 .find-panel {
-	background-color: $light-orange;
-	padding: 32px 0;
-	@include media ('>=desktop') {
-		padding-left: 15px;
-		padding-right: 15px;
+	// background-color: $light-orange;
+	// padding: 32px 0;
+	position:relative;
+	z-index:1;
+	margin:0;
+	@include media ('>=tablet'){
+		margin:-54px 0;
 	}
+
+	// @include media ('>=desktop') {
+	// 	padding-left: 15px;
+	// 	padding-right: 15px;
+	// }
 	.container-md {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
+		background-color: $light-orange;
+		padding:25px;
 		@include media ('>=tablet') {
 			flex-wrap: nowrap;
 			justify-content: space-between;
 		}
 		@include media ('>=desktop') {
-			padding-left: 45px;
-			padding-right: 45px;
+			// padding-left: 45px;
+			// padding-right: 45px;
+
 		}
 	}
 	.img-decor {
