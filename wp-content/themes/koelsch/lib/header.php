@@ -46,7 +46,7 @@ function koelsch_header(){
    </header>
    <main<?php echo $mainID ? ' id="'.$mainID.'"': '';?><?php echo $mainClass ? ' class="'.$mainClass.'"': '';?>>
      <div<?php echo $wrapperClass ? ' class="'.$wrapperClass.'"': '';?>>
-      <div class="community-menu-wrapper">
+      <div class="community-menu-wrapper loading">
          <?php //if is single don't grab featured image
                //else grab featured image or video. video has priority
                //if featured image or video should not show,
@@ -88,7 +88,7 @@ function koelsch_before_community_menu($imageArr){
     $mobileStyle = $mobilePos ? ' @media (max-width:480px){.visual-section{background-position-x:'.$mobilePos.'!important;}}' : '';
     $tabletStyle = $tabletPos ? ' @media (min-width:481px) and (max-width:768px){.visual-section{background-position-x:'.$tabletPos.'!important;}' : '';
     echo $mobileStyle || $tabletStyle ? '<style type="text/css" scoped>'.$mobileStyle.$tabletStyle.'</style>' : '';
-    
+
     ob_start();?>
     <div class="visual-section bg-video-holder<?php echo $communityClass;?>"<?php echo $style;?>>
       <?php if ($imageArr['video_url']):?>

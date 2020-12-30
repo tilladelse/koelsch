@@ -34,21 +34,25 @@ var preload = function(src, callback) {
 
 (function( $ ) {
 	$(window).on('load', function(){
-		var featImg = jQuery('.visual-section');
-		var wrap = jQuery('.community-menu-wrapper');
+		var featImg = $('.visual-section');
+		var wrap = $('.community-menu-wrapper');
 		if (featImg.length){
 
 			var bg = featImg.css('background-image');
-
+			console.log(bg);
 			if (bg !== 'none'){
 				wrap.addClass('loading');
 				bg = bg.replace('url(','').replace(')','').replace(/\"/gi, "");
-				// console.log('bg url: '+bg);
+				console.log('bg url: '+bg);
 				//preload background image
 				preload(bg, function(){
 					wrap.removeClass('loading');
 				});
+			}else{
+				wrap.removeClass('loading');
 			}
+		}else{
+			wrap.removeClass('loading');
 		}
 
 
