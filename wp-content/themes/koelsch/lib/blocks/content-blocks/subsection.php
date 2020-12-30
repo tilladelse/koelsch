@@ -26,11 +26,11 @@ $img = get_field('image'); ?>
   	<div class="img-box">
   		<?php if($img){
         $pos = get_field('horizontal_image_position');
-        $mobileStyle = $pos && $pos['mobile'] ? ' @media (max-width:480px){img{object-position:'.$pos['mobile'].'!important;}}' : '';
-        $tabletStyle = $pos && $pos['tablet'] ? ' @media (min-width:481px) and (max-width:768px){img{object-position:'.$pos['tablet'].'!important;}' : '';
+        $mobileStyle = $pos && $pos['mobile'] ? ' @media (max-width:480px){img#'. $block['id'] .'{object-position:'.$pos['mobile'].'!important;}}' : '';
+        $tabletStyle = $pos && $pos['tablet'] ? ' @media (min-width:481px) and (max-width:768px){img#'. $block['id'] .'{object-position:'.$pos['tablet'].'!important;}' : '';
         echo $mobileStyle || $tabletStyle ? '<style type="text/css" scoped>'.$mobileStyle.$tabletStyle.'</style>' : '';
 
-        retina_image($img, 'subsection_image', 'subsection_image_2x', 'subsection_image_small', 'subsection_image');
+        retina_image($img, 'subsection_image', 'subsection_image_2x', 'subsection_image_small', 'subsection_image', $block['id']);
       } ?>
   		<div class="category-info">
   			<?php if($block_title = get_field('block_title')){ ?><span class="text"><?php echo esc_attr($block_title) ?></span><?php } ?>
