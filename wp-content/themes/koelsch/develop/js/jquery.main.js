@@ -35,22 +35,23 @@ var preload = function(src, callback) {
 (function( $ ) {
 	$(window).on('load', function(){
 		var featImg = jQuery('.visual-section');
+		var wrap = jQuery('.community-menu-wrapper');
 		if (featImg.length){
-
 
 			var bg = featImg.css('background-image');
 
 			if (bg !== 'none'){
-				featImg.addClass('loading');
+				wrap.addClass('loading');
 				bg = bg.replace('url(','').replace(')','').replace(/\"/gi, "");
-				console.log('bg url: '+bg);
+				// console.log('bg url: '+bg);
 				//preload background image
 				preload(bg, function(){
-					featImg.removeClass('loading');
+					wrap.removeClass('loading');
 				});
 			}
-
 		}
+
+
 
 		var coEle = $('.contact-opener'),
 		cpEle = $('.contact-prompt');

@@ -530,7 +530,26 @@ address {
 	z-index:9999;
 	box-shadow: 0px 8px 20px rgba(68, 68, 68, 0.4);
 }
-
+.community-menu-wrapper{
+	&::before{
+		display:block;
+		content:'';
+		transition: opacity .6s ease-in-out;
+		position:absolute;
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+		opacity:0;
+		background-color:$darker-blue;
+		z-index:1;
+	}
+	&.loading{
+		&::before{
+			opacity:1;
+		}
+	}
+}
 .visual-section {
 
 	overflow: hidden;
@@ -544,14 +563,6 @@ address {
 	min-height: calc(100vh - 90px);
 	background-color: $darker-blue;
 	transition:background-position 1s ease-in-out;
-
-	&.loading{
-		&::after{
-			height:100%;
-			background-image: linear-gradient(to bottom, rgba($darker-blue,1) 100%,rgba($darker-blue,0.2) 34%,rgba($darker-blue,0.87) 74%,rgba($darker-blue,1) 89%,rgba($darker-blue,1) 100%);
-		}
-		// background-position: 50% -100vh;
-	}
 
 	@include media ('>=tablet') {
 		background-position: 50% 7vh;
@@ -646,7 +657,7 @@ address {
 		top: 0;
 		z-index: 1;
 		height: 100%;
-		background-image: linear-gradient(to bottom, rgba($darker-blue,1) 0%,rgba($darker-blue,1) 11%,rgba($darker-blue,0.87) 26%,rgba($darker-blue,0.2) 66%,rgba($darker-blue,0) 90%);
+		background-image: linear-gradient(to bottom, rgba($darker-blue,1) 0%,rgba($darker-blue,1) 11%,rgba($darker-blue,1) 26%,rgba($darker-blue,0.2) 66%,rgba($darker-blue,0) 90%);
 
 		@include media ('>=tablet') {
 			height: 70%;
@@ -654,7 +665,6 @@ address {
 	}
 
 	&::after {
-		transition:background-image .6s ease-in-out, height .6s ease-in-out;
 		content: '';
 		position: absolute;
 		left: 0;
