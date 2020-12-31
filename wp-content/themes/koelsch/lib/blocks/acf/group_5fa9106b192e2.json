@@ -75,6 +75,85 @@
                     "maxlength": ""
                 }
             ]
+        },
+        {
+            "key": "field_5fee25f433742",
+            "label": "Display Settings",
+            "name": "display_settings",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5fee260833743",
+                    "label": "Background Color",
+                    "name": "background_color",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33.33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "bg-white": "White",
+                        "bg-tan": "Warm Snickerdoodle"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "default_value": "",
+                    "layout": "horizontal",
+                    "return_format": "value",
+                    "save_other_choice": 0
+                },
+                {
+                    "key": "field_5fee266433744",
+                    "label": "Drop Shadow",
+                    "name": "drop_shadow",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33.33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 1,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
+                    "key": "field_5fee2e0a97a3e",
+                    "label": "Border",
+                    "name": "border",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33.33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 1,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -94,5 +173,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1609373384
+    "modified": 1609444896
 }

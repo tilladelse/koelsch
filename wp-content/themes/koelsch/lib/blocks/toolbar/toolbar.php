@@ -4,12 +4,16 @@
  */
 global $page_settings;
 $margin = get_field('margin');
+$display = get_field('display_settings');
 $top = $margin['top'] ? 'margin-top:'.$margin['top'].';' : '';
 $bottom = $margin['bottom'] ? 'margin-bottom:'.$margin['bottom'].';' : '';
 $style = '<style type="text/css">@media (min-width:1200px){#'.$block['id'].'{%s%s}}</style>';
+$classes = 'find-panel '.$display['background_color'];
+$classes .= $display['drop_shadow'] == TRUE ? ' drop-shadow': '';
+$classes .= $display['border'] == TRUE ? ' has-border': '';
 echo sprintf($style, $top, $bottom);
 ?>
-<div class="find-panel" id="<?php echo $block['id'];?>">
+<div class="<?php echo $classes;?>" id="<?php echo $block['id'];?>">
 	<div class="container-md">
 		<img class="img-decor" src="<?php echo get_template_directory_uri(); ?>/assets/images/map-decor.svg" alt="map">
 		<?php if ( $title = get_field( 'title' ) ): ?>
