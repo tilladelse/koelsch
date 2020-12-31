@@ -108,6 +108,9 @@ define('THEME_VERSION', '1.0.0');
 
  add_action('wp_head', 'add_koelsch_head');
  function add_koelsch_head(){
+   global $community_context;
+   $community_context->getCurrentLivingTypes();
+   // var_dump($community_context);
 
    //site icon
    $dir = get_stylesheet_directory_uri();
@@ -129,6 +132,19 @@ define('THEME_VERSION', '1.0.0');
         <meta name="msapplication-TileImage" content="'.$dir . '/assets/images/favicon/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">';
 
+  //community data layer push
+  $communityName = $community_context->communityID ? $community_context->communityName : 'Koelsch Main';
+  $ltArr = $community_context->livingType && isset($community_context->livingType['living_types']) ? $community_context->livingType['living_types'] : array();
+  $ltString = $ltArr ? implode('-',$ltArr) : '';
+  echo "<script type='text/javascript'>
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            'event' : 'pageview',
+            'communityName' : '".$communityName."',
+            'livingType' : '".$ltString."'
+          });
+        </script>";
+
   //GA tag
   echo "<!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -142,9 +158,9 @@ define('THEME_VERSION', '1.0.0');
 add_action('koelsch_inside_body', 'add_google_tag_manager');
 function add_google_tag_manager(){
   echo '<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN694WN"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->';
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN694WN"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->';
 }
 
 
