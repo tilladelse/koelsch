@@ -31,7 +31,9 @@ function koelsch(){
 }
 add_filter('koelsch_header_show_h1', 'koelsch_header_show_h1');
 function koelsch_header_show_h1(){
-  $showH1 = get_post_meta(get_the_id(), 'show_header_h1', true);
+  $id = get_the_id();
+  $showH1 = get_post_meta($id, 'show_header_h1', true);
+  if (is_single($id) || is_archive($id)) $showH1 = 'hide';
   return $showH1 == 'hide' ? false : true;
 }
 
