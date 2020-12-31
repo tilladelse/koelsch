@@ -4095,8 +4095,7 @@ input.form-control {
 
 .find-panel {
   position: relative;
-  z-index: 1;
-  margin: 0 0 30px; }
+  z-index: 1; }
   .find-panel .container-md {
     display: flex;
     flex-wrap: wrap;
@@ -5001,8 +5000,6 @@ figure.wp-block-image {
         font-size: 32px;
         font-size: 2rem;
         padding: 14px 12px 0 5px; }
-    .find-panel {
-      margin: -54px 0; }
       .find-panel .container-md {
         flex-wrap: nowrap;
         justify-content: space-between; }
@@ -5552,8 +5549,6 @@ figure.wp-block-image {
         padding: 25px 20px 20px 25px;
         font-size: 21px;
         font-size: 1.3125rem; }
-      .title-area.header-copy p {
-        max-width: 40%; }
     .community-nav ul {
       font-size: 18px;
       font-size: 1.125rem; }
@@ -5670,6 +5665,10 @@ figure.wp-block-image {
     font-size: 50px;
     font-size: 3.125rem; } }
   @media (min-width: 75.0625rem) {
+  .home .visual-section .btn-circle {
+    display: none; }
+  .home .visual-section .logo-box {
+    bottom: 150px; }
     .wp-block-columns {
       padding: 0; } }
   @media (min-width: 82.5rem) {

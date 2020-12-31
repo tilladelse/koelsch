@@ -3,9 +3,13 @@
  * Community search toolbar
  */
 global $page_settings;
-// var_dump($page_settings);
+$margin = get_field('margin');
+$top = $margin['top'] ? 'margin-top:'.$margin['top'].';' : '';
+$bottom = $margin['bottom'] ? 'margin-bottom:'.$margin['bottom'].';' : '';
+$style = '<style type="text/css">@media (min-width:1200px){#'.$block['id'].'{%s%s}}</style>';
+echo sprintf($style, $top, $bottom);
 ?>
-<div class="find-panel">
+<div class="find-panel" id="<?php echo $block['id'];?>">
 	<div class="container-md">
 		<img class="img-decor" src="<?php echo get_template_directory_uri(); ?>/assets/images/map-decor.svg" alt="map">
 		<?php if ( $title = get_field( 'title' ) ): ?>

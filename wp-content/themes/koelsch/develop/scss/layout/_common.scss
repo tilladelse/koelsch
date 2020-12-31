@@ -778,6 +778,27 @@ address {
 		}
 	}
 }
+.home{
+
+	.visual-section{
+
+		.btn-circle{
+
+			@include media('>widescreen'){
+				display: none;
+			}
+
+		}
+
+		.logo-box{
+
+			@include media('>widescreen'){
+				bottom:150px;
+			}
+
+		}
+	}
+}
 
 .bg-video-holder .bg-video {
 	position: absolute;
@@ -2590,19 +2611,9 @@ input {
 	}
 }
 .find-panel {
-	// background-color: $light-orange;
-	// padding: 32px 0;
 	position:relative;
 	z-index:1;
-	margin:0 0 30px;
-	@include media ('>=tablet'){
-		margin:-54px 0;
-	}
 
-	// @include media ('>=desktop') {
-	// 	padding-left: 15px;
-	// 	padding-right: 15px;
-	// }
 	.container-md {
 		display: flex;
 		flex-wrap: wrap;
@@ -2610,15 +2621,12 @@ input {
 		justify-content: center;
 		background-color: $light-orange;
 		padding:25px;
+
 		@include media ('>=tablet') {
 			flex-wrap: nowrap;
 			justify-content: space-between;
 		}
-		@include media ('>=desktop') {
-			// padding-left: 45px;
-			// padding-right: 45px;
 
-		}
 	}
 	.img-decor {
 		width: 68px;

@@ -22,25 +22,59 @@
             "maxlength": ""
         },
         {
-            "key": "field_5fa94bda6811f",
-            "label": "Page for search",
-            "name": "page_for_search",
-            "type": "page_link",
-            "instructions": "",
-            "required": 1,
+            "key": "field_5fed16558a499",
+            "label": "Margin",
+            "name": "margin",
+            "type": "group",
+            "instructions": "Include units (ex: -96px)",
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "page"
-            ],
-            "taxonomy": "",
-            "allow_null": 0,
-            "allow_archives": 0,
-            "multiple": 0
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5fed16a68a49a",
+                    "label": "Top",
+                    "name": "top",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5fed16b88a49b",
+                    "label": "bottom",
+                    "name": "bottom",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -60,5 +94,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1608052896
+    "modified": 1609373384
 }
