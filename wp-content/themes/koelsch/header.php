@@ -6,5 +6,6 @@
     <?php wp_head(); ?>
   </head>
   <body <?php body_class(); ?>>
+    <?php do_action('koelsch_inside_body');?>
     <div id="wrapper">
     <?php do_action('koelsch_header');
