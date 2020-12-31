@@ -253,7 +253,7 @@ figure{
 
   .info-wrap{
     background-color: $white;
-    padding-top: 22px;
+    padding: 22px 20px 0 0;
     position:absolute;
     bottom:-22px;
     left:0;
@@ -264,6 +264,11 @@ figure{
     color:$darker-blue;
     text-transform:none;
     letter-spacing: normal;
+    margin:0;
+  }
+
+  p{
+    margin: 10px 0 0;
   }
 
   ul{
@@ -394,6 +399,8 @@ figure{
 
     .description{
       position:relative;
+      padding: 15px 0;
+      font-family:$base-font-serif;
     }
 
   }

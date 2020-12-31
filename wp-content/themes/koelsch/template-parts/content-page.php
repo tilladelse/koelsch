@@ -7,7 +7,8 @@
   $vtAlign = $bg && isset($bg['vert_align']) ? $bg['vert_align'] : '';
   $rule = $src ? ' style="background: url('.$src.') no-repeat;' : '';
   $rule .= $src ? ' background-position: '.$hzAlign.' '.$vtAlign.';"' : '';
+  $margin = get_post_meta(get_the_id(), 'top_margin', true);
 ?>
-<div class="page-content<?php echo $color;?>"<?php echo $rule;?> id="page_content">
+<div class="page-content<?php echo $color.' '.$margin;?>"<?php echo $rule;?> id="page_content">
   <?php the_content(); ?>
 </div>

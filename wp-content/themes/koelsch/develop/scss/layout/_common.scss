@@ -184,6 +184,7 @@ a {
 .page-content{
 
 	&::before{
+
 		display:block;
 		content:'';
 		height:60px;
@@ -193,6 +194,13 @@ a {
 		}
 
 	}
+
+	&.no-margin{
+		&::before{
+			display:none;
+		}
+	}
+
 
 	@include media ('<=desktop') {
 		background:none!important;
@@ -2586,7 +2594,7 @@ input {
 	// padding: 32px 0;
 	position:relative;
 	z-index:1;
-	margin:0;
+	margin:0 0 30px;
 	@include media ('>=tablet'){
 		margin:-54px 0;
 	}

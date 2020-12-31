@@ -2700,6 +2700,9 @@ a {
   content: '';
   height: 60px; }
 
+.page-content.no-margin::before {
+  display: none; }
+
 .community .hide-on-community {
   display: none; }
 
@@ -4093,7 +4096,7 @@ input.form-control {
 .find-panel {
   position: relative;
   z-index: 1;
-  margin: 0; }
+  margin: 0 0 30px; }
   .find-panel .container-md {
     display: flex;
     flex-wrap: wrap;
@@ -4375,7 +4378,7 @@ figure.wp-block-image {
       line-height: 1.25rem; }
   .floorplan .info-wrap {
     background-color: #fff;
-    padding-top: 22px;
+    padding: 22px 20px 0 0;
     position: absolute;
     bottom: -22px;
     left: 0; }
@@ -4383,7 +4386,10 @@ figure.wp-block-image {
     font-family: "MillerBanner", "Times New Roman", "Times", "Baskerville", "Georgia", serif;
     color: #1c222d;
     text-transform: none;
-    letter-spacing: normal; }
+    letter-spacing: normal;
+    margin: 0; }
+  .floorplan p {
+    margin: 10px 0 0; }
   .floorplan ul {
     margin: 10px 0 0;
     padding: 0;
@@ -4446,7 +4452,9 @@ figure.wp-block-image {
     background-color: #fff;
     position: relative; }
   .visual-link.below .description {
-    position: relative; }
+    position: relative;
+    padding: 15px 0;
+    font-family: "MillerBanner", "Times New Roman", "Times", "Baskerville", "Georgia", serif; }
 
 #footer {
   color: #fff;

@@ -505,6 +505,18 @@ function koelsch_register_general_metaboxes() {
   ) );
 
   $opts->add_field( array(
+    'name' => 'Page top margin',
+    'id'   => 'top_margin',
+    'type'    => 'radio_inline',
+    'options' => array(
+        'margin' => __( 'Margin', 'cmb2' ),
+        'no-margin'   => __( 'No Margin', 'cmb2' )
+    ),
+    'default' => 'margin'
+    // 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+  ) );
+
+  $opts->add_field( array(
     'name' => 'Header Copy',
     'id'   => 'header_copy',
     'type' => 'textarea_small',
