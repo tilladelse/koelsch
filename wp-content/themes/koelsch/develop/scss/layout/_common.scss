@@ -2634,6 +2634,12 @@ input {
 
 		}
 
+		.jcf-select-drop .jcf-list{
+
+			background-color: $white;
+
+		}
+
 	}
 
 	&.drop-shadow{
@@ -2648,9 +2654,10 @@ input {
 
 	&.has-border{
 		.container-md{
-			@include media('>=widescreen'){
-				border: 1px $gray-300 solid;
+			@include media('<=phone'){
+				margin-top:30px;
 			}
+			border: 1px $gray-100 solid;
 		}
 	}
 	.container-md {

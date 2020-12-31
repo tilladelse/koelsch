@@ -4101,6 +4101,8 @@ input.form-control {
   .find-panel.bg-white .controls .jcf-select,
   .find-panel.bg-white .controls input.form-control {
     background-color: #fff; }
+  .find-panel.bg-white .jcf-select-drop .jcf-list {
+    background-color: #fff; }
   .find-panel .container-md {
     display: flex;
     flex-wrap: wrap;
@@ -5620,7 +5622,7 @@ figure.wp-block-image {
     .find-panel.drop-shadow .container-md {
       box-shadow: 0px -20px 60px 15px rgba(28, 34, 45, 0.6); }
     .find-panel.has-border .container-md {
-      border: 1px #918b81 solid; }
+      border: 1px #ccc5ba solid; }
       .section-search .top-panel .col-sm {
         padding-bottom: 48px;
         width: 30%; }
