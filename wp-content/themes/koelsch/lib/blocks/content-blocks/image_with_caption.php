@@ -28,7 +28,7 @@ $container_classes_after = '</div>';
 
 $img = get_field('image');?>
 
-<section class="content-section-100 <?php echo esc_attr($classes); ?>">
+<section class="content-section-100 <?php echo esc_attr($classes); ?>"<?php echo isset($block['anchor']) ? ' id="'.$block['anchor'].'"' : '';?>>
 	<?php echo $container_classes_before; ?>
 	<div class="row">
 		<?php if($img){ ?>

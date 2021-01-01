@@ -33,7 +33,7 @@ $h_position = get_field('h_position');
 if( $bg_image &&  $h_position) {
 	$classes .= sprintf( ' %s', $h_position );
 } ?>
-<section class="<?php echo esc_attr($classes); ?>" <?php echo $styles ?>>
+<section class="<?php echo esc_attr($classes); ?>" <?php echo $styles; echo isset($block['anchor']) ? ' id="'.$block['anchor'].'"' : '';?>>
 	<div class="container-md">
 		<?php echo '<InnerBlocks template="' . esc_attr( wp_json_encode( $set ) ) . '" />'; ?>
 	</div>

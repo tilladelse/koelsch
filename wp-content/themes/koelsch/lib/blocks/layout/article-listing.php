@@ -13,7 +13,7 @@
      $img = get_image_srcset($featImgID, 'resource_listing-horiz', 'resource-listing-horiz-2x');
    }
    ?>
-   <article class="<?php echo $format == 'horizontal' ? 'card-horizontal': 'card';?>">
+   <article class="<?php echo $format == 'horizontal' ? 'card-horizontal': 'card';?>"<?php echo isset($block['anchor']) ? ' id="'.$block['anchor'].'"' : '';?>>
      <a href="<?php echo get_the_permalink($article->ID);?>" class="<?php echo $format == 'horizontal' ? 'img-box': 'card-img';?>">
        <?php echo $img;?>
      </a>

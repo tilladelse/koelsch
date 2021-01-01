@@ -15,4 +15,6 @@ if( !empty($block['className']) ) {
 if( !empty($block['align']) ) {
     $classes .= sprintf( ' text-%s', $block['align'] );
 } ?>
-<div class="<?php echo esc_attr($classes); ?>"><img class="divider" src="<?php echo get_template_directory_uri() ?>/images/divider.jpg" alt="divider"></div>
+<div class="<?php echo esc_attr($classes); ?>"<?php echo isset($block['anchor']) ? ' id="'.$block['anchor'].'"' : '';?>>
+  <img class="divider" src="<?php echo get_template_directory_uri() ?>/images/divider.jpg" alt="divider">
+</div>

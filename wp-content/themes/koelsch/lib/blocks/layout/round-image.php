@@ -10,6 +10,6 @@ if ($imgID){
   $imgSrcset = $image && $image2x ? $image[0].', '.$image2x[0].' 2x' : '';
 }
 ?>
-<div class="round-image<?php echo $align ? ' align-'.$align : '';?>">
+<div class="round-image<?php echo $align ? ' align-'.$align : '';?>"<?php echo isset($block['anchor']) ? ' id="'.$block['anchor'].'"' : '';?>>
   <img src="<?php echo $image[0];?>" srcset="<?php echo $imgSrcset;?>" alt="<?php echo $imageAlt;?>"/>
 </div>

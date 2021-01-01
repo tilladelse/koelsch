@@ -21,14 +21,14 @@ $temp = array(
 $border_color = get_field('border_color');
 
 $img = get_field('image'); ?>
-<div class="container-md">
-  <section class="resource-block <?php echo esc_attr($classes); ?>">
+<!-- <div class="container-md"> -->
+  <section class="resource-block <?php echo esc_attr($classes); ?>"<?php echo isset($block['anchor']) ? ' id="'.$block['anchor'].'"' : '';?>>
   	<div class="img-box">
   		<?php if($img){
         $pos = get_field('horizontal_image_position');
         $mobileStyle = $pos && $pos['mobile'] ? ' @media (max-width:480px){img#'. $block['id'] .'{object-position:'.$pos['mobile'].'!important;}}' : '';
         $tabletStyle = $pos && $pos['tablet'] ? ' @media (min-width:481px) and (max-width:768px){img#'. $block['id'] .'{object-position:'.$pos['tablet'].'!important;}' : '';
-        echo $mobileStyle || $tabletStyle ? '<style type="text/css" scoped>'.$mobileStyle.$tabletStyle.'</style>' : '';
+        echo $mobileStyle || $tabletStyle ? '<style type="text/css">'.$mobileStyle.$tabletStyle.'</style>' : '';
 
         retina_image($img, 'subsection_image', 'subsection_image_2x', 'subsection_image_small', 'subsection_image', $block['id']);
       } ?>
@@ -43,4 +43,4 @@ $img = get_field('image'); ?>
   		</div>
   	</div>
   </section>
-</div>
+<!-- </div> -->

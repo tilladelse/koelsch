@@ -17,5 +17,7 @@ if( !empty($block['align']) ) {
 }
 if($title = get_field('title')){
   $type = get_field('type');?>
-	<div class="<?php echo esc_attr($classes); ?>"><strong class="<?php echo $type;?>"><?php echo esc_attr($title)?></strong></div>
+	<div class="<?php echo esc_attr($classes); ?>"<?php echo isset($block['anchor']) ? ' id="'.$block['anchor'].'"' : '';?>>
+    <strong class="<?php echo $type;?>"><?php echo esc_attr($title)?></strong>
+  </div>
 <?php } ?>

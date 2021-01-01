@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Content Area Block Template.
  *
@@ -30,7 +30,7 @@ $template = array(
     ) )
 ); ?>
 
-<div class="col text-col <?php echo esc_attr($classes); ?>" >
+<div class="col text-col <?php echo esc_attr($classes); ?>"<?php echo isset($block['anchor']) ? ' id="'.$block['anchor'].'"' : '';?>>
 	<div class="text-box" <?php if($bg_color = get_field('background_color')) echo 'style="background-color: '.$bg_color.' !important;"'; ?>>
 		<?php echo '<InnerBlocks template="' . esc_attr( wp_json_encode( $template ) ) . '" />'; ?>
 	</div>

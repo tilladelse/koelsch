@@ -26,6 +26,7 @@ function wp_acf_init_block_types() {
             'align'	          	=> 'full',
           	'supports'	        => array(
                   		'align'		=> array('wide', 'full'),
+                      'anchor'  => true,
                   	)
         ));
 
@@ -40,6 +41,7 @@ function wp_acf_init_block_types() {
             'align'	          	=> 'full',
           	'supports'	        => array(
                   		'align'		=> array('wide','full'),
+                      'anchor'  => true,
                   	)
         ));
 
@@ -87,6 +89,7 @@ function wp_acf_init_block_types() {
     				'mode' => true,
     				'jsx' => true,
     				'align' => array('left', 'right'),
+            'anchor'  => true,
     			)
     		));
 
@@ -103,6 +106,7 @@ function wp_acf_init_block_types() {
     				'jsx' => true,
     				'align_content' => array('top', 'center', 'bottom'),
     				'align' => array('left', 'center', 'right'),
+            'anchor'  => true,
     			)
     		));
 
@@ -116,6 +120,7 @@ function wp_acf_init_block_types() {
           'keywords'          => array( 'gold', 'line' ),
     			'supports'			=> array(
     				'align' => array('left', 'center', 'right'),
+            'anchor'  => true,
     			)
     		));
 
@@ -129,6 +134,7 @@ function wp_acf_init_block_types() {
           'keywords'          => array( 'gold', 'title' ),
     			'supports'			=> array(
     				'align' => array('left', 'center', 'right'),
+            'anchor'  => true,
     			)
     		));
 
@@ -159,6 +165,7 @@ function wp_acf_init_block_types() {
     				'mode' => true,
     				'jsx' => true,
     				'align' => array('left', 'right'),
+            'anchor'  => true,
     			)
     		));
 
@@ -174,6 +181,7 @@ function wp_acf_init_block_types() {
     				'mode' => true,
     				'jsx' => false,
     				'align' => false,
+            'anchor'  => true,
     			),
     			'enqueue_style' => 'https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css',
     			/*'enqueue_script' => 'https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js',*/
@@ -190,7 +198,8 @@ function wp_acf_init_block_types() {
           'keywords'          => array( 'image', 'caption' ),
     			'supports'			=> array(
     				'mode' => true,
-    				'jsx' => true
+    				'jsx' => true,
+            'anchor'  => true,
     				)
     		));
 
@@ -202,7 +211,9 @@ function wp_acf_init_block_types() {
     			'mode'              => 'edit',
           'icon'              => 'images-alt2',
     			'align'	          	=> 'wide',
-                'keywords'          => array( 'photo', 'vodeo', 'slideshow' )
+          'keywords'          => array( 'photo', 'vodeo', 'slideshow' ),
+          'supports'          =>array('anchor'  => true,)
+
     		));
 
     		acf_register_block_type( array(
@@ -213,7 +224,8 @@ function wp_acf_init_block_types() {
     			'mode'              => 'edit',
           'icon'              => 'instagram',
     			'align'	          	=> 'wide',
-                'keywords'          => array( 'photo', 'vodeo', 'masonry', 'images' )
+          'keywords'          => array( 'photo', 'vodeo', 'masonry', 'images' ),
+          'supports'          =>array('anchor'  => true,)
     		));
 
     		acf_register_block_type( array(
@@ -228,6 +240,7 @@ function wp_acf_init_block_types() {
     				'mode' => true,
     				'jsx' => true,
     				'align' => array('left', 'right'),
+            'anchor'  => true,
     			)
     		));
 
@@ -243,6 +256,7 @@ function wp_acf_init_block_types() {
     				'mode' => true,
     				'jsx' => true,
     				'align' => false,
+            'anchor'  => true,
     			)
     		));
 
@@ -273,6 +287,7 @@ function wp_acf_init_block_types() {
     				'mode' => false,
     				'jsx' => true,
     				'align' => false,
+            'anchor'  => true,
     			)
     		));
 
@@ -288,6 +303,7 @@ function wp_acf_init_block_types() {
                 'align'	          	=> 'wide',
                 'supports'	        => array(
                           'align'		=> false,
+                          'anchor'  => true,
                         )
             ));
 
@@ -301,6 +317,7 @@ function wp_acf_init_block_types() {
                 'align'	          	=> 'wide',
                 'supports'	        => array(
                           'align'		=> false,
+                          'anchor'  => true,
                         )
             ));
 
@@ -314,6 +331,7 @@ function wp_acf_init_block_types() {
                 'align'	          	=> 'wide',
                 'supports'	        => array(
                           'align'		=> false,
+                          'anchor'  => true,
                         )
             ));
 

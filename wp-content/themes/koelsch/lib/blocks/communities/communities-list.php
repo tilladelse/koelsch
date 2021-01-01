@@ -4,7 +4,7 @@ $data = json_decode( $data );
 $blockClasses = 'community-list section';
 $blockClasses .= isset($block['className']) ? ' '.$block['className'] : '';
 ?>
-<section class="<?php echo $blockClasses;?>">
+<section class="<?php echo $blockClasses;?>"<?php echo isset($block['anchor']) ? ' id="'.$block['anchor'].'"' : '';?>>
 	<div class="container-md">
 		<?php if ( $title = get_field( 'title' ) ): ?>
 			<h3><?php echo $title; ?></h3>

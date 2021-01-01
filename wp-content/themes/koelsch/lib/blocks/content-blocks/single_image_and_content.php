@@ -54,7 +54,7 @@ if( $bg_image &&  $h_position) {
 	$classes .= sprintf( ' %s', $h_position );
 }
 ?>
-<section class="<?php echo esc_attr($classes); ?>" <?php echo $styles ?>>
+<section class="<?php echo esc_attr($classes); ?>" <?php echo $styles; echo isset($block['anchor']) ? ' id="'.$block['anchor'].'"' : '';?>>
 	<?php echo $container_classes_before; ?>
 		<div class="row">
 			<?php

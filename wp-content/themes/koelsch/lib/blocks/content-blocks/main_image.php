@@ -18,7 +18,7 @@ $temp1 = array(
 		'content' => 'This is main section',
 	))
 ); ?>
-<div class="row top-row <?php echo esc_attr($classes); ?>">
+<div class="row top-row <?php echo esc_attr($classes); ?>"<?php echo isset($block['anchor']) ? ' id="'.$block['anchor'].'"' : '';?>>
 	<?php
 	$img = get_field('image');
 	if($img){ ?>

@@ -19,6 +19,7 @@ if(have_rows('categories')){
 		data-token="<?php echo MAPBOX_TOKEN;?>"
 		data-template="popup_tmpl"
 		data-styles="<?php echo MAPBOX_STYLE;?>"
+		<?php echo isset($block['anchor']) ? ' id="'.$block['anchor'].'"' : '';?>
 		>
 		<div class="search-container top-panel align-bottom">
 			<?php if($gold_title || $title || $description){ ?>

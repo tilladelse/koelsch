@@ -10,7 +10,7 @@
 			<h3><?php echo $title; ?></h3>
 		<?php endif; ?>
 
-		<div class="row row-sm communities-section" data-json="<?php echo get_template_directory_uri(); ?>/assets/data/map-data.json" data-template="item_tmpl">
+		<div class="row row-sm communities-section" data-json="<?php echo get_template_directory_uri(); ?>/assets/data/map-data.json" data-template="item_tmpl"<?php echo isset($block['anchor']) ? ' id="'.$block['anchor'].'"' : '';?>>
 			<script type="text/html" id="item_tmpl">
 				<div class="col">
 					<div class="card-community">
