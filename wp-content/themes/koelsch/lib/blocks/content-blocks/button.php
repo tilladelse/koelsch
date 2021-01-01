@@ -29,7 +29,7 @@ if($name && $url){
       echo '<div class="'.sprintf( 'align-%s', $block['align'] ).'">';
   }
   ?>
-	<a class="<?php echo esc_attr($classes); ?>" href="<?php echo esc_url($url) ?>"><?php echo esc_attr($name) ?></a>
+	<a class="koelsch-button <?php echo esc_attr($classes); ?>" href="<?php echo esc_url($url) ?>"><?php echo esc_attr($name) ?></a>
 <?php
 if( !empty($block['align']) ) echo '</div>';
 } ?>

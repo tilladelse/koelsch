@@ -187,8 +187,17 @@ figure{
   img{
     border-radius:50%;
   }
+  margin-bottom: 20px;
+}
+.koelsch-button{
+
+  @include media('<=phone'){
+    margin-bottom:20px;
+  }
+
 }
 .koelsch-icon{
+  margin-bottom:20px;
   .svg-wrap{
     display:inline-block;
   }
