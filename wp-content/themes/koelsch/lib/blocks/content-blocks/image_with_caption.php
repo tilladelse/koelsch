@@ -21,6 +21,9 @@ if( !empty($block['align']) ) {
 if( $size = get_field('size') ) {
 	$classes .= sprintf( ' %s', $size );
 }
+if( $cta = get_field('cta_type') ) {
+  $classes .= ' '.$cta;
+}
 
 if($has_margins = get_field('margins')) $classes .= ' margins';
 $container_classes_before = '<div class="container-md">';
