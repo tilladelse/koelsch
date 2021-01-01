@@ -1,3 +1,6 @@
+html{
+	scroll-behavior: smooth;
+}
 body {
 	&.nav-active {
 		@include media ('<desktop') {
