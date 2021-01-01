@@ -9,7 +9,7 @@ jQuery(function() {
 	initOpenClose();
 	initAccordion();
 	initMobileNav();
-	initAnchors();
+	// initAnchors();
 	initBackgroundVideo();
 	initCloneBlocks();
 	initFocusClass();
