@@ -2706,6 +2706,10 @@ a {
 .page-content.no-margin::before {
   display: none; }
 
+.page-content .gold-border {
+  border: 6px #c69230 solid;
+  padding: 70px 20px 80px; }
+
 .community .hide-on-community {
   display: none; }
 
@@ -3071,7 +3075,7 @@ address {
     position: absolute;
     bottom: 60px;
     right: 24px;
-    width: 155px;
+    width: 125px;
     z-index: 3; }
     .visual-section .logo-box img {
       display: block;

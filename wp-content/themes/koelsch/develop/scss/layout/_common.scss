@@ -204,6 +204,11 @@ a {
 		}
 	}
 
+	.gold-border{
+		border: 6px $gold solid;
+		padding: 70px 20px 80px;
+	}
+
 
 	@include media ('<=desktop') {
 		background:none!important;
@@ -752,7 +757,7 @@ address {
 		position: absolute;
 		bottom: 60px;
 		right: 24px;
-		width: 155px;
+		width: 125px;
 		z-index: 3;
 
 		@include media ('>=desktop') {
