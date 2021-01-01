@@ -1977,6 +1977,9 @@ a {
   .content-section-100 .h-align-center {
     text-align: center; }
 
+.has-background-color .container-md {
+  padding: 40px 30px 30px; }
+
 .content-section-double {
   position: relative; }
   .content-section-double.ic-set .text-box .divider {
@@ -4319,6 +4322,9 @@ input.form-control {
 figure.wp-block-image {
   margin: 0; }
 
+.in-container.has-background-color {
+  margin: 0; }
+
 .in-container .wp-block-columns {
   padding: 0; }
 
@@ -5973,6 +5979,8 @@ figure.wp-block-image {
     display: block; }
   .in-container {
     margin: auto 25px 50px; }
+    .in-container.has-background-color {
+      margin: 0; }
   .in-container.content-section-50 .text-box, .in-container.content-section-33 .text-box, .in-container.content-section-25 .text-box {
     padding-left: 0 !important;
     padding-right: 0 !important; }

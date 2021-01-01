@@ -30,7 +30,11 @@ $container_classes_after = '</div>';
 /* background image & position */
 
 $styles = ' style="';
-if($bg_color = get_field('bg_color')) $styles .= 'background-color: '.$bg_color.';';
+if($bg_color = get_field('bg_color')){
+  $styles .= 'background-color: '.$bg_color.';';
+  $classes .= ' has-background-color';
+}
+
 if($bg_image = get_field('bgimage')) $styles .= ' background-image: url('.$bg_image.');';
 $styles .= '"';
 

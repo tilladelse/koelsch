@@ -684,6 +684,13 @@ $break-margin: calc((100vw - 1200px)/2 * -1);
 		text-align: center;
 	}
 }
+.has-background-color{
+
+	.container-md{
+		padding:40px 30px 30px;
+	}
+
+}
 
 .content-section-double {
 	position: relative;

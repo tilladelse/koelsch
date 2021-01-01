@@ -90,7 +90,12 @@ figure{
   		margin:auto 25px 50px;
   	}
   //}
-
+  &.has-background-color{
+    margin:0;
+    @include media('<=phone'){
+  		margin:0;
+  	}
+  }
 
   .wp-block-columns{
     padding:0;
