@@ -538,7 +538,8 @@ body > .jcf-select-drop.jcf-drop-flipped {
   position: relative;
   left: 0;
   top: 0;
-  display: block; }
+  display: block;
+  overflow: hidden; }
   .slick-track:before, .slick-track:after {
     content: "";
     display: table; }
@@ -5190,6 +5191,10 @@ figure.wp-block-image {
     body.nav-active.admin-bar {
       padding-top: 30px; } }
   @media (min-width: 64rem) {
+    .slick-track {
+      height: 440px; }
+    .slick-track {
+      height: 510px; }
     .gallery-section {
       margin-bottom: 50px; }
     .content-section-25,
@@ -5498,6 +5503,9 @@ figure.wp-block-image {
         max-width: 50%;
         margin: 60px 0 0 0; } }
   @media (min-width: 75rem) {
+    .slick-track {
+      height: 640px;
+      overflow: hidden; }
       .media-gallery .slick-slide {
         padding: 0 22px; }
       .media-gallery .slick-arrow {

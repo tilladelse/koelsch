@@ -55,6 +55,20 @@
     .slick-loading & {
         visibility: hidden;
     }
+    overflow: hidden;
+
+    @include media('>=desktop'){
+      height:440px;
+    }
+
+    @include media('>=desktop'){
+      height:510px;
+    }
+
+    @include media('>=widescreen'){
+      height:640px;
+      overflow: hidden;
+    }
 }
 
 .slick-slide {
