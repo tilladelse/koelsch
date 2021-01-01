@@ -3,32 +3,6 @@
     "title": "Button",
     "fields": [
         {
-            "key": "field_5fd15088e6d23",
-            "label": "Style",
-            "name": "style",
-            "type": "select",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "orange": "Main Gold",
-                "blue": "Main Blue",
-                "outline": "Secondary"
-            },
-            "default_value": false,
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "return_format": "value",
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
             "key": "field_5fd1515a41682",
             "label": "Button title",
             "name": "name",
@@ -61,6 +35,64 @@
                 "id": ""
             },
             "return_format": "url"
+        },
+        {
+            "key": "field_5fd15088e6d23",
+            "label": "Style",
+            "name": "style",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "orange": "Main Gold",
+                "blue": "Main Blue",
+                "outline": "Secondary"
+            },
+            "default_value": false,
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5fee684d85be2",
+            "label": "CTA Type",
+            "name": "cta_type",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "no-cta": "None",
+                "learn-more-cta": "Learn More",
+                "schedule-tour-cta": "Schedule A Tour",
+                "get-brochure-cta": "Get A Brochure",
+                "more-info-cta": "Get More Info",
+                "get-pricing-cta": "Get Pricing",
+                "gen-contact-cta": "Contact Us",
+                "email-cta": "Email",
+                "phone-call-cta": "Phone Call"
+            },
+            "default_value": false,
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
         }
     ],
     "location": [
@@ -80,5 +112,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1608082532
+    "modified": 1609460072
 }

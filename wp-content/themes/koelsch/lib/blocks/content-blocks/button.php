@@ -17,6 +17,10 @@ if( $style = get_field('style') ) {
     $classes .= sprintf( ' btn-%s', $style );
 }
 
+if( $cta = get_field('cta_type') ) {
+  $classes .= ' '.$cta;
+}
+
 $name = get_field('name');
 $url = get_field('url');
 
