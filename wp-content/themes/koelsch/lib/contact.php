@@ -138,11 +138,11 @@
              <?php endif;?>
              <div class="contact-actions">
                <ion-icon name="mail-outline"></ion-icon>
-               <a class="btn-outline" href="mailto:<?php echo $email;?>">Message <?php echo $fn;?></a>
-               <a class="tour secondary-action" href="<?php echo get_the_permalink($contactPageID);?>?r=tour">
+               <a class="btn-outline email-cta" href="mailto:<?php echo $email;?>">Message <?php echo $fn;?></a>
+               <a class="tour secondary-action schedule-tour-cta" href="<?php echo get_the_permalink($contactPageID);?>?r=tour">
                  <ion-icon name="walk-outline"></ion-icon> Request A Tour
                </a>
-               <a class="brochure secondary-action" href="<?php echo get_the_permalink($contactPageID);?>?r=brochure">
+               <a class="brochure secondary-action get-brochure-cta" href="<?php echo get_the_permalink($contactPageID);?>?r=brochure">
                  <ion-icon name="book-outline"></ion-icon>Request A Brochure
                </a>
              </div>
@@ -156,7 +156,7 @@
      ?>
      <div class="contact-opener">
        <ion-icon name="chatbox-outline"></ion-icon>
-       <a class="open-contact" data-context="<?php echo $context;?>" href="<?php echo $context == 'page' ? $contactPageURL : '#';?>">Contact</a>
+       <a class="open-contact<?php echo $context == 'page' ? ' gen-contact-cta' : '';?>" data-context="<?php echo $context;?>" href="<?php echo $context == 'page' ? $contactPageURL : '#';?>">Contact</a>
      </div>
      <?php
    }
