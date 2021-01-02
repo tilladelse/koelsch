@@ -105,12 +105,13 @@
 	}
 }
 
+
 .card-horizontal {
 	display: flex;
 	align-items: flex-start;
 	flex-direction: column;
 
-	@include media ('>=desktop') {
+	@include media ('>desktop') {
 		flex-direction: row;
 	}
 

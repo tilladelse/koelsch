@@ -5246,8 +5246,6 @@ figure.wp-block-image {
     body.nav-active.admin-bar {
       padding-top: 30px; } }
   @media (min-width: 64rem) {
-    .card-horizontal {
-      flex-direction: row; }
     .gallery-section {
       margin-bottom: 50px; }
     .content-section-25,
@@ -5552,6 +5550,8 @@ figure.wp-block-image {
     width: 40px;
     margin-left: 8px; } }
   @media (min-width: 64.0625rem) {
+    .card-horizontal {
+      flex-direction: row; }
       .title-area.header-copy p {
         max-width: 50%;
         margin: 60px 0 0 0; } }
