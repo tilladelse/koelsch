@@ -1442,7 +1442,7 @@ a {
   align-items: flex-start;
   flex-direction: column; }
   .card-horizontal .img-box {
-    width: 130px;
+    width: 100%;
     position: relative;
     margin-right: 24px;
     flex-shrink: 0; }
@@ -5555,6 +5555,8 @@ figure.wp-block-image {
   @media (min-width: 64.0625rem) {
     .card-horizontal {
       flex-direction: row; }
+      .card-horizontal .img-box {
+        width: 130px; }
       .title-area.header-copy p {
         max-width: 50%;
         margin: 60px 0 0 0; } }

@@ -116,7 +116,10 @@
 	}
 
 	.img-box {
-		width: 130px;
+		width:100%;
+		@include media ('>desktop') {
+			width: 130px;
+		}
 		position: relative;
 		margin-right: 24px;
 		flex-shrink: 0;
