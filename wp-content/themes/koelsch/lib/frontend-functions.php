@@ -61,7 +61,7 @@ function get_resource_excerpt($length = '50', $id = null){
   global $post;
   $id = $id == null ? $post->ID : $id;
   if (has_excerpt($id)){
-    $excerpt = get_the_excerpt($id);
+    $excerpt = wp_trim_words(get_the_excerpt($id), $length);
   }else{
     $p = get_post($id);
     $excerpt = wp_trim_words($p->post_content, $length);
