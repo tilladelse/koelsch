@@ -2702,6 +2702,9 @@ a {
 .show-on-mobile {
   display: block !important; }
 
+.page-template-resources .page-content::before {
+  display: none; }
+
 .page-content::before {
   display: block;
   content: '';
