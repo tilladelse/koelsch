@@ -62,11 +62,12 @@
         <?php $i = 0; foreach($groups as $list):
           //echo '<pre>';var_dump($list);echo '</pre>';
           $active = $i == 0 ? 'active' : '';
+          $show = isset($list->slug) ? 'show-on-'.$list->slug : '';
           $classes =' class="%s %s"';
-          $classes = sprintf($classes, $active, 'show-on-'.$list->slug);
+          $classes = sprintf($classes, $active, $show);
           ?>
         <li<?php echo $classes;?>>
-        <span class="abbr"></span>
+        <?php echo isset($list->slug) ? '<span class="abbr"></span>' : '';?>
           <a class="menu-opener" href="#"><?php echo $list->name;?>
           <ion-icon name="chevron-down"></ion-icon></a>
           <div class="menu-slide">
