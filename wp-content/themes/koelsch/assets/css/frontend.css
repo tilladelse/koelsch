@@ -3258,6 +3258,9 @@ address {
     .main-holder .content-topbar .search-form {
       margin: 0; }
 
+#content .search-form-block .search-opener {
+  display: none; }
+
 .search-form-block .search-opener {
   color: #a29d94;
   display: block;
@@ -4963,8 +4966,6 @@ figure.wp-block-image {
           padding-top: 10px; }
           .main-holder .content-topbar.single-bar .breadcrumbs {
             margin-bottom: 20px; }
-    .search-form-block .search-opener {
-      display: none; }
     .aside-topbar h3 {
       margin: 3px 0 48px; }
     .aside-topbar .btn-back {

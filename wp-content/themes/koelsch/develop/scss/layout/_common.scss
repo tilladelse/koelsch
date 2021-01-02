@@ -1179,6 +1179,13 @@ address {
 		}
 	}
 }
+#content{
+	.search-form-block{
+		.search-opener{
+			display: none;
+		}
+	}
+}
 
 .search-form-block {
 	.search-opener {
@@ -1196,9 +1203,9 @@ address {
 		border-width: 1px 1px 2px 0;
 		z-index: 2;
 
-		@include media ('>=tablet') {
-			display: none;
-		}
+		// @include media ('>=tablet') {
+			// display: none;
+		// }
 
 		&:hover {
 			color: $gold;
