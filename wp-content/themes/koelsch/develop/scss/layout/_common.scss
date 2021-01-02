@@ -1578,6 +1578,9 @@ address {
 }
 
 .resource-block {
+	@include media('<=phone'){
+		margin-bottom:50px;
+	}
 	&.reverse {
 		.img-box {
 			padding-right: 0;

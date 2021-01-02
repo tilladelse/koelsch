@@ -4746,8 +4746,6 @@ figure.wp-block-image {
   @media (min-width: 48rem) {
     .commentlist-item .commentlist-item {
       padding: 0 0 0 2em; }
-    .card-horizontal {
-      flex-direction: row; }
       .card-community.horizontal {
         margin-bottom: 40px; }
     .mapboxgl-popup-content {
@@ -5248,6 +5246,8 @@ figure.wp-block-image {
     body.nav-active.admin-bar {
       padding-top: 30px; } }
   @media (min-width: 64rem) {
+    .card-horizontal {
+      flex-direction: row; }
     .gallery-section {
       margin-bottom: 50px; }
     .content-section-25,
@@ -6029,6 +6029,8 @@ figure.wp-block-image {
       transition: right .6s ease-in-out; }
   .hide-on-mobile {
     display: none !important; }
+  .resource-block {
+    margin-bottom: 50px; }
       .find-panel.has-border .container-md {
         margin-top: 30px; }
   .wp-block-spacer {
