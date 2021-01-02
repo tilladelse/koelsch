@@ -21,6 +21,7 @@ if( !empty($block['align']) ) {
 if( $size = get_field('size') ) {
 	$classes .= sprintf( ' %s', $size );
 }
+
 if( $cta = get_field('cta_type') ) {
   $classes .= ' '.$cta;
 }

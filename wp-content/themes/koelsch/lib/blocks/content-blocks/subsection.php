@@ -15,12 +15,12 @@ if( !empty($block['className']) ) {
 $temp = array(
 	array('core/heading', array(
 		'level' => 2,
-		'content' => 'Hi I\'m a title',
+		'content' => 'Title here',
 	))
 );
 $border_color = get_field('border_color');
 
-$img = get_field('image'); ?>
+$img = get_field('image');?>
 <!-- <div class="container-md"> -->
   <section class="resource-block <?php echo esc_attr($classes); ?>"<?php echo isset($block['anchor']) ? ' id="'.$block['anchor'].'"' : '';?>>
   	<div class="img-box">

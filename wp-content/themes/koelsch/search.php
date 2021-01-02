@@ -21,6 +21,7 @@ function search_no_results(){
 function koelsch_search_content_before(){
   $searchTerm = isset($_REQUEST['s']) ? $_REQUEST['s'] : '';
   ?>
+  <div class="main-holder">
   <div id="content">
     <div class="content-heading">
       <div class="text-holder">
@@ -61,7 +62,9 @@ function koelsch_search_content_after(){
       </div>
     </nav>
   </div>
-  <?php get_template_part( 'template-parts/sidebar', 'resources' );
+  <?php get_template_part( 'template-parts/sidebar', 'resources' );?>
+  </div>
+<?php
 }
 koelsch();
 ?>

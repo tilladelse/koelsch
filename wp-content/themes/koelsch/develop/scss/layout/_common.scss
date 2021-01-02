@@ -3180,3 +3180,74 @@ input {
 		}
 	}
 }
+//Resources hide/show logic
+.show-on-MC,
+.show-on-AL,
+.show-on-IL,
+.show-on-memory-care,
+.show-on-assisted-living,
+.show-on-independent-living{
+  display: none;
+}
+.memory-care{
+  .show-on-MC,
+  .show-on-memory-care{
+    display:block;
+  }
+}
+.independent-living{
+  .show-on-IL,
+  .show-on-independent-living{
+    display:block;
+  }
+}
+.assisted-living{
+  .show-on-AL,
+  .show-on-assisted-living{
+    display:block;
+  }
+}
+.independent-assisted-living{
+  .show-on-IL,
+  .show-on-independent-living,
+  .show-on-AL,
+  .show-on-assisted-living{
+    display:block;
+  }
+}
+.assisted-living-memory-care{
+  .show-on-AL,
+  .show-on-assisted-living,
+  .show-on-MC,
+  .show-on-memory-care{
+    display:block;
+  }
+}
+.independent-assisted-living-memory-care{
+  .show-on-IL,
+  .show-on-independent-living,
+  .show-on-AL,
+  .show-on-assisted-living,
+  .show-on-MC,
+  .show-on-memory-care{
+    display:block;
+  }
+}
+.show-on-memory-care{
+  .abbr::before{
+		display:block;
+    content:"mc";
+  }
+}
+.show-on-assisted-living{
+  .abbr::before{
+		display:block;
+    content:"al";
+  }
+}
+.show-on-independent-living{
+  .abbr::before{
+		display:block;
+    content:"il";
+  }
+}

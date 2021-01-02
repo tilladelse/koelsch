@@ -15,7 +15,7 @@
  $resLink = $backLink = get_the_permalink($resID);
  $taxonomy = 'resource-category';
 ?>
-<aside id="sidebar">
+<aside id="sidebar" class="resource-sidebar">
   <div class="aside-topbar">
     <div id="search-container">
       <!-- Clone search block -->
@@ -33,7 +33,7 @@
       $currentObj = (object) array('name'=>$term->name,'children'=>$terms);
       $groups = array($term->term_id=>$currentObj);
     }
-    else if(is_singular()){
+    else if(is_single()){
       global $post;
       $t = wp_get_post_terms($post->ID, $taxonomy);
       $term = $t[0];
@@ -43,11 +43,13 @@
     }else{
       $groups = get_taxonomy_hierarchy($taxonomy);
     }
+    if (!is_page_template('page-templates/resources.php')){
     ?>
     <a class="btn-back" href="<?php echo $backLink;?>">
       <ion-icon name="arrow-back-sharp"></ion-icon>
       <?php echo $backTitle;?>
     </a>
+  <?php } ?>
     <div id="breadcrumbs-container">
       <!-- Clone breadcrumbs -->
     </div>
@@ -57,8 +59,14 @@
     <a class="aside-opener" href="#">Browse Resource Topics<ion-icon name="chevron-down"></ion-icon></a>
     <div class="aside-slide">
       <ul class="aside-menu">
-        <?php $i = 0; foreach($groups as $list)://echo '<pre>';var_dump($list);echo '</pre>';?>
-        <li<?php echo $i == 0 ? ' class="active"' : '';?>>
+        <?php $i = 0; foreach($groups as $list):
+          //echo '<pre>';var_dump($list);echo '</pre>';
+          $active = $i == 0 ? 'active' : '';
+          $classes =' class="%s %s"';
+          $classes = sprintf($classes, $active, 'show-on-'.$list->slug);
+          ?>
+        <li<?php echo $classes;?>>
+        <span class="abbr"></span>
           <a class="menu-opener" href="#"><?php echo $list->name;?>
           <ion-icon name="chevron-down"></ion-icon></a>
           <div class="menu-slide">

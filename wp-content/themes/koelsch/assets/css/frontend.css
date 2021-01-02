@@ -4306,6 +4306,58 @@ input.form-control {
     .filter-list a:hover {
       border-color: #c69230; }
 
+.show-on-MC,
+.show-on-AL,
+.show-on-IL,
+.show-on-memory-care,
+.show-on-assisted-living,
+.show-on-independent-living {
+  display: none; }
+
+.memory-care .show-on-MC,
+.memory-care .show-on-memory-care {
+  display: block; }
+
+.independent-living .show-on-IL,
+.independent-living .show-on-independent-living {
+  display: block; }
+
+.assisted-living .show-on-AL,
+.assisted-living .show-on-assisted-living {
+  display: block; }
+
+.independent-assisted-living .show-on-IL,
+.independent-assisted-living .show-on-independent-living,
+.independent-assisted-living .show-on-AL,
+.independent-assisted-living .show-on-assisted-living {
+  display: block; }
+
+.assisted-living-memory-care .show-on-AL,
+.assisted-living-memory-care .show-on-assisted-living,
+.assisted-living-memory-care .show-on-MC,
+.assisted-living-memory-care .show-on-memory-care {
+  display: block; }
+
+.independent-assisted-living-memory-care .show-on-IL,
+.independent-assisted-living-memory-care .show-on-independent-living,
+.independent-assisted-living-memory-care .show-on-AL,
+.independent-assisted-living-memory-care .show-on-assisted-living,
+.independent-assisted-living-memory-care .show-on-MC,
+.independent-assisted-living-memory-care .show-on-memory-care {
+  display: block; }
+
+.show-on-memory-care .abbr::before {
+  display: block;
+  content: "mc"; }
+
+.show-on-assisted-living .abbr::before {
+  display: block;
+  content: "al"; }
+
+.show-on-independent-living .abbr::before {
+  display: block;
+  content: "il"; }
+
 .wp-block-columns {
   padding: 0 30px; }
   .wp-block-columns .wp-block-column {
