@@ -22,27 +22,43 @@
     </div>
     <h3><a href="<?php echo $resLink;?>">Resources</h3>
     <?php
-    if (is_tax()){
-      $term = get_queried_object();
-      if ($term->parent > 0){
-        $termParent = get_term($term->parent);
-        $backTitle =$termParent->name;
-        $backLink = get_term_link($term->parent);
-      }
-      $terms = get_taxonomy_terms($taxonomy, $term->term_id);
-      $currentObj = (object) array('name'=>$term->name,'children'=>$terms);
-      $groups = array($term->term_id=>$currentObj);
-    }
-    else if(is_single()){
-      global $post;
-      $t = wp_get_post_terms($post->ID, $taxonomy);
-      $term = $t[0];
-      $backTitle =$term->name;
-      $backLink = get_term_link($term->term_id);
-      $groups = array();
-    }else{
-      $groups = get_taxonomy_hierarchy($taxonomy);
-    }
+      // if (is_tax()){
+      //
+      //   $term = get_queried_object();
+      //   if ($term->parent > 0){
+      //     $termParent = get_term($term->parent);
+      //     $backTitle =$termParent->name;
+      //     $backLink = get_term_link($term->parent);
+      //   }
+      //   $terms = get_taxonomy_terms($taxonomy, $term->term_id);
+      //   $currentObj = (object) array('name'=>$term->name,'children'=>$terms);
+      //   $groups = array($term->term_id=>$currentObj);
+      //
+      // }else if(is_single()){
+      //
+      //   global $post;
+      //   $t = wp_get_post_terms($post->ID, $taxonomy);
+      //   $term = $t[0];
+      //   $backTitle =$term->name;
+      //   $backLink = get_term_link($term->term_id);
+      //   $groups = array();
+      //
+      // }else{
+
+        $groups = get_taxonomy_hierarchy($taxonomy);
+
+      // }
+     if (is_tax()){
+       $term = get_queried_object();
+       $currentTerm = $term->term_id;
+     }else if (is_single()){
+       global $post;
+       $t = wp_get_post_terms($post->ID, $taxonomy);
+       $term = $t[0];
+       $currentTerm = $term->term_id;
+     }else{
+       $currentTerm = 0;
+     }
     if (!is_page_template('page-templates/resources.php')){
     ?>
     <a class="btn-back" href="<?php echo $backLink;?>">
@@ -75,7 +91,8 @@
               <?php
               if (isset($list->children)){
                 foreach ($list->children as $item){
-                  echo '<li><a href="'.get_term_link($item->term_id).'">'.$item->name.'</a></li>';
+                  $currentClass = $item->term_id == $currentTerm ? ' class="current-item"' : '';
+                  echo '<li'.$currentClass.'><a href="'.get_term_link($item->term_id).'">'.$item->name.'</a></li>';
                 }
               }?>
             </ul>

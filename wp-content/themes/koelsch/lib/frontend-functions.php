@@ -23,6 +23,21 @@
     }
     return $title;
 });
+
+//alter search query to resources only
+function koelsch_query_filters($query) {
+  if ($query->is_search && !is_admin() ) {
+      $query->set('post_type',array('resources'));
+      $query->set('paged', ( get_query_var('paged') ) ? get_query_var('paged') : 1 );
+      $query->set('posts_per_page',9);
+  }
+  if ($query->is_tax && !is_admin() ){
+    $query->set('paged', ( get_query_var('paged') ) ? get_query_var('paged') : 1 );
+    $query->set('posts_per_page',8);
+  }
+  return $query;
+}
+add_filter('pre_get_posts','koelsch_query_filters');
 function koelsch_breadcrumb(){
   global $post;
   ?><ol class="breadcrumbs"><?php

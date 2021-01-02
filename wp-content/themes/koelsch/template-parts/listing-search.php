@@ -2,7 +2,7 @@
 global $post;
 $taxonomy = 'resource-category';
 $t = wp_get_post_terms($post->ID, $taxonomy);
-$term = $t[0];
+$term = $t ? $t[0] : null;
 ?>
 <div class="col">
   <article class="card">

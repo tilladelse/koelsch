@@ -3439,8 +3439,8 @@ address {
       right: 0;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 30px;
-      font-size: 1.875rem; }
+      font-size: 25px;
+      font-size: 1.5625rem; }
   .aside-menu a {
     color: #1c222d;
     text-decoration: none; }
@@ -3453,9 +3453,12 @@ address {
   .aside-menu .menu-slide {
     overflow: hidden; }
     .aside-menu .menu-slide ul {
-      padding: 11px 10px 0 17px; }
+      padding: 15px 10px 0 0px; }
       .aside-menu .menu-slide ul li {
         margin-bottom: 11px; }
+        .aside-menu .menu-slide ul li.current-item a {
+          color: #c69230;
+          font-weight: bold; }
 
 .abbr {
   display: inline-block;
