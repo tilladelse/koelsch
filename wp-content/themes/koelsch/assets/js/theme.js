@@ -445,7 +445,7 @@ function initMobileNav() {
 	ResponsiveHelper.addRange({
 		'..767': {
 			on: function() {
-				jQuery('.aside-topbar .search-form-block').mobileNav({
+				jQuery('.search-form-block').mobileNav({
 					menuActiveClass: 'search-active',
 					menuOpener: '.search-opener',
 					hideOnClickOutside: true,
