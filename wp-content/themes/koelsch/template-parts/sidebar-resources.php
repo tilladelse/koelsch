@@ -61,7 +61,7 @@
       <ul class="aside-menu">
         <?php $i = 0; foreach($groups as $list):
           //echo '<pre>';var_dump($list);echo '</pre>';
-          $active = $i == 0 ? 'active' : '';
+          $active = 'active';//$i == 0 ? 'active' : '';
           $show = isset($list->slug) ? 'show-on-'.$list->slug : '';
           $classes =' class="%s %s"';
           $classes = sprintf($classes, $active, $show);
