@@ -3565,6 +3565,9 @@ address {
   margin-bottom: 44px;
   color: #1c222d; }
 
+.resource-block .wp-block-colums {
+  padding: 0; }
+
 .articles-wrapp {
   padding-top: 55px; }
   .articles-wrapp .title {
