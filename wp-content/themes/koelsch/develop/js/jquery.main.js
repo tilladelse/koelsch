@@ -34,6 +34,11 @@ var preload = function(src, callback) {
 
 (function( $ ) {
 	$(window).on('load', function(){
+		$('.search-opener').on('click', function(e){
+			e.preventDefault();
+			$(this).parent('.search-form-block').addClass('search-active');
+		});
+
 		var featImg = $('.visual-section');
 		var wrap = $('.community-menu-wrapper');
 		if (featImg.length){
@@ -442,21 +447,21 @@ function initMobileNav() {
 		menuDrop: '.menu-wrap'
 	});
 
-	ResponsiveHelper.addRange({
-		'..767': {
-			on: function() {
-				jQuery('.search-form-block').mobileNav({
-					menuActiveClass: 'search-active',
-					menuOpener: '.search-opener',
-					hideOnClickOutside: true,
-					menuDrop: '.search-form'
-				});
-			},
-			off: function() {
-				jQuery('.search-form-block').mobileNav('destroy');
-			}
-		}
-	});
+	// ResponsiveHelper.addRange({
+	// 	'..767': {
+	// 		on: function() {
+	// 			jQuery('.search-form-block').mobileNav({
+	// 				menuActiveClass: 'search-active',
+	// 				menuOpener: '.search-opener',
+	// 				hideOnClickOutside: true,
+	// 				menuDrop: '.search-form'
+	// 			});
+	// 		},
+	// 		off: function() {
+	// 			jQuery('.search-form-block').mobileNav('destroy');
+	// 		}
+	// 	}
+	// });
 }
 
 // initialize smooth anchor links
