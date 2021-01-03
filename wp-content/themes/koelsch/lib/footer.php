@@ -184,7 +184,7 @@ function koelsch_resources_footer_menu(){
   //TODO: build out dynamic resources menu functionality
   global $community_context;
   $lt = $community_context->getCurrentLivingTypes();
-  $menuID = $lt['resources_menu_id'];
+  $menuID = isset($lt['resources_menu_id']) ? $lt['resources_menu_id'] : false;
   if ($menuID){?>
     <div class="col col-12 col-nav">
       <h4>Resources</h4>
@@ -200,15 +200,5 @@ function koelsch_resources_footer_menu(){
             ));
     ?></div><?php
   }
-  ?>
-  <!--
-    <ul class="second-menu main-item">
-      <li><a href="#">All Resources</a></li>
-      <li><a href="#">Cost Comparision</a></li>
-      <li><a href="#">Dealing With Guilt</a></li>
-      <li><a href="#">Impact Of Loneliness on Health</a></li>
-    </ul>
-  </div> -->
-  <?php
 }
 ?>
