@@ -2335,8 +2335,14 @@ a {
     line-height: 1.2;
     margin: 0; }
 
+.contact-home-menu-item {
+  display: none; }
+
 .community .bg-video-holder .header-copy p {
   display: none; }
+
+.community .contact-home-menu-item {
+  display: block; }
 
 .bg-video-holder .title-area {
   background: none;

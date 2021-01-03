@@ -291,6 +291,9 @@
 		}
 	}
 }
+.contact-home-menu-item{
+	display:none;
+}
 .community{
 	.bg-video-holder{
 		.header-copy p{
@@ -299,6 +302,9 @@
 				display: block;
 			}
 		}
+	}
+	.contact-home-menu-item{
+		display:block;
 	}
 }
 .bg-video-holder{
