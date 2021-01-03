@@ -291,18 +291,21 @@
 		}
 	}
 }
+.community{
+	.bg-video-holder{
+		.header-copy p{
+			display:none;
+			@include media ('>=phone') {
+				display: block;
+			}
+		}
+	}
+}
 .bg-video-holder{
 	.title-area{
 		background:none;
 		width:100%;
 		z-index:1;
-	}
-
-	.header-copy p{
-		display:none;
-		@include media ('>=phone') {
-			display: block;
-		}
 	}
 }
 .community-block {

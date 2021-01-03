@@ -220,6 +220,11 @@ a {
 		background:none!important;
 	}
 }
+.community-menu-wrapper{
+
+	position:relative;
+
+}
 .community {
 
 	.hide-on-community{
@@ -236,8 +241,6 @@ a {
 	}
 
 	.community-menu-wrapper{
-
-		position:relative;
 
 		&::after{
 			display: block;
