@@ -67,7 +67,28 @@
     }
     img {
         display: block;
-        // width:100%;
+        object-fit:cover;
+        width: 100vw;
+        height:35vh;
+        @include media('>=xl-phone'){
+          height:50vh;
+        }
+        @include media('>=tablet'){
+          height:60vh;
+          width: 90vw;
+        }
+        @include media('>=desktop'){
+          height:600px;
+        }
+        @include media('>=widescreen'){
+          height:600px;
+          width:1056px;
+        }
+        @include media('>=fullscreen'){
+          height:650px; 
+          width:1200px;
+        }
+
     }
     &.slick-loading img {
         display: none;
