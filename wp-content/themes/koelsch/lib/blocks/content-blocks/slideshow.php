@@ -7,7 +7,7 @@
 				$img = get_sub_field('image');
 				if($img){ ?>
 					<div>
-						<?php retina_image($img, 'slideshow_image', 'slideshow_image_2x', 'slideshow_image_small', 'slideshow_image_small_2x'); ?>
+						<?php retina_image($img, 'slideshow_image', 'slideshow_image_2x', 'resource-listing', 'resource-listing-2x'); ?>
 					</div>
 				<?php } ?>
 			<?php } ?>
