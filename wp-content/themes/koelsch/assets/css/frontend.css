@@ -554,8 +554,7 @@ body > .jcf-select-drop.jcf-drop-flipped {
   [dir="rtl"] .slick-slide {
     float: right; }
   .slick-slide img {
-    display: block;
-    width: 100%; }
+    display: block; }
   .slick-slide.slick-loading img {
     display: none; }
   .slick-slide.dragging img {
@@ -2710,7 +2709,7 @@ a {
 .page-template-resources .page-content::before {
   display: none; }
 
-.page-content h3 {
+.page-content h3, .page-content h2 {
   margin-bottom: 30px; }
 
 .page-content::before {
