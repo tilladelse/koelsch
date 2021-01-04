@@ -603,6 +603,7 @@ address {
 
 	@include media ('>=widescreen') {
 		min-height: calc(100vh - 133px);
+		background-position: bottom center;
 	}
 
 	&.community {
