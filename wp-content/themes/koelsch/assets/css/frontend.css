@@ -2710,6 +2710,9 @@ a {
 .page-template-resources .page-content::before {
   display: none; }
 
+.page-content h3 {
+  margin-bottom: 30px; }
+
 .page-content::before {
   display: block;
   content: '';

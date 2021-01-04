@@ -930,12 +930,12 @@ function initMapbox() {
 					clearInterval(timer);
 
 					activeFilters = parseHash(hash);
-
+					console.log(activeFilters);
 					if (hash.indexOf('zipCode') === -1) {
 						filterItems();
 						showPopup();
 					} else {
-						console.log(activeFilters);
+
 						zipCodeField.val(activeFilters.zipCode);
 						btnSearch.trigger('click');
 					}
