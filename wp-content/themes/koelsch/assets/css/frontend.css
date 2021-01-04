@@ -997,6 +997,7 @@ label {
   padding: 6px 18px 4px;
   border: solid #252d3b;
   border-width: 1px 1px 0;
+  margin-bottom: 1px;
   position: relative;
   overflow: hidden;
   letter-spacing: 2px;
@@ -2786,6 +2787,7 @@ a {
   padding: 6px 18px 4px;
   border: solid #252d3b;
   border-width: 1px 1px 0;
+  margin-bottom: 1px;
   position: relative;
   overflow: hidden;
   letter-spacing: 2px;
