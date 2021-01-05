@@ -59,7 +59,7 @@ $term = $t ? $t[0] : false;
     $related = get_posts(array(
       'post_type'=>'resources',
       'post__not_in'=>array(get_the_id()),
-      'posts_per_page'=> 4,
+      'numberposts'=> 4,
       'tax_query'=>array(
         array(
           'taxonomy'=>$taxonomy,
