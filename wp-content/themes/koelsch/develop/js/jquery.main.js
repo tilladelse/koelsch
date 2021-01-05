@@ -607,6 +607,30 @@ function initLoadCommunities() {
 		return 0;
 	}
 }
+function compareState(a, b) {
+	var filterA = a.state.toUpperCase();
+	var filterB = b.state.toUpperCase();
+
+	var comparison = 0;
+	if (filterA > filterB) {
+		comparison = 1;
+	} else if (filterA < filterB) {
+		comparison = -1;
+	}
+	return comparison;
+}
+function compareCity(a, b) {
+	var filterA = a.city.toUpperCase();
+	var filterB = b.city.toUpperCase();
+
+	var comparison = 0;
+	if (filterA > filterB) {
+		comparison = 1;
+	} else if (filterA < filterB) {
+		comparison = -1;
+	}
+	return comparison;
+}
 
 function initSearchPanel() {
 	var hiddenClass = 'hidden';
@@ -643,6 +667,10 @@ function initSearchPanel() {
 			states = removeDuplicates(states, 'state');
 			cities = removeDuplicates(cities, 'city');
 
+			states = states.sort(compareState);
+			cities = cities.sort(compareCity);
+
+
 			for (var i = 0; i < states.length; i++) {
 				jQuery('<option>' + states[i].state + '</option>').appendTo(stateSelect);
 			}
@@ -652,6 +680,7 @@ function initSearchPanel() {
 			}
 
 			stateSelect.on('change', function() {
+
 				activeFilters = {};
 
 				if (stateSelect.prop('selectedIndex') !== 0) {
@@ -879,6 +908,9 @@ function initMapbox() {
 
 			states = removeDuplicates(states, 'state');
 			cities = removeDuplicates(cities, 'city');
+
+			states = states.sort(compareState);
+			cities = cities.sort(compareCity);
 
 			for (var i = 0; i < states.length; i++) {
 				jQuery('<option>' + states[i].state + '</option>').appendTo(stateSelect);
