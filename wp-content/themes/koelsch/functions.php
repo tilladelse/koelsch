@@ -106,6 +106,15 @@ define('THEME_VERSION', '1.0.0');
  	// wp_enqueue_style( 'dashicons' );
  }
 
+ add_filter('style_loader_tag', 'koelsch_style_loader_tag_filter', 10, 2);
+ function koelsch_style_loader_tag_filter($html, $handle) {
+     if ($handle === 'adobe-fonts') {
+         return str_replace("rel='stylesheet'",
+             "rel='preload' as='font' type='font/woff2' crossorigin='anonymous'", $html);
+     }
+     return $html;
+ }
+
  add_action('wp_head', 'add_koelsch_head');
  function add_koelsch_head(){
    global $community_context;
