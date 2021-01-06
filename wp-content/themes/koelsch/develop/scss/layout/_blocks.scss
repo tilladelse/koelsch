@@ -411,10 +411,24 @@ figure{
   }
   &.below{
 
+    @include media('<=xl-phone'){
+      margin-bottom:0;
+    }
+
     .description{
       position:relative;
       padding: 15px 0;
       font-family:$base-font-serif;
+
+      @include media('<=xl-phone'){
+        padding: 15px 0 0;
+      }
+
+      p{
+        @include media('<=xl-phone'){
+          margin:0;
+        }
+      }
     }
 
   }

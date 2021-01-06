@@ -6107,3 +6107,10 @@ figure.wp-block-image {
         margin-bottom: 0; }
   .blocks-gallery-grid .blocks-gallery-item:last-child {
     margin-bottom: 0; } }
+  @media (max-width: 37.5rem) {
+    .visual-link.below {
+      margin-bottom: 0; }
+      .visual-link.below .description {
+        padding: 15px 0 0; }
+      .visual-link.below .description p {
+        margin: 0; } }
