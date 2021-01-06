@@ -185,52 +185,50 @@
          'image'=>$image ? $image[0] : '',
        );
        $data['markers'][] = $cdata;
+       
+
+       //write local community schema
+       $localSchema = array(
+         '@context'=>'https://schema.org',
+         '@type'=>'Place',
+         'image'=>$image ? $image[0] : '',
+         '@id'=>$url,
+         'name'=>$c->post_title,
+         'address'=>array(
+           '@type'=>'PostalAddress',
+           'streetAddress'=>$street,
+           'addressLocality'=>$city,
+           'addressRegion'=>$state,
+           'postalCode'=>$zip,
+           'addressCountry'=>'US'
+         ),
+         'geo'=>array(
+           '@type'=>'GeoCoordinates',
+           'longitude'=>isset($coords[0]) ? $coords[0] : '',
+           'latitude'=>isset($coords[1]) ? $coords[1] : '',
+         ),
+         'url'=>$url,
+         'priceRange'=>'$$$',
+         'telephone'=> get_post_meta($c->ID, 'phone', true),
+         'openingHoursSpecification'=>array(
+           '@type'=>'OpeningHoursSpecification',
+           'dayOfWeek'=>array(
+             'Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'
+           ),
+           'opens'=>'00:00',
+           'closes'=>'23:59',
+         ),
+       );
+
+       if ($commHomeID){
+         update_post_meta($commHomeID, 'local_schema', json_encode($localSchema));
+       }
      }
    }
 
    //write json file that populates community search
    $json = json_encode($data, JSON_PRETTY_PRINT);
    file_put_contents($file, $json);
-
-
-   //write local community schema
-   $localSchema = array(
-     '@context'=>'https://schema.org',
-     '@type'=>'Place',
-     'image'=>$image ? $image[0] : '',
-     '@id'=>$url,
-     'name'=>$c->post_title,
-     'address'=>array(
-       '@type'=>'PostalAddress',
-       'streetAddress'=>$street,
-       'addressLocality'=>$city,
-       'addressRegion'=>$state,
-       'postalCode'=>$zip,
-       'addressCountry'=>'US'
-     ),
-     'geo'=>array(
-       '@type'=>'GeoCoordinates',
-       'longitude'=>isset($coords[0]) ? $coords[0] : '',
-       'latitude'=>isset($coords[1]) ? $coords[1] : '',
-     ),
-     'url'=>$url,
-     'priceRange'=>'$$$',
-     'telephone'=> get_post_meta($c->ID, 'phone', true),
-     "openingHoursSpecification"=>array(
-       '@type'=>'OpeningHoursSpecification',
-       'dayOfWeek'=>array(
-         'Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'
-       ),
-       'opens'=>'00:00',
-       'closes'=>'23:59'
-     ),
-   );
-
-   $hpID = get_post_meta($c->ID, 'community_home_page_id', true);
-
-   if ($hpID){
-     update_post_meta($hpID, 'local_schema', json_encode($localSchema,  JSON_PRETTY_PRINT));
-   }
 
 
  }

@@ -8,7 +8,7 @@
  * @license GPL-2.0-or-later
  * @link    https://www.tilladelse.com/
  */
-// var_dump(get_post_meta(get_the_id(),'local_schema', true));
+
 add_action('wp_head', function(){
   $localSchema = get_post_meta(get_the_id(),'local_schema', true);
   if ($localSchema){
