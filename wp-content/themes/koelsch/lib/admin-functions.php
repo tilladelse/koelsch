@@ -185,13 +185,14 @@
          'image'=>$image ? $image[0] : '',
        );
        $data['markers'][] = $cdata;
-       
+
 
        //write local community schema
+       $schemaImage = $imgID ?  wp_get_attachment_image_src( $imgID, 'full') : '';
        $localSchema = array(
          '@context'=>'https://schema.org',
          '@type'=>'Place',
-         'image'=>$image ? $image[0] : '',
+         'image'=>$schemaImage ? $schemaImage[0] : '',
          '@id'=>$url,
          'name'=>$c->post_title,
          'address'=>array(
