@@ -261,6 +261,13 @@ function initSlickCarousel() {
 					slidesToShow: 2,
 					variableWidth: true
 				}
+			}, {
+				breakpoint: 480,
+				settings: {
+					slidesToScroll: 1,
+					slidesToShow: 1,
+					variableWidth: true
+				}
 			}]
 		});
 
@@ -278,14 +285,16 @@ function initSlickCarousel() {
 			});
 
 			if (totalWidth <= slider.outerWidth()) {
+				console.log('total width '+totalWidth);
+				console.log('slider width '+slider.outerWidth());
 				slider.addClass(activeClass).css({
 					width: totalWidth
 				});
 			}
 		}
 
-		resizeHandler();
-		jQuery(window).on('load resize orientationchange', resizeHandler);
+		// resizeHandler();
+		// jQuery(window).on('load resize orientationchange', resizeHandler);
 	});
 
 	jQuery('.media-gallery').each(function() {

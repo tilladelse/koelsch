@@ -1,6 +1,9 @@
 /* Slick slider styles */
 
 .slick-slider {
+  @include media('<=phone'){
+    width:90vw;
+  }
     position: relative;
     display: block;
     box-sizing: border-box;
@@ -16,6 +19,7 @@
 }
 
 .slick-list {
+
     position: relative;
     overflow: hidden;
     display: block;
@@ -85,7 +89,7 @@
           width:1056px;
         }
         @include media('>=fullscreen'){
-          height:650px; 
+          height:650px;
           width:1200px;
         }
 
