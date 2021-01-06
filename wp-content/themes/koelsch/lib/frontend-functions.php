@@ -426,7 +426,7 @@ function retina_image($img, $img_size, $img_size_2x, $img_size_sm, $img_size_sm_
 		<picture>
 			<source srcset="<?php echo $image_sm; ?>, <?php echo $image_sm_2x; ?> 2x" media="(max-width: 767px)">
 			<source srcset="<?php echo $image; ?>, <?php echo $image_2x; ?> 2x">
-			<img<?php echo $id ? ' id="'.$id.'"' : '';?> src="<?php echo $image; ?>" alt="image">
+			<img<?php echo $id ? ' id="'.$id.'"' : '';?> src="<?php echo $image; ?>" alt="image" loading=lazy>
 		</picture>
     <?php
 	}
