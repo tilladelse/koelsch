@@ -219,6 +219,7 @@
            'opens'=>'00:00',
            'closes'=>'23:59',
          ),
+         'logo'=>get_post_meta($c->ID, 'logo', true),
        );
 
        if ($commHomeID){
