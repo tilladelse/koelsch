@@ -181,7 +181,7 @@ function koelsch_community_phone_button(){
     $phone = get_post_meta($community_context->communityID, 'phone', true);
     if ($phone){
       ob_start();?>
-      <a class="phone-link community-item" href="tel:<?php echo sanitize_phone_number($phone);?>">
+      <a class="phone-link community-item phone-call-cta" href="tel:<?php echo sanitize_phone_number($phone);?>">
         <span><?php echo sanitize_phone_number($phone, true);?></span>
         <ion-icon name="call-outline"></ion-icon>
       </a>

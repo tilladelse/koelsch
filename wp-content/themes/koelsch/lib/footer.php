@@ -143,7 +143,7 @@ function get_footer_phone($communityID){
     $phone = $phVal ? sanitize_phone_number($phVal) : '';
     $phoneDisplay = $phVal ? sanitize_phone_number($phVal, true) : '';
   }
-  return '<a href="tel:'.$phone.'">'.$phoneDisplay.'</a>';
+  return '<a class="phone-call-cta" href="tel:'.$phone.'">'.$phoneDisplay.'</a>';
 }
 
 add_action('koelsch_footer_site_attribution', 'koelsch_footer_site_attribution');
