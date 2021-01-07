@@ -5890,7 +5890,7 @@ figure.wp-block-image {
     padding-left: 0 !important;
     padding-right: 0 !important; }
   .in-container.content-section-double:not(.ic-set) {
-    padding: 0; }
+    padding: 0 !important; }
   .koelsch-button {
     margin-bottom: 20px; } }
   @media (max-width: 75rem) {
@@ -6108,9 +6108,14 @@ figure.wp-block-image {
   .blocks-gallery-grid .blocks-gallery-item:last-child {
     margin-bottom: 0; } }
   @media (max-width: 37.5rem) {
+  .wp-block-gallery {
+    margin-bottom: 30px; }
     .visual-link.below {
       margin-bottom: 0; }
       .visual-link.below .description {
         padding: 15px 0 0; }
       .visual-link.below .description p {
         margin: 0; } }
+  @media (max-width: 48rem) {
+    .wp-block-cover .wp-block-cover__inner-container {
+      width: 100% !important; } }

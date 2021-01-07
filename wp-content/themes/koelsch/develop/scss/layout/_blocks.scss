@@ -38,6 +38,16 @@
   }
 }
 
+.wp-block-gallery{
+
+  @include media('<=xl-phone'){
+    margin-bottom:30px;
+  }
+
+}
+
+
+
 .blocks-gallery-grid{
 
   .blocks-gallery-item{
@@ -53,6 +63,12 @@
 
 }
 .wp-block-cover{
+
+  .wp-block-cover__inner-container{
+    @include media ('<=tablet'){
+      width:100%!important;
+    }
+  }
 
   width:100%;
 
@@ -129,7 +145,7 @@ figure{
 
       }
       @include media('<=phone'){
-    		padding:0;
+    		padding:0!important;
     	}
 
     }
