@@ -5891,7 +5891,8 @@ figure.wp-block-image {
   .wp-block-spacer {
     display: none; }
   .wp-block-spacer.show-on-mobile {
-    display: block; }
+    display: block !important;
+    max-height: 40px !important; }
   .in-container {
     margin: auto 25px 50px; }
     .in-container.has-background-color {

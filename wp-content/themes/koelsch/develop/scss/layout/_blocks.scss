@@ -87,7 +87,8 @@
 	}
 	&.show-on-mobile{
 		@include media ('<=phone') {
-			display:block;
+			display:block!important;
+      max-height:40px!important;
 		}
 	}
 }
