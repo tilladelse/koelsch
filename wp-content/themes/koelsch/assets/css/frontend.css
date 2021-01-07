@@ -1985,6 +1985,8 @@ a {
 
 .content-section-double {
   position: relative; }
+  .content-section-double .content-section-double.ic-set {
+    margin: 30px -30px 0; }
   .content-section-double.ic-set .text-box .divider {
     position: relative;
     z-index: 10;
