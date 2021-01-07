@@ -5877,6 +5877,11 @@ figure.wp-block-image {
     .contact-opener {
       top: 8%;
       transition: right .6s ease-in-out; }
+    .title {
+      margin-bottom: 30px; }
+    .hero {
+      margin-bottom: 40px;
+      display: block; }
   .hide-on-mobile {
     display: none !important; }
   .resource-block {
@@ -6092,11 +6097,6 @@ figure.wp-block-image {
   @media (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 63.9375rem), (min-resolution: 144dpi) and (max-width: 63.9375rem) {
   .menu-wrap::before {
     background-image: url("assets/images/mobile-menu-decor@2x.png"); } }
-  @media (max-width: 29.9375rem) {
-    .title {
-      margin-bottom: 30px; }
-    .wp-block-cover {
-      padding-top: 30px; } }
   @media (max-width: 64rem) {
   .page-content {
     background: none !important; } }
@@ -6124,3 +6124,6 @@ figure.wp-block-image {
   @media (max-width: 48rem) {
     .wp-block-cover .wp-block-cover__inner-container {
       width: 100% !important; } }
+  @media (max-width: 29.9375rem) {
+    .wp-block-cover {
+      padding-top: 30px; } }

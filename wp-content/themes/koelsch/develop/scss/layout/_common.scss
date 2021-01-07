@@ -141,12 +141,16 @@ h3, .h3 {
 	display: block;
 	letter-spacing: 2.2px;
   margin-bottom: 30px;
-	@include media('<phone'){
+	@include media('<=phone'){
 		margin-bottom:30px;
 	}
 }
 .hero{
 	font: 600 22px/1.1666666 $base-font-serif;
+	@include media('<=phone'){
+		margin-bottom:40px;
+		display:block;
+	}
 }
 button {
 	outline: none;
