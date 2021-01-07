@@ -17,7 +17,7 @@ $htVal = $ht && $ht != 'auto' ? 'height:'.get_field('height').$ht.';' : '';
 $style = $wdVal || $htVal ? 'style="'.$wdVal.$htVal.'"' : '';
 
 if ($icon){
-  $src = get_stylesheet_directory_uri() . '/assets/images/svg/'.$icon['value'].'.svg';
+  $src = get_template_directory() . '/assets/images/svg/'.$icon['value'].'.svg';
   ?>
   <div class="koelsch-icon<?php echo $align ? ' align-'.$align : '';echo ' '.$color;?>"<?php echo isset($block['anchor']) ? ' id="'.$block['anchor'].'"' : '';?>>
     <div class="svg-wrap"<?php echo $style;?>><?php echo file_get_contents($src);?></div>
