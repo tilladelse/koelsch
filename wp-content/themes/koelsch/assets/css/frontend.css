@@ -5885,9 +5885,9 @@ figure.wp-block-image {
       display: block; }
   .hide-on-mobile {
     display: none !important; }
-  .align-left-mobile {
+  .align-left-mobile:not(.koelsch-button) {
     text-align: left !important; }
-  .align-right-mobile {
+  .align-right-mobile:not(.koelsch-button) {
     text-align: right !important; }
   .resource-block {
     margin-bottom: 50px; }

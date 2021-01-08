@@ -189,16 +189,22 @@ a {
 }
 
 .align-left-mobile{
-	@include media('<=phone'){
-		text-align:left!important;
-	}
-}
-.align-right-mobile{
-	@include media('<=phone'){
-		text-align:right!important;
+	&:not(.koelsch-button){
+		@include media('<=phone'){
+			text-align:left!important;
+		}
 	}
 }
 
+.align-right-mobile{
+
+	&:not(.koelsch-button){
+		@include media('<=phone'){
+			text-align:right!important;
+		}
+	}
+
+}
 .page-template-resources{
 	.page-content{
 		&::before{

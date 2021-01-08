@@ -9,7 +9,13 @@ if ($imgID){
   $image2x = wp_get_attachment_image_src( $imgID, 'contact-image-2x' );
   $imgSrcset = $image && $image2x ? $image[0].', '.$image2x[0].' 2x' : '';
 }
+
+$classes = 'round-image';
+$classes .= $align ? ' align-'.$align : '';
+if( !empty($block['className']) ) {
+    $classes .= sprintf( ' %s', $block['className'] );
+}
 ?>
-<div class="round-image<?php echo $align ? ' align-'.$align : '';?>"<?php echo isset($block['anchor']) ? ' id="'.$block['anchor'].'"' : '';?>>
+<div class="<?php echo $classes;?>"<?php echo isset($block['anchor']) ? ' id="'.$block['anchor'].'"' : '';?>>
   <img src="<?php echo $image[0];?>" srcset="<?php echo $imgSrcset;?>" alt="<?php echo $imageAlt;?>"/>
 </div>

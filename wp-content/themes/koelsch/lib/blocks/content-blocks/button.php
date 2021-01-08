@@ -24,12 +24,13 @@ if( $cta = get_field('cta_type') ) {
 $name = get_field('name');
 $url = get_field('url');
 
+
+
 if($name && $url){
   if( !empty($block['align']) ) {
-      echo '<div class="'.sprintf( 'align-%s', $block['align'] ).'">';
+      echo '<div class="'.sprintf( 'align-%s', $block['align'] ).' button-wrapper">';
   }
   ?>
 	<a class="koelsch-button <?php echo esc_attr($classes); ?>" href="<?php echo esc_url($url) ?>"><?php echo esc_attr($name) ?></a>
-<?php
-if( !empty($block['align']) ) echo '</div>';
+<?php if( !empty($block['align']) ) echo '</div>';
 } ?>
