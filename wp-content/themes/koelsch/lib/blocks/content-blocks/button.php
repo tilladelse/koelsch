@@ -23,7 +23,9 @@ if( $cta = get_field('cta_type') ) {
 
 $name = get_field('name');
 $url = get_field('url');
-
+$title = isset($url['title']) && $url['title'] ? ' title="'.$url['title'].'"' : '';
+$target = isset($url['target']) && $url['target'] ? ' target="'.$url['target'].'"' : '';
+$url = isset($url['url']) ? $url['url'] : '#';
 
 
 if($name && $url){
@@ -31,6 +33,6 @@ if($name && $url){
       echo '<div class="'.sprintf( 'align-%s', $block['align'] ).' button-wrapper">';
   }
   ?>
-	<a class="koelsch-button <?php echo esc_attr($classes); ?>" href="<?php echo esc_url($url) ?>"><?php echo esc_attr($name) ?></a>
+	<a<?php echo $target.$title;?> class="koelsch-button <?php echo esc_attr($classes); ?>" href="<?php echo esc_url($url); ?>"><?php echo esc_attr($name) ?></a>
 <?php if( !empty($block['align']) ) echo '</div>';
 } ?>
