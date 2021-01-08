@@ -2434,7 +2434,8 @@ a {
       .community-nav ul.drop li.current_page_ancestor a {
         font-weight: 600; }
       .community-nav ul.drop li a {
-        padding-left: 40px; }
+        padding-left: 40px;
+        text-align: left; }
         .community-nav ul.drop li a::before {
           transition: opacity 0.3s ease-in-out;
           content: '';
