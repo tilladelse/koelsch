@@ -9,6 +9,23 @@
    global $community_context;
    return $community_context->communityName;
  }
+ 
+ add_filter('gform_field_value_community_email', 'gform_set_community_email');
+ function gform_set_community_email(){
+
+   global $community_context;
+   //default to admin email
+   $email = get_option('admin_email');
+   if ($community_context->inCommunityContext()){
+     $comEmail = get_post_meta($community_context->communityID, 'contact_email', true);
+     $email = $comEmail ? $comEmail : $email;
+   }else{
+     $settings = get_koelsch_setting('address');
+     $email = $settings && isset($settings[0]['email']) ? $settings[0]['email'] : $email;
+   }
+
+   return $email;
+ }
  /**
   * Filters the next, previous and submit buttons.
   * Replaces the forms <input> buttons with <button> while maintaining attributes from original <input>.
@@ -39,7 +56,6 @@
  add_action('koelsch_contact_footer_link', 'display_contact_link');
  function display_contact_link(){
    global $page_settings;
-   #TODO: setup contact functionality logic.
    $contactPageID = isset($page_settings[0]['contact_page']) ? $page_settings[0]['contact_page'] : false;
    $cpURL = $contactPageID ? get_permalink($contactPageID) : '#';
    ob_start();
@@ -51,30 +67,31 @@
    <?php echo ob_get_clean();
  }
 
- add_filter( 'gform_notification_1', 'set_contact_form_email_to_address', 10, 3 );
- function set_contact_form_email_to_address( $notification, $form, $entry ) {
-
-    //get notifiction - Admin Notification Only
-    if ( $notification['name'] == '__dynamic_admin_notification' ) {
-        //get email address value
-        $to = $notification['to'];
-        global $community_context;
-        if ($community_context->inCommunityContext()){
-          $comPostID = $community_context->communityID;
-          $cto = $comPostID ? get_post_meta($comPostID, 'contact_email', true) : '';
-          $to = $cto ? $cto : $to;
-        }else{
-          $settings = get_koelsch_setting('address');
-          $to = $settings && isset($settings['email']) ? $settings['email'] : $to;
-        }
-
-        //set email address
-        $notification['to'] = $to;
-    }
-
-    //return altered notification object
-    return $notification;
- }
+ // add_filter( 'gform_notification_1', 'set_contact_form_email_to_address', 10, 3 );
+ // function set_contact_form_email_to_address( $notification, $form, $entry ) {
+ //
+ //    //get notifiction - Admin Notification Only
+ //    if ( $notification['name'] == '__dynamic_admin_notification' ) {
+ //
+ //        //get email address value
+ //        $to = $notification['to'];
+ //        global $community_context;
+ //        if ($community_context->inCommunityContext()){
+ //          $cto = $community_context->communityID ? get_post_meta($community_context->communityID, 'contact_email', true) : '';
+ //          $to = $cto ? $cto : $to;
+ //        }else{
+ //          $settings = get_koelsch_setting('address');
+ //          $to = $settings && isset($settings[0]['email']) ? $settings[0]['email'] : $to;
+ //        }
+ //        // $to = $community_context->inCommunityContext() ? 'true@testshk.com' : 'false@testshk.com';
+ //
+ //        //set email address
+ //        $notification['to'] = $to;
+ //    }
+ //
+ //    //return altered notification object
+ //    return $notification;
+ // }
 
  //replace form button with our style
  add_filter( 'gform_submit_button', 'form_submit_button', 10, 2 );
