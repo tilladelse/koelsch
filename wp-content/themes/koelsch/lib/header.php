@@ -108,6 +108,7 @@ function koelsch_community_menu(){
   $headerCopy = get_post_meta($id, 'header_copy', true);
   $h1 = get_post_meta($id, 'h1', true);
   $h1 = $h1 ? $h1 : get_the_title();
+  $h1 = apply_filters('koelsch_page_h1_filter', $h1);
   $showH1 = apply_filters('koelsch_header_show_h1', true);
 
   ob_start();?>
