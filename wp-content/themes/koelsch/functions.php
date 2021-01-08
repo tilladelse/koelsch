@@ -162,6 +162,9 @@ define('THEME_VERSION', '1.0.0');
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-PN694WN');</script>
         <!-- End Google Tag Manager -->";
+
+  //iLocal tracking
+  echo '<script type="text/javascript" src="//cdn.rlets.com/capture_static/mms/mms.js" async="async"></script>';
 }
 
 add_action('koelsch_inside_body', 'add_google_tag_manager');
