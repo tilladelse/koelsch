@@ -5885,6 +5885,10 @@ figure.wp-block-image {
       display: block; }
   .hide-on-mobile {
     display: none !important; }
+  .align-left-mobile {
+    text-align: left !important; }
+  .align-right-mobile {
+    text-align: right !important; }
   .resource-block {
     margin-bottom: 50px; }
       .find-panel.has-border .container-md {
