@@ -477,6 +477,13 @@ figure{
   }
   border:1px $gray-50 solid;
   .open-close{
+
+    text-decoration:none;
+    position: relative;
+    display:block;
+    padding:10px 50px 10px 20px;
+    border-bottom:1px $gray-50 solid;
+
     ion-icon{
       @include animate(transform);
       position: absolute;
@@ -489,10 +496,7 @@ figure{
       display: block;
       content: "";
     }
-    position: relative;
-    display:block;
-    padding:10px 50px 10px 20px;
-    border-bottom:1px $gray-50 solid;
+
     h3,h4{
       margin:0;
       padding:0;

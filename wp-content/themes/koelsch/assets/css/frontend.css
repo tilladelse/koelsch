@@ -4563,6 +4563,7 @@ figure.wp-block-image {
   .accordion-wrapper:hover .open-close ion-icon {
     transform: rotate(135deg); }
   .accordion-wrapper .open-close {
+    text-decoration: none;
     position: relative;
     display: block;
     padding: 10px 50px 10px 20px;
