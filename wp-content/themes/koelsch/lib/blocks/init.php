@@ -15,6 +15,21 @@ function wp_acf_init_block_types() {
             'keywords'          => array( 'toolbar', 'find' ),
         ));
 
+        // register an accordion block.
+        acf_register_block_type(array(
+            'name'              => 'accordion',
+            'title'             => __('Accordion'),
+            'render_template'   => 'lib/blocks/content-blocks/accordion.php',
+            'category'          => 'koelsch',
+            'icon'              => 'plus',
+            'keywords'          => array( 'collapse', 'accordion', 'collapsible' ),
+            'mode'              => 'edit',
+            'supports'	        => array(
+                  		'align'		=> array(),
+                      'anchor'  => true,
+                  	)
+        ));
+
         // register a communities list block.
         acf_register_block_type(array(
             'name'              => 'communities-list',

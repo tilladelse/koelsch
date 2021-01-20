@@ -467,3 +467,42 @@ figure{
   }
 
 }
+.accordion-wrapper{
+  &:hover{
+    .open-close{
+      ion-icon{
+        transform:rotate(135deg);
+      }
+    }
+  }
+  border:1px $gray-50 solid;
+  .open-close{
+    ion-icon{
+      @include animate(transform);
+      position: absolute;
+      top: 20px;
+      bottom: 0;
+      width:30px;
+      height:30px;
+      right: 15px;
+      font-size: 24pt;
+      display: block;
+      content: "";
+    }
+    position: relative;
+    display:block;
+    padding:10px 50px 10px 20px;
+    border-bottom:1px $gray-50 solid;
+    h3,h4{
+      margin:0;
+      padding:0;
+    }
+  }
+  .accordion-content{
+    display:none;
+    padding:20px;
+    &.open{
+      display:block;
+    }
+  }
+}

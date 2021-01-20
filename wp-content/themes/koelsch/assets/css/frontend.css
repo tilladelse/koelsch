@@ -4558,6 +4558,35 @@ figure.wp-block-image {
     padding: 15px 0;
     font-family: "MillerBanner", "Times New Roman", "Times", "Baskerville", "Georgia", serif; }
 
+.accordion-wrapper {
+  border: 1px #ece6dc solid; }
+  .accordion-wrapper:hover .open-close ion-icon {
+    transform: rotate(135deg); }
+  .accordion-wrapper .open-close {
+    position: relative;
+    display: block;
+    padding: 10px 50px 10px 20px;
+    border-bottom: 1px #ece6dc solid; }
+    .accordion-wrapper .open-close ion-icon {
+      transition: transform 0.3s ease-in-out;
+      position: absolute;
+      top: 20px;
+      bottom: 0;
+      width: 30px;
+      height: 30px;
+      right: 15px;
+      font-size: 24pt;
+      display: block;
+      content: ""; }
+    .accordion-wrapper .open-close h3, .accordion-wrapper .open-close h4 {
+      margin: 0;
+      padding: 0; }
+  .accordion-wrapper .accordion-content {
+    display: none;
+    padding: 20px; }
+    .accordion-wrapper .accordion-content.open {
+      display: block; }
+
 #footer {
   color: #fff;
   background: #141e29;

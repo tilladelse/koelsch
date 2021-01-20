@@ -34,6 +34,14 @@ var preload = function(src, callback) {
 
 (function( $ ) {
 	$(window).on('load', function(){
+		//accordionToggle
+		$('.open-close').on('click', function(e){
+			e.preventDefault();
+			var tar = $(this).attr('href');
+			// $('open-close').slideUp();
+			$(tar).slideToggle();
+		});
+
 		$('.search-opener').on('click', function(e){
 			e.preventDefault();
 			$(this).parent('.search-form-block').addClass('search-active');
