@@ -25,9 +25,29 @@
       'id'         => 'phone',
       'type'       => 'text_medium',
     ) );
+
     $cd->add_field( array(
-      'name'       => __( 'Email Adress', 'koelsch' ),
-      'desc'       => __( 'Community main email address. Form subissions and contact requests will be delivered here.', 'koelsch' ),
+      'name'       => __( 'DCR Email Address', 'koelsch' ),
+      'desc'       => __( 'Director of Community Relations email address. Form submissions and contact requests will sent to this address.', 'koelsch' ),
+      'id'         => 'DCR_email',
+      'type'       => 'text_email',
+    ) );
+    $cd->add_field( array(
+      'name'       => __( 'ED Email Address', 'koelsch' ),
+      'desc'       => __( 'Executive director email address. Form submissions and contact requests will be cc\'d to this address.', 'koelsch' ),
+      'id'         => 'ED_email',
+      'type'       => 'text_email',
+    ) );
+    $cd->add_field( array(
+      'name'       => __( 'RSD Email Address', 'koelsch' ),
+      'desc'       => __( 'Regional Sales Director email address. Form submissions and contact requests will be cc\'d to this address.', 'koelsch' ),
+      'id'         => 'RSD_email',
+      'type'       => 'text_email',
+    ) );
+
+    $cd->add_field( array(
+      'name'       => __( 'Email Address (DEPRECATED)', 'koelsch' ),
+      'desc'       => __( 'This will be deprecated. Leave value here for now.', 'koelsch' ),
       'id'         => 'email',
       'type'       => 'text_email',
     ) );
@@ -140,7 +160,7 @@
   		'type'       => 'text',
   	) );
     $cp->add_field( array(
-  		'name'       => __( 'Email', 'koelsch' ),
+  		'name'       => __( 'Email (DEPRECATED)', 'koelsch' ),
   		// 'desc'       => __( 'Street Address', 'koelsch' ),
   		'id'         => 'contact_email',
   		'type'       => 'text_email',
