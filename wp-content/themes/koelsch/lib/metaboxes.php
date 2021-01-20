@@ -56,6 +56,12 @@
       'id'         => 'CL_email',
       'type'       => 'text_email',
     ) );
+    $cc->add_field( array(
+      'name'       => __( 'Other Email Address', 'koelsch' ),
+      'desc'       => __( 'Misc other email address. Form submissions and contact requests will be cc\'d to this address.', 'koelsch' ),
+      'id'         => 'OTH_email',
+      'type'       => 'text_email',
+    ) );
 
     $cc->add_field( array(
       'name'       => __( 'Email Address (DEPRECATED)', 'koelsch' ),
