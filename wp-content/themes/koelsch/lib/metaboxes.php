@@ -9,6 +9,110 @@
  */
   add_action( 'cmb2_admin_init', 'koelsch_register_community_metaboxes' );
   function koelsch_register_community_metaboxes() {
+    $cc = new_cmb2_box( array(
+   		'id'            => 'community_contact',
+   		'title'         => __( 'Community Email Addresses', 'koelsch' ),
+   		'object_types'  => array( 'community', ), // Post type
+   		'context'       => 'normal',
+   		'priority'      => 'high',
+   		'show_names'    => true, // Show field names on the left
+   		// 'cmb_styles' => false, // false to disable the CMB stylesheet
+   		// 'closed'     => true, // Keep the metabox closed by default
+   	) );
+
+    $cc->add_field( array(
+      'name'       => __( 'DCR Email Address', 'koelsch' ),
+      'desc'       => __( 'Director of Community Relations email address. Form submissions and contact requests will sent to this address.', 'koelsch' ),
+      'id'         => 'DCR_email',
+      'type'       => 'text_email',
+    ) );
+    $cc->add_field( array(
+      'name'       => __( 'DCR 2 Email Address', 'koelsch' ),
+      'desc'       => __( 'Second Director of Community Relations email address. Form submissions and contact requests will sent to this address.', 'koelsch' ),
+      'id'         => 'DCR2_email',
+      'type'       => 'text_email',
+    ) );
+    $cc->add_field( array(
+      'name'       => __( 'ED Email Address', 'koelsch' ),
+      'desc'       => __( 'Executive director email address. Form submissions and contact requests will be cc\'d to this address.', 'koelsch' ),
+      'id'         => 'ED_email',
+      'type'       => 'text_email',
+    ) );
+    $cc->add_field( array(
+      'name'       => __( 'RSD Email Address', 'koelsch' ),
+      'desc'       => __( 'Regional Sales Director email address. Form submissions and contact requests will be cc\'d to this address.', 'koelsch' ),
+      'id'         => 'RSD_email',
+      'type'       => 'text_email',
+    ) );
+    $cc->add_field( array(
+      'name'       => __( 'RDO Email Address', 'koelsch' ),
+      'desc'       => __( 'Regional Director of Operations email address. Form submissions and contact requests will be cc\'d to this address.', 'koelsch' ),
+      'id'         => 'RDO_email',
+      'type'       => 'text_email',
+    ) );
+    $cc->add_field( array(
+      'name'       => __( 'CL Email Address', 'koelsch' ),
+      'desc'       => __( 'Community Liason email address. Form submissions and contact requests will be cc\'d to this address.', 'koelsch' ),
+      'id'         => 'CL_email',
+      'type'       => 'text_email',
+    ) );
+
+    $cc->add_field( array(
+      'name'       => __( 'Email Address (DEPRECATED)', 'koelsch' ),
+      'desc'       => __( 'This will be deprecated. Leave value here for now.', 'koelsch' ),
+      'id'         => 'email',
+      'type'       => 'text_email',
+    ) );
+
+
+    /*
+    Contact Person
+     */
+   $cp = new_cmb2_box( array(
+  		'id'            => 'contact-person',
+  		'title'         => __( 'Contact Person', 'koelsch' ),
+  		'object_types'  => array( 'community', ), // Post type
+  		'context'       => 'normal',
+  		'priority'      => 'high',
+  		'show_names'    => true, // Show field names on the left
+  		// 'cmb_styles' => false, // false to disable the CMB stylesheet
+  		// 'closed'     => true, // Keep the metabox closed by default
+  	) );
+
+    $cp->add_field( array(
+  		'name'       => __( 'First Name', 'koelsch' ),
+  		// 'desc'       => __( 'Street Address', 'koelsch' ),
+  		'id'         => 'contact_first_name',
+  		'type'       => 'text',
+  	) );
+    $cp->add_field( array(
+  		'name'       => __( 'Last Name', 'koelsch' ),
+  		// 'desc'       => __( 'Street Address', 'koelsch' ),
+  		'id'         => 'contact_last_name',
+  		'type'       => 'text',
+  	) );
+    $cp->add_field( array(
+  		'name'       => __( 'Title', 'koelsch' ),
+  		// 'desc'       => __( 'Street Address', 'koelsch' ),
+  		'id'         => 'contact_title',
+  		'type'       => 'text',
+  	) );
+    $cp->add_field( array(
+  		'name'       => __( 'Email (DEPRECATED)', 'koelsch' ),
+  		// 'desc'       => __( 'Street Address', 'koelsch' ),
+  		'id'         => 'contact_email',
+  		'type'       => 'text_email',
+  	) );
+    $cp->add_field( array(
+      'name'       => __( 'Profile Image', 'koelsch' ),
+      // 'desc'       => __( 'Street Address', 'koelsch' ),
+      'id'         => 'contact_image',
+      'type'       => 'file',
+    ) );
+
+    /*
+    Community Details
+     */
     $cd = new_cmb2_box( array(
    		'id'            => 'details',
    		'title'         => __( 'Community Details', 'koelsch' ),
@@ -24,32 +128,6 @@
       'desc'       => __( 'Community main contact number', 'koelsch' ),
       'id'         => 'phone',
       'type'       => 'text_medium',
-    ) );
-
-    $cd->add_field( array(
-      'name'       => __( 'DCR Email Address', 'koelsch' ),
-      'desc'       => __( 'Director of Community Relations email address. Form submissions and contact requests will sent to this address.', 'koelsch' ),
-      'id'         => 'DCR_email',
-      'type'       => 'text_email',
-    ) );
-    $cd->add_field( array(
-      'name'       => __( 'ED Email Address', 'koelsch' ),
-      'desc'       => __( 'Executive director email address. Form submissions and contact requests will be cc\'d to this address.', 'koelsch' ),
-      'id'         => 'ED_email',
-      'type'       => 'text_email',
-    ) );
-    $cd->add_field( array(
-      'name'       => __( 'RSD Email Address', 'koelsch' ),
-      'desc'       => __( 'Regional Sales Director email address. Form submissions and contact requests will be cc\'d to this address.', 'koelsch' ),
-      'id'         => 'RSD_email',
-      'type'       => 'text_email',
-    ) );
-
-    $cd->add_field( array(
-      'name'       => __( 'Email Address (DEPRECATED)', 'koelsch' ),
-      'desc'       => __( 'This will be deprecated. Leave value here for now.', 'koelsch' ),
-      'id'         => 'email',
-      'type'       => 'text_email',
     ) );
 
     $cd->add_field( array(
@@ -126,51 +204,6 @@
   		'id'         => 'zipcode',
   		'type'       => 'text_small',
   	) );
-
-    /*
-    Contact Person
-     */
-   $cp = new_cmb2_box( array(
-  		'id'            => 'contact-person',
-  		'title'         => __( 'Contact Person', 'koelsch' ),
-  		'object_types'  => array( 'community', ), // Post type
-  		'context'       => 'normal',
-  		'priority'      => 'high',
-  		'show_names'    => true, // Show field names on the left
-  		// 'cmb_styles' => false, // false to disable the CMB stylesheet
-  		// 'closed'     => true, // Keep the metabox closed by default
-  	) );
-
-    $cp->add_field( array(
-  		'name'       => __( 'First Name', 'koelsch' ),
-  		// 'desc'       => __( 'Street Address', 'koelsch' ),
-  		'id'         => 'contact_first_name',
-  		'type'       => 'text',
-  	) );
-    $cp->add_field( array(
-  		'name'       => __( 'Last Name', 'koelsch' ),
-  		// 'desc'       => __( 'Street Address', 'koelsch' ),
-  		'id'         => 'contact_last_name',
-  		'type'       => 'text',
-  	) );
-    $cp->add_field( array(
-  		'name'       => __( 'Title', 'koelsch' ),
-  		// 'desc'       => __( 'Street Address', 'koelsch' ),
-  		'id'         => 'contact_title',
-  		'type'       => 'text',
-  	) );
-    $cp->add_field( array(
-  		'name'       => __( 'Email (DEPRECATED)', 'koelsch' ),
-  		// 'desc'       => __( 'Street Address', 'koelsch' ),
-  		'id'         => 'contact_email',
-  		'type'       => 'text_email',
-  	) );
-    $cp->add_field( array(
-      'name'       => __( 'Profile Image', 'koelsch' ),
-      // 'desc'       => __( 'Street Address', 'koelsch' ),
-      'id'         => 'contact_image',
-      'type'       => 'file',
-    ) );
 
   }
   /*
