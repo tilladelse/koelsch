@@ -9,15 +9,19 @@
    global $community_context;
    return $community_context->communityName;
  }
- 
+
  add_filter('gform_field_value_community_email', 'gform_set_community_email');
  function gform_set_community_email(){
 
    global $community_context;
-   //default to admin email
+
+   //fallback to admin email
    $email = get_option('admin_email');
+   
    if ($community_context->inCommunityContext()){
-     $comEmail = get_post_meta($community_context->communityID, 'contact_email', true);
+     // $comEmail = get_post_meta($community_context->communityID, 'contact_email', true);
+     $emails = get_community_emails($community_context->communityID);
+     $comEmail = format_form_to($emails);
      $email = $comEmail ? $comEmail : $email;
    }else{
      $settings = get_koelsch_setting('address');
@@ -106,8 +110,8 @@
    $contactPageID = $page_settings && isset($page_settings[0]['contact_page']) ? $page_settings[0]['contact_page'] : 0;
    //don't show on the contact page
    if (get_the_id() != $contactPageID){
+
      /**
-      * TODO:
       * Logic
       * Show if community type is IL or AL (not MC)
       * Show on page after visitor has scrolled past #page_content div
@@ -125,13 +129,18 @@
        $fn = get_post_meta($community_context->communityID, 'contact_first_name', true);
        $ln = get_post_meta($community_context->communityID, 'contact_last_name', true);
        $title = get_post_meta($community_context->communityID, 'contact_title', true);
-       $email = get_post_meta($community_context->communityID, 'contact_email', true);
+
        $imageID = get_post_meta($community_context->communityID, 'contact_image_id', true);
        $src1x = $imageID ? wp_get_attachment_image_url($imageID, 'contact-image') : '';
        $src2x = $imageID ? wp_get_attachment_image_url($imageID, 'contact-image-2x') : '';
        $imgSrc = $imageID ? '<div class="image"><img src="'.$src1x.'" srcset="'.$src1x.' 1x, '.$src2x.' 2x"></div>' : '';
 
-       if ($fn && $ln && $email){
+       $emails = get_community_emails($community_context->communityID);
+
+       $mailto = format_mailto($emails);
+       // var_dump($mailto);
+
+       if ($fn && $ln && $mailto){
          $context = 'prompt';
          ob_start();?>
          <div class="contact-prompt">
@@ -155,7 +164,7 @@
              <?php endif;?>
              <div class="contact-actions">
                <ion-icon name="mail-outline"></ion-icon>
-               <a class="btn-outline email-cta" href="mailto:<?php echo $email;?>">Message <?php echo $fn;?></a>
+               <a class="btn-outline email-cta" href="<?php echo $mailto;?>">Message <?php echo $fn;?></a>
                <a class="tour secondary-action schedule-tour-cta" href="<?php echo get_the_permalink($contactPageID);?>?r=tour">
                  <ion-icon name="walk-outline"></ion-icon> Request A Tour
                </a>
@@ -178,5 +187,66 @@
      <?php
    }
 
+ }
+ function format_mailto($emails){
+   //format mailto string
+   $mailto = '';
+   if ($emails['DCR']){
+     $mailto = 'mailto:'.$emails['DCR'];
+   }
+   if ($emails['DCR2']){
+     $mailto .= $mailto ? ','.$emails['DCR2'] : $emails['DCR2'];
+   }
+
+   if ($mailto){
+
+     $cc = '';
+     if ($emails['ED']){
+       $cc .= '?cc='.$emails['ED'];
+     }
+     if ($emails['RSD']){
+       $cc .= $cc ? ','.$emails['RSD'] : '?cc='.$emails['RSD'];
+     }
+     if ($emails['RDO']){
+       $cc .= $cc ? ','.$emails['RDO'] : '?cc='.$emails['RDO'];
+     }
+     if ($emails['CL']){
+       $cc .= $cc ? ','.$emails['CL'] : '?cc='.$emails['CL'];
+     }
+     if ($emails['OTH']){
+       $cc .= $cc ? ','.$emails['OTH'] : '?cc='.$emails['OTH'];
+     }
+
+     return $mailto.$cc;
+
+   }
+
+   return false;
+
+ }
+ function format_form_to($emails){
+   $to = '';
+   foreach($emails as $email){
+     if ($email){
+       $to .= $to ? ','.$email : $email;
+     }
+   }
+    return $to;
+ }
+ function get_community_emails($id){
+
+   $emails = array(
+
+     'ED' => get_post_meta($id, 'ED_email', true),
+     'DCR' => get_post_meta($id, 'DCR_email', true),
+     'DCR2' => get_post_meta($id, 'DCR2_email', true),
+     'RSD' => get_post_meta($id, 'RSD_email', true),
+     'RDO' => get_post_meta($id, 'RDO_email', true),
+     'CL' => get_post_meta($id, 'CL_email', true),
+     'OTH' => get_post_meta($id, 'OTH_email', true),
+
+   );
+
+   return $emails;
  }
 ?>
