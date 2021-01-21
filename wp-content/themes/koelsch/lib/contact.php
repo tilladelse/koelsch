@@ -17,7 +17,7 @@
 
    //fallback to admin email
    $email = get_option('admin_email');
-   
+
    if ($community_context->inCommunityContext()){
      // $comEmail = get_post_meta($community_context->communityID, 'contact_email', true);
      $emails = get_community_emails($community_context->communityID);
@@ -248,5 +248,34 @@
    );
 
    return $emails;
+ }
+
+ add_action('wp_head', 'contact_form_tracking');
+ function contact_form_tracking(){
+   if (is_contact_page()){
+     global $community_context;
+     $communityName = $community_context->communityID ? $community_context->communityName : 'Koelsch Main';
+     $ltArr = $community_context->livingType && isset($community_context->livingType['living_types']) ? $community_context->livingType['living_types'] : array();
+     $ltString = $ltArr ? implode('-',$ltArr) : '';
+
+     echo '<script type="text/javascript" id="formTracking">
+             jQuery(document).ready(function() {
+               jQuery(document).bind("gform_confirmation_loaded", function(event, formID) {
+                 window.dataLayer = window.dataLayer || [];
+                 window.dataLayer.push({
+                   event: "leadCapture",
+                   communityName : "'.$communityName.'",
+                   livingType : "'.$ltString.'",
+                   formID: formID
+                 });
+               });
+             });
+            </script>';
+   }
+ }
+ function is_contact_page(){
+   $settings = get_koelsch_setting('page_settings');
+   $cpID = (isset($settings[0]['contact_page'])) ? $settings[0]['contact_page'] : 0;
+   return (get_the_id() == $cpID) ? true : false;
  }
 ?>
