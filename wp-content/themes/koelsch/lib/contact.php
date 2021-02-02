@@ -3,11 +3,18 @@
  * Contains all logic & functionality regarding contact forms & methodology
  *
  */
+ use Curl\Curl;
 
  add_filter('gform_field_value_community_name', 'gform_set_community_name');
  function gform_set_community_name(){
    global $community_context;
    return $community_context->communityName;
+ }
+
+ add_filter('gform_field_value_community_id', 'gform_set_community_id');
+ function gform_set_sherpa_community_id(){
+   global $community_context;
+   return $community_context->communityID;
  }
 
  add_filter('gform_field_value_community_email', 'gform_set_community_email');
@@ -273,9 +280,141 @@
             </script>';
    }
  }
+
  function is_contact_page(){
    $settings = get_koelsch_setting('page_settings');
    $cpID = (isset($settings[0]['contact_page'])) ? $settings[0]['contact_page'] : 0;
    return (get_the_id() == $cpID) ? true : false;
  }
+
+ add_action('gform_after_submission_2', 'sherpa_create_lead', 10, 2);
+ function sherpa_create_lead($entry, $form){
+
+   $sherpaURLBase = 'https://sandbox.sherpacrm.com/v1';
+   $sherpaKey = '5sMzIsw4NwbfgYO3YAnMB2MLd8cGT2aDqdPH9llCsOeChNlQsz4PDuUTRbgLaM4w';
+   $companyID = 250;
+
+   $cID = $entry['30']; //NOTE: double check id
+   if ($cID){
+     $sherpaCommunityID = get_post_meta($cID, 'sherpa_community_id', true);
+     if (!$sherpaCommunityID){
+       //no community id has been associated with the community, so get outa here.
+       exit;
+     }
+   }else{
+     //there is no community specified, so get outa here.
+     exit;
+   }
+
+   $sherpaCommunityID = 1; // sandbox
+
+   $URL = $sherpaURLBase.'/companies/'.$companyID.'/communities/'.$sherpaCommunityID.'/leads';
+
+   $now = current_time("Y-m-dTH:i:sO");
+
+   //map fields
+   $fields = (object)array(
+     'requestType'=>$entry['6'],
+     'communityName'=>$entry['26'],
+     'notificationsSentTo'=>$entry['27'],
+     'firstName'=>$entry['1.3'],
+     'lastName'=>$entry['1.6'],
+     'email'=>$entry['2'],
+     'phone'=>$entry['3'],
+     'requestBrochure'=>$entry['11'],
+     'mailingAddress'=>(object)array(
+       'street1'=>$entry['13.1'],
+       'street2'=>$entry['13.2'],
+       'city'=>$entry['13.3'],
+       'state' => $entry['13.4'],
+       'zip' => $entry['13.5'],
+       'country' => $entry['13.6'],
+     ),
+     'requestTour'=>$entry['25'],
+     'requestTourDate'=>$entry['7'],
+     'requestTourTime'=>$entry['12'],
+     'message'=>$entry['4'],
+     'relationship'=>$entry['29'],
+   );
+
+
+   //setup referral note
+   $referralNote = $fields->message ? $fields->firstName.' added a message saying: "'.$fields->message.'"' : '';
+   $referralNote .= $fields->requestBrochure == 'Yes' ? ' -- Requested a brochure be sent.' : '';
+   if ($fields->requestTour == 'Yes'){
+     $date = ' but no date was specified';
+     if ($fields->requestTourDate){
+       $dateStamp = strtotime($fields->requestTourDate);
+       $date = ' on '.date('F jS, Y');
+     }
+
+     $time = $fields->requestTourTime ? ' in the '.$fields->requestTourTime : '';
+     $referralNote .= ' -- Requested a tour'.$time.$date.'.';
+   }
+
+   GFCommon::log_debug('referral note: '.print_r( $referralNote, true ) );
+   //GFCommon::log_debug('Form data: '.print_r( $fields, true ) );
+   //GFCommon::log_debug( 'Date : ' . print_r( $date, true ) );
+
+   $data = array(
+     'vendorName'=>'Company Website',
+     'sourceCategory'=>'Company Website',
+     'sourceName' => 'Company Website',
+     'referralNote' => $referralNote,
+     'referralDateTime' => $now,
+     'primaryContactResidentRelationship'=>$fields->relationship,
+     'primaryContactFirstName' => $fields->firstName,
+     'primaryContactLastName' =>$fields->lastName,
+     'primaryContactEmail' => $fields->email,
+     'primaryContactHomePhone' => $fields->phone,
+     'residentContactFirstName' => '',
+     'residentContactLastName' =>'',
+   );
+
+   if ($fields->relationship == 'Self'){
+     $data['residentContactFirstName'] = $fields->firstName;
+     $data['residentContactLastName'] = $fields->lastName;
+     $data['residentContactEmail'] = $fields->email;
+     $data['residentContactHomePhone'] = $fields->phone;
+   }
+
+   if ($fields->requestBrochure == 'yes'){
+     $data['primaryContactAddress1'] = $fields->mailingAddress->street1;
+     $data['primaryContactAddress2'] = $fields->mailingAddress->street2;
+     $data['primaryContactCity'] = $fields->mailingAddress->city;
+     $data['primaryContactState'] = $fields->mailingAddress->state;
+     $data['primaryContactPostalCode'] = $fields->mailingAddress->zip;
+     $data['primaryContactCountry'] = $fields->mailingAddress->country;
+
+   }
+
+   // GFCommon::log_debug( 'Data : ' . print_r( $data, true ) );
+
+   // $c = new Curl();
+   //
+   // $c->setHeader('Content-Type', 'application/json');
+   // $c->setHeader('Authorization', 'Bearer '.$sherpaKey);
+   // $c->post($URL, $data);
+   //
+   // if (isset($c->response->errors)){
+   //   foreach($c->response->errors as $error){
+   //     if (substr($error->message, 0, 9) == 'Duplicate'){
+   //       $id = $c->response->data->id;
+   //       sherpa_add_note($id);
+   //       break;
+   //     }
+   //   }
+   // }
+   //
+   // GFCommon::log_debug( 'Sherpa response : ' . print_r( $c->response, true ) );
+   // GFCommon::log_debug( 'Sherpa error : ' . print_r( $c->error, true ) );
+   //
+   // $c->close();
+ }
+
+ function sherpa_add_note($leadID){
+   GFCommon::log_debug( 'Duplicate Lead (ID = '.$leadID.')' );
+ }
+
+
 ?>

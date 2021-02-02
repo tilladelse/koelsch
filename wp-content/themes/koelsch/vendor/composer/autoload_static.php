@@ -10,6 +10,21 @@ class ComposerStaticInit272ef563c26834d7334397714ae075b0
         'ad901de1e5d16b81f427bfe3dc3de508' => __DIR__ . '/..' . '/cmb2/cmb2/init.php',
     );
 
+    public static $prefixLengthsPsr4 = array (
+        'C' => 
+        array (
+            'Curl\\' => 5,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Curl\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src',
+            1 => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl',
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
@@ -17,6 +32,8 @@ class ComposerStaticInit272ef563c26834d7334397714ae075b0
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit272ef563c26834d7334397714ae075b0::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit272ef563c26834d7334397714ae075b0::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit272ef563c26834d7334397714ae075b0::$classMap;
 
         }, null, ClassLoader::class);

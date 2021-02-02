@@ -7,6 +7,9 @@
  * @license GPL-2.0-or-later
  * @link    https://www.tilladelse.com/
  */
+ /**
+  * Sherpa integration
+ */
 
  add_filter('wpseo_breadcrumb_separator', 'filter_wpseo_breadcrumb_separator', 10, 1);
  function filter_wpseo_breadcrumb_separator($sep) {
