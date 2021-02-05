@@ -63,12 +63,12 @@
       'type'       => 'text_email',
     ) );
 
-    $cc->add_field( array(
-      'name'       => __( 'Email Address (DEPRECATED)', 'koelsch' ),
-      'desc'       => __( 'This will be deprecated. Leave value here for now.', 'koelsch' ),
-      'id'         => 'email',
-      'type'       => 'text_email',
-    ) );
+    // $cc->add_field( array(
+    //   'name'       => __( 'Email Address (DEPRECATED)', 'koelsch' ),
+    //   'desc'       => __( 'This will be deprecated. Leave value here for now.', 'koelsch' ),
+    //   'id'         => 'email',
+    //   'type'       => 'text_email',
+    // ) );
 
 
     /*
@@ -103,12 +103,12 @@
   		'id'         => 'contact_title',
   		'type'       => 'text',
   	) );
-    $cp->add_field( array(
-  		'name'       => __( 'Email (DEPRECATED)', 'koelsch' ),
-  		// 'desc'       => __( 'Street Address', 'koelsch' ),
-  		'id'         => 'contact_email',
-  		'type'       => 'text_email',
-  	) );
+    // $cp->add_field( array(
+  	// 	'name'       => __( 'Email (DEPRECATED)', 'koelsch' ),
+  	// 	// 'desc'       => __( 'Street Address', 'koelsch' ),
+  	// 	'id'         => 'contact_email',
+  	// 	'type'       => 'text_email',
+  	// ) );
     $cp->add_field( array(
       'name'       => __( 'Profile Image', 'koelsch' ),
       // 'desc'       => __( 'Street Address', 'koelsch' ),
@@ -129,6 +129,12 @@
    		// 'cmb_styles' => false, // false to disable the CMB stylesheet
    		// 'closed'     => true, // Keep the metabox closed by default
    	) );
+    $cd->add_field( array(
+      'name'       => __( 'Sherpa Community ID', 'koelsch' ),
+      // 'desc'       => __( 'Recommended image size is 120px high', 'koelsch' ),
+      'id'         => 'sherpa_community_id',
+      'type'       => 'text_small',
+    ) );
     $cd->add_field( array(
       'name'       => __( 'Phone Number', 'koelsch' ),
       'desc'       => __( 'Community main contact number', 'koelsch' ),
