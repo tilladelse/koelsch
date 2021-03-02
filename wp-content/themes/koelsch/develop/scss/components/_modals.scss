@@ -138,6 +138,22 @@
     right:0;
   }
 
+  &.alt-layout{
+    .prompt-wrapper{
+      .contact-card{
+        .image{
+          top:-90px;
+        }
+      }
+      .name{
+        padding-top:0;
+      }
+      .contact-message{
+        margin-top:38px;
+      }
+    }
+  }
+
   .prompt-wrapper{
 
     .name{
@@ -170,7 +186,6 @@
       }
     }
 
-
     .contact-card{
       position:relative;
 
@@ -201,6 +216,19 @@
       font-size:24px;
       z-index:1;
 
+      .options{
+        display:flex;
+        font-size:16px;
+        .option{
+          text-decoration: none;
+          &:first-child{
+            margin-right:15px;
+            padding-right: 15px;
+            border-right: 1px #918b81 dashed;
+          }
+        }
+      }
+
       .secondary-action{
         display:block;
         width:100%;
@@ -213,7 +241,7 @@
           }
         }
 
-        &.tour{
+        &.has-separator{
           margin-top: 25px;
           padding-top: 25px;
           border-top: 1px $gray-300 dashed;

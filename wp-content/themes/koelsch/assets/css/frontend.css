@@ -2131,6 +2131,12 @@ a {
     z-index: -1; }
   .contact-prompt.visible {
     right: 0; }
+  .contact-prompt.alt-layout .prompt-wrapper .contact-card .image {
+    top: -90px; }
+  .contact-prompt.alt-layout .prompt-wrapper .name {
+    padding-top: 0; }
+  .contact-prompt.alt-layout .prompt-wrapper .contact-message {
+    margin-top: 38px; }
   .contact-prompt .prompt-wrapper .name {
     padding: 40px 0 0 90px;
     font-family: "MillerBanner", "Times New Roman", "Times", "Baskerville", "Georgia", serif;
@@ -2168,6 +2174,16 @@ a {
     font-size: 24px;
     font-size: 1.5rem;
     z-index: 1; }
+    .contact-prompt .prompt-wrapper .contact-actions .options {
+      display: flex;
+      font-size: 16px;
+      font-size: 1rem; }
+      .contact-prompt .prompt-wrapper .contact-actions .options .option {
+        text-decoration: none; }
+        .contact-prompt .prompt-wrapper .contact-actions .options .option:first-child {
+          margin-right: 15px;
+          padding-right: 15px;
+          border-right: 1px #918b81 dashed; }
     .contact-prompt .prompt-wrapper .contact-actions .secondary-action {
       display: block;
       width: 100%;
@@ -2179,7 +2195,7 @@ a {
       text-decoration: none; }
       .contact-prompt .prompt-wrapper .contact-actions .secondary-action:hover ion-icon {
         padding-right: 20px; }
-      .contact-prompt .prompt-wrapper .contact-actions .secondary-action.tour {
+      .contact-prompt .prompt-wrapper .contact-actions .secondary-action.has-separator {
         margin-top: 25px;
         padding-top: 25px;
         border-top: 1px #918b81 dashed; }
