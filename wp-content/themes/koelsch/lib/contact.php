@@ -3,7 +3,6 @@
  * Contains all logic & functionality regarding contact forms & methodology
  *
  */
- use Curl\Curl;
 
  add_filter('gform_field_value_community_name', 'gform_set_community_name');
  function gform_set_community_name(){
@@ -12,7 +11,7 @@
  }
 
  add_filter('gform_field_value_community_id', 'gform_set_community_id');
- function gform_set_sherpa_community_id(){
+ function gform_set_community_id(){
    global $community_context;
    return $community_context->communityID;
  }
@@ -109,6 +108,17 @@
  function form_submit_button( $button, $form ) {
      return "<button class='btn btn-blue' id='gform_submit_button_{$form['id']}'><span>Submit</span></button>";
  }
+ //add_action('koelsch_after_content', 'add_mc_overlay');
+ function add_mc_overlay(){
+   global $community_context;
+   global $page_settings;
+   $lt = $community_context->getCurrentLivingTypes();
+   if (isset($lt['living_types'])){
+     if (in_array('MC', $lt['living_types'])){
+
+     }
+   }
+ }
 
  add_action('koelsch_after_content', 'add_contact_prompt');
  function add_contact_prompt(){
@@ -132,7 +142,8 @@
       */
       $context = 'page';
      $lt = $community_context->getCurrentLivingTypes();
-     if (isset($lt['living_types']) && !in_array('MC', $lt['living_types'])){
+     if (isset($lt['living_types'])){
+
        $fn = get_post_meta($community_context->communityID, 'contact_first_name', true);
        $ln = get_post_meta($community_context->communityID, 'contact_last_name', true);
        $title = get_post_meta($community_context->communityID, 'contact_title', true);
@@ -145,53 +156,98 @@
        $emails = get_community_emails($community_context->communityID);
 
        $mailto = format_mailto($emails);
-       // var_dump($mailto);
 
        if ($fn && $ln && $mailto){
-         $context = 'prompt';
-         ob_start();?>
-         <div class="contact-prompt">
-           <div class="closer-wrap"><a href="#" class="closer"><ion-icon name="arrow-forward-outline"></ion-icon></a></div>
-           <div class="prompt-wrapper<?php echo !$imgSrc ? ' no-image': '';?>">
-             <?php if ($imgSrc):?>
-             <div class="contact-card">
-               <?php echo $imgSrc;?>
-               <div class="name">
-                 <?php echo $fn.' '.$ln;?> <span><?php echo $title;?></span>
-               </div>
-             </div>
-           <?php endif;?>
-             <div class="contact-message">
-               Hi I'm <?php echo $fn;?>, I'd love to talk with you about living at <?php echo get_the_title($community_context->communityID);?>!
-             </div>
-             <?php if(!$imgSrc):?>
-               <div class="name">
-                 <?php echo $fn.' '.$ln;?> <span><?php echo $title;?></span>
+         if (!in_array('MC', $lt['living_types'])){
+           $context = 'prompt';
+           ob_start();?>
+           <div class="contact-prompt">
+             <div class="closer-wrap"><a href="#" class="closer"><ion-icon name="arrow-forward-outline"></ion-icon></a></div>
+             <div class="prompt-wrapper<?php echo !$imgSrc ? ' no-image': '';?>">
+               <?php if ($imgSrc):?>
+               <div class="contact-card">
+                 <?php echo $imgSrc;?>
+                 <div class="name">
+                   <?php echo $fn.' '.$ln;?> <span><?php echo $title;?></span>
+                 </div>
                </div>
              <?php endif;?>
-             <div class="contact-actions">
-               <ion-icon name="mail-outline"></ion-icon>
-               <a class="btn-outline email-cta" href="<?php echo $mailto;?>">Message <?php echo $fn;?></a>
-               <a class="tour secondary-action schedule-tour-cta" href="<?php echo get_the_permalink($contactPageID);?>?r=tour">
-                 <ion-icon name="walk-outline"></ion-icon> Request A Tour
-               </a>
-               <a class="brochure secondary-action get-brochure-cta" href="<?php echo get_the_permalink($contactPageID);?>?r=brochure">
-                 <ion-icon name="book-outline"></ion-icon>Request A Brochure
-               </a>
+               <div class="contact-message">
+                 Hi I'm <?php echo $fn;?>, I'd love to talk with you about living at <?php echo get_the_title($community_context->communityID);?>!
+               </div>
+               <?php if(!$imgSrc):?>
+                 <div class="name">
+                   <?php echo $fn.' '.$ln;?> <span><?php echo $title;?></span>
+                 </div>
+               <?php endif;?>
+               <div class="contact-actions">
+                 <ion-icon name="mail-outline"></ion-icon>
+                 <a class="btn-outline email-cta" href="<?php echo $mailto;?>">Message <?php echo $fn;?></a>
+                 <a class="tour secondary-action schedule-tour-cta" href="<?php echo get_the_permalink($contactPageID);?>?r=tour">
+                   <ion-icon name="walk-outline"></ion-icon>Request A Tour
+                 </a>
+                 <a class="brochure secondary-action get-brochure-cta" href="<?php echo get_the_permalink($contactPageID);?>?r=brochure">
+                   <ion-icon name="book-outline"></ion-icon>Request A Brochure
+                 </a>
+               </div>
              </div>
            </div>
-         </div>
-         <?php echo ob_get_clean();
+           <?php echo ob_get_clean();
+
+         }else{
+           $context = 'prompt';
+           ob_start();?>
+           <div class="contact-prompt alt-layout">
+             <div class="closer-wrap"><a href="#" class="closer"><ion-icon name="arrow-forward-outline"></ion-icon></a></div>
+             <div class="prompt-wrapper<?php echo !$imgSrc ? ' no-image': '';?>">
+               <?php if ($imgSrc):?>
+               <div class="contact-card">
+                 <?php echo $imgSrc;?>
+                 <div class="name">
+                   <?php echo $fn.' '.$ln;?> <span><?php echo $title;?></span>
+                 </div>
+               </div>
+             <?php endif;?>
+               <div class="contact-message">
+                 Welcome to <?php echo get_the_title($community_context->communityID);?>! My name is <?php echo $fn;?>,  how can I help?
+               </div>
+               <?php if(!$imgSrc):?>
+                 <div class="name">
+                   <?php echo $fn.' '.$ln;?> <span><?php echo $title;?></span>
+                 </div>
+               <?php endif;?>
+               <div class="contact-actions">
+                 <!-- <div class="options">
+                   <a class="option" href="#">I'm a clinician looking to refer a patient.</a>
+                   <a class="option" href="#">I'm a relative or friend of someone in need of Memory Care.</a>
+                 </div> -->
+                 <ion-icon name="mail-outline"></ion-icon>
+                 <a class="btn-outline email-cta" href="<?php echo $mailto;?>">Email <?php echo $fn;?></a>
+
+                 <a class="has-separator brochure secondary-action get-brochure-cta" href="<?php echo get_the_permalink($contactPageID);?>?r=brochure">
+                   <ion-icon name="book-outline"></ion-icon>Request A Brochure
+                 </a>
+                 <a class="tour secondary-action schedule-tour-cta" href="<?php echo get_the_permalink($contactPageID);?>?r=tour">
+                   <ion-icon name="walk-outline"></ion-icon>Request A Tour
+                 </a>
+                 <!-- <a class="email-cta secondary-action" href="<?php echo $mailto;?>">
+                   <ion-icon name="mail-outline"></ion-icon> <?php echo $fn;?>
+                 </a> -->
+               </div>
+             </div>
+           </div>
+           <?php echo ob_get_clean();
+         }
        }
+       // var_dump($page_settings);
+       $contactPageURL = $contactPageID ? get_permalink($contactPageID) : '#';
+       ?>
+       <div class="contact-opener">
+         <ion-icon name="chatbox-outline"></ion-icon>
+         <a class="open-contact<?php echo $context == 'page' ? ' gen-contact-cta' : '';?>" data-context="<?php echo $context;?>" href="<?php echo $context == 'page' ? $contactPageURL : '#';?>">Contact</a>
+       </div>
+       <?php
      }
-     // var_dump($page_settings);
-     $contactPageURL = $contactPageID ? get_permalink($contactPageID) : '#';
-     ?>
-     <div class="contact-opener">
-       <ion-icon name="chatbox-outline"></ion-icon>
-       <a class="open-contact<?php echo $context == 'page' ? ' gen-contact-cta' : '';?>" data-context="<?php echo $context;?>" href="<?php echo $context == 'page' ? $contactPageURL : '#';?>">Contact</a>
-     </div>
-     <?php
    }
 
  }
@@ -286,135 +342,6 @@
    $cpID = (isset($settings[0]['contact_page'])) ? $settings[0]['contact_page'] : 0;
    return (get_the_id() == $cpID) ? true : false;
  }
-
- add_action('gform_after_submission_2', 'sherpa_create_lead', 10, 2);
- function sherpa_create_lead($entry, $form){
-
-   $sherpaURLBase = 'https://sandbox.sherpacrm.com/v1';
-   $sherpaKey = '5sMzIsw4NwbfgYO3YAnMB2MLd8cGT2aDqdPH9llCsOeChNlQsz4PDuUTRbgLaM4w';
-   $companyID = 250;
-
-   $cID = $entry['30']; //NOTE: double check id
-   if ($cID){
-     $sherpaCommunityID = get_post_meta($cID, 'sherpa_community_id', true);
-     if (!$sherpaCommunityID){
-       //no community id has been associated with the community, so get outa here.
-       exit;
-     }
-   }else{
-     //there is no community specified, so get outa here.
-     exit;
-   }
-
-   $sherpaCommunityID = 1; // sandbox
-
-   $URL = $sherpaURLBase.'/companies/'.$companyID.'/communities/'.$sherpaCommunityID.'/leads';
-
-   $now = current_time("Y-m-dTH:i:sO");
-
-   //map fields
-   $fields = (object)array(
-     'requestType'=>$entry['6'],
-     'communityName'=>$entry['26'],
-     'notificationsSentTo'=>$entry['27'],
-     'firstName'=>$entry['1.3'],
-     'lastName'=>$entry['1.6'],
-     'email'=>$entry['2'],
-     'phone'=>$entry['3'],
-     'requestBrochure'=>$entry['11'],
-     'mailingAddress'=>(object)array(
-       'street1'=>$entry['13.1'],
-       'street2'=>$entry['13.2'],
-       'city'=>$entry['13.3'],
-       'state' => $entry['13.4'],
-       'zip' => $entry['13.5'],
-       'country' => $entry['13.6'],
-     ),
-     'requestTour'=>$entry['25'],
-     'requestTourDate'=>$entry['7'],
-     'requestTourTime'=>$entry['12'],
-     'message'=>$entry['4'],
-     'relationship'=>$entry['29'],
-   );
-
-
-   //setup referral note
-   $referralNote = $fields->message ? $fields->firstName.' added a message saying: "'.$fields->message.'"' : '';
-   $referralNote .= $fields->requestBrochure == 'Yes' ? ' -- Requested a brochure be sent.' : '';
-   if ($fields->requestTour == 'Yes'){
-     $date = ' but no date was specified';
-     if ($fields->requestTourDate){
-       $dateStamp = strtotime($fields->requestTourDate);
-       $date = ' on '.date('F jS, Y');
-     }
-
-     $time = $fields->requestTourTime ? ' in the '.$fields->requestTourTime : '';
-     $referralNote .= ' -- Requested a tour'.$time.$date.'.';
-   }
-
-   GFCommon::log_debug('referral note: '.print_r( $referralNote, true ) );
-   //GFCommon::log_debug('Form data: '.print_r( $fields, true ) );
-   //GFCommon::log_debug( 'Date : ' . print_r( $date, true ) );
-
-   $data = array(
-     'vendorName'=>'Company Website',
-     'sourceCategory'=>'Company Website',
-     'sourceName' => 'Company Website',
-     'referralNote' => $referralNote,
-     'referralDateTime' => $now,
-     'primaryContactResidentRelationship'=>$fields->relationship,
-     'primaryContactFirstName' => $fields->firstName,
-     'primaryContactLastName' =>$fields->lastName,
-     'primaryContactEmail' => $fields->email,
-     'primaryContactHomePhone' => $fields->phone,
-     'residentContactFirstName' => '',
-     'residentContactLastName' =>'',
-   );
-
-   if ($fields->relationship == 'Self'){
-     $data['residentContactFirstName'] = $fields->firstName;
-     $data['residentContactLastName'] = $fields->lastName;
-     $data['residentContactEmail'] = $fields->email;
-     $data['residentContactHomePhone'] = $fields->phone;
-   }
-
-   if ($fields->requestBrochure == 'yes'){
-     $data['primaryContactAddress1'] = $fields->mailingAddress->street1;
-     $data['primaryContactAddress2'] = $fields->mailingAddress->street2;
-     $data['primaryContactCity'] = $fields->mailingAddress->city;
-     $data['primaryContactState'] = $fields->mailingAddress->state;
-     $data['primaryContactPostalCode'] = $fields->mailingAddress->zip;
-     $data['primaryContactCountry'] = $fields->mailingAddress->country;
-
-   }
-
-   // GFCommon::log_debug( 'Data : ' . print_r( $data, true ) );
-
-   // $c = new Curl();
-   //
-   // $c->setHeader('Content-Type', 'application/json');
-   // $c->setHeader('Authorization', 'Bearer '.$sherpaKey);
-   // $c->post($URL, $data);
-   //
-   // if (isset($c->response->errors)){
-   //   foreach($c->response->errors as $error){
-   //     if (substr($error->message, 0, 9) == 'Duplicate'){
-   //       $id = $c->response->data->id;
-   //       sherpa_add_note($id);
-   //       break;
-   //     }
-   //   }
-   // }
-   //
-   // GFCommon::log_debug( 'Sherpa response : ' . print_r( $c->response, true ) );
-   // GFCommon::log_debug( 'Sherpa error : ' . print_r( $c->error, true ) );
-   //
-   // $c->close();
- }
-
- function sherpa_add_note($leadID){
-   GFCommon::log_debug( 'Duplicate Lead (ID = '.$leadID.')' );
- }
-
-
+ //
+ add_action('gform_after_submission_1', array(new Sherpa(), 'createLead'), 10, 2);
 ?>

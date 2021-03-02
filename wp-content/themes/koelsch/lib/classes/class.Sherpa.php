@@ -57,7 +57,6 @@ class Sherpa{
       $this->companyID = 395;
     }
 
-
   }
 
   public function createLead($entry, $form){
@@ -121,7 +120,7 @@ class Sherpa{
       $referralNote .= ' -- Requested a tour'.$time.$date.'.';
     }
 
-  if ($this::DEBUG == true)   GFCommon::log_debug('referral note: '.print_r( $referralNote, true ) );
+  if ($this::DEBUG == true) GFCommon::log_debug('referral note: '.print_r( $referralNote, true ) );
     //GFCommon::log_debug('Form data: '.print_r( $fields, true ) );
     //GFCommon::log_debug( 'Date : ' . print_r( $date, true ) );
 
