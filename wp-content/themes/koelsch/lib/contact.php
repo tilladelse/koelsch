@@ -342,6 +342,8 @@
    $cpID = (isset($settings[0]['contact_page'])) ? $settings[0]['contact_page'] : 0;
    return (get_the_id() == $cpID) ? true : false;
  }
- //
+ //for local testing
+ //add_action('gform_after_submission_2', array(new Sherpa(), 'createLead'), 10, 2);
+ 
  add_action('gform_after_submission_1', array(new Sherpa(), 'createLead'), 10, 2);
 ?>

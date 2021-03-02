@@ -9,7 +9,7 @@ class Sherpa{
    * In production environment?
    * @var bool
    */
-  private const PROD = false;
+  private const PROD = true;
 
   /**
    * Debug mode?
