@@ -62,7 +62,7 @@ class Sherpa{
   public function createLead($entry, $form){
     //if ($this::DEBUG == true) GFCommon::log_debug( 'Create Lead Triggered' );
     $cID = $entry['30']; //community ID NOTE: double check id
-    if ($this::DEBUG == true) GFCommon::log_debug( 'Community ID: '.$cID );
+    //if ($this::DEBUG == true) GFCommon::log_debug( 'Community ID: '.$cID );
 
     if ($cID){
       $sherpaCommunityID = get_post_meta($cID, 'sherpa_community_id', true);
