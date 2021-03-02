@@ -60,13 +60,13 @@ class Sherpa{
   }
 
   public function createLead($entry, $form){
-    //if ($this::DEBUG == true) GFCommon::log_debug( 'Create Lead Triggered' );
+    if ($this::DEBUG == true) GFCommon::log_debug( 'Create Lead Triggered' );
     $cID = $entry['30']; //community ID NOTE: double check id
-    //if ($this::DEBUG == true) GFCommon::log_debug( 'Community ID: '.$cID );
+    if ($this::DEBUG == true) GFCommon::log_debug( 'Community ID: '.$cID );
 
     if ($cID){
       $sherpaCommunityID = get_post_meta($cID, 'sherpa_community_id', true);
-    //  if ($this::DEBUG == true) GFCommon::log_debug( 'sherpa community: '.$sherpaCommunityID );
+     if ($this::DEBUG == true) GFCommon::log_debug( 'sherpa community: '.$sherpaCommunityID );
       if (!$sherpaCommunityID){
         //no community id has been associated with the community, so get outa here.
         return;
@@ -155,7 +155,7 @@ class Sherpa{
       $data['primaryContactCountry'] = $fields->mailingAddress->country;
 
     }
-    //if ($this::DEBUG == true) GFCommon::log_debug( 'Data : ' . print_r( $data, true ) );
+    if ($this::DEBUG == true) GFCommon::log_debug( 'Data : ' . print_r( $data, true ) );
     // $this->sherpaConnection(array(), 'prospects?pageSize=100&pageNumber=1','get');
     // $this->sherpaConnection(array(), 'leasing-counselors', 'get');
     $r = $this->sherpaConnection($data, 'leads');
@@ -206,7 +206,7 @@ class Sherpa{
   private function sherpaConnection($data, $endpoint, $method = 'post'){
 
     $URL = $this->URLBase.'/companies/'.$this->companyID.'/communities/'.$this->communityID.'/'.$endpoint;
-    //if ($this::DEBUG == true) GFCommon::log_debug( 'Sherpa URL : ' . $URL );
+    if ($this::DEBUG == true) GFCommon::log_debug( 'Sherpa URL : ' . $URL );
 
     $c = new Curl();
 
@@ -224,11 +224,11 @@ class Sherpa{
 
     $response = $c->response;
 
-    // if ($this::DEBUG == true){
-    //   GFCommon::log_debug( 'Body : ' . print_r( json_encode($data), true ) );
-    //   GFCommon::log_debug( 'Request Headers : ' . print_r( $c->requestHeaders, true ) );
-    //   GFCommon::log_debug( 'Sherpa response : ' . print_r( $c->response, true ) );
-    // }
+    if ($this::DEBUG == true){
+      GFCommon::log_debug( 'Body : ' . print_r( json_encode($data), true ) );
+      GFCommon::log_debug( 'Request Headers : ' . print_r( $c->requestHeaders, true ) );
+      GFCommon::log_debug( 'Sherpa response : ' . print_r( $c->response, true ) );
+    }
     // GFCommon::log_debug( 'Sherpa error : ' . print_r( $c->error, true ) );
 
     $c->close();
