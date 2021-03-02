@@ -206,7 +206,7 @@ class Sherpa{
   private function sherpaConnection($data, $endpoint, $method = 'post'){
 
     $URL = $this->URLBase.'/companies/'.$this->companyID.'/communities/'.$this->communityID.'/'.$endpoint;
-    if ($this::DEBUG == true) GFCommon::log_debug( 'Sherpa URL : ' . $URL );
+    //if ($this::DEBUG == true) GFCommon::log_debug( 'Sherpa URL : ' . $URL );
 
     $c = new Curl();
 
@@ -226,8 +226,8 @@ class Sherpa{
 
     if ($this::DEBUG == true){
       GFCommon::log_debug( 'Body : ' . print_r( json_encode($data), true ) );
-      GFCommon::log_debug( 'Request Headers : ' . print_r( $c->requestHeaders, true ) );
-      GFCommon::log_debug( 'Sherpa response : ' . print_r( $c->response, true ) );
+      // GFCommon::log_debug( 'Request Headers : ' . print_r( $c->requestHeaders, true ) );
+      // GFCommon::log_debug( 'Sherpa response : ' . print_r( $c->response, true ) );
     }
     // GFCommon::log_debug( 'Sherpa error : ' . print_r( $c->error, true ) );
 
