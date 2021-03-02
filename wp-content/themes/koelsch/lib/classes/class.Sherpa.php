@@ -61,13 +61,13 @@ class Sherpa{
   }
 
   public function createLead($entry, $form){
-    if ($this::DEBUG != true) GFCommon::log_debug( 'Create Lead Triggered' );
+    if ($this::DEBUG == true) GFCommon::log_debug( 'Create Lead Triggered' );
     $cID = $entry['30']; //community ID NOTE: double check id
-    if ($this::DEBUG != true) GFCommon::log_debug( 'Community ID: '.$cID );
+    if ($this::DEBUG == true) GFCommon::log_debug( 'Community ID: '.$cID );
 
     if ($cID){
       $sherpaCommunityID = get_post_meta($cID, 'sherpa_community_id', true);
-      if ($this::DEBUG != true) GFCommon::log_debug( 'sherpa community: '.$sherpaCommunityID );
+      if ($this::DEBUG == true) GFCommon::log_debug( 'sherpa community: '.$sherpaCommunityID );
       if (!$sherpaCommunityID){
         //no community id has been associated with the community, so get outa here.
         return;
@@ -121,7 +121,7 @@ class Sherpa{
       $referralNote .= ' -- Requested a tour'.$time.$date.'.';
     }
 
-  if ($this::DEBUG != true)   GFCommon::log_debug('referral note: '.print_r( $referralNote, true ) );
+  if ($this::DEBUG == true)   GFCommon::log_debug('referral note: '.print_r( $referralNote, true ) );
     //GFCommon::log_debug('Form data: '.print_r( $fields, true ) );
     //GFCommon::log_debug( 'Date : ' . print_r( $date, true ) );
 
@@ -156,7 +156,7 @@ class Sherpa{
       $data['primaryContactCountry'] = $fields->mailingAddress->country;
 
     }
-    GFCommon::log_debug( 'Data : ' . print_r( $data, true ) );
+    f ($this::DEBUG == true) GFCommon::log_debug( 'Data : ' . print_r( $data, true ) );
     // $this->sherpaConnection(array(), 'prospects?pageSize=100&pageNumber=1','get');
     // $this->sherpaConnection(array(), 'leasing-counselors', 'get');
     $r = $this->sherpaConnection($data, 'leads');
@@ -174,7 +174,7 @@ class Sherpa{
     //           $lcids[] = $lc->id;
     //         }
     //       }
-    //       // if ($this::DEBUG != true) GFCommon::log_debug( 'Leasing Counselors: '. print_r($leasingCounselors, true) );
+    //       // if ($this::DEBUG == true) GFCommon::log_debug( 'Leasing Counselors: '. print_r($leasingCounselors, true) );
     //       $noteData = array(
     //         'entryDate'=>current_time("Y-m-d"),
     //         'entryTime'=>current_time("H:i"),
@@ -190,7 +190,7 @@ class Sherpa{
     //         )
     //       );
     //       $this->sherpaConnection(array(), 'prospects/'.$id.'/sales-notes','get');
-    //       if ($this::DEBUG != true) GFCommon::log_debug( 'Create a sales note: '. print_r($noteData, true) );
+    //       if ($this::DEBUG == true) GFCommon::log_debug( 'Create a sales note: '. print_r($noteData, true) );
     //
     //       $this->createSalesNote($id, $noteData);
     //       break;
@@ -207,7 +207,7 @@ class Sherpa{
   private function sherpaConnection($data, $endpoint, $method = 'post'){
 
     $URL = $this->URLBase.'/companies/'.$this->companyID.'/communities/'.$this->communityID.'/'.$endpoint;
-    if ($this::DEBUG != true) GFCommon::log_debug( 'Sherpa URL : ' . $URL );
+    if ($this::DEBUG == true) GFCommon::log_debug( 'Sherpa URL : ' . $URL );
 
     $c = new Curl();
 
@@ -225,7 +225,7 @@ class Sherpa{
 
     $response = $c->response;
 
-    if ($this::DEBUG != true){
+    if ($this::DEBUG == true){
       GFCommon::log_debug( 'Body : ' . print_r( json_encode($data), true ) );
       GFCommon::log_debug( 'Request Headers : ' . print_r( $c->requestHeaders, true ) );
       GFCommon::log_debug( 'Sherpa response : ' . print_r( $c->response, true ) );
