@@ -2732,6 +2732,9 @@ a {
 .page-template-resources .page-content::before {
   display: none; }
 
+.page-content figure {
+  margin: 0; }
+
 .page-content h3, .page-content h2 {
   margin-bottom: 30px; }
 
