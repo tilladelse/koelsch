@@ -20,6 +20,10 @@ wp-content/cache/*
 wp-content/cache/supercache/*
 
 # wpengine specific
+.wpe-devkit
+.wpengine-conf
+.wpe-pull-ignore
+.wpe-push-ignore
 .smushit-status
 .gitattributes
 _wpeprivate*
