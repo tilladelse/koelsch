@@ -2,7 +2,7 @@
 
 [![](https://img.shields.io/github/release/php-curl-class/php-curl-class.svg)](https://github.com/php-curl-class/php-curl-class/releases/)
 [![](https://img.shields.io/github/license/php-curl-class/php-curl-class.svg)](https://github.com/php-curl-class/php-curl-class/blob/master/LICENSE)
-[![](https://img.shields.io/travis/php-curl-class/php-curl-class.svg)](https://travis-ci.com/github/php-curl-class/php-curl-class/)
+[![](https://img.shields.io/github/workflow/status/php-curl-class/php-curl-class/ci)](https://github.com/php-curl-class/php-curl-class/actions/workflows/ci.yml)
 [![](https://img.shields.io/packagist/dt/php-curl-class/php-curl-class.svg)](https://github.com/php-curl-class/php-curl-class/releases/)
 
 PHP Curl Class makes it easy to send HTTP requests and integrate with web APIs.
@@ -34,7 +34,7 @@ For latest commit version:
 
 ### Requirements
 
-PHP Curl Class works with PHP 5.3, 5.4, 5.5, 5.6, 7.0, 7.1, 7.2, 7.3, 7.4, and HHVM.
+PHP Curl Class works with PHP 5.3, 5.4, 5.5, 5.6, 7.0, 7.1, 7.2, 7.3, 7.4, and 8.0.
 
 ### Quick Start and Examples
 
@@ -195,6 +195,7 @@ More examples are available under [/examples](https://github.com/php-curl-class/
 Curl::__construct($base_url = null)
 Curl::__destruct()
 Curl::__get($name)
+Curl::_fastDownload($url, $filename, $connections = 4) {
 Curl::attemptRetry()
 Curl::beforeSend($callback)
 Curl::buildPostData($data)

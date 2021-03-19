@@ -20,13 +20,18 @@ class ComposerStaticInit272ef563c26834d7334397714ae075b0
     public static $prefixDirsPsr4 = array (
         'Curl\\' => 
         array (
-            0 => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src',
-            1 => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl',
+            0 => __DIR__ . '/..' . '/php-curl-class/php-curl-class/src/Curl',
         ),
     );
 
-    public static $classMap = array (
-        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+    public static $prefixesPsr0 = array (
+        'C' => 
+        array (
+            'CPT' => 
+            array (
+                0 => __DIR__ . '/..' . '/jjgrainger/wp-custom-post-type-class/src',
+            ),
+        ),
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -34,7 +39,7 @@ class ComposerStaticInit272ef563c26834d7334397714ae075b0
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit272ef563c26834d7334397714ae075b0::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit272ef563c26834d7334397714ae075b0::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit272ef563c26834d7334397714ae075b0::$classMap;
+            $loader->prefixesPsr0 = ComposerStaticInit272ef563c26834d7334397714ae075b0::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }
