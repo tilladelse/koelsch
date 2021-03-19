@@ -96,8 +96,6 @@ define('THEME_VERSION', '1.0.0');
 
  add_action( 'get_footer', 'koelsch_enqueue_scripts_styles_footer' );
  function koelsch_enqueue_scripts_styles_footer(){
-
-
   wp_enqueue_script('turf','https://unpkg.com/@turf/turf/turf.min.js',[],THEME_VERSION);
   wp_enqueue_script('mapbox','https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js',[],THEME_VERSION);
   wp_enqueue_script('ion-icons','https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js',[],THEME_VERSION);
